@@ -8,16 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bec5c4ef-d8a7-439a-a8d8-fa4bdaa3ff34" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PINIA/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/RestriccionFosforoAnual.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PINIA/RestriccionFosforoAnual.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/RestriccionProductividadProductores.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PINIA/RestriccionProductividadProductores.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/RestriccionUsosDistintos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PINIA/RestriccionUsosDistintos.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/Solucion.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PINIA/Solucion.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Constantes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Productor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Productor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Solucion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solucion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Uso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Uso.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,17 +27,17 @@
       <file leaf-file-name="Constantes.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Constantes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="510">
+              <caret line="44" column="54" selection-start-line="44" selection-start-column="54" selection-end-line="44" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Solucion.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Solucion.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Solucion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="865" column="34" selection-start-line="865" selection-start-column="34" selection-end-line="865" selection-end-column="34" />
+            <state relative-caret-position="361">
+              <caret line="871" column="33" lean-forward="true" selection-start-line="871" selection-start-column="33" selection-end-line="871" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -71,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
+            <state relative-caret-position="465">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
             </state>
           </provider>
         </entry>
@@ -165,10 +157,10 @@
         <option value="$PROJECT_DIR$/src/Pixel.java" />
         <option value="$PROJECT_DIR$/src/Restricciones.java" />
         <option value="$PROJECT_DIR$/src/Productor.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Uso.java" />
-        <option value="$PROJECT_DIR$/src/Constantes.java" />
         <option value="$PROJECT_DIR$/src/Solucion.java" />
+        <option value="$PROJECT_DIR$/src/Constantes.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -179,8 +171,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="64" />
-    <option name="y" value="1069" />
+    <option name="x" value="-1856" />
+    <option name="y" value="-11" />
     <option name="width" value="1857" />
     <option name="height" value="1092" />
   </component>
@@ -312,7 +304,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="1069" width="1857" height="1092" extended-state="6" />
+    <frame x="-1856" y="-11" width="1857" height="1092" extended-state="6" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32903227" />
@@ -702,13 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Constantes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Matriz de Planificacion.out">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="930">
@@ -716,17 +701,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/Solucion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
+        <state relative-caret-position="361">
+          <caret line="871" column="33" lean-forward="true" selection-start-line="871" selection-start-column="33" selection-end-line="871" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Solucion.java">
+    <entry file="file://$PROJECT_DIR$/src/Constantes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="865" column="34" selection-start-line="865" selection-start-column="34" selection-end-line="865" selection-end-column="34" />
+        <state relative-caret-position="510">
+          <caret line="44" column="54" selection-start-line="44" selection-start-column="54" selection-end-line="44" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>

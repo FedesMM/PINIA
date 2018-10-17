@@ -15,22 +15,20 @@ public class Main {
         //Productor.imprimirProductores();
         Constantes.pixeles=Pixel.cargarPixeles();
         //Pixel.imprimirPixeles();
-
+        /*
         solucion = Main.pruebaGenerarSoluciones();
         solucion.crearArchivoMatriz();
         solucion.crearArchivoCantidadUsos();
         solucion.crearArchivoProductividadSobreAreaTotal();
-        //Productor.imprimirProductores();
+        */
 
 
-        /*
         solucion = Solucion.crearSolucion();
         solucionOriginal=solucion.clone();
         solucion.imprimirFuncionObjetivo();
         solucion.recalcular();
         solucion.imprimirFuncionObjetivo();
         solucion = Main.LocalSearch(solucion);
-        */
 
 
 
