@@ -66,15 +66,15 @@ public class Productor {
         return productores;
     }
     public void imprimirProductor(){
-        System.out.printf("("+this.numeroProductor+",{");
-        /*
+        System.out.printf("("+this.numeroProductor+", "+this.areaTotal+", {");
+
         for (int i = 0; i <this.restriccionProduccionEstacion.length ; i++) {
             System.out.print(this.restriccionProduccionEstacion[i]);
             if (i!=(this.restriccionProduccionEstacion.length-1)){
                 System.out.printf(",");
             }
-        }*/
-        System.out.printf("},{");
+        }
+        System.out.printf("}, {");
         for (int i = 0; i <this.pixelesDelProductor.size(); i++) {
             System.out.print(this.pixelesDelProductor.get(i));
             if (i!=(this.pixelesDelProductor.size()-1)) {

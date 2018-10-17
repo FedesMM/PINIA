@@ -6,25 +6,52 @@ import java.io.UnsupportedEncodingException;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
-import static java.lang.Math.toIntExact;
 
-class RestriccionProductividadProductores{
-    boolean cumpleRestrccion;
+class RestriccionProductividadProductores implements Cloneable{
+    boolean cumpleRestriccion;
     float mediaDesviacion;
     float maximoDesviacion;
+
+    public RestriccionProductividadProductores clone(){
+        RestriccionProductividadProductores clon = new RestriccionProductividadProductores ();
+        clon.cumpleRestriccion =this.cumpleRestriccion;
+        clon.mediaDesviacion=this.mediaDesviacion;
+        clon.maximoDesviacion=this.maximoDesviacion;
+        return clon;
+    }
 }
 class RestriccionUsosDistintos{
     boolean cumpleRestriccion;
     int cantIncumplimientos; //Cantidad de veces que una estacion un productor esta por debajo del minimo o encima del maximo
     float incumplimientoRelativo; //Cantidad de incumplimientos dividido entre todas posibles parejas productor,estacion
     int [][][] cantUsosPorEstacionParaCadaProductor;
+
+    public RestriccionUsosDistintos clone(){
+        RestriccionUsosDistintos clon = new RestriccionUsosDistintos ();
+        clon.cumpleRestriccion=this.cumpleRestriccion;
+        clon.cantIncumplimientos=this.cantIncumplimientos;
+        clon.incumplimientoRelativo=this.incumplimientoRelativo;
+        clon.cantUsosPorEstacionParaCadaProductor=this.cantUsosPorEstacionParaCadaProductor.clone();
+        return clon;
+    }
 }
+
 class RestriccionFosforoAnual{
     boolean cumpleRestriccion;
     float mediaDesviacion;
     float maximoDesviacion;
     float [] fosforoAnual;
     float [][] fosforoAnualPorProductor;
+
+    public RestriccionFosforoAnual clone(){
+        RestriccionFosforoAnual clon = new RestriccionFosforoAnual ();
+        clon.cumpleRestriccion =this.cumpleRestriccion;
+        clon.mediaDesviacion=this.mediaDesviacion;
+        clon.maximoDesviacion=this.maximoDesviacion;
+        clon.fosforoAnual=this.fosforoAnual.clone();
+        clon.fosforoAnualPorProductor=this.fosforoAnualPorProductor.clone();
+        return clon;
+    }
 }
 
 public class Solucion {
@@ -65,8 +92,21 @@ public class Solucion {
     tosProductor;
     */
 
+    public Solucion clone(){
+        Solucion clon = new Solucion ();
+        clon.fosforo=this.fosforo;
+        clon.matriz= this.matriz.clone(); //Uso*100+numero de estacion
+        clon.productivdadProductores= this.productivdadProductores.clone();
+        clon.areaTotal=this.areaTotal;
+        clon.restriccionProductividadMinimaEstacion=this.restriccionProductividadMinimaEstacion.clone();
+        clon.restriccionProductividadMinimaAnual=this.restriccionProductividadMinimaAnual.clone();
+        clon.restriccionUsosDistintos=this.restriccionUsosDistintos.clone();
+        clon.restriccionFosforoAnual=this.restriccionFosforoAnual.clone();
+        return clon;
+    }
     //float produccionAcumulada;
     public void imprimirFuncionObjetivo(){
+        System.out.println("Funcion Objetivo: "+this.evaluarFuncionObjetivo());
         System.out.println("\tFosforo modulado: "+Constantes.pesoIncumplimientoFosforo * (this.fosforo /(Constantes.maximoIncumplimientoFosforo*this.areaTotal)));
         System.out.println("\tUsos Distintos modulado: "+ Constantes.pesoIncumplimientoUsosDistintos * (this.restriccionUsosDistintos.cantIncumplimientos/ Constantes.maximoIncumplimientoUsosDistintos));
         System.out.println("\tProductividad Anual modulado: "+(-1)*Constantes.pesoIncumplimientoProductividadMinimaAnual * (this.restriccionProductividadMinimaEstacion.maximoDesviacion  /Constantes.maximoIncumplimientoProductividadMinimaAnual));
@@ -91,12 +131,12 @@ public class Solucion {
         this.productivdadProductores = new float [Constantes.cantProductores][Constantes.cantEstaciones];
         //Restriccion 1
         this.restriccionProductividadMinimaAnual = new RestriccionProductividadProductores();
-        this.restriccionProductividadMinimaAnual.cumpleRestrccion=false;
+        this.restriccionProductividadMinimaAnual.cumpleRestriccion =false;
         this.restriccionProductividadMinimaAnual.maximoDesviacion =0;
         this.restriccionProductividadMinimaAnual.mediaDesviacion =0;
         //Restriccion 2
         this.restriccionProductividadMinimaEstacion = new RestriccionProductividadProductores();
-        this.restriccionProductividadMinimaEstacion.cumpleRestrccion=false;
+        this.restriccionProductividadMinimaEstacion.cumpleRestriccion =false;
         this.restriccionProductividadMinimaEstacion.maximoDesviacion =0;
         this.restriccionProductividadMinimaEstacion.mediaDesviacion =0;
         //Restriccion 3
@@ -196,13 +236,13 @@ public class Solucion {
     }
 
     public void imprimirRestriccionProductividadMinimaAnual(){
-        System.out.println("\t\tRestriccion Productividad Minima Anual: "+ this.restriccionProductividadMinimaAnual.cumpleRestrccion);
+        System.out.println("\t\tRestriccion Productividad Minima Anual: "+ this.restriccionProductividadMinimaAnual.cumpleRestriccion);
         System.out.println("\t\t\tMaxima Desviacion: "+ this.restriccionProductividadMinimaAnual.maximoDesviacion);
         System.out.println("\t\t\tMedia Desviacion: "+ this.restriccionProductividadMinimaAnual.mediaDesviacion);
     }
 
     public void imprimirRestriccionProductividadMinimaEstacion(){
-        System.out.println("\t\tRestriccion Productividad Minima Estacion: "+ this.restriccionProductividadMinimaEstacion.cumpleRestrccion);
+        System.out.println("\t\tRestriccion Productividad Minima Estacion: "+ this.restriccionProductividadMinimaEstacion.cumpleRestriccion);
         System.out.println("\t\t\tMaxima Desviacion: "+ this.restriccionProductividadMinimaEstacion.maximoDesviacion);
         System.out.println("\t\t\tMedia Desviacion: "+ this.restriccionProductividadMinimaEstacion.mediaDesviacion);
     }
@@ -299,35 +339,65 @@ public class Solucion {
     }
 
     public static Solucion firstImprove(Solucion solucion){
+        Solucion respaldoSolucion=solucion.clone();
         float funcionObjetivo=solucion.evaluarFuncionObjetivo();
         int pixelRandom, fallos=0;
-        int [] pixelACambiar= new int[Constantes.cantEstaciones];
+        int [] respaldoPixel= new int[Constantes.cantEstaciones];
+        float [] respaldoProductividadProductores=new float[Constantes.cantEstaciones];
+        float respaldoFosforo;
+        RestriccionProductividadProductores respaldoPMAnual, repaldoPME;
+        RestriccionUsosDistintos respaldoUD;
+        RestriccionFosforoAnual respaldoFA;
+
         for (int intentos = 0; intentos < Constantes.cantPixeles ; intentos++) {
             //Sorteo cual cambiar
             pixelRandom= Constantes.uniforme.nextInt(Constantes.cantPixeles-1);
             //System.out.println("\tSorteo el pixel"+pixelRandom);
             //System.out.println("\t\tFO actual"+funcionObjetivo);
-            //Respaldo el pixel viejo
-            pixelACambiar=solucion.matriz[pixelRandom].clone();
-            //Respaldo valores de las restricciones y costos
+
+            //Tengo en respaldoSolucion la solucion original
+            /*
+            //Respaldo el pixel  y lo que afecta en la solucion
+            respaldoPixel=solucion.matriz[pixelRandom].clone();
+            respaldoFosforo=solucion.fosforo;
+            respaldoProductividadProductores=solucion.productivdadProductores[Constantes.pixeles[pixelRandom].productor].clone();
+            repaldoPME=solucion.restriccionProductividadMinimaEstacion.clone();
+            respaldoPMAnual=solucion.restriccionProductividadMinimaAnual.clone();
+            respaldoUD=solucion.restriccionUsosDistintos.clone();
+            respaldoFA=solucion.restriccionFosforoAnual.clone();
+            */
 
             //Cambio el pixel sorteado
             solucion.cambiarPixel(pixelRandom);
+            solucion.recalcular();
             //Calculo las restricciones
             solucion.chequearRestricciones();
             //System.out.println("\t\tFO nueva"+solucion.evaluarFuncionObjetivo());
             //En caso de que me sirva lo devuelvo
-            if (solucion.evaluarFuncionObjetivo()< funcionObjetivo){
+            if (solucion.evaluarFuncionObjetivo()< respaldoSolucion.evaluarFuncionObjetivo()){
                 System.out.println("\tExito, con cantidad de fallos: "+fallos);
+
+                solucion.chequearRestricciones();
+                solucion.imprimirFuncionObjetivo();
                 return solucion;
+
             }else{
                 fallos++;
-                //Restauro el pixel cambiado
-                solucion.matriz[pixelRandom]=pixelACambiar;
-                //Restauro los valores respaldados
+                /*
+                //Restauro el pixel y lo que afecta en la solucion
+                solucion.matriz[pixelRandom]=respaldoPixel;
+                solucion.fosforo=respaldoFosforo;
+                solucion.productivdadProductores[Constantes.pixeles[pixelRandom].productor]=respaldoProductividadProductores;
+                solucion.restriccionProductividadMinimaEstacion=repaldoPME;
+                solucion.restriccionProductividadMinimaAnual=respaldoPMAnual;
+                solucion.restriccionUsosDistintos=respaldoUD;
+                solucion.restriccionFosforoAnual=respaldoFA;
+                */
+                solucion=respaldoSolucion.clone();
             }
         }
         System.out.println("\tFracaso con cantidad de fallos: "+fallos);
+        solucion.recalcular();
         return solucion;
     }
 
@@ -422,30 +492,92 @@ public class Solucion {
 
     public void limpiarPixel(int iPixel){
         //Libera un pixel actualizando las variables de restricciones
-        System.out.println("Limpiar pixel: "+iPixel);
-        int iEstacion=0, usoABorrar, estacionesDeEsteUso, estacionActual, estacionesBorradas=0;
+        //System.out.println("Limpiar pixel: "+iPixel);
+        int usoABorrar, estacionesDeEsteUso;
 
-        for (int itEstacion = 0; itEstacion < Constantes.cantEstaciones; itEstacion++) {
+        for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
             //100*usoACargar+estacionDelUso
             usoABorrar=this.matriz[iPixel][iEstacion]/100;
             estacionesDeEsteUso=this.matriz[iPixel][iEstacion]%100;
 
             //Libero el uso y las estaciones que lleva
-            this.matriz[iPixel][itEstacion]=0; //Antes usaba estacionActual pero seguro estaba mal
+            this.matriz[iPixel][iEstacion]=0; //Antes usaba estacionActual pero seguro estaba mal
 
-            //Reduzco la cantidad de usos del due;o del pixel
-            //this.cantUsosProductor[Constantes.pixeles[iPixel].productor][usoABorrar]--;
-            this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoABorrar][itEstacion][Constantes.pixeles[iPixel].productor]--;
-
-            //Reduzco la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
-            this.productivdadProductores[Constantes.pixeles[iPixel].productor][itEstacion]
-                    -= Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].productividad[estacionesDeEsteUso];
-            //Reduzco fosforoAnual segun la estacion actual y el fosforo del Uso
-            this.restriccionFosforoAnual.fosforoAnual[itEstacion/4] -= Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].fosforo;
-
+            //Actualizo la cantidad de usos
+            this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoABorrar][iEstacion][Constantes.pixeles[iPixel].productor]--;
+            //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+            this.productivdadProductores[Constantes.pixeles[iPixel].productor][iEstacion] =
+                    this.productivdadProductores[Constantes.pixeles[iPixel].productor][iEstacion]
+                            - Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].productividad[estacionesDeEsteUso];
+            //Actualizo fosforoAnual segun la estacion actual y el fosforo del Uso
+            this.restriccionFosforoAnual.fosforoAnual[iEstacion/4] =
+                    this.restriccionFosforoAnual.fosforoAnual[iEstacion/4]
+                            -Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].fosforo;
             //Actualizo lo que aporta el uso al fosforo total en esta estacion
-            this.fosforo-=Constantes.pixeles[iPixel].superficie *Constantes.usos[usoABorrar].fosforo/Constantes.usos[usoABorrar].duracionEstaciones;
+            this.fosforo= this.fosforo
+                    - (Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].fosforo)/Constantes.usos[usoABorrar].duracionEstaciones;
         }
+    }
+
+    public void recalcular(){
+        int usoACalcular, estacionesDeEsteUso;
+        //Limpio valores
+        this.fosforo=0;
+        this.productivdadProductores= new float[Constantes.cantPixeles][Constantes.cantEstaciones];
+        this.restriccionProductividadMinimaAnual= new RestriccionProductividadProductores();
+        this.restriccionProductividadMinimaEstacion= new RestriccionProductividadProductores();
+        this.restriccionUsosDistintos = new RestriccionUsosDistintos();
+        this.restriccionFosforoAnual = new RestriccionFosforoAnual();
+        //Restriccion 1
+        this.restriccionProductividadMinimaAnual = new RestriccionProductividadProductores();
+        this.restriccionProductividadMinimaAnual.cumpleRestriccion =false;
+        this.restriccionProductividadMinimaAnual.maximoDesviacion =0;
+        this.restriccionProductividadMinimaAnual.mediaDesviacion =0;
+        //Restriccion 2
+        this.restriccionProductividadMinimaEstacion = new RestriccionProductividadProductores();
+        this.restriccionProductividadMinimaEstacion.cumpleRestriccion =false;
+        this.restriccionProductividadMinimaEstacion.maximoDesviacion =0;
+        this.restriccionProductividadMinimaEstacion.mediaDesviacion =0;
+        //Restriccion 3
+        this.restriccionUsosDistintos = new RestriccionUsosDistintos();
+        this.restriccionUsosDistintos.cumpleRestriccion=false;
+        this.restriccionUsosDistintos.cantIncumplimientos =0;
+        this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor =
+                new int [Constantes.cantUsos][Constantes.cantEstaciones][Constantes.cantProductores];
+
+        //Version2
+
+        this.restriccionFosforoAnual= new RestriccionFosforoAnual();
+        this.restriccionFosforoAnual.fosforoAnual = new float [Constantes.cantAnios];
+        this.restriccionFosforoAnual.fosforoAnualPorProductor= new float[Constantes.cantAnios][Constantes.cantProductores];
+        this.restriccionFosforoAnual.cumpleRestriccion=true;
+        this.restriccionFosforoAnual.maximoDesviacion=0;
+        this.restriccionFosforoAnual.mediaDesviacion=0;
+
+
+
+
+
+
+        for (int iPixel = 0; iPixel < Constantes.cantPixeles; iPixel++) {
+            for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
+                //100*usoACargar+estacionDelUso
+                usoACalcular = this.matriz[iPixel][iEstacion] / 100;
+                estacionesDeEsteUso = this.matriz[iPixel][iEstacion] % 100;
+
+                //Actualizo lo que aporta el uso al fosforo total en esta estacion
+                this.fosforo += (Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACalcular].fosforo) / Constantes.usos[usoACalcular].duracionEstaciones;
+                //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+                this.productivdadProductores[Constantes.pixeles[iPixel].productor][iEstacion] +=
+                        Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACalcular].productividad[estacionesDeEsteUso];
+                //Actualizo la cantidad de usos
+                this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoACalcular][iEstacion][Constantes.pixeles[iPixel].productor]++;
+                //Actualizo fosforoAnual segun la estacion actual y el fosforo del Uso
+                this.restriccionFosforoAnual.fosforoAnual[iEstacion / 4] +=
+                        Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACalcular].fosforo;
+            }
+        }
+        this.chequearRestricciones();
     }
 
     public  void cambiarPixel(int iPixel){
@@ -514,10 +646,10 @@ public class Solucion {
     public void  cumpleRestriccionesProductividad(){
         float acumuladoAnual, maximaDesviacionAnual=0, mediaDesviacionAnual=0, maximaDesviacionEstacion=0,mediaDesviacionEstacion=0, desviacion, productividadSobreSuperficie=0;
         int incumplimientoEstacion=0, incumplimientoAnual=0;
-        this.restriccionProductividadMinimaAnual.cumpleRestrccion=true;
+        this.restriccionProductividadMinimaAnual.cumpleRestriccion =true;
         this.restriccionProductividadMinimaAnual.mediaDesviacion=0;
         this.restriccionProductividadMinimaAnual.maximoDesviacion=0;
-        this.restriccionProductividadMinimaEstacion.cumpleRestrccion=true;
+        this.restriccionProductividadMinimaEstacion.cumpleRestriccion =true;
         this.restriccionProductividadMinimaEstacion.mediaDesviacion=0;
         this.restriccionProductividadMinimaEstacion.maximoDesviacion=0;
 
@@ -529,7 +661,7 @@ public class Solucion {
                 productividadSobreSuperficie=this.productivdadProductores[iProductores][iEstacion]/Constantes.productores[iProductores].areaTotal;
                 desviacion=min((productividadSobreSuperficie-Constantes.productores[iProductores].restriccionProduccionEstacion[iEstacion]),0);
                 if (desviacion<0){
-                    this.restriccionProductividadMinimaEstacion.cumpleRestrccion=false;
+                    this.restriccionProductividadMinimaEstacion.cumpleRestriccion =false;
                     incumplimientoEstacion++;
                     mediaDesviacionEstacion+=desviacion;
                     maximaDesviacionEstacion=min(desviacion,maximaDesviacionEstacion);
@@ -547,7 +679,7 @@ public class Solucion {
                     desviacion=
                             min((productividadSobreSuperficie- Constantes.productores[iProductores].restriccionProduccionAnual[(iEstacion)/4]),0);
                     if (desviacion<0){
-                        this.restriccionProductividadMinimaAnual.cumpleRestrccion=false;
+                        this.restriccionProductividadMinimaAnual.cumpleRestriccion =false;
                         incumplimientoAnual++;
                         mediaDesviacionAnual+=desviacion;
                         maximaDesviacionAnual=min(desviacion,maximaDesviacionAnual);
@@ -637,7 +769,7 @@ public class Solucion {
     }
 
 
-    public void imprimirArchivo(){
+    public void crearArchivoMatriz(){
         int uso=0;
         String[][] matriz;
         //Creo la matriz de potreros con valores en cero
@@ -654,11 +786,16 @@ public class Solucion {
             for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
                 uso = this.matriz[iPixel][iEstacion] / 100;
                 matriz[Constantes.pixeles[iPixel].id-1][iEstacion]=Constantes.usos[uso].nombre;
+                if (uso<8){
+                    matriz[Constantes.pixeles[iPixel].id-1][iEstacion]+=Uso.getEstacionUso(this.matriz[iPixel][iEstacion]%100);
+                } else{
+                    matriz[Constantes.pixeles[iPixel].id-1][iEstacion]+=" (anual)";
+                }
             }
         }
         //Creo el archivo
         try {
-            PrintWriter writer = new PrintWriter("salida.out", "UTF-8");
+            PrintWriter writer = new PrintWriter("Matriz de Planificacion.out", "UTF-8");
 
             //Imprimo la primera fila que marca las estaciones
             writer.println("ID,N,10,0\tEst1\tEst2\tEst3\tEst4\tEst5\tEst6\tEst7\tEst8\tEst9\tEst10\tEst11\tEst12\tEst13\tEst14\tEst15\tEst16");
@@ -682,6 +819,66 @@ public class Solucion {
         
     }
 
+    public void crearArchivoCantidadUsos(){
+        int cantIncumplimientos,cantUsos;
+        try {
+            //Creo y abro el archivo
+            PrintWriter writer = new PrintWriter("Cantidad de Usos Distintos por Estacion.out", "UTF-8");
+
+            //Imprimo la primera fila que marca las estaciones
+            writer.println("Productor.C.254\tEst1\tEst2\tEst3\tEst4\tEst5\tEst6\tEst7\tEst8\tEst9\tEst10\tEst11\tEst12\tEst13\tEst14\tEst15\tEst16");
+            //Para cada productor
+            for (int iProductor = 1; iProductor < Constantes.cantProductores ; iProductor++) {
+                writer.print(iProductor+"\t");
+                //Recorro cada estacio
+                for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
+                    cantIncumplimientos=0;
+                    cantUsos=0;
+                    //Recorro cada Uso, sumando todos los usos distintos que usoque uso
+                    for (int iUso = 0; iUso < Constantes.cantUsos; iUso++) {
+                        if(this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[iUso][iEstacion][iProductor]>0){
+                            cantUsos++;
+                        }
+                    }
+                    //Imprimo la cantidad de usos distintos para ese productor en esa estacion
+                    writer.print(cantUsos+"\t");
+                }
+                //Salto de linea entre productores
+                writer.println();
+            }
+            //Cierro el archivo
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void crearArchivoProductividadSobreAreaTotal(){
+        int cantIncumplimientos,cantUsos;
+        try {
+            //Creo y abro el archivo
+            PrintWriter writer = new PrintWriter("Productividad sobre Area Total por Estacion.out", "UTF-8");
+            //Imprimo la primera fila que marca las estaciones
+            writer.println("Productor.C.254\tEst1\tEst2\tEst3\tEst4\tEst5\tEst6\tEst7\tEst8\tEst9\tEst10\tEst11\tEst12\tEst13\tEst14\tEst15\tEst16");
+            //Para cada productor
+            for (int iProductor =1; iProductor< this.productivdadProductores.length;iProductor++){
+                writer.print(iProductor+"\t");
+                //Recorro cada estacion imprimo la productividad sobre el Area total
+                for (int estacion =0; estacion < this.productivdadProductores[iProductor].length; estacion++){
+                    writer.print(this.productivdadProductores[iProductor][estacion]/Constantes.productores[iProductor].areaTotal+"\t");
+                }
+                writer.println();
+            }
+            //Cierro el archivo
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
 
     /*--DEPRECATED
 

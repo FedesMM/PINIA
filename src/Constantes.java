@@ -42,7 +42,7 @@ public class Constantes {
     public static Pixel[] pixeles = new Pixel[cantPixeles];
     public static Productor[] productores= new Productor [cantProductores];
     public static int semilla=0;
-    public static Random uniforme = new Random(semilla);
+    public static Random uniforme = new Random();
 
 
 

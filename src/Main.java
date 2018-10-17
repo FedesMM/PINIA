@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -6,7 +5,7 @@ public class Main {
     public static void main( final String[] args )
     {
         boolean imprimirConstantesTodoJunto=false,imprimirConstantesUnoAUno=false, imprimirSolucion=false;
-        Solucion solucion, mejorSolucion;
+        Solucion solucion, solucionOriginal;
         int cantidadSoluciones=0, cantidadFI=0;
         Constantes.cargarTopeFosforoAnualTest();
         Constantes.usos= Uso.cargarUsos();
@@ -17,9 +16,27 @@ public class Main {
         Constantes.pixeles=Pixel.cargarPixeles();
         //Pixel.imprimirPixeles();
 
-        //solucion = Main.pruebaGenerarSoluciones();
+        solucion = Main.pruebaGenerarSoluciones();
+        solucion.crearArchivoMatriz();
+        solucion.crearArchivoCantidadUsos();
+        solucion.crearArchivoProductividadSobreAreaTotal();
+        //Productor.imprimirProductores();
+
+
+        /*
         solucion = Solucion.crearSolucion();
-        solucion = Main.pruebaFirstImprovement(solucion);
+        solucionOriginal=solucion.clone();
+        solucion.imprimirFuncionObjetivo();
+        solucion.recalcular();
+        solucion.imprimirFuncionObjetivo();
+        solucion = Main.LocalSearch(solucion);
+        */
+
+
+
+
+
+        //solucion.imprimirSolucion();
 
 
 
@@ -32,7 +49,7 @@ public class Main {
             //solucion.imprimirUsosPorEstacion();
             //solucion.imprimirProductividadSobreSuperficiePorEstacion();
             //solucion.imprimirUsosDisitintosPorEstacion();
-            //solucion.imprimirArchivo();
+            //solucion.crearArchivoMatriz();
 
             //solucion.imprimirProductividadSobreSuperficiePorEstacion();
             //solucion.imprimirSolucion();
@@ -114,8 +131,9 @@ public class Main {
        */
     }
 
-    private static Solucion pruebaFirstImprovement(Solucion solucion) {
-        int cantidadFI=0;
+    private static Solucion LocalSearch(Solucion solucion) {
+        int cantidadFI=0, UDprevia=0;
+        float FOprevia=0,PMEprevia=0,PMAprevia=0, FOposterior=0, Fprevia=0;
         float FOOriginal=solucion.evaluarFuncionObjetivo();
         System.out.println("Cantidad de First Improvements : ");
         Scanner reader = new Scanner(System.in);
@@ -125,19 +143,46 @@ public class Main {
         System.out.println("\tFuncion Objetivo: "+solucion.evaluarFuncionObjetivo());
         solucion.imprimirFuncionObjetivo();
 
-        for (int iSoluciones = 0; iSoluciones < cantidadFI-1; iSoluciones++){
-            System.out.println("FirstImprovement : "+iSoluciones);
+        for (int iSoluciones = 0; iSoluciones < cantidadFI; iSoluciones++){
+            System.out.println("FirstImprovement : "+(iSoluciones+1));
             solucion= Solucion.firstImprove(solucion);
-            System.out.println("\tFuncion Objetivo: "+solucion.evaluarFuncionObjetivo());
-            //mejorSolucion.imprimirFuncionObjetivo();
-            System.out.println();
+            FOprevia=solucion.evaluarFuncionObjetivo();
+            Fprevia=solucion.fosforo;
+            UDprevia=solucion.restriccionUsosDistintos.cantIncumplimientos;
+            PMEprevia=solucion.restriccionProductividadMinimaEstacion.mediaDesviacion;
+            PMAprevia=solucion.restriccionProductividadMinimaAnual.mediaDesviacion;
+
+            //System.out.println("\tFuncion Objetivo: "+FOprevia);
+            //solucion.imprimirFuncionObjetivo();
+            //System.out.println();
+            solucion.recalcular();
+            FOposterior=solucion.evaluarFuncionObjetivo();
+
+            if(FOprevia!=FOposterior){
+                System.out.println("Encuentro discrepancia entre    FOprevia: "+FOprevia+" y FOposterior: "+FOposterior);
+                if (Fprevia!=solucion.fosforo)
+                    System.out.println("\tFosforo                       previa: "+Fprevia+" y posterior: "+solucion.fosforo);
+                if (UDprevia!=solucion.restriccionUsosDistintos.cantIncumplimientos)
+                    System.out.println("\tCantidad Usos Distintos       previa: "+UDprevia+" y posterior: "+solucion.restriccionUsosDistintos.cantIncumplimientos);
+                if (PMEprevia!=solucion.restriccionProductividadMinimaEstacion.mediaDesviacion)
+                    System.out.println("\tMedia Productividad Estacion  previa: "+PMEprevia+" y posterior: "+solucion.restriccionProductividadMinimaEstacion.mediaDesviacion);
+                if (PMAprevia!=solucion.restriccionProductividadMinimaAnual.mediaDesviacion)
+                    System.out.println("\tMedia Productividad Anual     previa: "+PMAprevia+" y posterior: "+solucion.restriccionProductividadMinimaAnual.mediaDesviacion);
+            }
+
+
         }
 
 
-
+        System.out.println();
+        System.out.println();
         System.out.println("Solucion antes de los FI:");
         System.out.println("\tFuncion Objetivo antes: "+FOOriginal);
         System.out.println("\tFuncion Objetivo despues: "+solucion.evaluarFuncionObjetivo());
+        solucion.chequearRestricciones();
+        solucion.imprimirFuncionObjetivo();
+
+
         return solucion;
 
 
