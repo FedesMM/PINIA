@@ -112,12 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find />
-      <find>Linea</find>
-      <find>cumpleRe</find>
-      <find>incumpli</find>
-      <find>cargarP</find>
-      <find>Constantes.pixeles[iPixel].superficie</find>
       <find>inte</find>
       <find>this.restriccionProductividadMinimaAnual.mediaDesviacion</find>
       <find>mediaDesviacionAnual</find>
@@ -129,7 +123,6 @@
       <find>imprimirRestri</find>
       <find>siguienteUsoUniforme</find>
       <find>maximaDesviacionAnual</find>
-      <find>imprimir</find>
       <find>cargar</find>
       <find>estacionesDeEsteACargar</find>
       <find>RestriccionProductividadProductoresfi</find>
@@ -139,9 +132,16 @@
       <find>recalcu</find>
       <find>FirstImprovement : 1000</find>
       <find>Solucion antes de los FI:</find>
-      <find>anual</find>
       <find>mat</find>
       <find>main.</find>
+      <find>anual</find>
+      <find>crear</find>
+      <find>siguiente</find>
+      <find>imprimir</find>
+      <find>funcion</find>
+      <find>siguienteUsoRuletaFosforo</find>
+      <find>siguienteUsoRuletaProduccion</find>
+      <find>productivdadProductores</find>
     </findStrings>
     <replaceStrings>
       <replace>cantEstaciones</replace>
@@ -166,9 +166,9 @@
         <option value="$PROJECT_DIR$/src/Restricciones.java" />
         <option value="$PROJECT_DIR$/src/Productor.java" />
         <option value="$PROJECT_DIR$/src/Uso.java" />
-        <option value="$PROJECT_DIR$/src/Solucion.java" />
         <option value="$PROJECT_DIR$/src/Constantes.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Solucion.java" />
       </list>
     </option>
   </component>
@@ -189,6 +189,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
