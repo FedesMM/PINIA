@@ -6,7 +6,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Productor {
     int numeroProductor;
     float[] restriccionProduccionEstacion;
-    float[] restriccionProduccionAnual;
     List<Integer> pixelesDelProductor;
     float areaTotal;
 
@@ -14,7 +13,6 @@ public class Productor {
     public Productor(int numeroProductor, float[] restriccionProduccionEstacion, float[] restriccionProduccionAnual, List<Integer> pixelesDelProductor) {
         this.numeroProductor = numeroProductor;
         this.restriccionProduccionEstacion = restriccionProduccionEstacion;
-        this.restriccionProduccionAnual = restriccionProduccionAnual;
         this.pixelesDelProductor = pixelesDelProductor;
         this.areaTotal=0;
     }

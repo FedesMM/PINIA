@@ -1,56 +1,47 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main( final String[] args )
-    {
-        boolean imprimirConstantesTodoJunto=false,imprimirConstantesUnoAUno=false, imprimirSolucion=false;
+    public static void main(final String[] args) {
+        boolean imprimirConstantesTodoJunto = false, imprimirConstantesUnoAUno = false, imprimirSolucion = false;
         Solucion solucion, solucionOriginal;
-        int cantidadSoluciones=0, cantidadFI=0;
-        Constantes.cargarTopeFosforoAnualTest();
-        Constantes.usos= Uso.cargarUsos();
+        int cantidadSoluciones = 0, cantidadFI = 0;
+        Constantes.usos = Uso.cargarUsos();
         //Uso.imprimirUsos();
         //Se cargan primero los productores para que al agregar los pixeles se incerten cuales pertenecen a cada productor
-        Constantes.productores=Productor.cargarProductores();
+        Constantes.productores = Productor.cargarProductores();
         //Productor.imprimirProductores();
-        Constantes.pixeles=Pixel.cargarPixeles();
+        Constantes.pixeles = Pixel.cargarPixeles();
         //Pixel.imprimirPixeles();
+
+        Main.generarMejorSolucion();
+
         /*
-        solucion = Main.pruebaGenerarSoluciones();
-        solucion.crearArchivoMatriz();
-        solucion.crearArchivoCantidadUsos();
-        solucion.crearArchivoProductividadSobreAreaTotal();
+        solucion = Main.grasp(100);
+        solucion.imprimirFuncionObjetivo();
+        solucion.imprimirSolucion();
         */
 
-
-        solucion = Solucion.crearSolucion();
-        solucionOriginal=solucion.clone();
-        solucion.imprimirFuncionObjetivo();
-        solucion.recalcular();
-        solucion.imprimirFuncionObjetivo();
-        solucion = Main.LocalSearch(solucion);
-
-
-
-
+        //Main.testFirstImprovement();
+        //Main.testLocalSearch();
+        //Main.testGRASP();
 
         //solucion.imprimirSolucion();
 
 
-
-
         //for (int iPixel = 0; iPixel < 1; iPixel++) {
-            //System.out.println("ITERADOR: "+iPixel);
-            //solucion =new Solucion();
-            //solucion =Solucion.crearSolucion();
-            //solucion.chequearRestricciones();
-            //solucion.imprimirUsosPorEstacion();
-            //solucion.imprimirProductividadSobreSuperficiePorEstacion();
-            //solucion.imprimirUsosDisitintosPorEstacion();
-            //solucion.crearArchivoMatriz();
+        //System.out.println("ITERADOR: "+iPixel);
+        //solucion =new Solucion();
+        //solucion =Solucion.crearSolucion();
+        //solucion.chequearRestricciones();
+        //solucion.imprimirUsosPorEstacion();
+        //solucion.imprimirProductividadSobreSuperficiePorEstacion();
+        //solucion.imprimirUsosDisitintosPorEstacion();
+        //solucion.crearArchivoMatriz();
 
-            //solucion.imprimirProductividadSobreSuperficiePorEstacion();
-            //solucion.imprimirSolucion();
+        //solucion.imprimirProductividadSobreSuperficiePorEstacion();
+        //solucion.imprimirSolucion();
 
             /*System.out.println("LIMPIO PIXEL: "+ iPixel);
             solucion.limpiarPixel(iPixel);
@@ -129,92 +120,191 @@ public class Main {
        */
     }
 
-    private static Solucion LocalSearch(Solucion solucion) {
-        int cantidadFI=0, UDprevia=0;
-        float FOprevia=0,PMEprevia=0,PMAprevia=0, FOposterior=0, Fprevia=0;
-        float FOOriginal=solucion.evaluarFuncionObjetivo();
-        System.out.println("Cantidad de First Improvements : ");
-        Scanner reader = new Scanner(System.in);
-        cantidadFI=reader.nextInt();
+    private static Solucion grasp(int maxCantidad) {
+        Solucion nuevaSolucion, mejorSolucion;
+        //System.out.println("GRASP-Cantidad maxima de Soluciones:");
+        //int maxCantidad = 0;
+        //Scanner reader = new Scanner(System.in);
+        //maxCantidad = reader.nextInt();
 
-        System.out.println("Solucion antes de los FI:");
-        System.out.println("\tFuncion Objetivo: "+solucion.evaluarFuncionObjetivo());
-        solucion.imprimirFuncionObjetivo();
+        mejorSolucion = Main.LocalSearch(Solucion.crearSolucion());
+        System.out.println("GRASP-Solucion Original: ");
+        mejorSolucion.evaluarFuncionObjetivo();
 
-        for (int iSoluciones = 0; iSoluciones < cantidadFI; iSoluciones++){
-            System.out.println("FirstImprovement : "+(iSoluciones+1));
-            solucion= Solucion.firstImprove(solucion);
-            FOprevia=solucion.evaluarFuncionObjetivo();
-            Fprevia=solucion.fosforo;
-            UDprevia=solucion.restriccionUsosDistintos.cantIncumplimientos;
-            PMEprevia=solucion.restriccionProductividadMinimaEstacion.mediaDesviacion;
-            PMAprevia=solucion.restriccionProductividadMinimaAnual.mediaDesviacion;
+        for (int iSoluciones = 0; iSoluciones < maxCantidad; iSoluciones++) {
+            System.out.println("GRASP-Iteracion: " + iSoluciones);
+            nuevaSolucion=Solucion.crearSolucion();
+            nuevaSolucion=Main.LocalSearch(nuevaSolucion);
 
-            //System.out.println("\tFuncion Objetivo: "+FOprevia);
-            //solucion.imprimirFuncionObjetivo();
-            //System.out.println();
-            solucion.recalcular();
-            FOposterior=solucion.evaluarFuncionObjetivo();
+            if (nuevaSolucion.evaluarFuncionObjetivo() < mejorSolucion.evaluarFuncionObjetivo()) {
+                System.out.println("GRASP-Actualizo el mejor.");
+                System.out.println("GRASP-Mejor Solucion previa: "+ mejorSolucion.evaluarFuncionObjetivo());
 
-            if(FOprevia!=FOposterior){
-                System.out.println("Encuentro discrepancia entre    FOprevia: "+FOprevia+" y FOposterior: "+FOposterior);
-                if (Fprevia!=solucion.fosforo)
-                    System.out.println("\tFosforo                       previa: "+Fprevia+" y posterior: "+solucion.fosforo);
-                if (UDprevia!=solucion.restriccionUsosDistintos.cantIncumplimientos)
-                    System.out.println("\tCantidad Usos Distintos       previa: "+UDprevia+" y posterior: "+solucion.restriccionUsosDistintos.cantIncumplimientos);
-                if (PMEprevia!=solucion.restriccionProductividadMinimaEstacion.mediaDesviacion)
-                    System.out.println("\tMedia Productividad Estacion  previa: "+PMEprevia+" y posterior: "+solucion.restriccionProductividadMinimaEstacion.mediaDesviacion);
-                if (PMAprevia!=solucion.restriccionProductividadMinimaAnual.mediaDesviacion)
-                    System.out.println("\tMedia Productividad Anual     previa: "+PMAprevia+" y posterior: "+solucion.restriccionProductividadMinimaAnual.mediaDesviacion);
+                mejorSolucion = nuevaSolucion.clone();
+                System.out.println("GRASP-Mejor Solucion actual: "+mejorSolucion.evaluarFuncionObjetivo());
+            }else{
+                System.out.println("GRASP-Conservo el mejor anterior ");
+                System.out.println("GRASP-Mejor Solucion previa: "+ mejorSolucion.evaluarFuncionObjetivo());
             }
-
-
+            System.out.println();
+            System.out.println();
         }
 
+        System.out.println("GRASP-Solucion Final: ");
+        return mejorSolucion;
 
+    }
+
+
+    private static Solucion LocalSearch(Solucion solucion) {
+        boolean huboMejora = true;
+        int maxCantidadFI = Constantes.cantPixeles, UDprevia = 0;
+        float pesoFosforo = 1, pesoProductividad = 1, pesoCantUsos = 1;
+        Solucion solucionOriginal = solucion.clone();
+        //System.out.println("\tLS-Solucion Original:");
+        //solucion.imprimirFuncionObjetivo();
+
+        //Hasta llegar a la cantidad maxima de iteraciones o no tener mejora
+        for (int iSoluciones = 0; (iSoluciones < maxCantidadFI) && huboMejora; iSoluciones++) {
+            //System.out.println("\tLS-Iteracion: " + (iSoluciones + 1));
+            //Busco una mejora
+            solucion = Solucion.firstImprove(solucion, pesoFosforo, pesoProductividad, pesoCantUsos);
+            //Comparo valores de la mejora
+            if (solucionOriginal.evaluarFuncionObjetivo(pesoFosforo, pesoProductividad, pesoCantUsos)
+                    > solucion.evaluarFuncionObjetivo(pesoFosforo, pesoProductividad, pesoCantUsos)) {
+                //Obtube mejora
+                //Muestro la mejora y los pesos
+                //solucionOriginal.imprimirFuncionObjetivo(pesoFosforo, pesoProductividad, pesoCantUsos);
+                //solucion.imprimirFuncionObjetivo(pesoFosforo, pesoProductividad, pesoCantUsos);
+                //System.out.println();
+                //Actualizo mi solucion original a la acutal
+                solucionOriginal=solucion.clone();
+                //Actualizo pesos
+                pesoFosforo = Solucion.actualizarPesoFosforo(solucionOriginal, solucion, pesoFosforo);
+                pesoProductividad = Solucion.actualizarPesoProduccion(solucionOriginal, solucion, pesoProductividad);
+                pesoCantUsos = Solucion.actualizarPesoCantUsos(solucionOriginal, solucion, pesoCantUsos);
+
+
+            } else {
+                //No obtuve FirstImprovement
+                huboMejora = false;
+            }
+        }
+
+        /*
         System.out.println();
         System.out.println();
-        System.out.println("Solucion antes de los FI:");
-        System.out.println("\tFuncion Objetivo antes: "+FOOriginal);
-        System.out.println("\tFuncion Objetivo despues: "+solucion.evaluarFuncionObjetivo());
+        System.out.println("Solucion antes de los LS:");
+        System.out.println("\tSolucion original (con pesos): " + solucionOriginal.evaluarFuncionObjetivo(pesoFosforo, pesoProductividad, pesoCantUsos));
+        System.out.println("\tSolucion original (sin pesos): " + solucionOriginal.evaluarFuncionObjetivo());
+        System.out.println("\tSolucion final (con pesos): " + solucion.evaluarFuncionObjetivo(pesoFosforo, pesoProductividad, pesoCantUsos));
+        System.out.println("\tSolucion final (sin pesos): " + solucion.evaluarFuncionObjetivo());
         solucion.chequearRestricciones();
         solucion.imprimirFuncionObjetivo();
-
+        */
 
         return solucion;
 
 
     }
 
-    private static Solucion pruebaGenerarSoluciones() {
-        int cantidadSoluciones=0;
+    private static void generarMejorSolucion() {
+        int cantidadSoluciones = 0;
         Solucion solucion, mejorSolucion;
+        Scanner reader = new Scanner(System.in);
+        System.out.println("Definir semilla: ");
+        Constantes.uniforme=  new Random(reader.nextInt());
 
         System.out.println("Cantidad de soluciones a generar : ");
-        Scanner reader = new Scanner(System.in);
-        cantidadSoluciones=reader.nextInt();
+        cantidadSoluciones = reader.nextInt();
 
 
         //Creo una primera mejor solucion
-        mejorSolucion =new Solucion();
-        mejorSolucion =Solucion.crearSolucion();
+        mejorSolucion = new Solucion();
+        mejorSolucion = Solucion.crearSolucion();
         mejorSolucion.chequearRestricciones();
-        System.out.println("Fosforo Solucion origina: "+ mejorSolucion.fosforo);
+        System.out.println("Fosforo Solucion origina: " + mejorSolucion.fosforo);
 
-        for (int iSoluciones = 0; iSoluciones < cantidadSoluciones-1; iSoluciones++) {
+        for (int iSoluciones = 0; iSoluciones < cantidadSoluciones - 1; iSoluciones++) {
             //Creo una nueva solucion
-            solucion =new Solucion();
-            solucion =Solucion.crearSolucion();
+            solucion = new Solucion();
+            solucion = Solucion.crearSolucion();
             solucion.chequearRestricciones();
-            System.out.println("Fosforo Solucion "+(iSoluciones+2)+" : "+solucion.fosforo);
-            System.out.println("Funcion Objetivo: "+solucion.evaluarFuncionObjetivo());
-            System.out.println("Area Total: "+solucion.areaTotal);
+            System.out.println("Fosforo Solucion " + (iSoluciones + 2) + " : " + solucion.fosforo);
+            //System.out.println("Funcion Objetivo: "+solucion.evaluarFuncionObjetivo());
+            //System.out.println("Area Total: "+solucion.areaTotal);
             //Me quedo con la mejor de ambas
-            if (solucion.fosforo<mejorSolucion.fosforo){
-                mejorSolucion=solucion;
+            if (solucion.fosforo < mejorSolucion.fosforo) {
+                mejorSolucion = solucion;
             }
         }
 
-        return mejorSolucion;
+        mejorSolucion.crearArchivoMatriz();
+        mejorSolucion.crearArchivoCantidadUsos();
+        mejorSolucion.crearArchivoProductividadSobreAreaTotal();
+        System.out.println("Mejor solucion:");
+        System.out.println("\tFosforo: " + mejorSolucion.fosforo);
+        mejorSolucion.imprimirRestriccionProductividadMinimaEstacion();
+        mejorSolucion.imprimirRestriccionUsosDistintos();
+    }
+
+    private static void testFirstImprovement() {
+        Solucion solucionOriginal, solucionNueva;
+        solucionOriginal = Solucion.crearSolucion();
+        System.out.println("TEST FI\nORIGINAL:");
+        solucionOriginal.imprimirFuncionObjetivo();
+        System.out.println();
+
+        for (int i = 0; i < 10000; i++) {
+            System.out.println("Intento FI: " + i);
+            solucionNueva = Solucion.firstImprove(solucionOriginal, 1, 1, 1);
+            if (solucionOriginal.evaluarFuncionObjetivo() < solucionNueva.evaluarFuncionObjetivo()) {
+                System.out.println("\tFallo FI\tFOOriginal=" + solucionOriginal.evaluarFuncionObjetivo() + "\t FONueva=" + solucionNueva.evaluarFuncionObjetivo());
+            } else {
+                System.out.println("\tExito FI\tFOOriginal=" + solucionOriginal.evaluarFuncionObjetivo() + "\t FONueva=" + solucionNueva.evaluarFuncionObjetivo());
+            }
+        }
+    }
+
+    private static void testLocalSearch() {
+        Solucion solucionOriginal, solucionNueva;
+        solucionOriginal = Solucion.crearSolucion();
+        System.out.println("TEST LS\nORIGINAL:");
+        solucionOriginal.imprimirFuncionObjetivo();
+        System.out.println();
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Intento LS: " + i);
+            solucionNueva = Main.LocalSearch(solucionOriginal);
+            if (solucionOriginal.evaluarFuncionObjetivo() < solucionNueva.evaluarFuncionObjetivo()) {
+                System.out.println("\tFallo LS\tFOOriginal=" + solucionOriginal.evaluarFuncionObjetivo() + "\t FONueva=" + solucionNueva.evaluarFuncionObjetivo());
+            } else {
+                System.out.println("\tExito LS\tFOOriginal=" + solucionOriginal.evaluarFuncionObjetivo() + "\t FONueva=" + solucionNueva.evaluarFuncionObjetivo());
+            }
+        }
+
+
+    }
+
+    private static void testGRASP() {
+        Solucion solucionOriginal, solucionNueva;
+        solucionOriginal = Solucion.crearSolucion();
+        System.out.println("TEST GRASP\nORIGINAL:");
+        solucionOriginal.imprimirFuncionObjetivo();
+        System.out.println();
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Intento GRASP: " + i);
+            solucionNueva = Main.grasp(10);
+            if (solucionOriginal.evaluarFuncionObjetivo() < solucionNueva.evaluarFuncionObjetivo()) {
+                System.out.println("\tFallo GRASP\tFOOriginal=" + solucionOriginal.evaluarFuncionObjetivo() + "\t FONueva=" + solucionNueva.evaluarFuncionObjetivo());
+            } else {
+                System.out.println("\tExito GRASP\tFOOriginal=" + solucionOriginal.evaluarFuncionObjetivo() + "\t FONueva=" + solucionNueva.evaluarFuncionObjetivo());
+            }
+        }
+
+
     }
 }
+
+

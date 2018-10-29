@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -6,6 +7,7 @@ import java.util.Random;
 
 public class Uso {
     int numUso, duracionEstaciones, primeraEstacion; //PrimeraEstacion: 0 Otoño, 1 Primavera, 2 cualquiera
+    float productividadTotal;
     float fosforo;
     float[] productividad, fosforoEstacion;
     String nombre;
@@ -18,6 +20,11 @@ public class Uso {
         this.fosforoEstacion=fosforoEstacion;
         this.fosforo=fosforo;
         this.productividad=prod;
+        this.productividadTotal=0;
+        for (int iEstacion = 0; iEstacion < dEstaciones; iEstacion++) {
+            this.productividadTotal+= this.productividad[iEstacion];
+        }
+
         this.nombre= nombre;
         this.siguientesUsos=sigUsos;
     }
@@ -33,6 +40,64 @@ public class Uso {
         }
         //System.out.println("\t\tSiguiente Uso: "+numeroUniforme);
         int siguienteUso= Constantes.usos[usoOriginal].siguientesUsos.get(numeroUniforme);//Posicion en el array coincide con el numero de Uso
+        return siguienteUso;
+    }
+
+    public static int siguienteUsoRuletaFosforo(int usoOriginal){
+        //Devuelve la posicion en el array de usos del siguiente uso
+        //System.out.println("\t\tCantidad de Posibles siguientes usos: "+Constantes.usos[usoOriginal].siguientesUsos.size());
+        boolean encontre =false;
+        int siguienteUso=0;
+        float fosforoMaximo=0, fosforoSorteado=0,fosforoAcumulado=0;
+
+        //Calculo el maximo fosforo entre los que sortear
+        for (int iUsoSiguiente = 0; iUsoSiguiente < Constantes.usos[usoOriginal].siguientesUsos.size(); iUsoSiguiente++) {
+            fosforoMaximo+=Constantes.usos[iUsoSiguiente].fosforo;
+        }
+        //En caso de que tenga mas de un uso sorteo un valor entre el fosforo maximo
+        if (Constantes.usos[usoOriginal].siguientesUsos.size()>1){
+            fosforoSorteado=Constantes.uniforme.nextFloat()*fosforoMaximo; // elijo uno uniforme entre cero y el fosforo maximo
+        }
+        //Veo a que uso corresponde el fosforo
+        for (int iUsoSiguiente = 0; iUsoSiguiente < Constantes.usos[usoOriginal].siguientesUsos.size() && !encontre; iUsoSiguiente++) {
+            //Sumo el fosforo del uso actual al acumulado
+            fosforoAcumulado+=Constantes.usos[iUsoSiguiente].fosforo;
+            //Chequeo si el fosforo sorteado pertenece al uso actual
+            if (fosforoSorteado<fosforoAcumulado){
+                siguienteUso=Constantes.usos[usoOriginal].siguientesUsos.get(iUsoSiguiente);//Posicion en el array coincide con el numero de Uso
+                encontre=true;
+            }
+        }
+        //System.out.println("\t\tSiguiente Uso: "+numeroUniforme);
+        return siguienteUso;
+    }
+
+    public static int siguienteUsoRuletaProduccion(int usoOriginal){
+        //Devuelve la posicion en el array de usos del siguiente uso
+        //System.out.println("\t\tCantidad de Posibles siguientes usos: "+Constantes.usos[usoOriginal].siguientesUsos.size());
+        boolean encontre =false;
+        int siguienteUso=0;
+        float produccionMaxima=0, produccionSorteada=0,produccionAcumulada=0;
+
+        //Calculo la maxima produccion entre los que sortear
+        for (int iUsoSiguiente = 0; iUsoSiguiente < Constantes.usos[usoOriginal].siguientesUsos.size(); iUsoSiguiente++) {
+            produccionMaxima+=Constantes.usos[iUsoSiguiente].productividadTotal;
+        }
+        //En caso de que tenga mas de un uso sorteo un valor entre la productividad maxima
+        if (Constantes.usos[usoOriginal].siguientesUsos.size()>1){
+            produccionSorteada=Constantes.uniforme.nextFloat()*produccionMaxima; // elijo uno uniforme entre cero y el fosforo maximo
+        }
+        //Veo a que uso corresponde el fosforo
+        for (int iUsoSiguiente = 0; iUsoSiguiente < Constantes.usos[usoOriginal].siguientesUsos.size() && !encontre; iUsoSiguiente++) {
+            //Sumo la productividad actual al acumulado
+            produccionAcumulada+=Constantes.usos[iUsoSiguiente].productividadTotal;
+            //Chequeo si la productividad sorteado pertenece al uso actual
+            if (produccionSorteada<produccionAcumulada){
+                siguienteUso=Constantes.usos[usoOriginal].siguientesUsos.get(iUsoSiguiente);//Posicion en el array coincide con el numero de Uso
+                encontre=true;
+            }
+        }
+        //System.out.println("\t\tSiguiente Uso: "+numeroUniforme);
         return siguienteUso;
     }
 
