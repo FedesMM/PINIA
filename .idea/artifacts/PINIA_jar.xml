@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="PINIA:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/PINIA_jar</output-path>
-    <root id="archive" name="PINIA.jar">
-      <element id="module-output" name="PINIA" />
-    </root>
-  </artifact>
-</component>
