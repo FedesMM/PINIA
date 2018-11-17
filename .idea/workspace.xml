@@ -2,700 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50f67880-fd28-4fde-b368-6ab48eb12f70" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PINIA_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cantidad de Usos Distintos por Estacion.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matriz de Planificacion.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PINIA.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Problemas" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Productividad sobre Area Total por Estacion.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/borrar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentacion/matriz_potreros.cpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentacion/matriz_potreros.dbf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentacion/matriz_potreros.prj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentacion/matriz_potreros.qpj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentacion/matriz_potreros.shp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentacion/matriz_potreros.shx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentacion/matriz_potreros.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/documentacion/modelo_v4.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PINIA_jar/Cantidad de Usos Distintos por Estacion.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PINIA_jar/Matriz de Planificacion.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PINIA_jar/PINIA.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PINIA_jar/Productividad sobre Area Total por Estacion.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PINIA_jar/prueba.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/PINIA_jar/salida.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/Constantes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/Pixel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/Productor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/RestriccionFosforoAnual.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/RestriccionProductividadProductores.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/RestriccionUsosDistintos.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/Solucion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/Uso.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/prueba.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PINIA/soluciones.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prueba.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/salida.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Constantes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Pixel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Productor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Solucion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Classes/Uso.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/MatrixUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Range.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Breeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/BreedingPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/BreedingSource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Clique.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/DefaultsForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/ECDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Evaluator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/EvolutionState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Evolve.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Exchanger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Finisher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Fitness.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Individual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Initializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Population.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Problem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Prototype.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/SelectionMethod.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Setup.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Singleton.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Species.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Statistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/Subpopulation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ant/Ant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ant/func/EvalPrint.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ant/func/IfFoodAhead.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ant/func/Left.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ant/func/Move.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ant/func/Progn2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ant/func/Progn3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ant/func/Progn4.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ant/func/Right.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/bbob/BBOBenchmarks.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/cartpole/CartPole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/coevolve1/CompetitiveMaxOnes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/coevolve2/CoevolutionaryECSuite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ecsuite/ECSuite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/Edge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/EdgeData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/func/Accept.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/func/BAccept.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/func/BBud.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/func/BLoop.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/func/BStart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/func/Bud.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/func/Double.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/func/Epsilon.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/func/Loop.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/func/One.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/func/Reverse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/func/Split.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/func/Start.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/edge/func/Zero.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/Semantic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticExtra.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticJ.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN10.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN11.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN12.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN13.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN14.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN15.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN16.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN4.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN5.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN6.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN7.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN8.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticN9.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX10.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX11.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX12.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX13.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX14.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX15.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX16.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX4.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX5.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX6.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX7.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX8.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gpsemantics/func/SemanticX9.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gui/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gui/SimpleBarChartStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/gui/SimpleXYSeriesChartStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/hiff/HIFF.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/highdimension/HighDimension.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/klandscapes/KLandscapes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/klandscapes/README.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/klandscapes/func/KLandscapeTree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/klandscapes/func/KLandscapeTreeA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/klandscapes/func/KLandscapeTreeB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/klandscapes/func/KLandscapeTreeW.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/klandscapes/func/KLandscapeTreeX.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/klandscapes/func/KLandscapeTreeY.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/klandscapes/func/KLandscapeTreeZ.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/lawnmower/Lawnmower.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/lawnmower/LawnmowerData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/lawnmower/func/Frog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/lawnmower/func/LawnERC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/lawnmower/func/Left.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/lawnmower/func/Mow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/lawnmower/func/Progn2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/lawnmower/func/V8a.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/lid/Lid.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/lid/README.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/lid/func/LidJ.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/lid/func/LidX.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/CA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/MajorityData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/MajorityGA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/MajorityGP.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/abk.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/func/And.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/func/E.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/func/EE.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/func/EEE.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/func/If.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/func/Nand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/func/Nor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/func/Not.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/func/Or.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/func/W.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/func/WW.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/func/WWW.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/func/X.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/majority/func/Xor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/mona/Mona.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/mona/MonaStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/mona/MonaVectorIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/mona/Picture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/mona/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/moosuite/MooSuite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/Fast.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/Multiplexer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/MultiplexerData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/A0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/A1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/A2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/And.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/D0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/D1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/D2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/D3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/D4.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/D5.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/D6.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/D7.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/If.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/Not.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexer/func/Or.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/Multiplexer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/MultiplexerData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/A0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/A1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/A2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/And.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/D0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/D1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/D2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/D3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/D4.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/D5.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/D6.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/D7.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/If.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/Not.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/multiplexerslow/func/Or.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/nk/NK.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/OrderTree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeF0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeF1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeF2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeF3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeF4.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeF5.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeF6.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeF7.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeF8.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeF9.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeT0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeT1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeT2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeT3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeT4.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeT5.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeT6.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeT7.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeT8.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/ordertree/func/OrderTreeT9.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/p1e1/Empleado.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/p1e1/Tarea.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/p1e1/empleados.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/p1e1/p1e1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/p1e1/tareas.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/Parity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/ParityData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/And.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D10.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D11.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D12.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D13.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D14.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D15.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D16.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D17.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D18.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D19.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D20.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D21.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D22.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D23.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D24.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D25.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D26.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D27.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D28.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D29.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D30.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D31.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D4.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D5.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D6.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D7.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D8.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/D9.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/Nand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/Nor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/parity/func/Or.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/push/Atan.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/push/Print.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/push/Regression.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/Benchmarks.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/Quintic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/Regression.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/RegressionData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/Sextic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/convertToMathematica.lisp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Add.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Cos.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Cube.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Div.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Exp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Inv.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/KeijzerERC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/KornsERC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Log.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Mul.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Neg.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/NegExp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/RegERC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Sin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Sqrt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Square.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Sub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Tan.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/Tanh.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/VladERCA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/VladERCB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/VladERCC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/X.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/X1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/X2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/X3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/X4.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/regression/func/X5.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/royaltree/README.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/royaltree/RoyalTree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/royaltree/func/RoyalTreeA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/royaltree/func/RoyalTreeB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/royaltree/func/RoyalTreeC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/royaltree/func/RoyalTreeD.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/royaltree/func/RoyalTreeE.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/royaltree/func/RoyalTreeNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/royaltree/func/RoyalTreeX.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/sat/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/sat/SAT.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/singular/Singular.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/spatial/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/star/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/sum/Sum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial1/MaxOnes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial2/AddSubtract.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial2/OurMutatorPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial3/MyStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial3/OddRosenbrock.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial3/OurSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial3/README.pop.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial3/pop.in" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial4/Add.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial4/DoubleData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial4/Mul.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial4/MultiValuedRegression.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial4/Sub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial4/X.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial4/Y.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/tutorial4/tree.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/twobox/TwoBox.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/twobox/TwoBoxData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/twobox/func/Add.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/twobox/func/Div.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/twobox/func/H0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/twobox/func/H1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/twobox/func/L0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/twobox/func/L1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/twobox/func/Mul.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/twobox/func/Sub.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/twobox/func/W0.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/twobox/func/W1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/app/xor/XOR.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/breed/BreedDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/breed/BufferedBreedingPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/breed/CheckingPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/breed/FirstCopyPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/breed/ForceBreedingPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/breed/GenerationSwitchPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/breed/InitializationPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/breed/MultiBreedingPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/breed/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/breed/RepeatPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/breed/ReproductionPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/breed/StubPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/breed/UniquePipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/coevolve/CompetitiveEvaluator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/coevolve/GroupedProblemForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/coevolve/MultiPopCoevolutionaryEvaluator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/coevolve/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/de/Best1BinDEBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/de/DEBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/de/DEEvaluator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/de/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/de/Rand1EitherOrDEBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/display/Console.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/display/ControlPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/display/EvolutionStateEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/display/EvolutionStateListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/display/ParameterValue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/display/ParametersPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/display/StatisticsChartPane.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/display/SubpopulationPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/display/chart/BarChartStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/display/chart/ChartableStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/display/chart/StatisticsChartPaneTab.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/display/chart/XYSeriesChartStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/display/portrayal/IndividualPortrayal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/display/portrayal/SimpleIndividualPortrayal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/amalgam/AMALGAMBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/amalgam/AMALGAMDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/amalgam/AMALGAMSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/amalgam/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/cmaes/CMAESBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/cmaes/CMAESDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/cmaes/CMAESInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/cmaes/CMAESSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/cmaes/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/dovs/CornerMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/dovs/DOVSBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/dovs/DOVSDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/dovs/DOVSEvaluator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/dovs/DOVSFitness.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/dovs/DOVSInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/dovs/DOVSSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/dovs/HyperboxSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/dovs/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/pbil/PBILBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/pbil/PBILSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eda/pbil/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/es/ESDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/es/ESSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/es/MuCommaLambdaBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/es/MuPlusLambdaBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/es/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eval/Job.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eval/MasterProblem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eval/MetaProblem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eval/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eval/Slave.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eval/SlaveConnection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/eval/SlaveMonitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/evolve/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/evolve/RandomRestarts.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/exchange/2-Island-Server/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/exchange/3-Island/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/exchange/8-Island/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/exchange/InterPopulationExchange.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/exchange/IslandExchange.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/exchange/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ADF.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ADFArgument.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ADFContext.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ADFStack.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ADM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ERC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPAtomicType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPBreedingPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPFunctionSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPNodeBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPNodeConstraints.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPNodeGatherer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPNodeParent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPNodeSelector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPProblem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPSetType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPTree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPTreeConstraints.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/GPType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/breed/GPBreedDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/breed/InternalCrossoverPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/breed/MutateAllNodesPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/breed/MutateDemotePipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/breed/MutateERCPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/breed/MutateOneNodePipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/breed/MutatePromotePipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/breed/MutateSwapPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/breed/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/breed/RehangPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/breed/SizeFairCrossoverPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/build/GPBuildDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/build/PTC1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/build/PTC2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/build/PTCFunctionSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/build/PTCFunctionSetForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/build/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/build/RandTree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/build/RandomBranch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/build/Uniform.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ge/GEDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ge/GEIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ge/GEProblem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ge/GESpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ge/GrammarFunctionNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ge/GrammarNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ge/GrammarParser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ge/GrammarRuleNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ge/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ge/breed/GECrossoverPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ge/breed/GETruncationPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/ge/breed/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/koza/CrossoverPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/koza/FullBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/koza/GPKozaDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/koza/GrowBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/koza/HalfBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/koza/KozaBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/koza/KozaFitness.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/koza/KozaNodeSelector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/koza/KozaShortStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/koza/MutationPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/koza/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/push/Nonterminal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/push/PushBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/push/PushDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/push/PushInstruction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/push/PushProblem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/push/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/gp/push/Terminal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/HypervolumeStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/MultiObjectiveDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/MultiObjectiveFitness.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/MultiObjectiveStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/nsga2/NSGA2Breeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/nsga2/NSGA2MultiObjectiveFitness.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/nsga2/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/nsga3/NSGA3Breeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/nsga3/NSGA3MultiObjectiveFitness.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/nsga3/ReferencePoint.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/nsga3/SelectorTools.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/spea2/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/spea2/SPEA2Breeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/multiobjective/spea2/SPEA2MultiObjectiveFitness.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/neat/NEATBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/neat/NEATDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/neat/NEATGene.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/neat/NEATIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/neat/NEATInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/neat/NEATInnovation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/neat/NEATNetwork.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/neat/NEATNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/neat/NEATSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/neat/NEATSubspecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/neat/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/parsimony/BucketTournamentSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/parsimony/DoubleTournamentSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/parsimony/LexicographicTournamentSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/parsimony/ProportionalTournamentSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/parsimony/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/parsimony/RatioBucketTournamentSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/parsimony/TarpeianStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/pso/PSOBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/pso/Particle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/pso/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/rule/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/rule/Rule.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/rule/RuleConstraints.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/rule/RuleDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/rule/RuleIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/rule/RuleInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/rule/RuleSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/rule/RuleSetConstraints.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/rule/RuleSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/rule/breed/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/rule/breed/RuleCrossoverPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/rule/breed/RuleMutationPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/select/AnnealedSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/select/BestSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/select/BoltzmannSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/select/FirstSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/select/FitProportionateSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/select/GreedyOverselection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/select/MultiSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/select/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/select/RandomSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/select/SUSSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/select/SelectDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/select/SigmaScalingSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/select/TopSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/select/TournamentSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/simple/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/simple/SimpleBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/simple/SimpleDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/simple/SimpleEvaluator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/simple/SimpleEvolutionState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/simple/SimpleEvolutionStateP1E1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/simple/SimpleExchanger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/simple/SimpleFinisher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/simple/SimpleFitness.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/simple/SimpleInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/simple/SimpleProblemForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/simple/SimpleShortStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/simple/SimpleStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/singlestate/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/singlestate/SingleStateBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/singlestate/SingleStateDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/singlestate/SingleStateEvolutionState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/spatial/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/spatial/Space.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/spatial/Spatial1DSubpopulation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/spatial/SpatialBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/spatial/SpatialDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/spatial/SpatialMultiPopCoevolutionaryEvaluator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/spatial/SpatialTournamentSelection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/steadystate/QueueIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/steadystate/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/steadystate/SteadyStateBSourceForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/steadystate/SteadyStateBreeder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/steadystate/SteadyStateDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/steadystate/SteadyStateEvaluator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/steadystate/SteadyStateEvolutionState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/steadystate/SteadyStateExchangerForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/steadystate/SteadyStateStatisticsForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/BadParameterException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/Checkpoint.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/Code.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/DataPipe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/DecodeReturn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/DoubleBag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/Indexed.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/IntBag.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/Lexer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/LocalHost.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/Log.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/LogRestarter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/MersenneTwister.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/MersenneTwisterFast.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/Misc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/Output.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/OutputException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/ParamClassLoadException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/Parameter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/ParameterDatabase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/ParameterDatabaseEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/ParameterDatabaseTreeModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/ParameterDatabaseTreeNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/QuickSort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/RandomChoice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/RandomChoiceChooser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/RandomChoiceChooserD.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/ReflectedObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/SortComparator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/SortComparatorL.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/ThreadPool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/util/Version.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/BitVectorIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/BitVectorSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/ByteVectorIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/DoubleVectorIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/FloatVectorIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/FloatVectorSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/Gene.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/GeneVectorIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/GeneVectorSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/IntegerMatrixIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/IntegerMatrixSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/IntegerVectorIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/IntegerVectorIndividualP1E1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/IntegerVectorSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/IntegerVectorSpeciesP1E1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/LongVectorIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/MatrixIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/MatrixSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/ShortVectorIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/VectorDefaults.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/VectorIndividual.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/VectorSpecies.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/VectorSpeciesP1E1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/breed/GeneDuplicationPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/breed/ListCrossoverPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/breed/MultipleVectorCrossoverPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/breed/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/breed/VectorCrossoverPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ec/vector/breed/VectorMutationPipeline.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Constantes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Pixel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Pixel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Productor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Productor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -740,77 +53,65 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="p1e1.params" pinned="false" current-in-tab="true">
+      <file leaf-file-name="p1e1.params" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/ec/app/p1e1/p1e1.params">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+            <state relative-caret-position="240">
+              <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MatrixSpecies.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/MatrixSpecies.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4469">
-              <caret line="2" column="17" lean-forward="true" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-              <folding>
-                <element signature="e#4303#4304#0" expanded="true" />
-                <element signature="e#4369#4370#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IntegerMatrixSpecies.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixSpecies.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="846">
-              <caret line="273" selection-start-line="273" selection-end-line="273" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IntegerMatrixIndividual.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixIndividual.java">
+      <file leaf-file-name="Pixel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Pixel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#355#356#0" expanded="true" />
-                <element signature="e#414#415#0" expanded="true" />
-                <element signature="e#452#453#0" expanded="true" />
-                <element signature="e#528#529#0" expanded="true" />
-                <element signature="e#12778#12779#0" expanded="true" />
-                <element signature="e#12807#12808#0" expanded="true" />
-                <element signature="e#12848#12849#0" expanded="true" />
-                <element signature="e#12884#12885#0" expanded="true" />
-                <element signature="e#12917#12918#0" expanded="true" />
-                <element signature="e#12992#12993#0" expanded="true" />
-              </folding>
+              <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MatrixIndividual.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/MatrixIndividual.java">
+      <file leaf-file-name="Productor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Productor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="846">
-              <caret line="72" selection-start-line="72" selection-end-line="72" />
-              <folding>
-                <element signature="e#881#882#0" expanded="true" />
-                <element signature="e#916#917#0" expanded="true" />
-                <element signature="e#1566#1567#0" expanded="true" />
-                <element signature="e#1593#1594#0" expanded="true" />
-                <element signature="e#1844#1845#0" expanded="true" />
-                <element signature="e#1868#1869#0" expanded="true" />
-                <element signature="e#3491#3492#0" expanded="true" />
-                <element signature="e#3528#3529#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="29" selection-start-column="29" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Solucion.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="29" selection-start-column="29" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Uso.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constantes.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Constantes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="29" selection-start-column="29" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="29" selection-start-column="29" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -914,6 +215,12 @@
         <option value="$PROJECT_DIR$/src/main/java/ec/util/MatrixUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/ec/util/Range.java" />
         <option value="$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixIndividual.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Pixel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Productor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Constantes.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Main.java" />
       </list>
     </option>
   </component>
@@ -949,8 +256,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -993,10 +298,21 @@
               <item name="ec" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="ecj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PINIA" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ec" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="proyectoFinal" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -1008,6 +324,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1156,7 +473,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="65" y="24" width="1855" height="1056" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3297414" />
@@ -1170,7 +488,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4997236" weight="0.3297414" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989224" visible="true" weight="0.21448314" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989224" visible="true" weight="0.21669431" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.2498618" />
       <window_info id="UI Designer" order="2" />
@@ -1199,43 +517,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mvn.out" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/ec/app/bbob/BBOBenchmarksTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/ec/coevolve/MultiPopCoevolutionaryEvaluatorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="41" column="92" selection-start-line="41" selection-start-column="92" selection-end-line="41" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/coevolve2/CoevolutionaryECSuite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/IntegerVectorIndividual.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-555">
-          <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar!/java/util/ArrayList.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="190" column="13" selection-start-line="190" selection-start-column="13" selection-end-line="190" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ec/gp/koza/CrossoverPipeline.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="113" column="13" selection-start-line="113" selection-start-column="13" selection-end-line="113" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/simple/SimpleFitness.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1430,21 +711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2430">
           <caret line="243" column="79" selection-start-line="243" selection-start-column="79" selection-end-line="243" selection-end-column="79" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#SimpleStatistics#0" />
-            <element signature="docComment;field#P_STATISTICS_FILE#0;class#SimpleStatistics#0" />
-            <element signature="docComment;field#P_COMPRESS#0;class#SimpleStatistics#0" />
-            <element signature="docComment;field#statisticslog#0;class#SimpleStatistics#0" />
-            <element signature="docComment;field#best_of_run#0;class#SimpleStatistics#0" />
-            <element signature="docComment;field#compress#0;class#SimpleStatistics#0" />
-            <element signature="method#postInitializationStatistics#0;class#SimpleStatistics#0" />
-            <element signature="e#5374#5440#0" />
-            <element signature="docComment;method#bypassPostEvaluationStatistics#0;class#SimpleStatistics#0" />
-            <element signature="docComment;field#warned#0;class#SimpleStatistics#0" />
-            <element signature="docComment;method#bypassFinalStatistics#0;class#SimpleStatistics#0" />
-            <element signature="docComment;method#finalStatistics#0;class#SimpleStatistics#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1459,10 +725,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3780">
           <caret line="258" column="23" selection-start-line="258" selection-start-column="23" selection-end-line="258" selection-end-column="23" />
-          <folding>
-            <element signature="e#12044#12045#0" expanded="true" />
-            <element signature="e#12110#12111#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1471,9 +733,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3975">
           <caret line="285" column="10" selection-start-line="285" selection-start-column="10" selection-end-line="285" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1481,19 +740,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6795">
           <caret line="525" column="26" selection-start-line="525" selection-start-column="26" selection-end-line="525" selection-end-column="26" />
-          <folding>
-            <element signature="e#8269#8270#0" expanded="true" />
-            <element signature="e#8302#8303#0" expanded="true" />
-            <element signature="e#8750#8751#0" expanded="true" />
-            <element signature="e#8794#8795#0" expanded="true" />
-            <element signature="e#8876#9040#0" />
-            <element signature="e#9046#9210#0" />
-            <element signature="e#9216#9388#0" />
-            <element signature="e#9394#9590#0" />
-            <element signature="e#9596#9786#0" />
-            <element signature="e#9792#10476#0" />
-            <element signature="e#10482#11164#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1508,25 +754,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1440">
           <caret line="111" column="10" selection-start-line="111" selection-start-column="10" selection-end-line="111" selection-end-column="10" />
-          <folding>
-            <element signature="method#split#0;class#IntegerVectorIndividualP1E1#0" />
-            <element signature="method#join#0;class#IntegerVectorIndividualP1E1#0" />
-            <element signature="method#defaultMutate#0;class#IntegerVectorIndividualP1E1#0" />
-            <element signature="method#reset#0;class#IntegerVectorIndividualP1E1#0" />
-            <element signature="method#hashCode#0;class#IntegerVectorIndividualP1E1#0" />
-            <element signature="method#genotypeToStringForHumans#0;class#IntegerVectorIndividualP1E1#0" />
-            <element signature="method#genotypeToString#0;class#IntegerVectorIndividualP1E1#0" />
-            <element signature="method#parseGenotype#0;class#IntegerVectorIndividualP1E1#0" />
-            <element signature="method#equals#0;class#IntegerVectorIndividualP1E1#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/p1e1/p1e1.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/MatrixSpecies.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4469">
-          <caret line="2" column="17" lean-forward="true" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        <state relative-caret-position="30">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding>
             <element signature="e#4303#4304#0" expanded="true" />
             <element signature="e#4369#4370#0" expanded="true" />
@@ -1536,7 +771,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixSpecies.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
+        <state relative-caret-position="4080">
           <caret line="273" selection-start-line="273" selection-end-line="273" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1546,18 +781,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/MatrixIndividual.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="846">
+        <state relative-caret-position="960">
           <caret line="72" selection-start-line="72" selection-end-line="72" />
-          <folding>
-            <element signature="e#881#882#0" expanded="true" />
-            <element signature="e#916#917#0" expanded="true" />
-            <element signature="e#1566#1567#0" expanded="true" />
-            <element signature="e#1593#1594#0" expanded="true" />
-            <element signature="e#1844#1845#0" expanded="true" />
-            <element signature="e#1868#1869#0" expanded="true" />
-            <element signature="e#3491#3492#0" expanded="true" />
-            <element signature="e#3528#3529#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1581,24 +806,63 @@
           <caret line="1" selection-start-line="1" selection-end-line="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#355#356#0" expanded="true" />
-            <element signature="e#414#415#0" expanded="true" />
-            <element signature="e#452#453#0" expanded="true" />
-            <element signature="e#528#529#0" expanded="true" />
-            <element signature="e#12778#12779#0" expanded="true" />
-            <element signature="e#12807#12808#0" expanded="true" />
-            <element signature="e#12848#12849#0" expanded="true" />
-            <element signature="e#12884#12885#0" expanded="true" />
-            <element signature="e#12917#12918#0" expanded="true" />
-            <element signature="e#12992#12993#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/ec/app/p1e1/p1e1.params">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+        <state relative-caret-position="240">
+          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/parity/Parity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="29" selection-start-column="29" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Constantes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="29" selection-start-column="29" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="29" selection-start-column="29" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Productor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="29" selection-start-column="29" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Pixel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
         </state>
       </provider>
     </entry>

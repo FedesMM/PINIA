@@ -1,5 +1,5 @@
 //Para lectura de archivo
-
+package ec.app.proyectoFinal;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
