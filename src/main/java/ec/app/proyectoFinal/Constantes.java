@@ -30,6 +30,10 @@ public class Constantes {
     public static float pesoIncumplimientoProductividadMinimaEstacion= 1;
     public static float pesoIncumplimientoUsosDistintos=1;
 
+    public static float mpp=0.7f;
+    public static float[]  restriccionProductividadProductorE = new float[]
+            {mpp*1200,mpp*600,mpp*2100,mpp*2100,mpp*1200,mpp*600,mpp*2100,mpp*2100,mpp*1200,mpp*600,mpp*2100,mpp*2100,mpp*1200,mpp*600,mpp*2100,mpp*2100};
+
 
 
 

@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ecj" target="7" />
+      <module name="ecj" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

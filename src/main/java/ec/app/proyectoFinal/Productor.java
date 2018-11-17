@@ -1,15 +1,21 @@
 package ec.app.proyectoFinal;
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import static java.lang.Integer.min;
 
 public class Productor {
     int numeroProductor;
     float[] restriccionProduccionEstacion;
     List<Integer> pixelesDelProductor;
     float areaTotal;
-
+    public int getMinCantUsos(){
+        return min(this.pixelesDelProductor.size(), Constantes.minimaCantidadUsos);
+    }
 
     public Productor(int numeroProductor, float[] restriccionProduccionEstacion, float[] restriccionProduccionAnual, List<Integer> pixelesDelProductor) {
         this.numeroProductor = numeroProductor;
@@ -32,21 +38,11 @@ public class Productor {
         productores[0]= new Productor(0,restriccionProductorE, restriccionProductorA,pixelesDelProductor );
         for (int iProductores = 1; iProductores < Constantes.cantProductores; iProductores++) {
             //El productor cero tiene todos los pixeles pares
-            restriccionProductorE= new float[] {1200,600,2100,2100,1200,600,2100,2100,1200,600,2100,2100,1200,600,2100,2100};
-            restriccionProductorA= new float[] {6000,6000,6000,6000};
-            pixelesDelProductor= new ArrayList<Integer>();
-            productores[iProductores]= new Productor(iProductores,restriccionProductorE, restriccionProductorA,pixelesDelProductor );
-        }
 
-        /*
-        for (int iProductores = 0; iProductores < Constantes.cantProductores; iProductores++) {
-            //El productor cero tiene todos los pixeles pares
-            restriccionProductorE= new float[] {1200,600,2100,2100,1200,600,2100,2100,1200,600,2100,2100,1200,600,2100,2100};
             restriccionProductorA= new float[] {6000,6000,6000,6000};
             pixelesDelProductor= new ArrayList<Integer>();
-            productores[iProductores]= new Productor(iProductores,restriccionProductorE, restriccionProductorA,pixelesDelProductor );
+            productores[iProductores]= new Productor(iProductores,Constantes.restriccionProductividadProductorE, restriccionProductorA,pixelesDelProductor );
         }
-        */
 
         return productores;
     }

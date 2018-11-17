@@ -1,5 +1,9 @@
 package ec.vector;
 
+import ec.app.proyectoFinal.Constantes;
+import ec.app.proyectoFinal.Pixel;
+import ec.app.proyectoFinal.Productor;
+import ec.app.proyectoFinal.Uso;
 import ec.util.*;
 import java.io.*;
 import ec.*;
@@ -105,9 +109,20 @@ public class MatrixSpecies extends Species {
     protected void setupGenome(final EvolutionState state, final Parameter base) {
         Parameter def = defaultBase();
 
-        // TODO: Leer archivos de entrada (cantPixeles, cantEstaciones, usos iniciales, restricciones de usos y produccion, etc.)
+        //Seteo de constantes y carga de instancias
+        Constantes.usos = Uso.cargarUsos();
+        Constantes.productores = Productor.cargarProductores();
+        // TODO: Automitazar lectura de la instancia con la que se trabaja
+        int iInstancia=0;
+        String nombreInstancia="./Instancias/Intancia "+(iInstancia+1)+".in";
+        Constantes.cantPixeles=Pixel.contarLineas(nombreInstancia);
+        Constantes.cantPotreros=Pixel.contarLineas(nombreInstancia);
+        Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);
+        Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();
 
-        genomeSize = state.parameters.getInt(base.push(P_GENOMESIZE),def.push(P_GENOMESIZE),1); // TODO: genomeSize = cantPixeles*cantEstaciones;
+
+        //genomeSize = state.parameters.getInt(base.push(P_GENOMESIZE),def.push(P_GENOMESIZE),1); //
+        genomeSize = Constantes.cantPixeles* Constantes.cantEstaciones;
 
         if (genomeSize==0)
             state.output.fatal("MatrixSpecies must have a genome size > 0", base.push(P_GENOMESIZE),def.push(P_GENOMESIZE));

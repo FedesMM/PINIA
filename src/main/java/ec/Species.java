@@ -6,7 +6,7 @@
 
 
 package ec;
-import ec.app.p1e1.Tarea;
+//import ec.app.proyectoFinal.Tarea;
 import ec.util.*;
 import ec.vector.IntegerVectorIndividualP1E1;
 

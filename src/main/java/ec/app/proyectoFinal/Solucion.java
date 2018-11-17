@@ -4,6 +4,7 @@ import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -12,6 +13,14 @@ class RestriccionProductividadProductores implements Cloneable{
     boolean cumpleRestriccion;
     float mediaDesviacion;
     float maximoDesviacion;
+
+
+    public RestriccionProductividadProductores() {
+        this.cumpleRestriccion = false;
+        this.mediaDesviacion = 0;
+        this.maximoDesviacion = 0;
+
+    }
 
     public RestriccionProductividadProductores clone(){
         RestriccionProductividadProductores clon = new RestriccionProductividadProductores ();
@@ -26,6 +35,16 @@ class RestriccionUsosDistintos{
     int cantIncumplimientos; //Cantidad de veces que una estacion un productor esta por debajo del minimo o encima del maximo
     float incumplimientoRelativo; //Cantidad de incumplimientos dividido entre todas posibles parejas productor,estacion
     int [][][] cantUsosPorEstacionParaCadaProductor;
+    ArrayList<ArrayList<ArrayList<Integer>>>usosPorEstacionParaCadaProductor;
+
+    public RestriccionUsosDistintos() {
+        this.cumpleRestriccion=false;
+        this.cantIncumplimientos =0;
+        this.incumplimientoRelativo=0;
+        this.cantUsosPorEstacionParaCadaProductor =
+                new int [Constantes.cantUsos][Constantes.cantEstaciones][Constantes.cantProductores];
+        this.usosPorEstacionParaCadaProductor= new ArrayList<>();
+    }
 
     public RestriccionUsosDistintos clone(){
         RestriccionUsosDistintos clon = new RestriccionUsosDistintos ();
@@ -414,8 +433,6 @@ public class Solucion {
             //Cambio el pixel sorteado
             solucion.cambiarPixel(pixelRandom);
             solucion.recalcular();
-            //Calculo las restricciones
-            solucion.chequearRestricciones();
             //System.out.println("\t\tFO nueva"+solucion.evaluarFuncionObjetivo());
             //En caso de que me sirva lo devuelvo
             if (solucion.evaluarFuncionObjetivo(pesoFosforo,pesoProductividad,pesoCantUsos)< respaldoSolucion.evaluarFuncionObjetivo(pesoFosforo,pesoProductividad,pesoCantUsos)){
