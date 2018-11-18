@@ -37,50 +37,17 @@ public class proyectoFinal extends Problem implements SimpleProblemForm
                 state.output.fatal("Error. No es un SimpleFitness", null);
             }
             //Si llegue hasta aca el individuo es correcto
+            //Paso del genoma a una solucion, con valores calculados y restricciones chequeadas.
+            Solucion solucion= Solucion.genomaASolucion(genoma);
 
-            int usoACalcular, estacionesDeEsteUso;
-            double fosforo=0;
-            float [][] productivdadProductores = new float [Constantes.cantProductores][Constantes.cantEstaciones];
-            float [][] fosforoProductores = new float [Constantes.cantProductores][Constantes.cantEstaciones];
-            RestriccionProductividadProductores restriccionProductividadMinimaEstacion = new RestriccionProductividadProductores();
-            RestriccionUsosDistintos restriccionUsosDistintos = new RestriccionUsosDistintos();
-            for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
-                ArrayList<ArrayList<Integer>> productoresEnUnaEstacion= new ArrayList<>();
-                for (Integer iProductor:Constantes.productoresActivos) {
-                    ArrayList<Integer> usosDeUnProductor= new ArrayList<>();
-                    productoresEnUnaEstacion.add(usosDeUnProductor);
-                }
-                restriccionUsosDistintos.usosPorEstacionParaCadaProductor.add(productoresEnUnaEstacion);
+            if(!solucion.restriccionUsosDistintos.cumpleRestriccion){
+                solucion.factibilizarCantUsos();
             }
-
-            //Calculo valores auxiliares
-            for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
-                ArrayList<Integer> usosDelProductor= new ArrayList<>();
-                for (int iPixel = 0; iPixel < Constantes.cantPixeles; iPixel++) {
-                    //100*usoACargar+estacionDelUso
-                    int indiceGen=iPixel*Constantes.cantEstaciones+iEstacion;
-                    usoACalcular = genoma[indiceGen] / 100;
-                    estacionesDeEsteUso = genoma[indiceGen] % 100;
-
-                    //Actualizo lo que aporta el uso al fosforo total en esta estacion
-                    fosforo += (Constantes.usos[usoACalcular].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);
-                    //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
-                    productivdadProductores[Constantes.pixeles[iPixel].productor][iEstacion] +=
-                            Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACalcular].productividad[estacionesDeEsteUso];
-                    //Actualizo el fosforo del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
-                    fosforoProductores[Constantes.pixeles[iPixel].productor][iEstacion] +=
-                            Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACalcular].fosforoEstacion[estacionesDeEsteUso];
-                    //Actualizo la cantidad de usos
-                    ArrayList<Integer> listaUsos = restriccionUsosDistintos.usosPorEstacionParaCadaProductor.get(iEstacion).get(Constantes.pixeles[iPixel].productor);
-                    if(!listaUsos.contains(usoACalcular)) {
-                        listaUsos.add(usoACalcular);
-                    }
-                    //TODO Testear
-                    restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoACalcular][iEstacion][Constantes.pixeles[iPixel].productor]++;
-
-                }
-
+            if(!solucion.restriccionProductividadMinimaEstacion.cumpleRestriccion){
+                solucion.factibilizarProductividad();
             }
+        }
+
             //Calculo factibilidad
             //Chequeo Restriccion de Productividad
             //Cheqeuo Restriccion de Uso
@@ -104,6 +71,9 @@ public class proyectoFinal extends Problem implements SimpleProblemForm
                         restriccionUsosDistintos.cumpleRestriccion=false;
                         restriccionUsosDistintos.cantIncumplimientos++;
                     }
+                    ArrayList<Integer> listaUsos = restriccionUsosDistintos.usosPorEstacionParaCadaProductor.get(iEstacion).get(iProductor);
+                    if (listaUsos.size()< Constantes.productores[iProductor].getMinCantUsos()) ||
+                    (cantUsosDistintos > Constantes.maximaCantidadUsos)){
                 }
             }
             restriccionUsosDistintos.incumplimientoRelativo=(float) restriccionUsosDistintos.cantIncumplimientos/(float)(Constantes.cantEstaciones*Constantes.cantProductores);

@@ -1,10 +1,14 @@
 package ec.app.proyectoFinal;
+import com.sun.org.apache.xpath.internal.patterns.ContextMatchStepPattern;
 import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+import ec.util.Range;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -35,7 +39,6 @@ class RestriccionUsosDistintos{
     int cantIncumplimientos; //Cantidad de veces que una estacion un productor esta por debajo del minimo o encima del maximo
     float incumplimientoRelativo; //Cantidad de incumplimientos dividido entre todas posibles parejas productor,estacion
     int [][][] cantUsosPorEstacionParaCadaProductor;
-    ArrayList<ArrayList<ArrayList<Integer>>>usosPorEstacionParaCadaProductor;
 
     public RestriccionUsosDistintos() {
         this.cumpleRestriccion=false;
@@ -43,7 +46,7 @@ class RestriccionUsosDistintos{
         this.incumplimientoRelativo=0;
         this.cantUsosPorEstacionParaCadaProductor =
                 new int [Constantes.cantUsos][Constantes.cantEstaciones][Constantes.cantProductores];
-        this.usosPorEstacionParaCadaProductor= new ArrayList<>();
+
     }
 
     public RestriccionUsosDistintos clone(){
@@ -52,24 +55,6 @@ class RestriccionUsosDistintos{
         clon.cantIncumplimientos=this.cantIncumplimientos;
         clon.incumplimientoRelativo=this.incumplimientoRelativo;
         clon.cantUsosPorEstacionParaCadaProductor=this.cantUsosPorEstacionParaCadaProductor.clone();
-        return clon;
-    }
-}
-
-class RestriccionFosforoAnual{
-    boolean cumpleRestriccion;
-    float mediaDesviacion;
-    float maximoDesviacion;
-    float [] fosforoAnual;
-    float [][] fosforoAnualPorProductor;
-
-    public RestriccionFosforoAnual clone(){
-        RestriccionFosforoAnual clon = new RestriccionFosforoAnual ();
-        clon.cumpleRestriccion =this.cumpleRestriccion;
-        clon.mediaDesviacion=this.mediaDesviacion;
-        clon.maximoDesviacion=this.maximoDesviacion;
-        clon.fosforoAnual=this.fosforoAnual.clone();
-        clon.fosforoAnualPorProductor=this.fosforoAnualPorProductor.clone();
         return clon;
     }
 }
@@ -85,10 +70,6 @@ public class Solucion {
     RestriccionProductividadProductores restriccionProductividadMinimaEstacion;
     //Restriccion 3 usos distintos, cuantos productores no la cumplen.
     RestriccionUsosDistintos restriccionUsosDistintos;
-
-    //Version2
-    RestriccionFosforoAnual restriccionFosforoAnual;
-
 
     public static float actualizarPesoFosforo(Solucion solucionOriginal, Solucion solucion, float pesoFosforo) {
 
@@ -116,6 +97,21 @@ public class Solucion {
         }else{
             return (pesoCantUsos/1.1F);
         }
+    }
+
+    public static Solucion genomaASolucion(int[] genoma) {
+        Solucion solucion= new Solucion();
+        int indiceGen, usoACalcular,estacionesDeEsteUso;
+        //Calculo valores auxiliares
+        for (int iPixel = 0; iPixel < Constantes.cantPixeles; iPixel++) {
+            for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
+                solucion.matriz[iPixel][iEstacion]=genoma[iPixel*Constantes.cantEstaciones+iEstacion];
+            }
+        }
+        solucion.recalcular();//Incluye chequear restricciones.
+        
+
+        return solucion;
     }
 
 
@@ -149,7 +145,6 @@ public class Solucion {
         clon.areaTotal=this.areaTotal;
         clon.restriccionProductividadMinimaEstacion=this.restriccionProductividadMinimaEstacion.clone();
         clon.restriccionUsosDistintos=this.restriccionUsosDistintos.clone();
-        clon.restriccionFosforoAnual=this.restriccionFosforoAnual.clone();
         return clon;
     }
     //float produccionAcumulada;
@@ -204,41 +199,13 @@ public class Solucion {
         this.fosforoProductores = new float [Constantes.cantProductores][Constantes.cantEstaciones];
         //Restriccion 2
         this.restriccionProductividadMinimaEstacion = new RestriccionProductividadProductores();
-        this.restriccionProductividadMinimaEstacion.cumpleRestriccion =false;
-        this.restriccionProductividadMinimaEstacion.maximoDesviacion =0;
-        this.restriccionProductividadMinimaEstacion.mediaDesviacion =0;
         //Restriccion 3
         this.restriccionUsosDistintos = new RestriccionUsosDistintos();
-        this.restriccionUsosDistintos.cumpleRestriccion=false;
-        this.restriccionUsosDistintos.cantIncumplimientos =0;
-        this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor =
-                new int [Constantes.cantUsos][Constantes.cantEstaciones][Constantes.cantProductores];
-        
-        //Version2
-
-        this.restriccionFosforoAnual= new RestriccionFosforoAnual();
-        this.restriccionFosforoAnual.fosforoAnual = new float [Constantes.cantAnios];
-        this.restriccionFosforoAnual.fosforoAnualPorProductor= new float[Constantes.cantAnios][Constantes.cantProductores];
-        this.restriccionFosforoAnual.cumpleRestriccion=true;
-        this.restriccionFosforoAnual.maximoDesviacion=0;
-        this.restriccionFosforoAnual.mediaDesviacion=0;
-
         this.areaTotal=0;
         for (int iProductores = 0; iProductores < Constantes.cantProductores; iProductores++) {
             this.areaTotal+=Constantes.productores[iProductores].areaTotal;
         }
 
-
-        /*DEPRECATED
-        this.cumpleRestriccionProductores=true;
-        this.indiceDesviacionesMaximaProductores= new int[Constantes.cantProductores];
-        this.desviacionesMediaProductores= new float[Constantes.cantProductores];
-
-        this.cantUsosProductor=new int[Constantes.cantProductores][Constantes.cantUsos];
-        this.cantUsosDistintosProductor=new int[Constantes.cantProductores];
-
-
-         */
     }
 
 
@@ -248,7 +215,6 @@ public class Solucion {
         this.imprimirMatriz();
         this.imprimirRestriccionProductividadMinimaEstacion();
         this.imprimirRestriccionUsosDistintos();
-        this.imprimirRestriccionFosforoAnual();
         /*
         this.imprimirProductividadSobreSuperficiePorEstacion();
         this.imprimirFosforoAnual();
@@ -369,27 +335,6 @@ public class Solucion {
     }
 
 
-    //VERSION 2
-    public void imprimirFosforoAnual(){
-        System.out.print("\t\tFosforo Anual:\n\t\t\t{");
-        for (int anio =0; anio < this.restriccionFosforoAnual.fosforoAnual.length;anio++){
-            System.out.print(this.restriccionFosforoAnual.fosforoAnual[anio]);
-            if (anio!=(this.restriccionFosforoAnual.fosforoAnual.length-1)){
-                System.out.printf(", ");
-            }
-        }
-        System.out.println("}");
-    }
-
-    public void imprimirRestriccionFosforoAnual(){
-        System.out.println("\t\tRestriccion Fosforo Anual: "+this.restriccionFosforoAnual.cumpleRestriccion);
-        System.out.println("\t\t\tDesviacion Maxima: "+this.restriccionFosforoAnual.maximoDesviacion);
-        System.out.println("\t\t\tDesviacion Media: "+this.restriccionFosforoAnual.mediaDesviacion);
-        //DEPRECATED
-        // System.out.println("\t\t\tAlcanzada el año: "+ this.indiceDesviacionMaximaFosforoAnual);
-
-    }
-
     public static Solucion crearSolucion(){
         Solucion solucion = new Solucion();
         int usoACargar, iEstacion=0, estacionActual;
@@ -403,37 +348,16 @@ public class Solucion {
 
     public static Solucion firstImprove(Solucion solucion, float pesoFosforo, float pesoProductividad, float pesoCantUsos){
         Solucion respaldoSolucion=solucion.clone();
-        float funcionObjetivo=solucion.evaluarFuncionObjetivo();
         int pixelRandom, fallos=0;
-        int [] respaldoPixel= new int[Constantes.cantEstaciones];
-        float [] respaldoProductividadProductores=new float[Constantes.cantEstaciones];
-        float respaldoFosforo;
         RestriccionProductividadProductores respaldoPMAnual, repaldoPME;
         RestriccionUsosDistintos respaldoUD;
-        RestriccionFosforoAnual respaldoFA;
 
         for (int intentos = 0; intentos < Constantes.cantPixeles ; intentos++) {
             //Sorteo cual cambiar
             pixelRandom= Constantes.uniforme.nextInt(Constantes.cantPixeles-1);
-            //System.out.println("\tSorteo el pixel"+pixelRandom);
-            //System.out.println("\t\tFO actual"+funcionObjetivo);
-
-            //Tengo en respaldoSolucion la solucion original
-            /*
-            //Respaldo el pixel  y lo que afecta en la solucion
-            respaldoPixel=solucion.matriz[pixelRandom].clone();
-            respaldoFosforo=solucion.fosforo;
-            respaldoProductividadProductores=solucion.productivdadProductores[Constantes.pixeles[pixelRandom].productor].clone();
-            repaldoPME=solucion.restriccionProductividadMinimaEstacion.clone();
-            respaldoPMAnual=solucion.restriccionProductividadMinimaAnual.clone();
-            respaldoUD=solucion.restriccionUsosDistintos.clone();
-            respaldoFA=solucion.restriccionFosforoAnual.clone();
-            */
-
             //Cambio el pixel sorteado
             solucion.cambiarPixel(pixelRandom);
             solucion.recalcular();
-            //System.out.println("\t\tFO nueva"+solucion.evaluarFuncionObjetivo());
             //En caso de que me sirva lo devuelvo
             if (solucion.evaluarFuncionObjetivo(pesoFosforo,pesoProductividad,pesoCantUsos)< respaldoSolucion.evaluarFuncionObjetivo(pesoFosforo,pesoProductividad,pesoCantUsos)){
                 //System.out.println("\t\tFI-Exito, con cantidad de fallos: "+fallos);
@@ -442,16 +366,6 @@ public class Solucion {
 
             }else{
                 fallos++;
-                /*
-                //Restauro el pixel y lo que afecta en la solucion
-                solucion.matriz[pixelRandom]=respaldoPixel;
-                solucion.fosforo=respaldoFosforo;
-                solucion.productivdadProductores[Constantes.pixeles[pixelRandom].productor]=respaldoProductividadProductores;
-                solucion.restriccionProductividadMinimaEstacion=repaldoPME;
-                solucion.restriccionProductividadMinimaAnual=respaldoPMAnual;
-                solucion.restriccionUsosDistintos=respaldoUD;
-                solucion.restriccionFosforoAnual=respaldoFA;
-                */
                 solucion=respaldoSolucion.clone();
             }
         }
@@ -507,8 +421,6 @@ public class Solucion {
             //System.out.println("Actualizo valor: "+Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso]+
             //        "\t Acumulado:"+ this.fosforoProductores[Constantes.pixeles[iPixel].productor][iEstacion]+
             //        "\t Productor:"+ Constantes.pixeles[iPixel].productor+ "\t Estacion:"+iEstacion);
-            //Actualizo fosforoAnual segun la estacion actual y el fosforo del Uso
-            this.restriccionFosforoAnual.fosforoAnual[iEstacion/4] += (Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);
             //Actualizo lo que aporta el uso al fosforo total en esta estacion
             this.fosforo+=(Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);
 
@@ -543,8 +455,6 @@ public class Solucion {
                 this.fosforoProductores[Constantes.pixeles[iPixel].productor][estacionActual]
                         += Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso];
 
-                //Actualizo fosforoAnual segun la estacion actual y el fosforo del Uso
-                this.restriccionFosforoAnual.fosforoAnual[estacionActual/4] += (Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);
                 //Actualizo lo que aporta el uso al fosforo total en esta estacion
                 this.fosforo+=(Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);
 
@@ -580,8 +490,6 @@ public class Solucion {
             //Actualizo el fosforo del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
             this.fosforoProductores[Constantes.pixeles[iPixel].productor][iEstacion] -=
                     Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeEsteUso];
-            //Actualizo fosforoAnual segun la estacion actual y el fosforo del Uso
-            this.restriccionFosforoAnual.fosforoAnual[iEstacion/4] -=(Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);
             //Actualizo lo que aporta el uso al fosforo total en esta estacion
             this.fosforo-=(Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);
 
@@ -596,32 +504,6 @@ public class Solucion {
         this.fosforoProductores= new float[Constantes.cantProductores][Constantes.cantEstaciones];
         this.restriccionProductividadMinimaEstacion= new RestriccionProductividadProductores();
         this.restriccionUsosDistintos = new RestriccionUsosDistintos();
-        this.restriccionFosforoAnual = new RestriccionFosforoAnual();
-        //Restriccion 2
-        this.restriccionProductividadMinimaEstacion = new RestriccionProductividadProductores();
-        this.restriccionProductividadMinimaEstacion.cumpleRestriccion =false;
-        this.restriccionProductividadMinimaEstacion.maximoDesviacion =0;
-        this.restriccionProductividadMinimaEstacion.mediaDesviacion =0;
-        //Restriccion 3
-        this.restriccionUsosDistintos = new RestriccionUsosDistintos();
-        this.restriccionUsosDistintos.cumpleRestriccion=false;
-        this.restriccionUsosDistintos.cantIncumplimientos =0;
-        this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor =
-                new int [Constantes.cantUsos][Constantes.cantEstaciones][Constantes.cantProductores];
-
-        //Version2
-
-        this.restriccionFosforoAnual= new RestriccionFosforoAnual();
-        this.restriccionFosforoAnual.fosforoAnual = new float [Constantes.cantAnios];
-        this.restriccionFosforoAnual.fosforoAnualPorProductor= new float[Constantes.cantAnios][Constantes.cantProductores];
-        this.restriccionFosforoAnual.cumpleRestriccion=true;
-        this.restriccionFosforoAnual.maximoDesviacion=0;
-        this.restriccionFosforoAnual.mediaDesviacion=0;
-
-
-
-
-
 
         for (int iPixel = 0; iPixel < Constantes.cantPixeles; iPixel++) {
             for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
@@ -640,8 +522,6 @@ public class Solucion {
                 //Actualizo la cantidad de usos
                 this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoACalcular][iEstacion][Constantes.pixeles[iPixel].productor]++;
                 //Actualizo fosforoAnual segun la estacion actual y el fosforo del Uso
-                this.restriccionFosforoAnual.fosforoAnual[iEstacion / 4] +=
-                        Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACalcular].fosforo;
             }
         }
         this.chequearRestricciones();
@@ -695,11 +575,6 @@ public class Solucion {
                             this.fosforoProductores[Constantes.pixeles[iPixel].productor][estacionActual]
                                     - Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeUsoABorrar]
                                     + Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforoEstacion[estacionesDeUsoACargar];
-                    //Actualizo fosforoAnual segun la estacion actual y el fosforo del Uso
-                    this.restriccionFosforoAnual.fosforoAnual[estacionActual/4] =
-                            this.restriccionFosforoAnual.fosforoAnual[estacionActual/4]
-                                    -Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].fosforo
-                                    +Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforo;
                     //Actualizo lo que aporta el uso al fosforo total en esta estacion
                     this.fosforo= this.fosforo
                             - (Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeUsoABorrar]*Constantes.pixeles[iPixel].superficie)
@@ -785,7 +660,8 @@ public class Solucion {
         //Creo la matriz de potreros con valores en cero
         matriz = new String [Constantes.cantPotreros][Constantes.cantEstaciones];
         for (int iPotrero = 0; iPotrero < Constantes.cantPotreros; iPotrero++) {
-            for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
+            for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++){
+                        //Paso a la siguiente estacionstacion++) {
                 matriz[iPotrero][iEstacion]="Reservado";
             }
         }
@@ -968,18 +844,152 @@ public class Solucion {
             e.printStackTrace();
         }
     }
-    public void factibilizar(){
-        int cantIncumplimientos;
-        //Busco el productor que tenga mas incumplimientos
-        for (int iPixel = 0; iPixel < Constantes.cantPixeles; iPixel++) {
-            cantIncumplimientos=0;
+    public void factibilizarCantUsos(){
+        for (int iProductor = 0; iProductor< Constantes.cantProductores; iProductor++) {
             for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
+                //Calculo la cantidad de usos distintos para este productor en esta estacion.
+                ArrayList<Integer> usosDelProductorEstaEstacion= this.usosDelProductorPorEstacion(iEstacion, iProductor);
+                //Si me faltan usos:
+                if (usosDelProductorEstaEstacion.size()<Constantes.productores[iProductor].getMinCantUsos()){
+                    //Averiguo cuantos cambiar
+                    int cantCambios= Constantes.productores[iProductor].getMinCantUsos()-usosDelProductorEstaEstacion.size();
+                    //Cambio la cantidad necesaria
+                    for (int iCambios = 0; iCambios < cantCambios; iCambios++) {
 
+                        //Sorteo entre los pixeles del producto el pixel con menos EstacioneDeUso de un uso con un Uso usado al menos dos veces.
+                        int pixelACambiar= sortearPixelDeProductorParaFactibilizarPorUsos(iEstacion, iProductor);
+                        int estacionDelUso= matriz[pixelACambiar][iEstacion]%100;
+                        //Cambio en el pixel de esta estacion en adelante por un uso que aun no tenga
+                        this.corregirPixelSegunCantUsos(pixelACambiar, iEstacion-estacionDelUso, usosDelProductorEstaEstacion);
+
+                    }
+                    //Paso a la siguiente estacion
+                }
+                //Si me sobran sorte un tipo de uso ruleta invertida segun cuantos pixeles tenga
+                else if(usosDelProductorEstaEstacion.size()>Constantes.maximaCantidadUsos){
+                    //Averiguo cuantos cambiar
+
+                    int cantCambios = usosDelProductorEstaEstacion.size() -Constantes.maximaCantidadUsos;
+                    //Cambio todos los pixeles desde esa estacion en adelante que tengan ese uso por otro uso que ya tenga
+                    //Paso a la siguiente estacion
+
+                }
             }
         }
-        //Lo cambio por un pixel segun el criterio de productividad
+
+    }
+
+    private ArrayList<Integer> usosDelProductorPorEstacion(int iEstacion, int iProductor) {
+        ArrayList<Integer> usosDelProductorEstaEstacion= new ArrayList<>();
+        for (int iUso = 0; iUso < Constantes.cantUsos; iUso++) {
+            if (this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[iEstacion][iProductor][iUso]>0){
+                if(!usosDelProductorEstaEstacion.contains(iUso)){
+                    usosDelProductorEstaEstacion.add(iUso);
+                }
+            }
+        }
+        return usosDelProductorEstaEstacion;
+    }
+
+    private boolean corregirPixelSegunCantUsos(int iPixel, int estacionOriginal, ArrayList<Integer> usosDelProductorEstaEstacion) {
+        //Toma un pixel ya cargado y lo cambia limpiando y actualizando variables en una sola recorrida
+        int iEstacion=estacionOriginal, iEstacionesCargadas=0, usoACargar, usoABorrar, estacionActual, estacionesDeUsoACargar, estacionesDeUsoABorrar, usoYDuracion[];
+        usoYDuracion= new int[2];
+
+        if (estacionOriginal <0 ) {
+            System.out.println("INSTANCIA NO VALIDA!!!");
+            System.exit(1);
+        }else if(estacionOriginal==0) {
+            //NO debo modificar la continuacion del uso original ni variar lo que aporta a las restricciones
+            //Relleno la estacion 0 del pixel
+            String usoOriginal = Constantes.pixeles[iPixel].usoOriginal;
+            //Averiguo que pixel tenia
+            usoYDuracion = Uso.usoYDuracion(usoOriginal);
+            //Calculo la primera estacion posterior al uso original
+            iEstacion = usoYDuracion[1];
+            //Si tengo al menos un uso siguiente que corrija el Pixel
+            if(Constantes.usos[usoYDuracion[0]].tengoSiguiente(usosDelProductorEstaEstacion)){
+                //Sorteo un uso que lo corrija
+                usoACargar=Uso.siguienteUsoRuletaFosforoCumpleCantUsos(usoYDuracion[0], usosDelProductorEstaEstacion, Constantes.pixeles[iPixel].productor);
+            }else{
+                //Devuelvo que no lo pude corregir
+                return false;
+            }
+        }else{//estacionOriginal>0
+            usoACargar = Uso.siguienteUsoRuletaFosforoCumpleCantUsos(this.matriz[iPixel][estacionOriginal-1], usosDelProductorEstaEstacion, Constantes.pixeles[iPixel].productor);
+        }
+        //TODO Seguir desde aca
+
+        //Para un pixel recorro todas las estaciones
+        while (iEstacion < Constantes.cantEstaciones){
+            estacionesDeUsoACargar=0;
+            //Cargo todas las estaciones del uso, deteniendome si llego a cantEstaciones
+            while((estacionesDeUsoACargar<Constantes.usos[usoACargar].duracionEstaciones) && ((estacionesDeUsoACargar+iEstacion)<(Constantes.cantEstaciones))){
+                //Calculo la estacion
+                estacionActual=iEstacion+estacionesDeUsoACargar;
+                //Obtengo el pixel a borrar
+                usoABorrar=this.matriz[iPixel][estacionActual]/100;
+                //Y la estacion de el uso
+                estacionesDeUsoABorrar=this.matriz[iPixel][estacionActual]%100;
+
+                //Cargo el uso y las estaciones que llevaNo corresponde la duracion.
+                this.matriz[iPixel][estacionActual]=100*usoACargar+estacionesDeUsoACargar; //Antes usaba estacionActual pero seguro estaba mal
+
+                //Actualizo valores de la solucion
+                //En caso de ser necesario actualizo la cantidad de usos en en estaestacion en este pixel
+                if (usoABorrar != usoACargar) {
+                    //Actualizo la cantidad de usos
+                    this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoABorrar][estacionActual][Constantes.pixeles[iPixel].productor]--;
+                    this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoACargar][estacionActual][Constantes.pixeles[iPixel].productor]++;
+                    //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+                    this.productivdadProductores[Constantes.pixeles[iPixel].productor][estacionActual] =
+                            this.productivdadProductores[Constantes.pixeles[iPixel].productor][estacionActual]
+                                    - Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].productividad[estacionesDeUsoABorrar]
+                                    + Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].productividad[estacionesDeUsoACargar];
+                    //Actualizo el fosforo del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+                    this.fosforoProductores[Constantes.pixeles[iPixel].productor][estacionActual] =
+                            this.fosforoProductores[Constantes.pixeles[iPixel].productor][estacionActual]
+                                    - Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeUsoABorrar]
+                                    + Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforoEstacion[estacionesDeUsoACargar];
+                    //Actualizo lo que aporta el uso al fosforo total en esta estacion
+                    this.fosforo= this.fosforo
+                            - (Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeUsoABorrar]*Constantes.pixeles[iPixel].superficie)
+                            + (Constantes.usos[usoACargar].fosforoEstacion[estacionesDeUsoACargar]*Constantes.pixeles[iPixel].superficie);
+                }
+                estacionesDeUsoACargar++;
+            }
+            iEstacion=iEstacion + estacionesDeUsoACargar; //Actualizo la siguiente estacion con la que trabajar
+            int productor= Constantes.pixeles[iPixel].productor;
+            usoACargar= Uso.siguienteUsoRuletaFosforoCumpleCantUsos(usoACargar,usosDelProductorPorEstacion(productor,iEstacion), productor);
+            //Uso.siguienteUsoRuletaProduccion(usoACargar); //Obtengo el siguiente uso a cargar
+            //System.out.println(" Siguiente uso: "+usoACargar+" Estaciones a cargar: "+Constantes.usos[usoACargar].duracionEstaciones);
+        }
+    }
+
+    public int sortearPixelDeProductorParaFactibilizarPorUsos(int iEstacion, int iProductor) {
+        List<Integer> pixelACambiar= new ArrayList<>();
+        int minEstacion = Constantes.cantEstaciones;
+        //Busco entre los pixeles del producto el pixel con menos EstacioneDeUso de un uso con un Uso usado al menos dos veces.
+        for (Integer iPixel: Constantes.productores[iProductor].pixelesDelProductor) {
+            //Consigo el uso y la estacion del actual
+            int usoDelPixel=this.matriz[iPixel][iEstacion]/100;
+            int estacionesDelUso= this.matriz[iPixel][iEstacion]%100;
+            //Si es un uso, usado al menos 2 veces en esta estacion por este productor
+            if (this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[iEstacion][iProductor][usoDelPixel]>1){
+                //Si su estacion del uso es menor que el pixel a cambiar actual
+                if (estacionesDelUso< minEstacion){
+                    minEstacion = estacionesDelUso;
+                    pixelACambiar= new ArrayList<>();
+                    pixelACambiar.add(iPixel);
+                } else if (estacionesDelUso == minEstacion) {
+                    pixelACambiar.add(iPixel);
+                }
+            }
+        }
+        return pixelACambiar.get(Constantes.uniforme.nextInt(pixelACambiar.size() - 1)); // TODO: puede explotar si la lista es vacia
     }
 
 
-
+    public void factibilizarProductividad() {
+    }
 }
