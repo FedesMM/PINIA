@@ -119,7 +119,7 @@ public class Uso {
         } else {
             // ruleta con los usos siguientes presentes en la lista
             for (Integer iUso: Constantes.usos[usoOriginal].siguientesUsos) {
-                if (usosDelProductorEstaEstacion.contains(iUso)){
+                if (usosDelProductorEstaEstacion.contains(iUso) && listaDeCandidatos.size()<=Constantes.maximaCantidadUsos){
                     listaDeCandidatos.add(iUso);
                 }
             }
