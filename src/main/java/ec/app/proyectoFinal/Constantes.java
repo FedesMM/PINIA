@@ -1,4 +1,3 @@
-package ec.app.proyectoFinal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -19,8 +18,8 @@ public class Constantes {
     public static int cantProductores= 42;
     //public static int minimaCantidadUsos=3;
     //public static int maximaCantidadUsos=6;
-    public static int minimaCantidadUsos=1;
-    public static int maximaCantidadUsos=20;
+    public static int minimaCantidadUsos=3;
+    public static int maximaCantidadUsos=7;
 
     //Maximo errores posibles para la funcion objetivo valor objetivo
     public static float maximoIncumplimientoFosforo=2.23F*cantAnios;
