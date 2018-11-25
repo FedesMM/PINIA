@@ -28,45 +28,58 @@ public class Main {
         Main.testFactibilizarCantUsos();
 
     }
+
     private static void testFactibilizarCantUsos() {
-        Solucion solucion;
+        Solucion solucion, nuevaSolucion;
         String nombreInstancia;
         int cantPixeles;
         for (int iInstancia =0; iInstancia <= 29; iInstancia++) {
-            Constantes.productores = Productor.cargarProductores();
-            nombreInstancia = "./Instancias/Intancia " + (iInstancia + 1) + ".in";
-            cantPixeles=Pixel.contarLineas(nombreInstancia);
-            System.out.println(nombreInstancia+"\tCantPixeles:"+cantPixeles);
-            Constantes.cantPixeles=cantPixeles;
-            Constantes.cantPotreros=cantPixeles;
-            Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);
-            Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();
-            Pixel.imprimirPixeles();
+           int maxSoluciones=10;
+            for (int iSoluciones = 0; iSoluciones< maxSoluciones; iSoluciones++) {
+                Constantes.productores = Productor.cargarProductores();
+                nombreInstancia = "./Instancias/Intancia " + (iInstancia + 1) + ".in";
+                cantPixeles=Pixel.contarLineas(nombreInstancia);
+                System.out.println(nombreInstancia+"\tCantPixeles:"+cantPixeles);
+                Constantes.cantPixeles=cantPixeles;
+                Constantes.cantPotreros=cantPixeles;
+                Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);
+                Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();
+                //Pixel.imprimirPixeles();
 
-
-            solucion=Solucion.crearSolucion();
-            for (;solucion.restriccionUsosDistintos.cumpleRestriccion;) {
+                System.out.println("Solucion: "+iSoluciones);
                 solucion=Solucion.crearSolucion();
-                solucion.recalcular();
+                for (;solucion.restriccionUsosDistintos.cumpleRestriccion;) {
+                    solucion=Solucion.crearSolucion();
+                    solucion.recalcular();
 
+                }
+                solucion.imprimirMatriz();
+                solucion.imprimirUsosDisitintosPorEstacion();
+                //Productor.imprimirProductoresActivos();
+                nuevaSolucion= solucion.clone();
+                int maxIter=1000;
+                for (int i = 0; (i <maxIter&& !nuevaSolucion.restriccionUsosDistintos.cumpleRestriccion); i++) {
+                    nuevaSolucion= solucion.clone();
+                    System.out.println("Factibilizacion  :"+i);
+                    nuevaSolucion.factibilizarCantUsos();
+                    nuevaSolucion.recalcular();
+                    if (nuevaSolucion.restriccionUsosDistintos.cumpleRestriccion){
+                        System.out.println("FACTIBILIZADO EN LA ITERACION  "+i);
+                        nuevaSolucion.imprimirUsosDisitintosPorEstacion();
+                        System.out.println("Cumple restriccion:  "+nuevaSolucion.restriccionUsosDistintos.cumpleRestriccion);
+                    }else if (i==maxIter-1) {
+//                    System.out.println("NO FACTIBILZADO "+i);
+//                    nuevaSolucion.imprimirUsosDisitintosPorEstacion();
+                    }else{
+//                    System.out.println("NO FACTIBILZADO "+i);
+//                    nuevaSolucion.imprimirUsosDisitintosPorEstacion();
+                    }
+                }
+                System.out.println("\n");
             }
+
             //solucion.imprimirMatriz();
-            solucion.imprimirUsosDisitintosPorEstacion();
-            Productor.imprimirProductoresActivos();
-
-
-            for (int i = 0; (i <100&& !solucion.restriccionUsosDistintos.cumpleRestriccion); i++) {
-                solucion.factibilizarCantUsos();
-                solucion.recalcular();
-                //if (solucion.restriccionUsosDistintos.cumpleRestriccion){
-                    //System.out.println("FACTIBILIZADO EN LA ITERACION  "+i);
-                    solucion.imprimirUsosDisitintosPorEstacion();
-
-                    System.out.println("Cumple restriccion:  "+solucion.restriccionUsosDistintos.cumpleRestriccion);
-                //}
-
-            }
-
+            System.out.println("\n\n");
         }
 
     }

@@ -306,7 +306,7 @@ public class Solucion {
                 if (iEstacion!=Constantes.cantEstaciones-1){
                     System.out.print(cantUsos+", ");
                 }else{
-                    System.out.println("}") ;
+                    System.out.println(cantUsos+"}") ;
                 }
             }
 
@@ -851,6 +851,8 @@ public class Solucion {
                 ArrayList<Integer> usosDelProductorEstaEstacion= this.usosDelProductorPorEstacion(iProductor, iEstacion);
                 //Si me faltan usos:
                 if (usosDelProductorEstaEstacion.size()<Constantes.productores[iProductor].getMinCantUsos()){
+                    System.out.print("Productor"+iProductor+" Estacion "+iEstacion+": ");
+                    System.out.println("\tMe faltan usos");
                     //Averiguo cuantos cambiar
                     int cantCambios= Constantes.productores[iProductor].getMinCantUsos()-usosDelProductorEstaEstacion.size();
                     //Cambio la cantidad necesaria
@@ -869,39 +871,50 @@ public class Solucion {
                 }
                 //Si me sobran sorteo un tipo de uso ruleta invertida segun cuantos pixeles tenga
                 else if(usosDelProductorEstaEstacion.size()>Constantes.maximaCantidadUsos){
+                    System.out.print("Productor"+iProductor+" Estacion "+iEstacion+": ");
+                    System.out.println("\tMe sobran usos");
                     //System.out.println("Estacion "+iEstacion+": ");
                     //Averiguo cuantos cambiar
                     int cantCambios = usosDelProductorEstaEstacion.size() -Constantes.maximaCantidadUsos;
                     //Armo una lista de los usos que me voy a quedar,
+                    System.out.println("\tArmo lista de usos a concervar: ");
                     // Primero me quedo con los que son previos a la estacon cero
                     ArrayList<Integer> usosAConservar= new ArrayList<>();
                     //int i=0;
-                    for (int iPixel: Constantes.productores[iProductor].pixelesDelProductor) {
-                    //for (int i = 0; i <Constantes.productores[iProductor].pixelesDelProductor.size(); i++) {
-                        //int iPixel=Constantes.productores[iProductor].pixelesDelProductor.get(i);
-                        //i++;
-                        //System.out.print(" "+iPixel);
+                    System.out.print("\t\tAgrego usos heredados: ");
+                   for (int iPixel: Constantes.productores[iProductor].pixelesDelProductor) {
                         estacionOriginal= iEstacion-(matriz[iPixel][iEstacion]%100);
-
                         posibleUso =matriz[iPixel][iEstacion]/100;
                         if (estacionOriginal<0 && !usosAConservar.contains(posibleUso)) {
-                            //System.out.print(posibleUso);
                             usosAConservar.add(posibleUso);
+                            System.out.print(" "+posibleUso);
                         }
                     }
-                    //System.out.println();
-                    //System.out.println();
+                    System.out.println();
                     //Alerto si la instancia es no factible, si tengo mas usos distintos previos a la estacion cero
                     if (usosAConservar.size()>Constantes.maximaCantidadUsos){
-                        System.out.println("INSTANCIA NO VALIDA!!!");
+                        System.out.println("INSTANCIA NO VALIDA!!!  Tengo mas usos distintos previos a la estacion cero");
                         System.exit(1);
                     }
+                    for (int iUso: usosDelProductorEstaEstacion) {
+                        if (!usosAConservar.contains(iUso) && usosAConservar.size()<Constantes.maximaCantidadUsos){
+                            System.out.print(" "+iUso);
+                            usosAConservar.add(iUso);
+                        }
+
+                    }
+                    System.out.println();
+                    /*
+                    System.out.print("\t\tAgrego uso no heredados: ");
                     for (Integer iPixel: Constantes.productores[iProductor].pixelesDelProductor) {
                         posibleUso =matriz[iPixel][iEstacion]/100;
-                        if (!usosAConservar.contains(posibleUso) && usosAConservar.size()<=Constantes.maximaCantidadUsos){
+                        if (!usosAConservar.contains(posibleUso) && usosAConservar.size()<Constantes.maximaCantidadUsos){
+                            System.out.print(" "+posibleUso);
                             usosAConservar.add(posibleUso);
                         }
                     }
+                    System.out.println();
+                    */
                     //Recorro todos los pixeles del productor, cambiando los que no tengan usos de la lista a conservar
                     for (Integer iPixel: Constantes.productores[iProductor].pixelesDelProductor) {
                         int estacionDelUso= matriz[iPixel][iEstacion]%100;
@@ -913,7 +926,11 @@ public class Solucion {
                             }
                         }
                     }
+                }else{
+                    //System.out.println("System.out.print(\"Productor \"+iProductor+\" Estacion \"+iEstacion+\":\");Me faltan usos");
+                    //System.out.println("\tCorrecto");
                 }
+
             }
         }
     }

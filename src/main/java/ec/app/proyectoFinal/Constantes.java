@@ -19,7 +19,7 @@ public class Constantes {
     //public static int minimaCantidadUsos=3;
     //public static int maximaCantidadUsos=6;
     public static int minimaCantidadUsos=3;
-    public static int maximaCantidadUsos=7;
+    public static int maximaCantidadUsos=9;
 
     //Maximo errores posibles para la funcion objetivo valor objetivo
     public static float maximoIncumplimientoFosforo=2.23F*cantAnios;
