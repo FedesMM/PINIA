@@ -96,8 +96,10 @@ public class Pixel {
 
                             id = Integer.valueOf(campos[2]);
                             productor = Integer.valueOf(campos[0])-1;
-                            //System.out.println("Cargo el pixel "+iPixel+" en el productor "+(productor));
-                            Constantes.productores[productor].pixelesDelProductor.add(iPixel);
+                            if (!Constantes.productores[productor].pixelesDelProductor.contains(iPixel)){
+                                //System.out.println("Cargo el pixel "+iPixel+" en el productor "+(productor));
+                                Constantes.productores[productor].pixelesDelProductor.add(iPixel);
+                            }
                             if (!Constantes.productoresActivos.contains(productor)){
                                 Constantes.productoresActivos.add(productor);
                                 //System.out.println("Activo el productor: "+productor);
@@ -113,6 +115,7 @@ public class Pixel {
                             distanciaAlRio = 0;//Float.valueOf(campos[13]);
                             //Creo un Pixel con sus datos
                             Pixel pixelNuevo = new Pixel(iPixel, id, productor, potrero, cordenadaPixel, superficie, distanciaAlRio, usoOriginal);
+                            //pixelNuevo.imprimirPixel();
                             //Lo agrego al arreglo de pixeles
                             pixeles[iPixel] = pixelNuevo;
 

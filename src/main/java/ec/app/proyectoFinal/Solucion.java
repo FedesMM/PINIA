@@ -877,15 +877,19 @@ public class Solucion {
                     ArrayList<Integer> usosAConservar= new ArrayList<>();
                     //int i=0;
                     for (int iPixel: Constantes.productores[iProductor].pixelesDelProductor) {
+                    //for (int i = 0; i <Constantes.productores[iProductor].pixelesDelProductor.size(); i++) {
+                        //int iPixel=Constantes.productores[iProductor].pixelesDelProductor.get(i);
                         //i++;
-                        //System.out.println(i+" "+iPixel);
+                        //System.out.print(" "+iPixel);
                         estacionOriginal= iEstacion-(matriz[iPixel][iEstacion]%100);
+
                         posibleUso =matriz[iPixel][iEstacion]/100;
                         if (estacionOriginal<0 && !usosAConservar.contains(posibleUso)) {
                             //System.out.print(posibleUso);
                             usosAConservar.add(posibleUso);
                         }
                     }
+                    //System.out.println();
                     //System.out.println();
                     //Alerto si la instancia es no factible, si tengo mas usos distintos previos a la estacion cero
                     if (usosAConservar.size()>Constantes.maximaCantidadUsos){

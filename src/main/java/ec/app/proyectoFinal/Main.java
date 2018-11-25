@@ -33,14 +33,16 @@ public class Main {
         String nombreInstancia;
         int cantPixeles;
         for (int iInstancia =0; iInstancia <= 29; iInstancia++) {
+            Constantes.productores = Productor.cargarProductores();
             nombreInstancia = "./Instancias/Intancia " + (iInstancia + 1) + ".in";
             cantPixeles=Pixel.contarLineas(nombreInstancia);
+            System.out.println(nombreInstancia+"\tCantPixeles:"+cantPixeles);
             Constantes.cantPixeles=cantPixeles;
             Constantes.cantPotreros=cantPixeles;
             Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);
             Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();
             Pixel.imprimirPixeles();
-            System.out.println(nombreInstancia+"\tCantPixeles:"+cantPixeles);
+
 
             solucion=Solucion.crearSolucion();
             for (;solucion.restriccionUsosDistintos.cumpleRestriccion;) {
@@ -48,7 +50,7 @@ public class Main {
                 solucion.recalcular();
 
             }
-            solucion.imprimirMatriz();
+            //solucion.imprimirMatriz();
             solucion.imprimirUsosDisitintosPorEstacion();
             Productor.imprimirProductoresActivos();
 
