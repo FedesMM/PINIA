@@ -896,6 +896,7 @@ public class Solucion {
                         System.out.println("INSTANCIA NO VALIDA!!!  Tengo mas usos distintos previos a la estacion cero");
                         System.exit(1);
                     }
+                    //System.out.print("\t\tAgrego uso no heredados: ");
                     for (int iUso: usosDelProductorEstaEstacion) {
                         if (!usosAConservar.contains(iUso) && usosAConservar.size()<Constantes.maximaCantidadUsos){
                             System.out.print(" "+iUso);
@@ -904,17 +905,7 @@ public class Solucion {
 
                     }
                     System.out.println();
-                    /*
-                    System.out.print("\t\tAgrego uso no heredados: ");
-                    for (Integer iPixel: Constantes.productores[iProductor].pixelesDelProductor) {
-                        posibleUso =matriz[iPixel][iEstacion]/100;
-                        if (!usosAConservar.contains(posibleUso) && usosAConservar.size()<Constantes.maximaCantidadUsos){
-                            System.out.print(" "+posibleUso);
-                            usosAConservar.add(posibleUso);
-                        }
-                    }
-                    System.out.println();
-                    */
+
                     //Recorro todos los pixeles del productor, cambiando los que no tengan usos de la lista a conservar
                     for (Integer iPixel: Constantes.productores[iProductor].pixelesDelProductor) {
                         int estacionDelUso= matriz[iPixel][iEstacion]%100;
@@ -959,11 +950,10 @@ public class Solucion {
             System.out.println("INSTANCIA NO VALIDA!!!");
             System.exit(1);
         }else if(estacionOriginal==0) {
-            //NO debo modificar la continuacion del uso original ni variar lo que aporta a las restricciones
-            //Relleno la estacion 0 del pixel
+            //Obtengo el valor de Uso original
             String usoOriginal = Constantes.pixeles[iPixel].usoOriginal;
-            //Averiguo que pixel tenia
-            usoYDuracion = Uso.usoYDuracion(usoOriginal);
+            //Averiguo que uso y duracion teniatenia
+            usoYDuracion = Uso.usoYDuracion(Constantes.pixeles[iPixel].usoOriginal);
             //Calculo la primera estacion posterior al uso original
             iEstacion = usoYDuracion[1];
             //Si tengo al menos un uso siguiente que corrija el Pixel
@@ -972,14 +962,17 @@ public class Solucion {
                 usoACargar=Uso.siguienteUsoRuletaFosforoCumpleCantUsos(usoYDuracion[0], usosDelProductorEstaEstacion, productor);
             }else{
                 //Devuelvo que no lo pude corregir
+                System.out.println("No pude corregir. iPixel: "+iPixel+" iEstacion: "+iEstacion);
                 return false;
             }
         }else{//estacionOriginal>0
+            //System.out.println("Entro a siguienteUsoRuletaFosforoCumpleCantUsos.");
             usoACargar = Uso.siguienteUsoRuletaFosforoCumpleCantUsos(this.matriz[iPixel][estacionOriginal-1]/100, usosDelProductorEstaEstacion, productor);
+            //System.out.println("Salgo de siguienteUsoRuletaFosforoCumpleCantUsos.");
         }
-
         //Para un pixel recorro todas las estaciones
         while (iEstacion < Constantes.cantEstaciones){
+            //System.out.println("Comienzo a modificar el iPixel "+iPixel+" en la iEstacion "+iEstacion+" un usoACargar "+usoACargar);
             estacionesDeUsoACargar=0;
             //Cargo todas las estaciones del uso, deteniendome si llego a cantEstaciones
             while((estacionesDeUsoACargar<Constantes.usos[usoACargar].duracionEstaciones) && ((estacionesDeUsoACargar+iEstacion)<(Constantes.cantEstaciones))){
@@ -1012,7 +1005,7 @@ public class Solucion {
                 estacionesDeUsoACargar++;
             }
             iEstacion=iEstacion + estacionesDeUsoACargar; //Actualizo la siguiente estacion con la que trabajar
-            if (iEstacion>16) {
+            if (iEstacion<16) {
                 usoACargar = Uso.siguienteUsoRuletaFosforoCumpleCantUsos(usoACargar, usosDelProductorPorEstacion(productor, iEstacion), productor);
             }
             //Uso.siguienteUsoRuletaProduccion(usoACargar); //Obtengo el siguiente uso a cargar
@@ -1065,5 +1058,132 @@ public class Solucion {
 
 
     public void factibilizarProductividad() {
+        int pixelACambiar, estacionDelUso;
+//        System.out.println("factibilizarProductividad: ");
+        //for (int iProductor = 0; iProductor< Constantes.cantProductores; iProductor++) {
+        for (int iProductor: Constantes.productoresActivos) {
+            for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
+                //Calculo la cantidad de usos distintos para este productor en esta estacion.
+                ArrayList<Integer> usosDelProductorEstaEstacion= this.usosDelProductorPorEstacion(iProductor, iEstacion);
+                //Si me faltan falta productividad:
+                if (this.productivdadProductores[iProductor][iEstacion]/Constantes.productores[iProductor].areaTotal
+                        <Constantes.productores[iProductor].restriccionProduccionEstacion[iEstacion]){
+//                    System.out.println("\tIncumplimiento para el produtor "+iProductor+" en la estacion "+ iEstacion
+//                            + ": "+this.productivdadProductores[iProductor][iEstacion]+"/"+Constantes.productores[iProductor].restriccionProduccionEstacion[iEstacion]);
+                    int maxCambios=Constantes.productores[iProductor].pixelesDelProductor.size();
+                    for (int iCambios = 0; ((iCambios < maxCambios)&&
+                    (this.productivdadProductores[iProductor][iEstacion]/Constantes.productores[iProductor].areaTotal
+                    <Constantes.productores[iProductor].restriccionProduccionEstacion[iEstacion])); iCambios++) {
+                        //Sorteo un pixel del productor ponderando la productividad de esta estacion
+                        pixelACambiar= this.sortearPixelDeProductorParaFactibilizarProductividad(iEstacion, iProductor);
+                        estacionDelUso=this.matriz[pixelACambiar][iEstacion]%100;
+                        //Corrijo el pixel sorteado
+                        this.corregirPixelSegunProductividad(pixelACambiar, iEstacion-estacionDelUso, usosDelProductorEstaEstacion);
+                    }
+                } else{
+//                    System.out.println("\tCumplimiento para el produtor "+iProductor+" en la estacion "+ iEstacion
+//                            + ": "+this.productivdadProductores[iProductor][iEstacion]+"/"+Constantes.productores[iProductor].restriccionProduccionEstacion[iEstacion]);
+                }
+
+            }
+        }
+    }
+
+
+    private int sortearPixelDeProductorParaFactibilizarProductividad(int iEstacion, int iProductor) {
+        //Obtengo la produccion total del productor en esta estacion
+        float produccionTotal= this.productivdadProductores[iEstacion][iProductor], produccionInvertidaTotal=0, sorteo=0, acumulado=0;
+        int cantPixeles=Constantes.productores[iProductor].pixelesDelProductor.size(), pixelAcambiar=0;
+        float [] produccionInvertida= new float[cantPixeles];
+        //Calculo la produccion invertida para cada pixel y la total
+        for (int iPixel:Constantes.productores[iProductor].pixelesDelProductor) {
+            int uso=this.matriz[iPixel][iEstacion]/100;
+            int estacionUso=this.matriz[iPixel][iEstacion]%100;
+            produccionInvertida[iPixel]=produccionTotal-Constantes.usos[uso].productividad[estacionUso];
+            produccionInvertidaTotal+=produccionInvertida[iPixel];
+        }
+        //Sorteo un numero entre cero y la productividad invertida total
+        sorteo= Constantes.uniforme.nextFloat()*produccionInvertidaTotal;
+        //Averiguo a que pixel corresponde el sorteo
+        for (int iPixel:Constantes.productores[iProductor].pixelesDelProductor) {
+            acumulado+=produccionInvertida[iPixel];
+            if (sorteo<acumulado){
+                return iPixel;
+            }
+        }
+        return 0;
+    }
+    private boolean corregirPixelSegunProductividad(int iPixel, int estacionOriginal, ArrayList<Integer> usosDelProductorEstaEstacion) {
+        //Toma un pixel ya cargado y lo cambia limpiando y actualizando variables en una sola recorrida
+        int iEstacion=estacionOriginal, usoACargar=0, usoABorrar, estacionActual, estacionesDeUsoACargar, estacionesDeUsoABorrar, usoYDuracion[];
+        int productor= Constantes.pixeles[iPixel].productor;
+
+        if (estacionOriginal <0 ) {
+            System.out.println("INSTANCIA NO VALIDA!!!");
+            return false;
+        }else if(estacionOriginal==0) {
+            //Obtengo el valor de usoOriginal del pixel
+            String usoOriginal = Constantes.pixeles[iPixel].usoOriginal;
+            //Averiguo que uso tenia
+            usoYDuracion = Uso.usoYDuracion(usoOriginal);
+            //Calculo la primera estacion posterior al uso original
+            iEstacion = usoYDuracion[1];
+            //Si tengo al menos un uso siguiente que corrija el Pixel
+            if(Constantes.usos[usoYDuracion[0]].tengoSiguiente(usosDelProductorEstaEstacion)){
+                //Sorteo un uso que lo corrija
+                usoACargar=Uso.siguienteUsoRuletaProduccionCumpleCantUsos(usoYDuracion[0], usosDelProductorEstaEstacion, productor);
+            }else{
+                //Devuelvo que no lo pude corregir
+                System.out.println("No pude corregir. iPixel: "+iPixel+" iEstacion: "+iEstacion);
+                return false;
+            }
+        }else{//estacionOriginal>0
+            //System.out.println("Entro a siguienteUsoRuletaFosforoCumpleCantUsos.");
+            usoACargar = Uso.siguienteUsoRuletaProduccionCumpleCantUsos(this.matriz[iPixel][estacionOriginal-1]/100, usosDelProductorEstaEstacion, productor);
+            //System.out.println("Salgo de siguienteUsoRuletaFosforoCumpleCantUsos.");
+        }
+        //Para un pixel recorro todas las estaciones
+        while (iEstacion < Constantes.cantEstaciones){
+            //System.out.println("Comienzo a modificar el iPixel "+iPixel+" en la iEstacion "+iEstacion+" un usoACargar "+usoACargar);
+            estacionesDeUsoACargar=0;
+            //Cargo todas las estaciones del uso, deteniendome si llego a cantEstaciones
+            while((estacionesDeUsoACargar<Constantes.usos[usoACargar].duracionEstaciones) && ((estacionesDeUsoACargar+iEstacion)<(Constantes.cantEstaciones))){
+                //Calculo la estacion
+                estacionActual=iEstacion+estacionesDeUsoACargar;
+                //En caso de ser necesario actualizo la cantidad de usos en en estaestacion en este pixel
+                if (this.matriz[iPixel][estacionActual] != (100*usoACargar+estacionesDeUsoACargar)) {
+                    //Obtengo el pixel a borrar
+                    usoABorrar=this.matriz[iPixel][estacionActual]/100;
+                    //Y la estacion de el uso
+                    estacionesDeUsoABorrar=this.matriz[iPixel][estacionActual]%100;
+                    //Cargo el uso y las estaciones que llevaNo corresponde la duracion.
+                    this.matriz[iPixel][estacionActual]=100*usoACargar+estacionesDeUsoACargar; //Antes usaba estacionActual pero seguro estaba mal
+                    //Actualizo la cantidad de usos
+                    this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoABorrar][estacionActual][productor]--;
+                    this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoACargar][estacionActual][productor]++;
+                    //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+                    this.productivdadProductores[productor][estacionActual] -=
+                            Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].productividad[estacionesDeUsoABorrar]
+                                    + Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].productividad[estacionesDeUsoACargar];
+                    //Actualizo el fosforo del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+                    this.fosforoProductores[productor][estacionActual] -=
+                            Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeUsoABorrar]
+                                    + Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforoEstacion[estacionesDeUsoACargar];
+                    //Actualizo lo que aporta el uso al fosforo total en esta estacion
+                    this.fosforo= this.fosforo
+                            - (Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeUsoABorrar]*Constantes.pixeles[iPixel].superficie)
+                            + (Constantes.usos[usoACargar].fosforoEstacion[estacionesDeUsoACargar]*Constantes.pixeles[iPixel].superficie);
+                }
+                estacionesDeUsoACargar++;
+            }
+            iEstacion=iEstacion + estacionesDeUsoACargar; //Actualizo la siguiente estacion con la que trabajar
+            if (iEstacion<16) {
+                usoACargar = Uso.siguienteUsoRuletaProduccionCumpleCantUsos(usoACargar, usosDelProductorPorEstacion(productor, iEstacion), productor);
+            }
+            //Uso.siguienteUsoRuletaProduccion(usoACargar); //Obtengo el siguiente uso a cargar
+            //System.out.println(" Siguiente uso: "+usoACargar+" Estaciones a cargar: "+Constantes.usos[usoACargar].duracionEstaciones);
+        }
+        return true;
     }
 }
+

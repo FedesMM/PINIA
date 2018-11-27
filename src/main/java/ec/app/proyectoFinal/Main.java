@@ -23,9 +23,10 @@ public class Main {
         //Constantes.cantPixeles = 18475;
         //Constantes.cantPotreros = 26168;
         //Constantes.pixeles = Pixel.cargarPixeles(fileName);
+        //Main.generarMejorSolucion();
 
         //Main.testInstancias();
-        Main.testFactibilizarCantUsos();
+        Main.testFactibilizarProductividad();
 
     }
 
@@ -33,8 +34,64 @@ public class Main {
         Solucion solucion, nuevaSolucion;
         String nombreInstancia;
         int cantPixeles;
-        for (int iInstancia =0; iInstancia <= 29; iInstancia++) {
-           int maxSoluciones=10;
+        int instancia=0;
+        System.out.println("testFactibilizarCantUsos");
+        for (int iInstancia =instancia; iInstancia <= instancia; iInstancia++) {
+           int maxSoluciones=100;
+            for (int iSoluciones = 0; iSoluciones< maxSoluciones; iSoluciones++) {
+                Constantes.productores = Productor.cargarProductores();
+                nombreInstancia = "./Instancias/Intancia " + (iInstancia + 1) + ".in";
+                cantPixeles=Pixel.contarLineas(nombreInstancia);
+                System.out.println(nombreInstancia+"\tCantPixeles:"+cantPixeles);
+                Constantes.cantPixeles=cantPixeles;
+                Constantes.cantPotreros=cantPixeles;
+                Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);
+                Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();
+
+                System.out.println("Solucion: "+iSoluciones);
+                solucion=Solucion.crearSolucion();
+                for (;solucion.restriccionUsosDistintos.cumpleRestriccion;) {
+                    solucion=Solucion.crearSolucion();
+                    solucion.recalcular();
+                    solucion.imprimirFuncionObjetivo();
+
+                }
+                nuevaSolucion= solucion.clone();
+                int maxIter=1000;
+                for (int i = 0; (i <maxIter&& !nuevaSolucion.restriccionUsosDistintos.cumpleRestriccion); i++) {
+                    nuevaSolucion= solucion.clone();
+                    System.out.println("Factibilizacion  :"+i);
+                    nuevaSolucion.factibilizarCantUsos();
+                    nuevaSolucion.recalcular();
+                    if (nuevaSolucion.restriccionUsosDistintos.cumpleRestriccion){
+                        System.out.println("FACTIBILIZADO EN LA ITERACION  "+i);
+                        nuevaSolucion.imprimirUsosDisitintosPorEstacion();
+                        nuevaSolucion.evaluarFuncionObjetivo();
+                    }else if (i==maxIter-1) {
+                        System.out.println("NO FACTIBILZADO "+i);
+                        nuevaSolucion.imprimirUsosDisitintosPorEstacion();
+                    }else{
+//                    System.out.println("NO FACTIBILZADO "+i);
+//                    nuevaSolucion.imprimirUsosDisitintosPorEstacion();
+                    }
+                }
+                System.out.println("\n");
+            }
+
+            //solucion.imprimirMatriz();
+            System.out.println("\n\n");
+        }
+
+    }
+
+    private static void testFactibilizarProductividad() {
+        Solucion solucion, nuevaSolucion;
+        String nombreInstancia;
+        int cantPixeles;
+        int instancia=1;
+        System.out.println("testFactibilizarProductividad");
+        for (int iInstancia =instancia; iInstancia <= instancia; iInstancia++) {
+            int maxSoluciones=10;
             for (int iSoluciones = 0; iSoluciones< maxSoluciones; iSoluciones++) {
                 Constantes.productores = Productor.cargarProductores();
                 nombreInstancia = "./Instancias/Intancia " + (iInstancia + 1) + ".in";
@@ -48,28 +105,28 @@ public class Main {
 
                 System.out.println("Solucion: "+iSoluciones);
                 solucion=Solucion.crearSolucion();
-                for (;solucion.restriccionUsosDistintos.cumpleRestriccion;) {
+                for (;solucion.restriccionProductividadMinimaEstacion.cumpleRestriccion;) {
                     solucion=Solucion.crearSolucion();
                     solucion.recalcular();
-
                 }
-                solucion.imprimirMatriz();
-                solucion.imprimirUsosDisitintosPorEstacion();
-                //Productor.imprimirProductoresActivos();
+                solucion.imprimirFuncionObjetivo();
+
                 nuevaSolucion= solucion.clone();
-                int maxIter=1000;
-                for (int i = 0; (i <maxIter&& !nuevaSolucion.restriccionUsosDistintos.cumpleRestriccion); i++) {
+                int maxBusquedas=1000, maxMejoras=100;
+                for (int i = 0; (i <maxBusquedas&& !nuevaSolucion.restriccionProductividadMinimaEstacion.cumpleRestriccion); i++) {
                     nuevaSolucion= solucion.clone();
-                    System.out.println("Factibilizacion  :"+i);
-                    nuevaSolucion.factibilizarCantUsos();
-                    nuevaSolucion.recalcular();
-                    if (nuevaSolucion.restriccionUsosDistintos.cumpleRestriccion){
+                    //System.out.println("Factibilizacion  :"+i);
+                    for (int j = 0; (j < maxMejoras && !nuevaSolucion.restriccionProductividadMinimaEstacion.cumpleRestriccion) ; j++) {
+                        nuevaSolucion.factibilizarProductividad();
+                        nuevaSolucion.recalcular();
+                    }
+                    if (nuevaSolucion.restriccionProductividadMinimaEstacion.cumpleRestriccion){
                         System.out.println("FACTIBILIZADO EN LA ITERACION  "+i);
-                        nuevaSolucion.imprimirUsosDisitintosPorEstacion();
-                        System.out.println("Cumple restriccion:  "+nuevaSolucion.restriccionUsosDistintos.cumpleRestriccion);
-                    }else if (i==maxIter-1) {
-//                    System.out.println("NO FACTIBILZADO "+i);
-//                    nuevaSolucion.imprimirUsosDisitintosPorEstacion();
+                        nuevaSolucion.imprimirProductividadSobreSuperficiePorEstacion();
+                        nuevaSolucion.imprimirFuncionObjetivo();
+                    }else if (i==maxBusquedas-1) {
+                        System.out.println("NO FACTIBILZADO "+i);
+                        nuevaSolucion.imprimirProductividadSobreSuperficiePorEstacion();
                     }else{
 //                    System.out.println("NO FACTIBILZADO "+i);
 //                    nuevaSolucion.imprimirUsosDisitintosPorEstacion();
