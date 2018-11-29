@@ -1,4 +1,4 @@
-package ec.app.proyectoFinal;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -119,7 +119,7 @@ public class Uso {
         } else {
             // ruleta con los usos siguientes presentes en la lista
             for (Integer iUso: Constantes.usos[usoOriginal].siguientesUsos) {
-                if (usosDelProductorEstaEstacion.contains(iUso)){
+                if (usosDelProductorEstaEstacion.contains(iUso) && listaDeCandidatos.size()<=Constantes.maximaCantidadUsos){
                     listaDeCandidatos.add(iUso);
                 }
             }
@@ -143,6 +143,56 @@ public class Uso {
                 fosforoAcumulado += Constantes.usos[iUsoSiguiente].fosforo;
                 //Chequeo si el fosforo sorteado pertenece al uso actual
                 if (fosforoSorteado < fosforoAcumulado) {
+                    siguienteUso = Constantes.usos[usoOriginal].siguientesUsos.get(iUsoSiguiente);//Posicion en el array coincide con el numero de Uso
+                    encontre = true;
+                }
+            }
+            //System.out.println("\t\tSiguiente Uso: "+numeroUniforme);
+            return siguienteUso;
+        }
+    }
+
+    public static int siguienteUsoRuletaProduccionCumpleCantUsos(int usoOriginal, ArrayList<Integer> usosDelProductorEstaEstacion, int iProductor) {
+        List<Integer> listaDeCandidatos= new ArrayList<>();
+        //Dado un uso y una lista de usos ya usados, devuelvo un uso sorteado ruleta por fosforo  que respete la restriccion de usos
+        if (usosDelProductorEstaEstacion.size() < Constantes.productores[iProductor].getMinCantUsos()) {
+            // ruleta con usos siguientes fuera de la lista
+            for (Integer iUso: Constantes.usos[usoOriginal].siguientesUsos) {
+                if (!usosDelProductorEstaEstacion.contains(iUso)){
+                    listaDeCandidatos.add(iUso);
+                }
+            }
+
+        } else if ( usosDelProductorEstaEstacion.size() < Constantes.maximaCantidadUsos) {
+            // ruleta con todos los usus siguientes
+            listaDeCandidatos= Constantes.usos[usoOriginal].siguientesUsos;
+        } else {
+            // ruleta con los usos siguientes presentes en la lista
+            for (Integer iUso: Constantes.usos[usoOriginal].siguientesUsos) {
+                if (usosDelProductorEstaEstacion.contains(iUso) && listaDeCandidatos.size()<=Constantes.maximaCantidadUsos){
+                    listaDeCandidatos.add(iUso);
+                }
+            }
+        }
+        if (listaDeCandidatos.size()==1){
+            return listaDeCandidatos.get(0);
+        }else {
+            //System.out.println("\t\tCantidad de Posibles siguientes usos: "+Constantes.usos[usoOriginal].siguientesUsos.size());
+            boolean encontre = false;
+            int siguienteUso = 0;
+            float productividadMaxima = 0, productividadSorteado = 0, productividadAcumulado = 0;
+            //Calculo el maximo fosforo entre los que sortear
+            for (int iUsoSiguiente = 0; iUsoSiguiente < listaDeCandidatos.size(); iUsoSiguiente++) {
+                productividadMaxima += Constantes.usos[iUsoSiguiente].fosforo;
+            }
+            //En caso de que tenga mas de un uso sorteo un valor entre el fosforo maximo
+            productividadSorteado = Constantes.uniforme.nextFloat() * productividadMaxima; // elijo uno uniforme entre cero y el fosforo maximo
+            //Veo a que uso corresponde el fosforo
+            for (int iUsoSiguiente = 0; iUsoSiguiente < listaDeCandidatos.size() && !encontre; iUsoSiguiente++) {
+                //Sumo el fosforo del uso actual al acumulado
+                productividadAcumulado += Constantes.usos[iUsoSiguiente].fosforo;
+                //Chequeo si el fosforo sorteado pertenece al uso actual
+                if (productividadSorteado < productividadAcumulado) {
                     siguienteUso = Constantes.usos[usoOriginal].siguientesUsos.get(iUsoSiguiente);//Posicion en el array coincide con el numero de Uso
                     encontre = true;
                 }
@@ -439,77 +489,81 @@ public class Uso {
 
         //Pastura Perenne 1 ---- Alfalfa
         siguientesUsos = new ArrayList<Integer> (Arrays.asList(2,3,4,5,6,7,8,9,10,11,14));
-        fosforoEstacion = new float[] {0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f};
+        fosforoEstacion = new float[] {0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f};
         productividadUso= new float[] {0, 0, 3025, 2475, 3000, 1200, 4200, 3600, 1600, 800, 3200, 2400, 700, 350, 3500,2450};
 
         listaUsos[1]= new Uso(1, 16,0, 4.64f, productividadUso,fosforoEstacion, "Alfalfa",siguientesUsos);
 
         //Pastura Perenne 2 ---- FE+TB+L
         siguientesUsos = new ArrayList<Integer> (Arrays.asList(1,3,4,5,6,7,8,9,10,11,14));
+        fosforoEstacion = new float[] {0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f};
         productividadUso= new float[] {0, 450, 3150, 900, 2500, 1500, 4000, 2000, 1400, 1120, 3500, 980, 700, 650, 3000,650};
         listaUsos[2]= new Uso(2, 16, 0,4.64f, productividadUso,fosforoEstacion, "FE+TB+L",siguientesUsos);
 
         //Pastura Perenne 3 ---- TR+Cebadilla
         siguientesUsos = new ArrayList<Integer> (Arrays.asList(1,2,4,5,6,7,8,9,10,11,14));
         productividadUso= new float[] {0, 2000, 4400, 1600, 2800, 2000, 4200, 1000};
-        fosforoEstacion = new float[] {0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f};
+        fosforoEstacion = new float[] {0.43f,0.43f,0.43f,0.43f,0.43f,0.43f,0.43f,0.43f};
         listaUsos[3]= new Uso(3, 8,0, 2.32f, productividadUso,fosforoEstacion, "TR+Cebadilla", siguientesUsos);
 
         //Pastura Perenne 4 ---- TR+TB+Raigras
         siguientesUsos = new ArrayList<Integer> (Arrays.asList(1,2,3,5,6,7,8,9,10,11,14));
         productividadUso= new float[] {1161, 2212, 3768, 1483, 2176, 1780, 3495, 1483};
+        fosforoEstacion = new float[] {0.43f,0.43f,0.43f,0.43f,0.43f,0.43f,0.43f,0.43f};
         listaUsos[4]= new Uso(4, 8, 0,2.32f, productividadUso,fosforoEstacion, "TR+TB+Raigrás",siguientesUsos);
 
         //Pastura Perenne 5 ---- Lotus Puro
         siguientesUsos = new ArrayList<Integer> (Arrays.asList(1,2,3,4,6,7,8,9,10,11,14));
         productividadUso= new float[] {558, 1075, 2127, 962, 1318, 1107, 2826, 1387, 1134, 828, 2340, 971};
-        fosforoEstacion = new float[] {0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f};
+        fosforoEstacion = new float[] {0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f};
         listaUsos[5]= new Uso(5, 12, 0,3.48f, productividadUso,fosforoEstacion, "Lotus Puro", siguientesUsos);
 
         //Pastura Perenne 6 ---- Raigras+TB+L
         siguientesUsos = new ArrayList<Integer> (Arrays.asList(1,2,3,4,5,7,8,9,10,11,14));
         productividadUso= new float[] {775, 1811, 3159, 816, 1840, 1749, 3342, 1365, 1318, 1287, 2523, 999};
+        fosforoEstacion = new float[] {0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f};
         listaUsos[6]= new Uso(6, 12, 0,3.48f, productividadUso,fosforoEstacion, "Raigrás+TB+L",siguientesUsos);
 
         //Pastura Perenne 7 ---- Achicoria
         siguientesUsos = new ArrayList<Integer> (Arrays.asList(1,2,3,4,5,6,8,9,10,11,14));
         productividadUso= new float[] {65, 232, 2653, 2849, 1572, 2342, 3193};
-        fosforoEstacion = new float[] {0.29f,0.29f,0.29f,0.29f,0.29f,0.29f,0.29f};
+        fosforoEstacion = new float[] {0.3f,0.3f,0.3f,0.3f,0.3f,0.3f,0.3f};
         listaUsos[7]= new Uso(7, 7, 0, 2.03f,productividadUso, fosforoEstacion,"Achicoria" ,siguientesUsos);
 
         //Verdeo Verano 8 ---- Moha
         siguientesUsos = new  ArrayList<Integer> (Arrays.asList(1,2,3,4,5,6,7,10,11,14));
         productividadUso= new float[] {0, 5000};
-        fosforoEstacion = new float[] {0.58f,0.58f};
+        fosforoEstacion = new float[] {0.393f,0.393f};
         listaUsos[8]= new Uso(8, 2, 1, 1.16f,productividadUso,fosforoEstacion,"Moha", siguientesUsos);
 
         //Verdeo Verano 9 ---- Sorgo Forrajero
         siguientesUsos = new  ArrayList<Integer> (Arrays.asList(1,2,5,7,8,9,12,14));
         productividadUso= new float[] {0, 9687, 3568};
-        fosforoEstacion = new float[] {0f,0.58f,0.58f};
+        fosforoEstacion = new float[] {0.548f,0.548f,0.548f};
         listaUsos[9]= new Uso(9, 3, 1, 1.16f,productividadUso, fosforoEstacion, "Sorgo Forrajero",siguientesUsos);
 
         //Verdeo Verano 10 ---- Avena Pastoreo
         siguientesUsos = new  ArrayList<Integer> (Arrays.asList(1,2,5,7,8,9,12,14));
         productividadUso= new float[] {1625, 3250, 1625};
-        fosforoEstacion = new float[] {0.387f, 0.387f,0.387f};
+        fosforoEstacion = new float[] {0.520f, 0.520f,0.520f};
         listaUsos[10]= new Uso(10, 3, 0, 1.16f,productividadUso, fosforoEstacion, "Avena Pastoreo",siguientesUsos);
 
         //Verdeo Verano 11 ---- Avena+Raigras Temp.
         siguientesUsos = new  ArrayList<Integer> (Arrays.asList(8,9,12,14));
         productividadUso= new float[] {2083, 2211, 2735};
+        fosforoEstacion = new float[] {0.520f, 0.520f,0.520f};
         listaUsos[11]= new Uso(11, 3, 0, 1.16f,productividadUso,fosforoEstacion,"Avena+Raigrás Temp", siguientesUsos);
 
         //Cultivo Verano 12 ---- Maiz
         siguientesUsos = new  ArrayList<Integer> (Arrays.asList(1,2,3,4,5,6,7,10,11,14));
         productividadUso= new float[] {0, 12882};
-        fosforoEstacion = new float[] {1.115f,1.115f};
+        fosforoEstacion = new float[] {0.560f,0.560f};
         listaUsos[12]= new Uso(12, 2, 1, 2.230f,productividadUso,fosforoEstacion, "Maiz", siguientesUsos);
 
         //Campo Natural 13 ---- Campo Natural
         siguientesUsos = new ArrayList<Integer> (Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12,13, 14));
         productividadUso= new float[] {675,425,1039,932};
-        fosforoEstacion = new float[] {0.06f,0.06f,0.06f,0.06f};
+        fosforoEstacion = new float[] {0.168f,0.168f,0.168f,0.168f};
         listaUsos[13]= new Uso(13, 4, 2, 0.24f,productividadUso, fosforoEstacion,"Campo Natural", siguientesUsos);
 
         //Rastrojo 14 ---- Rastrojo
@@ -577,4 +631,5 @@ public class Uso {
         }
         return false;
     }
+
 }

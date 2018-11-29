@@ -1,10 +1,6 @@
-package ec.app.proyectoFinal;
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import static java.lang.Integer.min;
 
@@ -81,6 +77,11 @@ public class Productor {
     public static void imprimirProductores(){
         for (int i = 0; i < Constantes.productores.length; i++) {
             Constantes.productores[i].imprimirProductor();
+        }
+    }
+    public static void imprimirProductoresActivos(){
+        for (int i = 0; i < Constantes.productoresActivos.size(); i++) {
+            Constantes.productores[Constantes.productoresActivos.get(i)].imprimirProductor();
         }
     }
 
