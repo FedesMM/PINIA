@@ -7,11 +7,24 @@ import java.util.*;
 
 public class IntegerMatrixIndividual extends MatrixIndividual {
 
-    public static final String P_IntegerMatrixIndividual = "int-vect-ind";
+    public static final String P_IntegerMatrixIndividual = "int-mat-ind";
     public int[] genome;
 
     public int getCantidadPixeles(){
         return (genome != null) ? genome.length : 0;
+    }
+
+    public String toString() {
+        String result = "";
+        for (int i = 0; i < genome.length-1; i++) {
+            if (i% MatrixSpecies.CANT_ESTACIONES == 0) {
+                result += genome[i] + " - ";
+            } else {
+                result += genome[i] + ",";
+            }
+        }
+        result += genome[genome.length-1];
+        return result;
     }
 
     public Parameter defaultBase() {
@@ -263,8 +276,9 @@ public class IntegerMatrixIndividual extends MatrixIndividual {
         Code.decode( d );
 
         // of course, even if it *is* an integer, we can't tell if it's a gene or a genome count, argh...
-        if (d.type != DecodeReturn.T_INTEGER)  // uh oh
+        if (d.type != DecodeReturn.T_INTEGER) {  // uh oh
             state.output.fatal("Individual with genome:\n" + s + "\n... does not have an integer at the beginning indicating the genome count.");
+        }
         int genotypeLength = (int)(d.l);
 
         genome = new int[ genotypeLength ];
@@ -324,20 +338,9 @@ public class IntegerMatrixIndividual extends MatrixIndividual {
         }
     }
 
-    public void cargarGenotype(final EvolutionState state, final int[] nuevoGenotype) {
-        // TODO: esta func la hicimos nosotros, no es del IntegerVectorSpecies
-
-        int len = nuevoGenotype.length;
-        if (genome==null || genome.length != len)
-            genome = new int[len];
-
-        for(int x=0;x<genome.length;x++)
-            genome[x] = nuevoGenotype[x];
-    }
-
     /** Clips each gene value to be within its specified [min,max] range. */
-    public void clamp() {  // TODO: aca se pueden poner las restricciones de usos que se pueden plantar x estacion, haciendo que min
-        // y max Gene dependan de la estación, y en vez de retornar un min y un max, que retorne los ids de usos disponibles.
+    public void clamp() {  // TODO: aca se pueden poner las restricciones de usos que se pueden plantar x estacion, haciendo
+    // que min y max Gene dependan de la estación, y en vez de retornar un min y un max, que retorne los ids de usos disponibles.
 
         IntegerMatrixSpecies _species = (IntegerMatrixSpecies)species;
         for (int i = 0; i < genomeLength(); i++) {
@@ -363,15 +366,15 @@ public class IntegerMatrixIndividual extends MatrixIndividual {
     }
 
     public double distanceTo(Individual otherInd) {
-        if (!(otherInd instanceof IntegerVectorIndividual))
+        if (!(otherInd instanceof IntegerMatrixIndividual))
             return super.distanceTo(otherInd);  // will return infinity!
 
-        IntegerVectorIndividual other = (IntegerVectorIndividual) otherInd;
+        IntegerMatrixIndividual other = (IntegerMatrixIndividual) otherInd;
         int[] otherGenome = other.genome;
-        double sumSquaredDistance =0.0;
+        double sumSquaredDistance = 0.0;
         for(int i=0; i < other.genomeLength(); i++) {
             long dist = this.genome[i] - (long)otherGenome[i];
-            sumSquaredDistance += dist*dist;
+            sumSquaredDistance += dist * dist;
         }
         return StrictMath.sqrt(sumSquaredDistance);
     }
