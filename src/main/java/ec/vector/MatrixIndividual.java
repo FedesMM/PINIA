@@ -10,7 +10,7 @@ public abstract class MatrixIndividual extends Individual {
      is that arrayCopy() takes advantage of a CPU's bulk copying.  The advantage is that arrayCopy()
      would require a scratch array, so you'd be allocing and GCing an array for every crossover.
      Dunno which is more efficient.  */
-    public void defaultCrossover(EvolutionState state, int thread, VectorIndividual ind) { }
+    public void defaultCrossover(EvolutionState state, int thread, MatrixIndividual ind) { }
 
     /** Destructively mutates the individual in some default manner.  The default version calls reset()*/
     public void defaultMutate(EvolutionState state, int thread) {
@@ -62,7 +62,7 @@ public abstract class MatrixIndividual extends Individual {
     public void join(Object[] pieces) { }
 
     /** Clones the genes in pieces, and replaces the genes with their copies.  Does NOT copy the array, but modifies it in place.
-     If the VectorIndividual holds numbers or booleans etc. instead of genes, nothing is cloned
+     If the MatrixIndividual holds numbers or booleans etc. instead of genes, nothing is cloned
      (why bother?). */
     public void cloneGenes(Object piece) { }  // default does nothing.
 
