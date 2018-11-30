@@ -26,8 +26,93 @@ public class Main {
         //Main.generarMejorSolucion();
 
         //Main.testInstancias();
-        Main.testFactibilizarProductividad();
+        //Main.testFactibilizarProductividad();
+        Main.testCrearSolucionFactible();
 
+    }
+
+    private static void testCrearSolucionFactible() {
+        Solucion solucion, solucionCantUsos, solucionProductividad, solucionFactible;
+        String nombreInstancia;
+        int cantPixeles, repeticiones=100, profundidad=100;
+        int factible=0, cumpleRCantUsos=0, cumpleRProductividad=0;
+        int factible2=0, cumpleRCantUsos2=0, cumpleRProductividad2=0;
+        int factible3=0, cumpleRCantUsos3=0, cumpleRProductividad3=0;
+        int factible4=0, cumpleRCantUsos4=0, cumpleRProductividad4=0;
+
+
+        int instancia=29;
+        System.out.println("testFactibilizarCantUsos");
+        for (int iInstancia =0; iInstancia <= instancia; iInstancia++) {
+            int maxSoluciones=1000;
+            factible=0; cumpleRCantUsos=0; cumpleRProductividad=0;
+            factible2=0; cumpleRCantUsos2=0; cumpleRProductividad2=0;
+            factible3=0; cumpleRCantUsos3=0; cumpleRProductividad3=0;
+            factible4=0; cumpleRCantUsos4=0; cumpleRProductividad4=0;
+
+            nombreInstancia = "./Instancias/Intancia " + (iInstancia + 1) + ".in";
+            cantPixeles=Pixel.contarLineas(nombreInstancia);
+            System.out.println(nombreInstancia+"\tCantPixeles :"+cantPixeles+ "\t CantSoluciones: "+maxSoluciones);
+            //System.out.print("\tSolucion:                    ");
+            for (int iSoluciones = 0; iSoluciones< maxSoluciones; iSoluciones++) {
+                System.out.print("\rSolucion: "+iSoluciones);
+                Constantes.productores = Productor.cargarProductores();
+                Constantes.cantPixeles=cantPixeles;
+                Constantes.cantPotreros=cantPixeles;
+                Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);
+                Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();
+
+                //System.out.println("Solucion: "+iSoluciones);
+                solucion=Solucion.crearSolucionFactible();
+                solucion.recalcular();
+                if(solucion.esFactible()) { factible++; }
+                if(solucion.restriccionUsosDistintos.cumpleRestriccion) { cumpleRCantUsos++; }
+                if(solucion.restriccionProductividadMinimaEstacion.cumpleRestriccion) { cumpleRProductividad++; }
+
+                solucionCantUsos=solucion.clone();
+                solucionCantUsos.factibilizarCantUsos();
+                solucionCantUsos.recalcular();
+                if(solucionCantUsos.esFactible()) { factible2++; }
+                if(solucionCantUsos.restriccionUsosDistintos.cumpleRestriccion) { cumpleRCantUsos2++; }
+                if(solucionCantUsos.restriccionProductividadMinimaEstacion.cumpleRestriccion) { cumpleRProductividad2++; }
+
+                solucionProductividad=solucion.clone();
+                solucionProductividad.factibilizarProductividad();
+                solucionProductividad.recalcular();
+                if(solucionProductividad.esFactible()) { factible3++; }
+                if(solucionProductividad.restriccionUsosDistintos.cumpleRestriccion) { cumpleRCantUsos3++; }
+                if(solucionProductividad.restriccionProductividadMinimaEstacion.cumpleRestriccion) { cumpleRProductividad3++; }
+
+                solucionFactible=solucion.clone();
+                solucionFactible.recalcular();
+                solucionFactible.factibilizar(repeticiones, profundidad);
+                solucionFactible.recalcular();
+                if(solucionFactible.esFactible()) { factible4++; }
+                if(solucionFactible.restriccionUsosDistintos.cumpleRestriccion) { cumpleRCantUsos4++; }
+                if(solucionFactible.restriccionProductividadMinimaEstacion.cumpleRestriccion) { cumpleRProductividad4++; }
+
+            }
+            System.out.print("\n\tGENERADA: ");
+            System.out.print("\t\t\tFACTIBLE: "+factible);
+            System.out.print("\tRest Cant Usos: "+cumpleRCantUsos);
+            System.out.println("\t\tRest Productividad: "+cumpleRProductividad);
+            System.out.print("\tFacCantUsos: ");
+            System.out.print("\t\tFACTIBLE: "+factible2);
+            System.out.print("\tRest Cant Usos: "+cumpleRCantUsos2);
+            System.out.println("\t\tRest Productividad: "+cumpleRProductividad2);
+            System.out.print("\tFacProduccion: ");
+            System.out.print("\t\tFACTIBLE: "+factible3);
+            System.out.print("\tRest Cant Usos: "+cumpleRCantUsos3);
+            System.out.println("\t\tRest Productividad: "+cumpleRProductividad3);
+            System.out.print("\tFactibilizar: ");
+            System.out.print("\t\tFACTIBLE: "+factible4);
+            System.out.print("\tRest Cant Usos: "+cumpleRCantUsos4);
+            System.out.println("\t\tRest Productividad: "+cumpleRProductividad4);
+
+
+            //solucion.imprimirMatriz();
+            System.out.println("\n---------------------------------------------------------------------------------\n");
+        }
     }
 
     private static void testFactibilizarCantUsos() {
@@ -37,7 +122,7 @@ public class Main {
         int instancia=0;
         System.out.println("testFactibilizarCantUsos");
         for (int iInstancia =instancia; iInstancia <= instancia; iInstancia++) {
-           int maxSoluciones=100;
+           int maxSoluciones=1000;
             for (int iSoluciones = 0; iSoluciones< maxSoluciones; iSoluciones++) {
                 Constantes.productores = Productor.cargarProductores();
                 nombreInstancia = "./Instancias/Intancia " + (iInstancia + 1) + ".in";
@@ -88,47 +173,51 @@ public class Main {
         Solucion solucion, nuevaSolucion;
         String nombreInstancia;
         int cantPixeles;
-        int instancia=1;
+        int instancia=14;
         System.out.println("testFactibilizarProductividad");
         for (int iInstancia =instancia; iInstancia <= instancia; iInstancia++) {
-            int maxSoluciones=10;
+            int maxSoluciones=1000;
+            nombreInstancia = "./Instancias/Intancia " + (iInstancia + 1) + ".in";
+            cantPixeles=Pixel.contarLineas(nombreInstancia);
+            System.out.println(nombreInstancia+"\tCantPixeles:"+cantPixeles);
+            Constantes.cantPixeles=cantPixeles;
+            Constantes.cantPotreros=cantPixeles;
             for (int iSoluciones = 0; iSoluciones< maxSoluciones; iSoluciones++) {
                 Constantes.productores = Productor.cargarProductores();
-                nombreInstancia = "./Instancias/Intancia " + (iInstancia + 1) + ".in";
-                cantPixeles=Pixel.contarLineas(nombreInstancia);
-                System.out.println(nombreInstancia+"\tCantPixeles:"+cantPixeles);
-                Constantes.cantPixeles=cantPixeles;
-                Constantes.cantPotreros=cantPixeles;
                 Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);
                 Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();
                 //Pixel.imprimirPixeles();
-
-                System.out.println("Solucion: "+iSoluciones);
+                System.out.println("SOLUCION: "+iSoluciones+"\nORIGINAL:");
                 solucion=Solucion.crearSolucion();
-                for (;solucion.restriccionProductividadMinimaEstacion.cumpleRestriccion;) {
+                for (;solucion.restriccionProductividadMinimaEstacion.cumpleRestriccion || solucion.restriccionUsosDistintos.cumpleRestriccion;) {
                     solucion=Solucion.crearSolucion();
                     solucion.recalcular();
                 }
                 solucion.imprimirFuncionObjetivo();
 
                 nuevaSolucion= solucion.clone();
-                int maxBusquedas=1000, maxMejoras=100;
-                for (int i = 0; (i <maxBusquedas&& !nuevaSolucion.restriccionProductividadMinimaEstacion.cumpleRestriccion); i++) {
+                int maxBusquedas=100, maxMejoras=100;
+                for (int i = 0; (i <maxBusquedas && !nuevaSolucion.esFactible()); i++) {
                     nuevaSolucion= solucion.clone();
                     //System.out.println("Factibilizacion  :"+i);
-                    for (int j = 0; (j < maxMejoras && !nuevaSolucion.restriccionProductividadMinimaEstacion.cumpleRestriccion) ; j++) {
+                    for (int j = 0; (j < maxMejoras &&  !nuevaSolucion.esFactible()) ; j++) {
                         nuevaSolucion.factibilizarProductividad();
                         nuevaSolucion.recalcular();
                     }
-                    if (nuevaSolucion.restriccionProductividadMinimaEstacion.cumpleRestriccion){
+                    if (nuevaSolucion.esFactible()){
                         System.out.println("FACTIBILIZADO EN LA ITERACION  "+i);
-                        nuevaSolucion.imprimirProductividadSobreSuperficiePorEstacion();
+                        //nuevaSolucion.imprimirProductividadSobreSuperficiePorEstacion();
                         nuevaSolucion.imprimirFuncionObjetivo();
+                        if(!nuevaSolucion.restriccionUsosDistintos.cumpleRestriccion){
+                            nuevaSolucion.imprimirRestriccionUsosDistintosExpandida();
+                            nuevaSolucion.imprimirMatriz();
+                        }
                     }else if (i==maxBusquedas-1) {
-                        System.out.println("NO FACTIBILZADO "+i);
-                        nuevaSolucion.imprimirProductividadSobreSuperficiePorEstacion();
+                        System.out.println("NO FACTIBILIZADO "+i);
+                        //nuevaSolucion.imprimirProductividadSobreSuperficiePorEstacion();
+                        nuevaSolucion.imprimirFuncionObjetivo();
                     }else{
-//                    System.out.println("NO FACTIBILZADO "+i);
+//                    System.out.println("NO FACTIBILIZADO "+i);
 //                    nuevaSolucion.imprimirUsosDisitintosPorEstacion();
                     }
                 }
@@ -136,7 +225,7 @@ public class Main {
             }
 
             //solucion.imprimirMatriz();
-            System.out.println("\n\n");
+            System.out.println("\n-------------------------------------------------------------------------------------------\n");
         }
 
     }

@@ -571,7 +571,7 @@ public class Uso {
         siguientesUsos = new ArrayList<Integer> (Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12, 14));
         productividadUso= new float[] {0,0,0,0};//
         fosforoEstacion = new float[] {0.244f,0.244f, 0.244f,0.244f};
-        listaUsos[14]= new Uso(14, 2, 2, 0.975f,productividadUso,fosforoEstacion, "Rastrojo", siguientesUsos);
+        listaUsos[14]= new Uso(14, 1, 2, 0.975f,productividadUso,fosforoEstacion, "Rastrojo", siguientesUsos);
 
         return listaUsos;
     }
