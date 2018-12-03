@@ -1,3 +1,5 @@
+package ec.app.proyectoFinal;
+
 import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 
 import java.text.DecimalFormat;
@@ -5,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Main {
+public class MainTest {
 
     public static void main(final String[] args) {
         boolean imprimirConstantesTodoJunto = false, imprimirConstantesUnoAUno = false, imprimirSolucion = false;
@@ -23,11 +25,11 @@ public class Main {
         //Constantes.cantPixeles = 18475;
         //Constantes.cantPotreros = 26168;
         //Constantes.pixeles = Pixel.cargarPixeles(fileName);
-        //Main.generarMejorSolucion();
+        //MainTest.generarMejorSolucion();
 
-        //Main.testInstancias();
-        //Main.testFactibilizarProductividad();
-        Main.testCrearSolucionFactible();
+        //MainTest.testInstancias();
+        //MainTest.testFactibilizarProductividad();
+        MainTest.testCrearSolucionFactible();
 
     }
 
@@ -255,7 +257,7 @@ public class Main {
                 System.out.print("\t\tRepeticion "+iRepeticion);
                 //Pixel.imprimirPixeles();
                 //Productor.imprimirProductores();
-                solucion=Main.grasp(1000, false);
+                solucion=MainTest.grasp(1000, false);
                 //Cuento las lineas
                 //Corro el grasp
                 //System.out.println("\tCantPixeles: "+ Constantes.cantPixeles+"\tCantEstaciones: "+Constantes.cantEstaciones);
@@ -312,14 +314,14 @@ public class Main {
         //Scanner reader = new Scanner(System.in);
         //maxCantidad = reader.nextInt();
 
-        mejorSolucion = Main.LocalSearch(Solucion.crearSolucion());
+        mejorSolucion = MainTest.LocalSearch(Solucion.crearSolucion());
         if (verbose) System.out.println("GRASP-Solucion Original: ");
         mejorSolucion.evaluarFuncionObjetivo();
 
         for (int iSoluciones = 0; iSoluciones < maxCantidad; iSoluciones++) {
             if (verbose)System.out.println("GRASP-Iteracion: " + iSoluciones);
             nuevaSolucion=Solucion.crearSolucion();
-            nuevaSolucion=Main.LocalSearch(nuevaSolucion);
+            nuevaSolucion=MainTest.LocalSearch(nuevaSolucion);
 
             if (nuevaSolucion.evaluarFuncionObjetivo() < mejorSolucion.evaluarFuncionObjetivo()) {
                 if (verbose)System.out.println("GRASP-Actualizo el mejor.");
@@ -418,7 +420,7 @@ public class Main {
         }
         Constantes.pixeles = Pixel.cargarPixeles(fileName);
 
-        solucion=Main.grasp(cantidadSoluciones, true);
+        solucion=MainTest.grasp(cantidadSoluciones, true);
         solucion.crearArchivoMatriz();
         solucion.crearArchivoMatrizNombreUsoExtendido();
         solucion.crearArchivoCantidadUsos();
@@ -457,7 +459,7 @@ public class Main {
 
         for (int i = 0; i < 10; i++) {
             System.out.println("Intento LS: " + i);
-            solucionNueva = Main.LocalSearch(solucionOriginal);
+            solucionNueva = MainTest.LocalSearch(solucionOriginal);
             if (solucionOriginal.evaluarFuncionObjetivo() < solucionNueva.evaluarFuncionObjetivo()) {
                 System.out.println("\tFallo LS\tFOOriginal=" + solucionOriginal.evaluarFuncionObjetivo() + "\t FONueva=" + solucionNueva.evaluarFuncionObjetivo());
             } else {
@@ -477,7 +479,7 @@ public class Main {
 
         for (int i = 0; i < 10; i++) {
             System.out.println("Intento GRASP: " + i);
-            solucionNueva = Main.grasp(10, true);
+            solucionNueva = MainTest.grasp(10, true);
             if (solucionOriginal.evaluarFuncionObjetivo() < solucionNueva.evaluarFuncionObjetivo()) {
                 System.out.println("\tFallo GRASP\tFOOriginal=" + solucionOriginal.evaluarFuncionObjetivo() + "\t FONueva=" + solucionNueva.evaluarFuncionObjetivo());
             } else {

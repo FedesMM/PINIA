@@ -1,5 +1,7 @@
+package ec.app.proyectoFinal;
 
 import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+import ec.vector.IntegerMatrixIndividual;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -109,11 +111,22 @@ public class Solucion {
         }
         solucion.recalcular();//Incluye chequear restricciones.
 
-
         return solucion;
     }
 
+    public IntegerMatrixIndividual solucionAGenoma(Solucion sol) {
+        IntegerMatrixIndividual ind = new IntegerMatrixIndividual();
+        for (int iPixel = 0; iPixel < Constantes.cantPixeles; iPixel++) {
+            for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
+                ind.genome[iPixel*Constantes.cantEstaciones+iEstacion] = sol.matriz[iPixel][iEstacion] / 100;
+            }
+        }
 
+        ind.evaluated = false;
+        // ind.fitness
+
+        return ind;
+    }
 
     /*DEPRECATED
     //Restricciones de fosforo anual
