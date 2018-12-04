@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50f67880-fd28-4fde-b368-6ab48eb12f70" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/proyectoFinal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/proyectoFinal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/Species.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/Species.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ec/Subpopulation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/Subpopulation.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,22 +44,22 @@
     <session id="-1945485963">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="10" />
+          <entry key="java" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="10" />
+          <entry key="JAVA" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="501" />
+          <entry key="java" value="701" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="501" />
+          <entry key="JAVA" value="701" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
@@ -78,53 +77,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/proyectoFinal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="60" column="18" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
+            <state relative-caret-position="190">
+              <caret line="28" column="73" lean-forward="true" selection-start-line="28" selection-end-line="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="class#Main#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ec/Subpopulation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="326">
+              <caret line="289" column="47" lean-forward="true" selection-start-line="289" selection-start-column="47" selection-end-line="289" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4477#4478#0" expanded="true" />
+                <element signature="e#4543#4544#0" expanded="true" />
+                <element signature="e#5844#5845#0" expanded="true" />
+                <element signature="e#5883#5884#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixIndividual.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ec/Species.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
+            <state relative-caret-position="85">
+              <caret line="122" column="22" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="22" />
               <folding>
-                <element signature="method#toString#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#clone#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#setup#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#defaultCrossover#0;class#IntegerMatrixIndividual#0" />
-                <element signature="docComment;method#split#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#split#0;class#IntegerMatrixIndividual#0" />
-                <element signature="docComment;method#join#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#join#0;class#IntegerMatrixIndividual#0" />
-                <element signature="docComment;method#randomValueFromClosedInterval#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#randomValueFromClosedInterval#0;class#IntegerMatrixIndividual#0" />
-                <element signature="docComment;method#defaultMutate#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#defaultMutate#0;class#IntegerMatrixIndividual#0" />
-                <element signature="docComment;method#reset#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#reset#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#hashCode#0;class#IntegerMatrixIndividual#0" />
-                <element signature="e#10562#10585#0" />
-                <element signature="method#genotypeToStringForHumans#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#genotypeToString#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#parseGenotype#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#equals#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#writeGenotype#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#readGenotype#0;class#IntegerMatrixIndividual#0" />
-                <element signature="docComment;method#clamp#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#clamp#0;class#IntegerMatrixIndividual#0" />
-                <element signature="e#14019#14116#0" />
-                <element signature="docComment;method#isInRange#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#isInRange#0;class#IntegerMatrixIndividual#0" />
-                <element signature="method#distanceTo#0;class#IntegerMatrixIndividual#0" />
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#Species#0" />
+                <element signature="docComment;field#i_prototype#0;class#Species#0" />
+                <element signature="docComment;field#pipe_prototype#0;class#Species#0" />
+                <element signature="docComment;field#f_prototype#0;class#Species#0" />
+                <element signature="method#clone#0;class#Species#0" />
+                <element signature="docComment;method#buildMisc#0;class#Species#0" />
+                <element signature="method#buildMisc#0;class#Species#0" />
+                <element signature="docComment;method#newIndividual#0;class#Species#0" />
+                <element signature="docComment;method#newIndividual#1;class#Species#0" />
+                <element signature="method#newIndividual#1;class#Species#0" />
+                <element signature="docComment;method#newIndividual#2;class#Species#0" />
+                <element signature="method#newIndividual#2;class#Species#0" />
+                <element signature="docComment;method#setup#0;class#Species#0" />
+                <element signature="method#setup#0;class#Species#0" />
               </folding>
             </state>
           </provider>
@@ -133,32 +134,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
+            <state relative-caret-position="190">
+              <caret line="1352" column="20" selection-start-line="1352" selection-start-column="20" selection-end-line="1352" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#RestriccionProductividadProductores#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Constantes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Pixel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="29" selection-start-column="29" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -208,10 +188,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Initializing Gene</find>
-      <find>inizi</find>
-      <find>nt empl y cant tareas</find>
-      <find>System.out.print(</find>
       <find>empleadosPorTarea</find>
       <find>p1e1</find>
       <find>recalcua</find>
@@ -237,7 +213,11 @@
       <find>factibilizar</find>
       <find>evaluarf</find>
       <find>ideal</find>
+      <find>p131</find>
+      <find>System.out.println(&quot;COMIENZO DE MOSTRAR LOS INDIVIDUOS ORIGINALES&quot;);</find>
       <find>setFitness</find>
+      <find>º</find>
+      <find>newInd</find>
     </findStrings>
     <replaceStrings>
       <replace>IntegerVectorSpeciesP1E1</replace>
@@ -300,8 +280,6 @@
         <option value="$PROJECT_DIR$/src/main/java/ec/util/MatrixUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/ec/util/Range.java" />
         <option value="$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixIndividual.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ec/Species.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ec/Subpopulation.java" />
         <option value="$PROJECT_DIR$/src/main/java/ec/vector/MatrixSpecies.java" />
         <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java" />
         <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Constantes.java" />
@@ -310,6 +288,8 @@
         <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java" />
         <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/proyectoFinal.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ec/Species.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ec/Subpopulation.java" />
       </list>
     </option>
   </component>
@@ -462,7 +442,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="subp&#9;FILE&#9;file://C:/Users/Martin/IdeaProjects/ArgEvol/PINIA/src/main/java/ec/Subpopulation.java&#10;simplefit&#9;FILE&#9;file://C:/Users/Martin/IdeaProjects/ArgEvol/PINIA/src/main/java/ec/simple/SimpleFitness.java&#10;fitness&#9;PSI&#9;JAVA://ec.Fitness&#10;species&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/PINIA/src/main/java/ec/Species.java&#10;ec.vector.breed.VectorCrossoverPipeline&#9;PSI&#9;JAVA://ec.vector.breed.VectorCrossoverPipeline&#10;simpleEval&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/simple/SimpleEvaluator.java&#10;init&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/Initializer.java&#10;initialize&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/simple/SimpleInitializer.java&#10;subpo&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/Subpopulation.java&#10;p1e1.para&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/resources/ec/app/p1e1/p1e1.params&#10;testNewIndividual1&#9;PSI&#9;JAVA://ec.eda.pbil.PBILSpeciesTest#testNewIndividual1&#10;SteadyStateEvolutionState&#9;PSI&#9;JAVA://ec.steadystate.SteadyStateEvolutionState&#10;simpleStat&#9;PSI&#9;JAVA://ec.simple.SimpleStatistics&#10;p1e1.params&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/resources/ec/app/p1e1/p1e1.params&#10;integer&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/vector/IntegerVectorSpeciesP1E1.java&#10;subpop&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/Subpopulation.java&#10;FloatVectorSpecies&#9;PSI&#9;JAVA://ec.vector.FloatVectorSpecies&#10;ec.vector.breed.VectorMutationPipeline&#9;PSI&#9;JAVA://ec.vector.breed.VectorMutationPipeline&#10;crossover&#9;PSI&#9;JAVA://ec.gp.koza.CrossoverPipeline&#10;populate&#9;PSI&#9;JAVA://ec.Population#populate&#10;integervectorindividualp1&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/vector/IntegerVectorIndividualP1E1.java&#10;MultiPopCoevolutionaryEvaluatorTest&#9;PSI&#9;JAVA://ec.coevolve.MultiPopCoevolutionaryEvaluatorTest&#10;IntegerVectorSpeciesP&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/vector/IntegerVectorSpeciesP1E1.java&#10;simplefi&#9;PSI&#9;JAVA://ec.simple.SimpleFitness&#10;tareas&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/app/p1e1/tareas.csv&#10;IntegerVectorSpecies&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/vector/IntegerVectorSpecies.java&#10;p1e1.p&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/resources/ec/app/p1e1/p1e1.params&#10;p1e1&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/app/p1e1/p1e1.java" />
+    <property name="SearchEverywhereHistoryKey" value="sub&#9;FILE&#9;file://C:/Users/Martin/IdeaProjects/ArgEvol/PINIA/src/main/java/ec/Subpopulation.java&#10;subp&#9;FILE&#9;file://C:/Users/Martin/IdeaProjects/ArgEvol/PINIA/src/main/java/ec/Subpopulation.java&#10;simplefit&#9;FILE&#9;file://C:/Users/Martin/IdeaProjects/ArgEvol/PINIA/src/main/java/ec/simple/SimpleFitness.java&#10;fitness&#9;PSI&#9;JAVA://ec.Fitness&#10;species&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/PINIA/src/main/java/ec/Species.java&#10;ec.vector.breed.VectorCrossoverPipeline&#9;PSI&#9;JAVA://ec.vector.breed.VectorCrossoverPipeline&#10;simpleEval&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/simple/SimpleEvaluator.java&#10;init&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/Initializer.java&#10;initialize&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/simple/SimpleInitializer.java&#10;subpo&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/Subpopulation.java&#10;p1e1.para&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/resources/ec/app/p1e1/p1e1.params&#10;testNewIndividual1&#9;PSI&#9;JAVA://ec.eda.pbil.PBILSpeciesTest#testNewIndividual1&#10;SteadyStateEvolutionState&#9;PSI&#9;JAVA://ec.steadystate.SteadyStateEvolutionState&#10;simpleStat&#9;PSI&#9;JAVA://ec.simple.SimpleStatistics&#10;p1e1.params&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/resources/ec/app/p1e1/p1e1.params&#10;integer&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/vector/IntegerVectorSpeciesP1E1.java&#10;subpop&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/Subpopulation.java&#10;FloatVectorSpecies&#9;PSI&#9;JAVA://ec.vector.FloatVectorSpecies&#10;ec.vector.breed.VectorMutationPipeline&#9;PSI&#9;JAVA://ec.vector.breed.VectorMutationPipeline&#10;crossover&#9;PSI&#9;JAVA://ec.gp.koza.CrossoverPipeline&#10;populate&#9;PSI&#9;JAVA://ec.Population#populate&#10;integervectorindividualp1&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/vector/IntegerVectorIndividualP1E1.java&#10;MultiPopCoevolutionaryEvaluatorTest&#9;PSI&#9;JAVA://ec.coevolve.MultiPopCoevolutionaryEvaluatorTest&#10;IntegerVectorSpeciesP&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/vector/IntegerVectorSpeciesP1E1.java&#10;simplefi&#9;PSI&#9;JAVA://ec.simple.SimpleFitness&#10;tareas&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/app/p1e1/tareas.csv&#10;IntegerVectorSpecies&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/vector/IntegerVectorSpecies.java&#10;p1e1.p&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/resources/ec/app/p1e1/p1e1.params&#10;p1e1&#9;FILE&#9;file:///home/fmatonte/Desktop/AlgoritmosEvolutivos/p1e1/distribucionalumnos/src/main/java/ec/app/p1e1/p1e1.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -598,12 +578,12 @@
       <updated>1535916014711</updated>
       <workItem from="1535916016677" duration="10991000" />
       <workItem from="1543953256113" duration="579000" />
-      <workItem from="1543958146880" duration="3063000" />
+      <workItem from="1543958146880" duration="5283000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17308000" />
+    <option name="totallyTimeSpent" value="19528000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -836,24 +816,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ec/Subpopulation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/MatrixSpecies.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
           <caret line="111" column="51" selection-start-line="111" selection-start-column="51" selection-end-line="111" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ec/Species.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="18" column="36" lean-forward="true" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -933,24 +899,136 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/simple/SimpleFitness.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="65" column="82" selection-start-line="65" selection-start-column="74" selection-end-line="65" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/Fitness.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
+          <folding>
+            <element signature="docComment;class#Fitness#0" />
+            <element signature="docComment;field#trials#0;class#Fitness#0" />
+            <element signature="docComment;field#context#0;class#Fitness#0" />
+            <element signature="method#setContext#0;class#Fitness#0" />
+            <element signature="method#setContext#1;class#Fitness#0" />
+            <element signature="docComment;method#getContext#0;class#Fitness#0" />
+            <element signature="docComment;field#P_FITNESS#0;class#Fitness#0" />
+            <element signature="docComment;field#FITNESS_PREAMBLE#0;class#Fitness#0" />
+            <element signature="docComment;method#fitness#0;class#Fitness#0" />
+            <element signature="docComment;method#isIdealFitness#0;class#Fitness#0" />
+            <element signature="docComment;method#equivalentTo#0;class#Fitness#0" />
+            <element signature="docComment;method#betterThan#0;class#Fitness#0" />
+            <element signature="docComment;method#printFitnessForHumans#0;class#Fitness#0" />
+            <element signature="method#printFitnessForHumans#0;class#Fitness#0" />
+            <element signature="docComment;method#printFitnessForHumans#1;class#Fitness#0" />
+            <element signature="method#printFitnessForHumans#1;class#Fitness#0" />
+            <element signature="e#7444#7498#0" />
+            <element signature="docComment;method#printFitness#0;class#Fitness#0" />
+            <element signature="docComment;method#printFitness#1;class#Fitness#0" />
+            <element signature="method#printFitness#1;class#Fitness#0" />
+            <element signature="docComment;method#printFitness#2;class#Fitness#0" />
+            <element signature="method#printFitness#2;class#Fitness#0" />
+            <element signature="docComment;method#readFitness#0;class#Fitness#0" />
+            <element signature="method#readFitness#0;class#Fitness#0" />
+            <element signature="docComment;method#fitnessToStringForHumans#0;class#Fitness#0" />
+            <element signature="docComment;method#fitnessToString#0;class#Fitness#0" />
+            <element signature="docComment;method#writeFitness#0;class#Fitness#0" />
+            <element signature="method#writeFitness#0;class#Fitness#0" />
+            <element signature="docComment;method#writeTrials#0;class#Fitness#0" />
+            <element signature="method#writeTrials#0;class#Fitness#0" />
+            <element signature="docComment;method#readFitness#1;class#Fitness#0" />
+            <element signature="method#readFitness#1;class#Fitness#0" />
+            <element signature="docComment;method#readTrials#0;class#Fitness#0" />
+            <element signature="method#readTrials#0;class#Fitness#0" />
+            <element signature="docComment;method#contextIsBetterThan#0;class#Fitness#0" />
+            <element signature="method#contextIsBetterThan#0;class#Fitness#0" />
+            <element signature="method#bestTrial#0;class#Fitness#0" />
+            <element signature="docComment;method#merge#0;class#Fitness#0" />
+            <element signature="method#merge#0;class#Fitness#0" />
+            <element signature="method#clone#0;class#Fitness#0" />
+            <element signature="method#setup#0;class#Fitness#0" />
+            <element signature="docComment;method#compareTo#0;class#Fitness#0" />
+            <element signature="method#compareTo#0;class#Fitness#0" />
+            <element signature="docComment;method#setToBestOf#0;class#Fitness#0" />
+            <element signature="method#setToBestOf#0;class#Fitness#0" />
+            <element signature="docComment;method#setToMeanOf#0;class#Fitness#0" />
+            <element signature="method#setToMeanOf#0;class#Fitness#0" />
+            <element signature="docComment;method#setToMedianOf#0;class#Fitness#0" />
+            <element signature="method#setToMedianOf#0;class#Fitness#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/Individual.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1877">
-          <caret line="74" column="22" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
+        <state relative-caret-position="323">
+          <caret line="86" column="15" selection-start-line="86" selection-start-column="15" selection-end-line="86" selection-end-column="15" />
+          <folding>
+            <element signature="docComment;class#Individual#0" />
+            <element signature="docComment;field#P_INDIVIDUAL#0;class#Individual#0" />
+            <element signature="docComment;field#EVALUATED_PREAMBLE#0;class#Individual#0" />
+            <element signature="docComment;field#fitness#0;class#Individual#0" />
+            <element signature="docComment;field#species#0;class#Individual#0" />
+            <element signature="docComment;field#evaluated#0;class#Individual#0" />
+            <element signature="method#clone#0;class#Individual#0" />
+            <element signature="docComment;method#size#0;class#Individual#0" />
+            <element signature="method#size#0;class#Individual#0" />
+            <element signature="docComment;method#equals#0;class#Individual#0" />
+            <element signature="docComment;method#hashCode#0;class#Individual#0" />
+            <element signature="docComment;method#toString#0;class#Individual#0" />
+            <element signature="method#toString#0;class#Individual#0" />
+            <element signature="docComment;method#genotypeToStringForHumans#0;class#Individual#0" />
+            <element signature="docComment;method#genotypeToString#0;class#Individual#0" />
+            <element signature="docComment;method#setup#0;class#Individual#0" />
+            <element signature="method#setup#0;class#Individual#0" />
+            <element signature="e#7907#7934#0" />
+            <element signature="docComment;method#printIndividualForHumans#0;class#Individual#0" />
+            <element signature="method#printIndividualForHumans#0;class#Individual#0" />
+            <element signature="docComment;method#printIndividualForHumans#1;class#Individual#0" />
+            <element signature="method#printIndividualForHumans#1;class#Individual#0" />
+            <element signature="docComment;method#printIndividual#0;class#Individual#0" />
+            <element signature="method#printIndividual#0;class#Individual#0" />
+            <element signature="docComment;method#printIndividual#1;class#Individual#0" />
+            <element signature="method#printIndividual#1;class#Individual#0" />
+            <element signature="docComment;method#printIndividual#2;class#Individual#0" />
+            <element signature="method#printIndividual#2;class#Individual#0" />
+            <element signature="docComment;method#readIndividual#0;class#Individual#0" />
+            <element signature="method#readIndividual#0;class#Individual#0" />
+            <element signature="docComment;method#parseGenotype#0;class#Individual#0" />
+            <element signature="method#parseGenotype#0;class#Individual#0" />
+            <element signature="docComment;method#writeIndividual#0;class#Individual#0" />
+            <element signature="method#writeIndividual#0;class#Individual#0" />
+            <element signature="docComment;method#writeGenotype#0;class#Individual#0" />
+            <element signature="method#writeGenotype#0;class#Individual#0" />
+            <element signature="docComment;method#readGenotype#0;class#Individual#0" />
+            <element signature="method#readGenotype#0;class#Individual#0" />
+            <element signature="docComment;method#readIndividual#1;class#Individual#0" />
+            <element signature="method#readIndividual#1;class#Individual#0" />
+            <element signature="docComment;method#distanceTo#0;class#Individual#0" />
+            <element signature="docComment;method#compareTo#0;class#Individual#0" />
+            <element signature="method#compareTo#0;class#Individual#0" />
+            <element signature="docComment;method#merge#0;class#Individual#0" />
+            <element signature="method#merge#0;class#Individual#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/MatrixIndividual.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="4" column="53" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
+        <state relative-caret-position="68">
+          <caret line="4" column="51" lean-forward="true" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixIndividual.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
+        <state relative-caret-position="68">
+          <caret line="7" column="53" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
           <folding>
             <element signature="method#toString#0;class#IntegerMatrixIndividual#0" />
             <element signature="method#clone#0;class#IntegerMatrixIndividual#0" />
@@ -984,10 +1062,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/Species.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="122" column="22" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Species#0" />
+            <element signature="docComment;field#i_prototype#0;class#Species#0" />
+            <element signature="docComment;field#pipe_prototype#0;class#Species#0" />
+            <element signature="docComment;field#f_prototype#0;class#Species#0" />
+            <element signature="method#clone#0;class#Species#0" />
+            <element signature="docComment;method#buildMisc#0;class#Species#0" />
+            <element signature="method#buildMisc#0;class#Species#0" />
+            <element signature="docComment;method#newIndividual#0;class#Species#0" />
+            <element signature="docComment;method#newIndividual#1;class#Species#0" />
+            <element signature="method#newIndividual#1;class#Species#0" />
+            <element signature="docComment;method#newIndividual#2;class#Species#0" />
+            <element signature="method#newIndividual#2;class#Species#0" />
+            <element signature="docComment;method#setup#0;class#Species#0" />
+            <element signature="method#setup#0;class#Species#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
+        <state relative-caret-position="190">
+          <caret line="1352" column="20" selection-start-line="1352" selection-start-column="20" selection-end-line="1352" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#RestriccionProductividadProductores#0" />
@@ -995,27 +1097,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ec/simple/SimpleFitness.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="65" column="82" selection-start-line="65" selection-start-column="74" selection-end-line="65" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ec/Fitness.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/proyectoFinal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="60" column="18" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
+        <state relative-caret-position="190">
+          <caret line="28" column="73" lean-forward="true" selection-start-line="28" selection-end-line="29" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Main#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/Subpopulation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="289" column="47" lean-forward="true" selection-start-line="289" selection-start-column="47" selection-end-line="289" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4477#4478#0" expanded="true" />
+            <element signature="e#4543#4544#0" expanded="true" />
+            <element signature="e#5844#5845#0" expanded="true" />
+            <element signature="e#5883#5884#0" expanded="true" />
           </folding>
         </state>
       </provider>

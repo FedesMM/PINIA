@@ -8,7 +8,6 @@
 package ec;
 //import ec.app.proyectoFinal.Tarea;
 import ec.util.*;
-import ec.vector.IntegerVectorIndividualP1E1;
 
 import java.io.*;
 import java.util.*;
