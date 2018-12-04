@@ -8,8 +8,6 @@
 package ec.vector;
 
 import ec.*;
-import ec.app.p1e1.Empleado;
-import ec.app.p1e1.Tarea;
 import ec.util.*;
 import java.io.*;
 

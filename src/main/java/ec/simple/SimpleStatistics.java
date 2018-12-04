@@ -7,8 +7,7 @@
 
 package ec.simple;
 import ec.*;
-import ec.app.p1e1.Empleado;
-import ec.app.p1e1.Tarea;
+import ec.app.proyectoFinal.Solucion;
 import ec.steadystate.*;
 
 import java.io.*;
@@ -17,8 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import ec.util.*;
-import ec.vector.IntegerVectorIndividualP1E1;
-import ec.vector.IntegerVectorSpeciesP1E1;
+import ec.vector.IntegerMatrixIndividual;
 
 /* 
  * SimpleStatistics.java
@@ -240,51 +238,14 @@ public class SimpleStatistics extends Statistics implements SteadyStateStatistic
                 }
             }
 
-            if (!(best_of_run[x] instanceof IntegerVectorIndividualP1E1)) {
-                state.output.fatal("Error. No es un vector de enteros!", null);
+            if (!(best_of_run[x] instanceof IntegerMatrixIndividual)) {
+                state.output.fatal("Error. No es una matriz de enteros!", null);
             } else {
-
                 //Genero el archivo CSV con la solución
-                try {
-                    File fout = new File("solucion.csv");
-                    FileOutputStream fos = new FileOutputStream(fout);
-                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+                IntegerMatrixIndividual ind = (IntegerMatrixIndividual) best_of_run[x];
 
-                    IntegerVectorIndividualP1E1 ind = (IntegerVectorIndividualP1E1) best_of_run[x];
-
-                    HashMap<Integer, List<Integer>> sol = new HashMap<Integer, List<Integer>>();
-                    for (int i = 0; i < ind.genome.length; i++) {
-
-                        if (sol.containsKey(ind.genome[i])) {
-                            sol.get(ind.genome[i]).add(i);
-                            //System.out.println("Se agrega a la lista de "+(ind.genome[i]+1)+" la tarea  "+(i+1));
-                        } else {
-                            List<Integer> tareas = new ArrayList<Integer>();
-                            tareas.add(i);
-                            sol.put(ind.genome[i], tareas);
-                            //System.out.println("Se crea la lista de "+(ind.genome[i]+1)+" yse agrega la tarea  "+(i+1));
-
-                        }
-                    }
-                    //System.out.println("sol.size.(): "+sol.size());
-                    for (int i: sol.keySet()) {
-                        if (sol.containsKey(i)) {
-                            String tareasAImprimir = "";
-                            for (Integer t: sol.get(i)) {
-                                tareasAImprimir += " t" + (String.valueOf(t+1));
-                            }
-                            Integer idEmpleado = i + 1;
-                            //System.out.println("idEmpleado: "+idEmpleado +"\ttareasAImprimir: "+ tareasAImprimir);
-                            bw.write("e"+idEmpleado + tareasAImprimir);
-                            bw.newLine();
-                        }
-                    }
-
-                    bw.close();
-                } catch (IOException e) {
-                    System.out.println("Error al escribir el csv con la solución");
-                }
-
+                Solucion sol = Solucion.genomaASolucion(ind.genome);
+                sol.crearArchivoMatriz();
             }
         }
     }
