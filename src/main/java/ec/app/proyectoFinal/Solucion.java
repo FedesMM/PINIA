@@ -114,18 +114,15 @@ public class Solucion {
         return solucion;
     }
 
-    public IntegerMatrixIndividual solucionAGenoma(Solucion sol) {
-        IntegerMatrixIndividual ind = new IntegerMatrixIndividual();
+    public int[] solucionAGenoma() {
+        int[] genoma = new int[Constantes.cantPixeles * Constantes.cantEstaciones];
         for (int iPixel = 0; iPixel < Constantes.cantPixeles; iPixel++) {
             for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
-                ind.genome[iPixel*Constantes.cantEstaciones+iEstacion] = sol.matriz[iPixel][iEstacion] / 100;
+                genoma[iPixel*Constantes.cantEstaciones+iEstacion] = this.matriz[iPixel][iEstacion] / 100;
             }
         }
 
-        ind.evaluated = false;
-        // ind.fitness
-
-        return ind;
+        return genoma;
     }
 
     /*DEPRECATED
@@ -178,7 +175,7 @@ public class Solucion {
     public float evaluarFuncionObjetivo(float pesoFosforo, float pesoProductividad, float pesoCantUsos){
         float valor=0;
         valor= pesoFosforo * (this.fosforo /(Constantes.maximoIncumplimientoFosforo*this.areaTotal));
-        valor += - pesoProductividad * (this.restriccionProductividadMinimaEstacion.maximoDesviacion /Constantes.maximoIncumplimientoProductividadMinimaEstacion);
+        valor += - pesoProductividad * (this.restriccionProductividadMinimaEstacion.cantIncumplimientos /Constantes.maximoIncumplimientoProductividadMinimaEstacion);
         valor +=  pesoCantUsos * (this.restriccionUsosDistintos.cantIncumplimientos/ Constantes.maximoIncumplimientoUsosDistintos);
         return valor;
     }
@@ -1357,8 +1354,12 @@ public class Solucion {
         Solucion copia=this.clone();
         for (int iRepeticion = 0; iRepeticion < repeticiones && !this.esFactible(); iRepeticion++) {
             for (int iProfundidad = 0; iProfundidad < profundidad && !this.esFactible(); iProfundidad++) {
-                copia.factibilizarCantUsos();
-                copia.factibilizarProductividad();
+                if (!copia.restriccionUsosDistintos.cumpleRestriccion) {
+                    copia.factibilizarCantUsos();
+                }
+                if (!copia.restriccionProductividadMinimaEstacion.cumpleRestriccion) {
+                    copia.factibilizarProductividad();
+                }
                 copia.recalcular();
                 if (copia.esFactible()){
                     return copia;
@@ -1367,6 +1368,11 @@ public class Solucion {
             copia=this.clone();
         }
         return this;
+    }
+
+    public float evaluarFitness() {
+        return this.fosforo + this.restriccionProductividadMinimaEstacion.cantIncumplimientos * Constantes.maximoIncumplimientoFosforo
+                + this.restriccionUsosDistintos.cantIncumplimientos * Constantes.maximoIncumplimientoFosforo;
     }
 }
 
