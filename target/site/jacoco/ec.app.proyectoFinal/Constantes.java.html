@@ -57,7 +57,17 @@ import java.util.Random;
 <span class="nc" id="L57">    public static Random uniforme = new Random(semilla);</span>
 <span class="nc" id="L58">    public static List&lt;Integer&gt; productoresActivos= new ArrayList&lt;Integer&gt;();</span>
 
-
+    public static void cargarInstancia(){
+<span class="nc" id="L61">        String nombreInstancia = &quot;./Instancias/IntanciaPrueba.in&quot;;</span>
+<span class="nc" id="L62">        cantPixeles=Pixel.contarLineas(nombreInstancia);</span>
+<span class="nc" id="L63">        System.out.println(nombreInstancia+&quot;\tCantPixeles:&quot;+cantPixeles);</span>
+<span class="nc" id="L64">        Constantes.cantPixeles=cantPixeles;</span>
+<span class="nc" id="L65">        Constantes.cantPotreros=cantPixeles;</span>
+<span class="nc" id="L66">        Constantes.productores = Productor.cargarProductores();</span>
+<span class="nc" id="L67">        Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);</span>
+<span class="nc" id="L68">        Constantes.usos=Uso.cargarUsos();</span>
+<span class="nc" id="L69">        Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();</span>
+<span class="nc" id="L70">    }</span>
 
 
 }

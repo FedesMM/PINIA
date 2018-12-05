@@ -57,7 +57,17 @@ public class Constantes {
     public static Random uniforme = new Random(semilla);
     public static List<Integer> productoresActivos= new ArrayList<Integer>();
 
-
+    public static void cargarInstancia(){
+        String nombreInstancia = "./Instancias/IntanciaPrueba.in";
+        cantPixeles=Pixel.contarLineas(nombreInstancia);
+        System.out.println(nombreInstancia+"\tCantPixeles:"+cantPixeles);
+        Constantes.cantPixeles=cantPixeles;
+        Constantes.cantPotreros=cantPixeles;
+        Constantes.productores = Productor.cargarProductores();
+        Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);
+        Constantes.usos=Uso.cargarUsos();
+        Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();
+    }
 
 
 }

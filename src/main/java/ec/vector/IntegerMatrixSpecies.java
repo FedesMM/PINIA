@@ -1,6 +1,7 @@
 package ec.vector;
 
 import ec.*;
+import ec.app.proyectoFinal.Constantes;
 import ec.util.*;
 
 
@@ -131,6 +132,8 @@ public class IntegerMatrixSpecies extends MatrixSpecies {
     }
 
     public void setup(final EvolutionState state, final Parameter base) {
+        Constantes.cargarInstancia();
+
         Parameter def = defaultBase();
 
         setupGenome(state, base);
@@ -144,8 +147,8 @@ public class IntegerMatrixSpecies extends MatrixSpecies {
 
 
         // LOADING GLOBAL MIN/MAX GENES
-        long _minGene = 1;                  // TODO: menor ID de todos los uso
-        long _maxGene = 14;                 // TODO: mayor ID de todos los uso
+        long _minGene = 100;
+        long _maxGene = 1416;
         if (_maxGene < _minGene)
             state.output.fatal("IntegerMatrixSpecies must have a default min-gene which is <= the default max-gene", base.push(P_MAXGENE), def.push(P_MAXGENE));
         fill(minGene, _minGene);

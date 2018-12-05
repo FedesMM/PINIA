@@ -112,141 +112,140 @@ import ec.*;
         //Seteo de constantes y carga de instancias
 <span class="nc" id="L113">        Constantes.usos = Uso.cargarUsos();</span>
 <span class="nc" id="L114">        Constantes.productores = Productor.cargarProductores();</span>
-        // TODO: Automitazar lectura de la instancia con la que se trabaja
-<span class="nc" id="L116">        int iInstancia=0;</span>
-<span class="nc" id="L117">        String nombreInstancia=&quot;./Instancias/Intancia &quot;+(iInstancia+1)+&quot;.in&quot;;</span>
-<span class="nc" id="L118">        Constantes.cantPixeles=Pixel.contarLineas(nombreInstancia);</span>
-<span class="nc" id="L119">        Constantes.cantPotreros=Pixel.contarLineas(nombreInstancia);</span>
-<span class="nc" id="L120">        Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);</span>
-<span class="nc" id="L121">        Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();</span>
+<span class="nc" id="L115">        int iInstancia=0;</span>
+<span class="nc" id="L116">        String nombreInstancia=&quot;./Instancias/Intancia &quot;+(iInstancia+1)+&quot;.in&quot;;</span>
+<span class="nc" id="L117">        Constantes.cantPixeles=Pixel.contarLineas(nombreInstancia);</span>
+<span class="nc" id="L118">        Constantes.cantPotreros=Pixel.contarLineas(nombreInstancia);</span>
+<span class="nc" id="L119">        Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);</span>
+<span class="nc" id="L120">        Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();</span>
 
 
         //genomeSize = state.parameters.getInt(base.push(P_GENOMESIZE),def.push(P_GENOMESIZE),1); //
-<span class="nc" id="L125">        genomeSize = Constantes.cantPixeles* Constantes.cantEstaciones;</span>
+<span class="nc" id="L124">        genomeSize = Constantes.cantPixeles* Constantes.cantEstaciones;</span>
 
-<span class="nc bnc" id="L127" title="All 2 branches missed.">        if (genomeSize==0)</span>
-<span class="nc" id="L128">            state.output.fatal(&quot;MatrixSpecies must have a genome size &gt; 0&quot;, base.push(P_GENOMESIZE),def.push(P_GENOMESIZE));</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">        if (genomeSize==0)</span>
+<span class="nc" id="L127">            state.output.fatal(&quot;MatrixSpecies must have a genome size &gt; 0&quot;, base.push(P_GENOMESIZE),def.push(P_GENOMESIZE));</span>
 
-<span class="nc" id="L130">        genomeResizeAlgorithm = C_NONE;</span>
+<span class="nc" id="L129">        genomeResizeAlgorithm = C_NONE;</span>
 
-<span class="nc" id="L132">        chunksize = state.parameters.getIntWithDefault(base.push(P_CHUNKSIZE),def.push(P_CHUNKSIZE),1);</span>
-<span class="nc bnc" id="L133" title="All 4 branches missed.">        if (chunksize &lt;= 0 || chunksize &gt; genomeSize)</span>
-<span class="nc" id="L134">            state.output.fatal(&quot;MatrixSpecies must have a chunkSize which is &gt; 0 and &lt; genomeSize&quot;, base.push(P_CHUNKSIZE),def.push(P_CHUNKSIZE));</span>
-<span class="nc bnc" id="L135" title="All 2 branches missed.">        if (genomeSize % chunksize != 0)</span>
-<span class="nc" id="L136">            state.output.fatal(&quot;MatrixSpecies must have a genomeSize which is a multiple of chunkSize&quot;, base.push(P_CHUNKSIZE),def.push(P_CHUNKSIZE));</span>
+<span class="nc" id="L131">        chunksize = state.parameters.getIntWithDefault(base.push(P_CHUNKSIZE),def.push(P_CHUNKSIZE),1);</span>
+<span class="nc bnc" id="L132" title="All 4 branches missed.">        if (chunksize &lt;= 0 || chunksize &gt; genomeSize)</span>
+<span class="nc" id="L133">            state.output.fatal(&quot;MatrixSpecies must have a chunkSize which is &gt; 0 and &lt; genomeSize&quot;, base.push(P_CHUNKSIZE),def.push(P_CHUNKSIZE));</span>
+<span class="nc bnc" id="L134" title="All 2 branches missed.">        if (genomeSize % chunksize != 0)</span>
+<span class="nc" id="L135">            state.output.fatal(&quot;MatrixSpecies must have a genomeSize which is a multiple of chunkSize&quot;, base.push(P_CHUNKSIZE),def.push(P_CHUNKSIZE));</span>
 
-<span class="nc" id="L138">    }</span>
+<span class="nc" id="L137">    }</span>
 
 
     public void setup(final EvolutionState state, final Parameter base) {
-<span class="nc" id="L142">        Parameter def = defaultBase();</span>
+<span class="nc" id="L141">        Parameter def = defaultBase();</span>
         // We will construct, but NOT set up, a sacrificial individual here.
         // Actual setup is done at the end of this method (in super.setup(...) )
         // The purpose of this sacrificial individual is to enable methods such
         // as inNumericalTypeRange() to run properly, since they require knowledge
         // of which KIND of individual it is
 
-<span class="nc" id="L149">        i_prototype = (Individual)(state.parameters.getInstanceForParameter(</span>
-<span class="nc" id="L150">                base.push(P_INDIVIDUAL),def.push(P_INDIVIDUAL),</span>
+<span class="nc" id="L148">        i_prototype = (Individual)(state.parameters.getInstanceForParameter(</span>
+<span class="nc" id="L149">                base.push(P_INDIVIDUAL),def.push(P_INDIVIDUAL),</span>
                 Individual. class));
 
 
         // this might get called twice, I don't think it's a big deal
-<span class="nc" id="L155">        setupGenome(state, base);</span>
+<span class="nc" id="L154">        setupGenome(state, base);</span>
 
 
         // MUTATION
 
-<span class="nc" id="L160">        double _mutationProbability = state.parameters.getDoubleWithMax(base.push(P_MUTATIONPROB), def.push(P_MUTATIONPROB), 0.0, 1.0);</span>
-<span class="nc bnc" id="L161" title="All 2 branches missed.">        if (_mutationProbability == -1.0)</span>
-<span class="nc" id="L162">            state.output.fatal(&quot;Global mutation probability must be between 0.0 and 1.0 inclusive&quot;, base.push(P_MUTATIONPROB),def.push(P_MUTATIONPROB));</span>
-<span class="nc" id="L163">        mutationProbability = fill(new double[genomeSize + 1], _mutationProbability);</span>
+<span class="nc" id="L159">        double _mutationProbability = state.parameters.getDoubleWithMax(base.push(P_MUTATIONPROB), def.push(P_MUTATIONPROB), 0.0, 1.0);</span>
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        if (_mutationProbability == -1.0)</span>
+<span class="nc" id="L161">            state.output.fatal(&quot;Global mutation probability must be between 0.0 and 1.0 inclusive&quot;, base.push(P_MUTATIONPROB),def.push(P_MUTATIONPROB));</span>
+<span class="nc" id="L162">        mutationProbability = fill(new double[genomeSize + 1], _mutationProbability);</span>
 
-<span class="nc" id="L165">        int _duplicateRetries = state.parameters.getIntWithDefault(base.push(P_DUPLICATE_RETRIES), def.push(P_DUPLICATE_RETRIES), 0);</span>
-<span class="nc bnc" id="L166" title="All 2 branches missed.">        if (_duplicateRetries &lt; 0) {</span>
-<span class="nc" id="L167">            state.output.fatal(&quot;Duplicate Retries, if defined, must be a value &gt;= 0&quot;, base.push(P_DUPLICATE_RETRIES), def.push(P_DUPLICATE_RETRIES));</span>
+<span class="nc" id="L164">        int _duplicateRetries = state.parameters.getIntWithDefault(base.push(P_DUPLICATE_RETRIES), def.push(P_DUPLICATE_RETRIES), 0);</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">        if (_duplicateRetries &lt; 0) {</span>
+<span class="nc" id="L166">            state.output.fatal(&quot;Duplicate Retries, if defined, must be a value &gt;= 0&quot;, base.push(P_DUPLICATE_RETRIES), def.push(P_DUPLICATE_RETRIES));</span>
         }
-<span class="nc" id="L169">        duplicateRetries = fill(new int[genomeSize + 1], _duplicateRetries);</span>
+<span class="nc" id="L168">        duplicateRetries = fill(new int[genomeSize + 1], _duplicateRetries);</span>
 
         // CROSSOVER
 
-<span class="nc" id="L173">        String ctype = state.parameters.getStringWithDefault(base.push(P_CROSSOVERTYPE), def.push(P_CROSSOVERTYPE), null);</span>
-<span class="nc" id="L174">        crossoverType = C_ONE_POINT;</span>
-<span class="nc bnc" id="L175" title="All 2 branches missed.">        if (ctype==null)</span>
-<span class="nc" id="L176">            state.output.warning(&quot;No crossover type given for MatrixSpecies, assuming one-point crossover (\&quot;one\&quot;)&quot;, base.push(P_CROSSOVERTYPE),def.push(P_CROSSOVERTYPE));</span>
-<span class="nc bnc" id="L177" title="All 2 branches missed.">        else if (ctype.equalsIgnoreCase(V_TWO_POINT))</span>
-<span class="nc" id="L178">            crossoverType=C_TWO_POINT;</span>
-<span class="nc bnc" id="L179" title="All 2 branches missed.">        else if (ctype.equalsIgnoreCase(V_ANY_POINT))</span>
-<span class="nc" id="L180">            crossoverType=C_ANY_POINT;</span>
+<span class="nc" id="L172">        String ctype = state.parameters.getStringWithDefault(base.push(P_CROSSOVERTYPE), def.push(P_CROSSOVERTYPE), null);</span>
+<span class="nc" id="L173">        crossoverType = C_ONE_POINT;</span>
+<span class="nc bnc" id="L174" title="All 2 branches missed.">        if (ctype==null)</span>
+<span class="nc" id="L175">            state.output.warning(&quot;No crossover type given for MatrixSpecies, assuming one-point crossover (\&quot;one\&quot;)&quot;, base.push(P_CROSSOVERTYPE),def.push(P_CROSSOVERTYPE));</span>
+<span class="nc bnc" id="L176" title="All 2 branches missed.">        else if (ctype.equalsIgnoreCase(V_TWO_POINT))</span>
+<span class="nc" id="L177">            crossoverType=C_TWO_POINT;</span>
+<span class="nc bnc" id="L178" title="All 2 branches missed.">        else if (ctype.equalsIgnoreCase(V_ANY_POINT))</span>
+<span class="nc" id="L179">            crossoverType=C_ANY_POINT;</span>
 
-<span class="nc" id="L182">        lineDistance = 0.0;</span>
+<span class="nc" id="L181">        lineDistance = 0.0;</span>
 
-<span class="nc bnc" id="L184" title="All 2 branches missed.">        if (crossoverType==C_ANY_POINT) {</span>
-<span class="nc" id="L185">            crossoverProbability = state.parameters.getDoubleWithMax(</span>
-<span class="nc" id="L186">                    base.push(P_CROSSOVERPROB),def.push(P_CROSSOVERPROB),0.0,0.5);</span>
-<span class="nc bnc" id="L187" title="All 2 branches missed.">            if (crossoverProbability==-1.0)</span>
-<span class="nc" id="L188">                state.output.fatal(&quot;If it's going to use any-point crossover, MatrixSpecies must have a crossover probability between 0.0 and 0.5 inclusive&quot;,</span>
-<span class="nc" id="L189">                        base.push(P_CROSSOVERPROB),def.push(P_CROSSOVERPROB));</span>
+<span class="nc bnc" id="L183" title="All 2 branches missed.">        if (crossoverType==C_ANY_POINT) {</span>
+<span class="nc" id="L184">            crossoverProbability = state.parameters.getDoubleWithMax(</span>
+<span class="nc" id="L185">                    base.push(P_CROSSOVERPROB),def.push(P_CROSSOVERPROB),0.0,0.5);</span>
+<span class="nc bnc" id="L186" title="All 2 branches missed.">            if (crossoverProbability==-1.0)</span>
+<span class="nc" id="L187">                state.output.fatal(&quot;If it's going to use any-point crossover, MatrixSpecies must have a crossover probability between 0.0 and 0.5 inclusive&quot;,</span>
+<span class="nc" id="L188">                        base.push(P_CROSSOVERPROB),def.push(P_CROSSOVERPROB));</span>
         } else
-<span class="nc" id="L191">            crossoverProbability = 0.0;</span>
+<span class="nc" id="L190">            crossoverProbability = 0.0;</span>
 
-<span class="nc" id="L193">        state.output.exitIfErrors();</span>
+<span class="nc" id="L192">        state.output.exitIfErrors();</span>
 
-<span class="nc bnc" id="L195" title="All 4 branches missed.">        if (crossoverType != C_ANY_POINT &amp;&amp; state.parameters.exists(base.push(P_CROSSOVERPROB),def.push(P_CROSSOVERPROB)))</span>
-<span class="nc" id="L196">            state.output.warning(&quot;The 'crossover-prob' parameter may only be used with any-point crossover.  It states the probability that a particular gene will be crossed over.  If you were looking for the probability of crossover happening at *all*, look at the 'likelihood' parameter.&quot;,</span>
-<span class="nc" id="L197">                    base.push(P_CROSSOVERPROB),def.push(P_CROSSOVERPROB));</span>
+<span class="nc bnc" id="L194" title="All 4 branches missed.">        if (crossoverType != C_ANY_POINT &amp;&amp; state.parameters.exists(base.push(P_CROSSOVERPROB),def.push(P_CROSSOVERPROB)))</span>
+<span class="nc" id="L195">            state.output.warning(&quot;The 'crossover-prob' parameter may only be used with any-point crossover.  It states the probability that a particular gene will be crossed over.  If you were looking for the probability of crossover happening at *all*, look at the 'likelihood' parameter.&quot;,</span>
+<span class="nc" id="L196">                    base.push(P_CROSSOVERPROB),def.push(P_CROSSOVERPROB));</span>
 
 
         // SEGMENTS
 
         // Set number of segments to 0 by default
-<span class="nc" id="L203">        int numSegments = 0;</span>
+<span class="nc" id="L202">        int numSegments = 0;</span>
         // Now check to see if segments of genes (genes having the same min and
         // max values) exist
-<span class="nc bnc" id="L206" title="All 2 branches missed.">        if (state.parameters.exists(base.push(P_NUM_SEGMENTS), def.push(P_NUM_SEGMENTS)))</span>
+<span class="nc bnc" id="L205" title="All 2 branches missed.">        if (state.parameters.exists(base.push(P_NUM_SEGMENTS), def.push(P_NUM_SEGMENTS)))</span>
         {
-<span class="nc bnc" id="L208" title="All 2 branches missed.">            if (dynamicInitialSize)</span>
-<span class="nc" id="L209">                state.output.warnOnce(&quot;Using dynamic initial sizing, but per-segment min/max gene declarations.  This is probably wrong.  You probably want to use global min/max declarations.&quot;,</span>
-<span class="nc" id="L210">                        base.push(P_NUM_SEGMENTS), def.push(P_NUM_SEGMENTS));</span>
+<span class="nc bnc" id="L207" title="All 2 branches missed.">            if (dynamicInitialSize)</span>
+<span class="nc" id="L208">                state.output.warnOnce(&quot;Using dynamic initial sizing, but per-segment min/max gene declarations.  This is probably wrong.  You probably want to use global min/max declarations.&quot;,</span>
+<span class="nc" id="L209">                        base.push(P_NUM_SEGMENTS), def.push(P_NUM_SEGMENTS));</span>
 
-<span class="nc" id="L212">            numSegments = state.parameters.getIntWithDefault(base.push(P_NUM_SEGMENTS),</span>
-<span class="nc" id="L213">                    def.push(P_NUM_SEGMENTS), 0);</span>
+<span class="nc" id="L211">            numSegments = state.parameters.getIntWithDefault(base.push(P_NUM_SEGMENTS),</span>
+<span class="nc" id="L212">                    def.push(P_NUM_SEGMENTS), 0);</span>
 
-<span class="nc bnc" id="L215" title="All 2 branches missed.">            if(numSegments == 0)</span>
-<span class="nc" id="L216">                state.output.warning(&quot;The number of genome segments has been defined to be equal to 0.\n&quot;</span>
-<span class="nc" id="L217">                        + &quot;Hence, no genome segments will be defined.&quot;, base.push(P_NUM_SEGMENTS), def.push(P_NUM_SEGMENTS));</span>
-<span class="nc bnc" id="L218" title="All 2 branches missed.">            else if(numSegments &lt; 0)</span>
-<span class="nc" id="L219">                state.output.fatal(&quot;Invalid number of genome segments: &quot; + numSegments</span>
-<span class="nc" id="L220">                        + &quot;\nIt must be a nonnegative value.&quot;, base.push(P_NUM_SEGMENTS), def.push(P_NUM_SEGMENTS));</span>
+<span class="nc bnc" id="L214" title="All 2 branches missed.">            if(numSegments == 0)</span>
+<span class="nc" id="L215">                state.output.warning(&quot;The number of genome segments has been defined to be equal to 0.\n&quot;</span>
+<span class="nc" id="L216">                        + &quot;Hence, no genome segments will be defined.&quot;, base.push(P_NUM_SEGMENTS), def.push(P_NUM_SEGMENTS));</span>
+<span class="nc bnc" id="L217" title="All 2 branches missed.">            else if(numSegments &lt; 0)</span>
+<span class="nc" id="L218">                state.output.fatal(&quot;Invalid number of genome segments: &quot; + numSegments</span>
+<span class="nc" id="L219">                        + &quot;\nIt must be a nonnegative value.&quot;, base.push(P_NUM_SEGMENTS), def.push(P_NUM_SEGMENTS));</span>
 
             //read the type of segment definition using the default start value
-<span class="nc" id="L223">            String segmentType = state.parameters.getStringWithDefault(base.push(P_SEGMENT_TYPE), def.push(P_SEGMENT_TYPE), P_SEGMENT_START);</span>
+<span class="nc" id="L222">            String segmentType = state.parameters.getStringWithDefault(base.push(P_SEGMENT_TYPE), def.push(P_SEGMENT_TYPE), P_SEGMENT_START);</span>
 
-<span class="nc bnc" id="L225" title="All 2 branches missed.">            if(segmentType.equalsIgnoreCase(P_SEGMENT_START))</span>
-<span class="nc" id="L226">                initializeGenomeSegmentsByStartIndices(state, base, def, numSegments);</span>
-<span class="nc bnc" id="L227" title="All 2 branches missed.">            else if(segmentType.equalsIgnoreCase(P_SEGMENT_END))</span>
-<span class="nc" id="L228">                initializeGenomeSegmentsByEndIndices(state, base, def, numSegments);</span>
+<span class="nc bnc" id="L224" title="All 2 branches missed.">            if(segmentType.equalsIgnoreCase(P_SEGMENT_START))</span>
+<span class="nc" id="L225">                initializeGenomeSegmentsByStartIndices(state, base, def, numSegments);</span>
+<span class="nc bnc" id="L226" title="All 2 branches missed.">            else if(segmentType.equalsIgnoreCase(P_SEGMENT_END))</span>
+<span class="nc" id="L227">                initializeGenomeSegmentsByEndIndices(state, base, def, numSegments);</span>
             else
-<span class="nc" id="L230">                state.output.fatal(&quot;Invalid specification of genome segment type: &quot; + segmentType</span>
+<span class="nc" id="L229">                state.output.fatal(&quot;Invalid specification of genome segment type: &quot; + segmentType</span>
                                 + &quot;\nThe &quot; + P_SEGMENT_TYPE + &quot; parameter must have the value of &quot; + P_SEGMENT_START + &quot; or &quot; + P_SEGMENT_END,
-<span class="nc" id="L232">                        base.push(P_SEGMENT_TYPE), def.push(P_SEGMENT_TYPE));</span>
+<span class="nc" id="L231">                        base.push(P_SEGMENT_TYPE), def.push(P_SEGMENT_TYPE));</span>
         }
-<span class="nc" id="L234">        state.output.exitIfErrors();</span>
+<span class="nc" id="L233">        state.output.exitIfErrors();</span>
 
 
         // PER-GENE VALUES
 
-<span class="nc bnc" id="L239" title="All 2 branches missed.">        for (int x = 0; x &lt; genomeSize; x++) {</span>
-<span class="nc" id="L240">            loadParametersForGene(state, x, base, def, &quot;&quot; + x);</span>
+<span class="nc bnc" id="L238" title="All 2 branches missed.">        for (int x = 0; x &lt; genomeSize; x++) {</span>
+<span class="nc" id="L239">            loadParametersForGene(state, x, base, def, &quot;&quot; + x);</span>
         }
-<span class="nc" id="L242">        state.output.exitIfErrors();</span>
+<span class="nc" id="L241">        state.output.exitIfErrors();</span>
 
 
 
         // NOW call super.setup(...), which will in turn set up the prototypical individual
-<span class="nc" id="L247">        super.setup(state,base);</span>
+<span class="nc" id="L246">        super.setup(state,base);</span>
 
-<span class="nc" id="L249">    }</span>
+<span class="nc" id="L248">    }</span>
 
 
     /** Called when MatrixSpecies is setting up per-gene and per-segment parameters.  The index
@@ -260,101 +259,101 @@ import ec.*;
     protected void loadParametersForGene(EvolutionState state, int index, Parameter base, Parameter def, String postfix) {
         // our only per-gene parameter is mutation probablity.
 
-<span class="nc bnc" id="L263" title="All 2 branches missed.">        if (state.parameters.exists(base.push(P_MUTATIONPROB).push(postfix), def.push(P_MUTATIONPROB).push(postfix))) {</span>
+<span class="nc bnc" id="L262" title="All 2 branches missed.">        if (state.parameters.exists(base.push(P_MUTATIONPROB).push(postfix), def.push(P_MUTATIONPROB).push(postfix))) {</span>
 
-<span class="nc" id="L265">            mutationProbability[index] = state.parameters.getDoubleWithMax(base.push(P_MUTATIONPROB).push(postfix), def.push(P_MUTATIONPROB).push(postfix), 0.0, 1.0);</span>
-<span class="nc bnc" id="L266" title="All 2 branches missed.">            if (mutationProbability[index] == -1.0)</span>
-<span class="nc" id="L267">                state.output.fatal(&quot;Per-gene or per-segment mutation probability must be between 0.0 and 1.0 inclusive&quot;,</span>
-<span class="nc" id="L268">                        base.push(P_MUTATIONPROB).push(postfix),def.push(P_MUTATIONPROB).push(postfix));</span>
+<span class="nc" id="L264">            mutationProbability[index] = state.parameters.getDoubleWithMax(base.push(P_MUTATIONPROB).push(postfix), def.push(P_MUTATIONPROB).push(postfix), 0.0, 1.0);</span>
+<span class="nc bnc" id="L265" title="All 2 branches missed.">            if (mutationProbability[index] == -1.0)</span>
+<span class="nc" id="L266">                state.output.fatal(&quot;Per-gene or per-segment mutation probability must be between 0.0 and 1.0 inclusive&quot;,</span>
+<span class="nc" id="L267">                        base.push(P_MUTATIONPROB).push(postfix),def.push(P_MUTATIONPROB).push(postfix));</span>
         }
 
-<span class="nc bnc" id="L271" title="All 2 branches missed.">        if (state.parameters.exists(base.push(P_DUPLICATE_RETRIES).push(postfix), def.push(P_DUPLICATE_RETRIES).push(postfix))) {</span>
-<span class="nc" id="L272">            duplicateRetries[index] = state.parameters.getInt(base.push(P_DUPLICATE_RETRIES).push(postfix), def.push(P_DUPLICATE_RETRIES).push(postfix));</span>
-<span class="nc bnc" id="L273" title="All 2 branches missed.">            if (duplicateRetries[index] &lt; 0)</span>
-<span class="nc" id="L274">                state.output.fatal(&quot;Duplicate Retries for gene &quot; + index + &quot;, if defined must be a value &gt;= 0&quot;,</span>
-<span class="nc" id="L275">                        base.push(P_DUPLICATE_RETRIES).push(postfix), def.push(P_DUPLICATE_RETRIES).push(postfix));</span>
+<span class="nc bnc" id="L270" title="All 2 branches missed.">        if (state.parameters.exists(base.push(P_DUPLICATE_RETRIES).push(postfix), def.push(P_DUPLICATE_RETRIES).push(postfix))) {</span>
+<span class="nc" id="L271">            duplicateRetries[index] = state.parameters.getInt(base.push(P_DUPLICATE_RETRIES).push(postfix), def.push(P_DUPLICATE_RETRIES).push(postfix));</span>
+<span class="nc bnc" id="L272" title="All 2 branches missed.">            if (duplicateRetries[index] &lt; 0)</span>
+<span class="nc" id="L273">                state.output.fatal(&quot;Duplicate Retries for gene &quot; + index + &quot;, if defined must be a value &gt;= 0&quot;,</span>
+<span class="nc" id="L274">                        base.push(P_DUPLICATE_RETRIES).push(postfix), def.push(P_DUPLICATE_RETRIES).push(postfix));</span>
         }
-<span class="nc" id="L277">    }</span>
+<span class="nc" id="L276">    }</span>
 
     /** Looks up genome segments using start indices.  Segments run up to the next declared start index.  */
     protected void initializeGenomeSegmentsByStartIndices(final EvolutionState state, final Parameter base, final Parameter def, int numSegments) {
         //loop in reverse order
-<span class="nc" id="L282">        int previousSegmentEnd = genomeSize;</span>
-<span class="nc" id="L283">        int currentSegmentEnd = 0;</span>
+<span class="nc" id="L281">        int previousSegmentEnd = genomeSize;</span>
+<span class="nc" id="L282">        int currentSegmentEnd = 0;</span>
 
-<span class="nc bnc" id="L285" title="All 2 branches missed.">        for (int i = numSegments - 1; i &gt;= 0; i--) {</span>
+<span class="nc bnc" id="L284" title="All 2 branches missed.">        for (int i = numSegments - 1; i &gt;= 0; i--) {</span>
 
             //check if the segment data exist
-<span class="nc bnc" id="L288" title="All 2 branches missed.">            if (state.parameters.exists(base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_START), def.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_START))) {</span>
+<span class="nc bnc" id="L287" title="All 2 branches missed.">            if (state.parameters.exists(base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_START), def.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_START))) {</span>
                 //Read the index of the end gene specifying current segment
-<span class="nc" id="L290">                currentSegmentEnd = state.parameters.getInt(base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_START), def.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_START));</span>
+<span class="nc" id="L289">                currentSegmentEnd = state.parameters.getInt(base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_START), def.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_START));</span>
 
             } else {
-<span class="nc" id="L293">                state.output.fatal(&quot;Genome segment &quot; + i + &quot; has not been defined!&quot; + &quot;\nYou must specify start indices for &quot; + numSegments + &quot; segment(s)&quot;,</span>
-<span class="nc" id="L294">                        base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_START), base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_START));</span>
+<span class="nc" id="L292">                state.output.fatal(&quot;Genome segment &quot; + i + &quot; has not been defined!&quot; + &quot;\nYou must specify start indices for &quot; + numSegments + &quot; segment(s)&quot;,</span>
+<span class="nc" id="L293">                        base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_START), base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_START));</span>
             }
 
             //check if the start index is valid
-<span class="nc bnc" id="L298" title="All 4 branches missed.">            if(currentSegmentEnd &gt;= previousSegmentEnd || currentSegmentEnd &lt; 0)</span>
-<span class="nc" id="L299">                state.output.fatal(&quot;Invalid start index value for segment &quot; + i + &quot;: &quot; + currentSegmentEnd</span>
+<span class="nc bnc" id="L297" title="All 4 branches missed.">            if(currentSegmentEnd &gt;= previousSegmentEnd || currentSegmentEnd &lt; 0)</span>
+<span class="nc" id="L298">                state.output.fatal(&quot;Invalid start index value for segment &quot; + i + &quot;: &quot; + currentSegmentEnd</span>
                         +  &quot;\nThe value must be smaller than &quot; + previousSegmentEnd + &quot; and greater than or equal to  &quot; + 0);
 
             //check if the index of the first segment is equal to 0
-<span class="nc bnc" id="L303" title="All 4 branches missed.">            if(i == 0 &amp;&amp; currentSegmentEnd != 0)</span>
-<span class="nc" id="L304">                state.output.fatal(&quot;Invalid start index value for the first segment &quot; + i + &quot;: &quot; + currentSegmentEnd + &quot;\nThe value must be equal to &quot; + 0);</span>
+<span class="nc bnc" id="L302" title="All 4 branches missed.">            if(i == 0 &amp;&amp; currentSegmentEnd != 0)</span>
+<span class="nc" id="L303">                state.output.fatal(&quot;Invalid start index value for the first segment &quot; + i + &quot;: &quot; + currentSegmentEnd + &quot;\nThe value must be equal to &quot; + 0);</span>
 
             //and assign min and max values for all genes in this segment
-<span class="nc bnc" id="L307" title="All 2 branches missed.">            for(int j = previousSegmentEnd-1; j &gt;= currentSegmentEnd; j--) {</span>
-<span class="nc" id="L308">                loadParametersForGene(state, j, base.push(P_SEGMENT).push(&quot;&quot;+i), def.push(P_SEGMENT).push(&quot;&quot;+i), &quot;&quot;);</span>
+<span class="nc bnc" id="L306" title="All 2 branches missed.">            for(int j = previousSegmentEnd-1; j &gt;= currentSegmentEnd; j--) {</span>
+<span class="nc" id="L307">                loadParametersForGene(state, j, base.push(P_SEGMENT).push(&quot;&quot;+i), def.push(P_SEGMENT).push(&quot;&quot;+i), &quot;&quot;);</span>
             }
 
-<span class="nc" id="L311">            previousSegmentEnd = currentSegmentEnd;</span>
+<span class="nc" id="L310">            previousSegmentEnd = currentSegmentEnd;</span>
         }
-<span class="nc" id="L313">    }</span>
+<span class="nc" id="L312">    }</span>
 
     /** Looks up genome segments using end indices.  Segments run from the previously declared end index. */
     protected void initializeGenomeSegmentsByEndIndices(final EvolutionState state, final Parameter base, final Parameter def, int numSegments) {
 
-<span class="nc" id="L318">        int previousSegmentEnd = -1;</span>
-<span class="nc" id="L319">        int currentSegmentEnd = 0;</span>
+<span class="nc" id="L317">        int previousSegmentEnd = -1;</span>
+<span class="nc" id="L318">        int currentSegmentEnd = 0;</span>
         // iterate over segments and set genes values for each segment
-<span class="nc bnc" id="L321" title="All 2 branches missed.">        for (int i = 0; i &lt; numSegments; i++) {</span>
+<span class="nc bnc" id="L320" title="All 2 branches missed.">        for (int i = 0; i &lt; numSegments; i++) {</span>
             //check if the segment data exist
-<span class="nc bnc" id="L323" title="All 2 branches missed.">            if (state.parameters.exists(base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_END), def.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_END))) {</span>
+<span class="nc bnc" id="L322" title="All 2 branches missed.">            if (state.parameters.exists(base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_END), def.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_END))) {</span>
                 //Read the index of the end gene specifying current segment
-<span class="nc" id="L325">                currentSegmentEnd = state.parameters.getInt(base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_END),</span>
-<span class="nc" id="L326">                        def.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_END));</span>
+<span class="nc" id="L324">                currentSegmentEnd = state.parameters.getInt(base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_END),</span>
+<span class="nc" id="L325">                        def.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_END));</span>
             } else {
-<span class="nc" id="L328">                state.output.fatal(&quot;Genome segment &quot; + i + &quot; has not been defined!&quot; + &quot;\nYou must specify end indices for &quot; + numSegments + &quot; segment(s)&quot;,</span>
-<span class="nc" id="L329">                        base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_END), base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_END));</span>
+<span class="nc" id="L327">                state.output.fatal(&quot;Genome segment &quot; + i + &quot; has not been defined!&quot; + &quot;\nYou must specify end indices for &quot; + numSegments + &quot; segment(s)&quot;,</span>
+<span class="nc" id="L328">                        base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_END), base.push(P_SEGMENT).push(&quot;&quot;+i).push(P_SEGMENT_END));</span>
             }
 
             //check if the end index is valid
-<span class="nc bnc" id="L333" title="All 4 branches missed.">            if(currentSegmentEnd &lt;= previousSegmentEnd || currentSegmentEnd &gt;= genomeSize)</span>
-<span class="nc" id="L334">                state.output.fatal(&quot;Invalid end index value for segment &quot; + i + &quot;: &quot; + currentSegmentEnd</span>
+<span class="nc bnc" id="L332" title="All 4 branches missed.">            if(currentSegmentEnd &lt;= previousSegmentEnd || currentSegmentEnd &gt;= genomeSize)</span>
+<span class="nc" id="L333">                state.output.fatal(&quot;Invalid end index value for segment &quot; + i + &quot;: &quot; + currentSegmentEnd</span>
                         +  &quot;\nThe value must be greater than &quot; + previousSegmentEnd + &quot; and smaller than &quot; + genomeSize);
 
             //check if the index of the final segment is equal to the genomeSize
-<span class="nc bnc" id="L338" title="All 4 branches missed.">            if(i == numSegments - 1 &amp;&amp; currentSegmentEnd != (genomeSize-1))</span>
-<span class="nc" id="L339">                state.output.fatal(&quot;Invalid end index value for the last segment &quot; + i + &quot;: &quot; + currentSegmentEnd</span>
+<span class="nc bnc" id="L337" title="All 4 branches missed.">            if(i == numSegments - 1 &amp;&amp; currentSegmentEnd != (genomeSize-1))</span>
+<span class="nc" id="L338">                state.output.fatal(&quot;Invalid end index value for the last segment &quot; + i + &quot;: &quot; + currentSegmentEnd</span>
                         +  &quot;\nThe value must be equal to the index of the last gene in the genome:  &quot; + (genomeSize-1));
 
             //and assign min and max values for all genes in this segment
-<span class="nc bnc" id="L343" title="All 2 branches missed.">            for(int j = previousSegmentEnd+1; j &lt;= currentSegmentEnd; j++) {</span>
-<span class="nc" id="L344">                loadParametersForGene(state, j, base.push(P_SEGMENT).push(&quot;&quot;+i), def.push(P_SEGMENT).push(&quot;&quot;+i), &quot;&quot;);</span>
+<span class="nc bnc" id="L342" title="All 2 branches missed.">            for(int j = previousSegmentEnd+1; j &lt;= currentSegmentEnd; j++) {</span>
+<span class="nc" id="L343">                loadParametersForGene(state, j, base.push(P_SEGMENT).push(&quot;&quot;+i), def.push(P_SEGMENT).push(&quot;&quot;+i), &quot;&quot;);</span>
             }
 
-<span class="nc" id="L347">            previousSegmentEnd = currentSegmentEnd;</span>
+<span class="nc" id="L346">            previousSegmentEnd = currentSegmentEnd;</span>
         }
-<span class="nc" id="L349">    }</span>
+<span class="nc" id="L348">    }</span>
 
 
     public Individual newIndividual(final EvolutionState state, int thread) {
 
-<span class="nc" id="L354">        MatrixIndividual newInd = (MatrixIndividual)(super.newIndividual(state, thread));</span>
-<span class="nc" id="L355">        newInd.reset( state, thread );</span>
+<span class="nc" id="L353">        VectorIndividual newInd = (VectorIndividual)(super.newIndividual(state, thread));</span>
+<span class="nc" id="L354">        newInd.reset( state, thread );</span>
 
-<span class="nc" id="L357">        return newInd;</span>
+<span class="nc" id="L356">        return newInd;</span>
     }
 
 
@@ -364,61 +363,61 @@ import ec.*;
     /** Utility method: fills the array with the given value and returns it. */
     protected long[] fill(long[] array, long val)
     {
-<span class="nc bnc" id="L367" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++) array[i] = val;</span>
-<span class="nc" id="L368">        return array;</span>
+<span class="nc bnc" id="L366" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++) array[i] = val;</span>
+<span class="nc" id="L367">        return array;</span>
     }
 
     /** Utility method: fills the array with the given value and returns it. */
     protected int[] fill(int[] array, int val)
     {
-<span class="nc bnc" id="L374" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++) array[i] = val;</span>
-<span class="nc" id="L375">        return array;</span>
+<span class="nc bnc" id="L373" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++) array[i] = val;</span>
+<span class="nc" id="L374">        return array;</span>
     }
 
     /** Utility method: fills the array with the given value and returns it. */
     protected boolean[] fill(boolean[] array, boolean val)
     {
-<span class="nc bnc" id="L381" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++) array[i] = val;</span>
-<span class="nc" id="L382">        return array;</span>
+<span class="nc bnc" id="L380" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++) array[i] = val;</span>
+<span class="nc" id="L381">        return array;</span>
     }
 
     /** Utility method: fills the array with the given value and returns it. */
     protected double[] fill(double[] array, double val)
     {
-<span class="nc bnc" id="L388" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++) array[i] = val;</span>
-<span class="nc" id="L389">        return array;</span>
+<span class="nc bnc" id="L387" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++) array[i] = val;</span>
+<span class="nc" id="L388">        return array;</span>
     }
 
     /** Utility method: returns the first array slot which contains the given value, else -1. */
     protected int contains(boolean[] array, boolean val)
     {
-<span class="nc bnc" id="L395" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++)</span>
-<span class="nc bnc" id="L396" title="All 2 branches missed.">            if (array[i] == val) return i;</span>
-<span class="nc" id="L397">        return -1;</span>
+<span class="nc bnc" id="L394" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++)</span>
+<span class="nc bnc" id="L395" title="All 2 branches missed.">            if (array[i] == val) return i;</span>
+<span class="nc" id="L396">        return -1;</span>
     }
 
     /** Utility method: returns the first array slot which contains the given value, else -1. */
     protected int contains(long[] array, long val)
     {
-<span class="nc bnc" id="L403" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++)</span>
-<span class="nc bnc" id="L404" title="All 2 branches missed.">            if (array[i] == val) return i;</span>
-<span class="nc" id="L405">        return -1;</span>
+<span class="nc bnc" id="L402" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++)</span>
+<span class="nc bnc" id="L403" title="All 2 branches missed.">            if (array[i] == val) return i;</span>
+<span class="nc" id="L404">        return -1;</span>
     }
 
     /** Utility method: returns the first array slot which contains the given value, else -1. */
     protected int contains(int[] array, int val)
     {
-<span class="nc bnc" id="L411" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++)</span>
-<span class="nc bnc" id="L412" title="All 2 branches missed.">            if (array[i] == val) return i;</span>
-<span class="nc" id="L413">        return -1;</span>
+<span class="nc bnc" id="L410" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++)</span>
+<span class="nc bnc" id="L411" title="All 2 branches missed.">            if (array[i] == val) return i;</span>
+<span class="nc" id="L412">        return -1;</span>
     }
 
     /** Utility method: returns the first array slot which contains the given value, else -1. */
     protected int contains(double[] array, double val)
     {
-<span class="nc bnc" id="L419" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++)</span>
-<span class="nc bnc" id="L420" title="All 2 branches missed.">            if (array[i] == val) return i;</span>
-<span class="nc" id="L421">        return -1;</span>
+<span class="nc bnc" id="L418" title="All 2 branches missed.">        for(int i =0; i &lt; array.length; i++)</span>
+<span class="nc bnc" id="L419" title="All 2 branches missed.">            if (array[i] == val) return i;</span>
+<span class="nc" id="L420">        return -1;</span>
     }
 }
 

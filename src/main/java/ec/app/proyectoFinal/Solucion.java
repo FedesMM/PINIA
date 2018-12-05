@@ -116,7 +116,7 @@ public class Solucion {
         int[] genoma = new int[Constantes.cantPixeles * Constantes.cantEstaciones];
         for (int iPixel = 0; iPixel < Constantes.cantPixeles; iPixel++) {
             for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
-                genoma[iPixel*Constantes.cantEstaciones+iEstacion] = this.matriz[iPixel][iEstacion] / 100;
+                genoma[iPixel*Constantes.cantEstaciones+iEstacion] = this.matriz[iPixel][iEstacion];
             }
         }
 
@@ -608,6 +608,7 @@ public class Solucion {
     }
 
     public void recalcular(){
+        //this.imprimirMatriz();
         int usoACalcular, estacionesDeEsteUso;
         //Limpio valores
         this.fosforo=0;
@@ -621,7 +622,15 @@ public class Solucion {
                 //100*usoACargar+estacionDelUso
                 usoACalcular = this.matriz[iPixel][iEstacion] / 100;
                 estacionesDeEsteUso = this.matriz[iPixel][iEstacion] % 100;
+                Uso uso=Constantes.usos[usoACalcular];
+                if (estacionesDeEsteUso>uso.fosforoEstacion.length){
 
+                    System.out.println("Falla en el pixel "+iPixel+" en la estacion "+iEstacion+" guardado como:"+ this.matriz[iPixel][iEstacion]);
+                    this.imprimirPixel(iPixel);
+                    uso.imprimirUso();
+                }
+                float fosforoEstacion=uso.fosforoEstacion[estacionesDeEsteUso];
+                float superficie=Constantes.pixeles[iPixel].superficie;
                 //Actualizo lo que aporta el uso al fosforo total en esta estacion
                 this.fosforo += (Constantes.usos[usoACalcular].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);
                 //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
@@ -1371,6 +1380,13 @@ public class Solucion {
     public float evaluarFitness() {
         return this.fosforo + this.restriccionProductividadMinimaEstacion.cantIncumplimientos * Constantes.maximoIncumplimientoFosforo
                 + this.restriccionUsosDistintos.cantIncumplimientos * Constantes.maximoIncumplimientoFosforo;
+    }
+    //float produccionAcumulada;
+    public void imprimirFitness(){
+        System.out.println("Funcion Objetivo: "+this.evaluarFitness());
+        System.out.println("\tFosforo modulado: "+this.fosforo);
+        System.out.println("\tUsos Distintos modulado: "+ this.restriccionProductividadMinimaEstacion.cantIncumplimientos * Constantes.maximoIncumplimientoFosforo);
+        System.out.println("\tProductividad Estacion modulado: "+(-1)*this.restriccionUsosDistintos.cantIncumplimientos * Constantes.maximoIncumplimientoFosforo);
     }
 }
 

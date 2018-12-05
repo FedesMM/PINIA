@@ -38,21 +38,22 @@ import static jdk.nashorn.internal.objects.NativeMath.min;
             }
             //Si llegue hasta aca el individuo es correcto
             //Paso del genoma a una solucion, con valores calculados y restricciones chequeadas.
-<span class="nc" id="L41">            Solucion solucion= Solucion.genomaASolucion(genoma);</span>
+<span class="nc" id="L41">            System.out.println(genoma.toString());</span>
+<span class="nc" id="L42">            Solucion solucion= Solucion.genomaASolucion(genoma);</span>
 
             // Calculo factibilidad
-<span class="nc bnc" id="L44" title="All 2 branches missed.">            if (!solucion.esFactible()) {</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            if (!solucion.esFactible()) {</span>
                 // Intento factibilizar
-<span class="nc" id="L46">                solucion = solucion.factibilizar(100, 100);</span>
+<span class="nc" id="L47">                solucion = solucion.factibilizar(100, 100);</span>
             }
 
-<span class="nc" id="L49">            float fitness = solucion.evaluarFitness();</span>
+<span class="nc" id="L50">            float fitness = solucion.evaluarFitness();</span>
 
-<span class="nc" id="L51">            ind2.genome = solucion.solucionAGenoma();</span>
-<span class="nc" id="L52">            ((SimpleFitness) ind2.fitness).setFitness(state, fitness * (-1), false);</span>
-<span class="nc" id="L53">            ind2.evaluated = true;</span>
+<span class="nc" id="L52">            ind2.genome = solucion.solucionAGenoma();</span>
+<span class="nc" id="L53">            ((SimpleFitness) ind2.fitness).setFitness(state, fitness * (-1), false);</span>
+<span class="nc" id="L54">            ind2.evaluated = true;</span>
         }
-<span class="nc" id="L55">    }</span>
+<span class="nc" id="L56">    }</span>
 }
 
 

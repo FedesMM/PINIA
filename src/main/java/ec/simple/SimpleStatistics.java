@@ -245,7 +245,9 @@ public class SimpleStatistics extends Statistics implements SteadyStateStatistic
                 IntegerMatrixIndividual ind = (IntegerMatrixIndividual) best_of_run[x];
 
                 Solucion sol = Solucion.genomaASolucion(ind.genome);
-                sol.crearArchivoMatriz();
+                sol.imprimirFitness();
+                //sol.imprimirMatriz();
+                //sol.crearArchivoMatriz();
             }
         }
     }

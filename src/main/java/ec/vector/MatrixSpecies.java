@@ -112,7 +112,6 @@ public class MatrixSpecies extends Species {
         //Seteo de constantes y carga de instancias
         Constantes.usos = Uso.cargarUsos();
         Constantes.productores = Productor.cargarProductores();
-        // TODO: Automitazar lectura de la instancia con la que se trabaja
         int iInstancia=0;
         String nombreInstancia="./Instancias/Intancia "+(iInstancia+1)+".in";
         Constantes.cantPixeles=Pixel.contarLineas(nombreInstancia);
@@ -351,7 +350,7 @@ public class MatrixSpecies extends Species {
 
     public Individual newIndividual(final EvolutionState state, int thread) {
 
-        MatrixIndividual newInd = (MatrixIndividual)(super.newIndividual(state, thread));
+        VectorIndividual newInd = (VectorIndividual)(super.newIndividual(state, thread));
         newInd.reset( state, thread );
 
         return newInd;

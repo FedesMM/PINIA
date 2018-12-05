@@ -38,6 +38,7 @@ public class proyectoFinal extends Problem implements SimpleProblemForm
             }
             //Si llegue hasta aca el individuo es correcto
             //Paso del genoma a una solucion, con valores calculados y restricciones chequeadas.
+            System.out.println(genoma.toString());
             Solucion solucion= Solucion.genomaASolucion(genoma);
 
             // Calculo factibilidad

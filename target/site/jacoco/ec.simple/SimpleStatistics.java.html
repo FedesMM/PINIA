@@ -245,10 +245,12 @@ import ec.vector.IntegerMatrixIndividual;
 <span class="nc" id="L245">                IntegerMatrixIndividual ind = (IntegerMatrixIndividual) best_of_run[x];</span>
 
 <span class="nc" id="L247">                Solucion sol = Solucion.genomaASolucion(ind.genome);</span>
-<span class="nc" id="L248">                sol.crearArchivoMatriz();</span>
+<span class="nc" id="L248">                sol.imprimirFitness();</span>
+                //sol.imprimirMatriz();
+                //sol.crearArchivoMatriz();
             }
         }
-<span class="nc" id="L251">    }</span>
+<span class="nc" id="L253">    }</span>
 }
 
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

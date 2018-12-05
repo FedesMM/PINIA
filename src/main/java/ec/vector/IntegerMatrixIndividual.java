@@ -1,11 +1,12 @@
 package ec.vector;
 
 import ec.*;
+import ec.app.proyectoFinal.Solucion;
 import ec.util.*;
 import java.io.*;
 import java.util.*;
 
-public class IntegerMatrixIndividual extends MatrixIndividual {
+public class IntegerMatrixIndividual extends VectorIndividual {
 
     public static final String P_IntegerMatrixIndividual = "int-mat-ind";
     public int[] genome;
@@ -51,7 +52,7 @@ public class IntegerMatrixIndividual extends MatrixIndividual {
         genome = new int[s.genomeSize];
     }
 
-    public void defaultCrossover(EvolutionState state, int thread, MatrixIndividual ind) {
+    public void defaultCrossover(EvolutionState state, int thread, VectorIndividual ind) {
         IntegerMatrixSpecies s = (IntegerMatrixSpecies) species;
         IntegerMatrixIndividual i = (IntegerMatrixIndividual) ind;
         int tmp;
@@ -97,11 +98,14 @@ public class IntegerMatrixIndividual extends MatrixIndividual {
                             tmp = i.genome[y];
                             i.genome[y] = genome[y];
                             genome[y] = tmp;
+                            //System.out.println("Intercambio "+genome[y]+" con "+i.genome[y]);
                         }
                     }
                 }
                 break;
+
         }
+        //System.out.println(genome.toString());
     }
 
     /** Splits the genome into n pieces, according to points, which *must* be sorted.
@@ -161,7 +165,7 @@ public class IntegerMatrixIndividual extends MatrixIndividual {
      simply randomizes genes to a uniform distribution from the min and max of the gene values. */
     public void defaultMutate(EvolutionState state, int thread) {
 
-        System.out.println("defaultMutate en IntegerMatrixIndividual, cambiar segun nuestro mutate");
+        //System.out.println("defaultMutate en IntegerMatrixIndividual, cambiar segun nuestro mutate");
         IntegerMatrixSpecies s = (IntegerMatrixSpecies) species;
         int cantEstaciones = IntegerMatrixSpecies.CANT_ESTACIONES;
 
@@ -225,11 +229,13 @@ public class IntegerMatrixIndividual extends MatrixIndividual {
 
     /** Initializes the individual by randomly choosing Integers uniformly from mingene to maxgene. */
     // notice that we bump to longs to avoid overflow errors
-    public void reset(EvolutionState state, int thread) { // TODO: minGene y maxGene en IntegerMatrixSpecies debería tener los IDs minimos y maximos de los usos.
-        System.out.println("reset en IntegerMatrixIndividual, cambiar segun nuestro inicializador (si es que se usa esta funcion)");
-        IntegerMatrixSpecies s = (IntegerMatrixSpecies) species;
-        for(int x = 0; x < genome.length; x++)
-            genome[x] = randomValueFromClosedInterval((int)s.minGene(x), (int)s.maxGene(x), state.random[thread]);
+    public void reset(EvolutionState state, int thread) {
+        System.out.println("Genera un nuevo genoma con las funciones CrearSolucionFactible() y solucionAGenoma()");
+//        IntegerMatrixSpecies s = (IntegerMatrixSpecies) species;
+//        for(int x = 0; x < genome.length; x++)
+//            genome[x] = randomValueFromClosedInterval((int)s.minGene(x), (int)s.maxGene(x), state.random[thread]);
+        Solucion sol=Solucion.crearSolucionFactible();
+        genome=sol.solucionAGenoma();
     }
 
     public int hashCode() { // TODO: dafac is this?
@@ -318,7 +324,7 @@ public class IntegerMatrixIndividual extends MatrixIndividual {
     }
 
     public int genomeLength() {
-        return genome.length / IntegerMatrixSpecies.CANT_ESTACIONES;
+        return genome.length;
     }
 
     public void writeGenotype(final EvolutionState state, final DataOutput dataOutput) throws IOException {
