@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Constantes.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ecj</a> &gt; <a href="index.source.html" class="el_package">ec.app.proyectoFinal</a> &gt; <span class="el_source">Constantes.java</span></div><h1>Constantes.java</h1><pre class="source lang-java linenums">package ec.app.proyectoFinal;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+<span class="nc" id="L7">public class Constantes {</span>
+    //Luego pasar a globales
+
+<span class="nc" id="L10">    public static int cantPixeles = 18475;</span>
+<span class="nc" id="L11">    public static int cantPotreros = 26168;</span>
+    /**/
+    /*
+    public static int cantPixeles = 792;
+    public static int cantPotreros = 1602;
+    */
+<span class="nc" id="L17">    public static int cantEstaciones = 16;</span>
+<span class="nc" id="L18">    public static int cantAnios = cantEstaciones/4;</span>
+<span class="nc" id="L19">    public static int cantUsos= 15; //El cero esta reservado para inicio random</span>
+<span class="nc" id="L20">    public static int cantProductores= 42;</span>
+    //public static int minimaCantidadUsos=3;
+    //public static int maximaCantidadUsos=6;
+<span class="nc" id="L23">    public static int minimaCantidadUsos=3;</span>
+<span class="nc" id="L24">    public static int maximaCantidadUsos=9;</span>
+
+    //Maximo errores posibles para la funcion objetivo valor objetivo
+<span class="nc" id="L27">    public static float maximoIncumplimientoFosforo=2.23F*cantAnios;</span>
+<span class="nc" id="L28">    public static float maximoIncumplimientoProductividadMinimaEstacion= 6000;</span>
+<span class="nc" id="L29">    public static float maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.cantProductores;</span>
+<span class="nc" id="L30">    public static float pesoIncumplimientoFosforo=1;</span>
+<span class="nc" id="L31">    public static float pesoIncumplimientoProductividadMinimaEstacion= 1;</span>
+<span class="nc" id="L32">    public static float pesoIncumplimientoUsosDistintos=1;</span>
+
+<span class="nc" id="L34">    public static float mpp=0.7f;</span>
+<span class="nc" id="L35">    public static float[]  restriccionProductividadProductorE = new float[]</span>
+            {mpp*1200,mpp*600,mpp*2100,mpp*2100,mpp*1200,mpp*600,mpp*2100,mpp*2100,mpp*1200,mpp*600,mpp*2100,mpp*2100,mpp*1200,mpp*600,mpp*2100,mpp*2100};
+
+
+
+
+    /*
+    //Constantes de test
+    public static final int cantPixeles = 10;
+    public static final int cantEstaciones = 12;
+    public static final int cantAnios = cantEstaciones/4;
+    public static final int cantUsos= 5;
+    public static final int cantProductores= 2;
+    public static int minimaCantidadUsos=2;
+    public static int maximaCantidadUsos=4;
+    */
+
+
+<span class="nc" id="L53">    public static Uso[] usos = new Uso[cantUsos]; //el cero queda reservado para el no uso y el 14 cuando no se toca desde la ultima ves</span>
+<span class="nc" id="L54">    public static Pixel[] pixeles = new Pixel[cantPixeles];</span>
+<span class="nc" id="L55">    public static Productor[] productores= new Productor [cantProductores];</span>
+<span class="nc" id="L56">    public static int semilla=0;</span>
+<span class="nc" id="L57">    public static Random uniforme = new Random(semilla);</span>
+<span class="nc" id="L58">    public static List&lt;Integer&gt; productoresActivos= new ArrayList&lt;Integer&gt;();</span>
+
+
+
+
+}
+
+
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

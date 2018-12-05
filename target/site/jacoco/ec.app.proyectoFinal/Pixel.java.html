@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Pixel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ecj</a> &gt; <a href="index.source.html" class="el_package">ec.app.proyectoFinal</a> &gt; <span class="el_source">Pixel.java</span></div><h1>Pixel.java</h1><pre class="source lang-java linenums">package ec.app.proyectoFinal;
+
+//Para lectura de archivo
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class Pixel {
+    int numero, productor, potrero, id;
+<span class="nc" id="L13">    float[] cordenada = new float [2];</span>
+    float superficie, distanciaAlRio;
+    String usoOriginal;
+
+    //Esto no se va en la solucion
+    // int[] decisiones = new int[Constantes.cantEstaciones]; //Se guarda el Uso*100+el numero de estacion de ese uso
+
+<span class="nc" id="L20">    public Pixel(int numero, int id, int productor, int potrero, float[] cordenada, float superficie, float distanciaAlRio, String usoOriginal) {</span>
+<span class="nc" id="L21">        this.numero = numero;</span>
+<span class="nc" id="L22">        this.id = id;</span>
+<span class="nc" id="L23">        this.productor = productor;</span>
+<span class="nc" id="L24">        this.potrero = potrero;</span>
+<span class="nc" id="L25">        this.cordenada = cordenada;</span>
+<span class="nc" id="L26">        this.superficie = superficie;</span>
+<span class="nc" id="L27">        this.distanciaAlRio = distanciaAlRio;</span>
+<span class="nc" id="L28">        this.usoOriginal = usoOriginal;</span>
+<span class="nc" id="L29">    }</span>
+
+    public void imprimirPixel(){
+<span class="nc" id="L32">            System.out.printf(&quot;\t(&quot;+this.numero+&quot;,&quot;+this.id+ &quot;,&quot;+this.productor+&quot;,&quot;+this.potrero+</span>
+                    &quot;, {&quot;+this.cordenada[0]+&quot;,&quot;+this.cordenada[1]+&quot;},&quot;+
+                    this.superficie+&quot;,&quot;+this.distanciaAlRio+&quot;,&quot;+this.usoOriginal+&quot;)%n&quot;);
+<span class="nc" id="L35">    }</span>
+    public static void imprimirPixeles(){
+<span class="nc" id="L37">        System.out.println(&quot;\t(numero, id, productor, potrero, {coordenadas}, superficie, distanciaAlRio, usoOriginal)&quot;);</span>
+<span class="nc" id="L38">        System.out.println(&quot;For: &quot;+Constantes.pixeles.length);</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        for (int i = 0; i &lt; Constantes.pixeles.length; i++) {</span>
+<span class="nc" id="L40">            System.out.print(&quot;i=&quot; +i+&quot; &quot;);</span>
+<span class="nc" id="L41">            Constantes.pixeles[i].imprimirPixel();</span>
+        }
+        //System.out.println(&quot;Salgo del for&quot;);
+<span class="nc" id="L44">    }</span>
+
+    public static Pixel[] cargarPixelesTest(){
+<span class="nc" id="L47">        Pixel[] pixeles=new Pixel[Constantes.cantPixeles];</span>
+        float[] cordenadaPixel;
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        for (int iPixel = 0; iPixel &lt; Constantes.cantPixeles; iPixel++) {</span>
+<span class="nc" id="L50">            cordenadaPixel=new float[]{iPixel,iPixel};</span>
+<span class="nc" id="L51">            pixeles[iPixel]=new Pixel(iPixel,iPixel,iPixel%2,iPixel, cordenadaPixel,iPixel,iPixel,&quot;Prueba&quot;);</span>
+        }
+<span class="nc" id="L53">        return pixeles;</span>
+    }
+    public static Pixel[] cargarPixeles(String fileName){
+        //Se abre el archivo .dbf se pasa a un texto plano, se remplazan las ',' por ',' para que no haya problemas al pasarlo de strings a float
+        //Se borran los usos que no queremos con reg exp: ^.*&lt;Uso&gt;.*$\n para los usos: Bajo, Buffer, Calle, Forestacion, Humedal, Monte Nativo, Tajamar,Tambo
+<span class="nc" id="L58">        Pixel[] pixeles=new Pixel[Constantes.cantPixeles];</span>
+<span class="nc" id="L59">        Constantes.productoresActivos = new ArrayList&lt;Integer&gt;();</span>
+<span class="nc" id="L60">        int  iPixel=0, id, productor, potrero;</span>
+        float superficie, distanciaAlRio;
+        float[] cordenadaPixel;
+        String usoOriginal;
+        // The name of the file to open.
+
+        // This will reference one line at a time
+<span class="nc" id="L67">        String line = null;</span>
+
+        try {
+            // FileReader reads text files in the default encoding.
+<span class="nc" id="L71">            FileReader fileReader =</span>
+                    new FileReader(fileName);
+            // Always wrap FileReader in BufferedReader.
+<span class="nc" id="L74">            BufferedReader bufferedReader =</span>
+                    new BufferedReader(fileReader);
+
+            //Leo linea con el encabezado:
+            //PROD	POT	ID	SUP_HA	USO
+<span class="nc" id="L79">            line = bufferedReader.readLine();</span>
+
+            //Leo el resto de las lineas
+<span class="nc bnc" id="L82" title="All 2 branches missed.">            while((line = bufferedReader.readLine()) != null) {</span>
+                //System.out.println(&quot;Linea &quot;+iPixel+&quot;:&quot;+line);
+                //Parceo la linea segun sus separadores
+<span class="nc" id="L85">                String[] campos = line.split(&quot;\\t&quot;);</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">                if (campos.length&gt;0) {</span>
+                    //Filtro las calles
+<span class="nc bnc" id="L88" title="All 4 branches missed.">                    if (!campos[0].equalsIgnoreCase(&quot;Calle&quot;)&amp;&amp; campos.length&gt;0) {</span>
+                        //Filtro los usos que anulan los pixeles
+<span class="nc bnc" id="L90" title="All 2 branches missed.">                        if (!campos[4].equalsIgnoreCase(&quot;Bajo&quot;)&amp;&amp;</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">                                !campos[4].equalsIgnoreCase(&quot;Buffer&quot;) &amp;&amp;</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">                                !campos[4].equalsIgnoreCase(&quot;Calle&quot;) &amp;&amp;</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">                                !campos[4].equalsIgnoreCase(&quot;Forestacion&quot;) &amp;&amp;</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">                                !campos[4].equalsIgnoreCase(&quot;Humedal&quot;)&amp;&amp;</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">                                !campos[4].equalsIgnoreCase(&quot;Monte Nativo&quot;)&amp;&amp;</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">                                !campos[4].equalsIgnoreCase(&quot;Tajamar&quot;)&amp;&amp;</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">                                !campos[4].equalsIgnoreCase(&quot;Tambo&quot;)) {</span>
+
+<span class="nc" id="L99">                            id = Integer.valueOf(campos[2]);</span>
+<span class="nc" id="L100">                            productor = Integer.valueOf(campos[0])-1;</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">                            if (!Constantes.productores[productor].pixelesDelProductor.contains(iPixel)){</span>
+                                //System.out.println(&quot;Cargo el pixel &quot;+iPixel+&quot; en el productor &quot;+(productor));
+<span class="nc" id="L103">                                Constantes.productores[productor].pixelesDelProductor.add(iPixel);</span>
+                            }
+<span class="nc bnc" id="L105" title="All 2 branches missed.">                            if (!Constantes.productoresActivos.contains(productor)){</span>
+<span class="nc" id="L106">                                Constantes.productoresActivos.add(productor);</span>
+                                //System.out.println(&quot;Activo el productor: &quot;+productor);
+                            }
+
+<span class="nc" id="L110">                            potrero = Integer.valueOf(campos[1]);</span>
+<span class="nc" id="L111">                            superficie = Float.valueOf(campos[3]);</span>
+<span class="nc" id="L112">                            Constantes.productores[productor].areaTotal+=superficie;</span>
+<span class="nc" id="L113">                            usoOriginal = campos[4];</span>
+
+                            //Siguiente version
+<span class="nc" id="L116">                            cordenadaPixel = new float[]{0F, 0F};</span>
+<span class="nc" id="L117">                            distanciaAlRio = 0;//Float.valueOf(campos[13]);</span>
+                            //Creo un Pixel con sus datos
+<span class="nc" id="L119">                            Pixel pixelNuevo = new Pixel(iPixel, id, productor, potrero, cordenadaPixel, superficie, distanciaAlRio, usoOriginal);</span>
+                            //pixelNuevo.imprimirPixel();
+                            //Lo agrego al arreglo de pixeles
+<span class="nc" id="L122">                            pixeles[iPixel] = pixelNuevo;</span>
+
+<span class="nc" id="L124">                            iPixel++;</span>
+                        }
+                    }
+                }
+<span class="nc" id="L128">            }</span>
+
+            // Always close files.
+<span class="nc" id="L131">            bufferedReader.close();</span>
+        }
+<span class="nc" id="L133">        catch(FileNotFoundException ex) {</span>
+<span class="nc" id="L134">            System.out.println(</span>
+                    &quot;Unable to open file '&quot; +
+                            fileName + &quot;'&quot;);
+        }
+<span class="nc" id="L138">        catch(IOException ex) {</span>
+<span class="nc" id="L139">            System.out.println(</span>
+                    &quot;Error reading file '&quot;
+                            + fileName + &quot;'&quot;);
+            // Or we could just do this:
+            // ex.printStackTrace();
+<span class="nc" id="L144">        }</span>
+<span class="nc" id="L145">        return pixeles;</span>
+    }
+
+    public static int contarLineas(String fileName){
+<span class="nc" id="L149">        int  cantLineas=0;</span>
+        // This will reference one line at a time
+<span class="nc" id="L151">        String line = null;</span>
+
+        try {
+            // FileReader reads text files in the default encoding.
+<span class="nc" id="L155">            FileReader fileReader =</span>
+                    new FileReader(fileName);
+            // Always wrap FileReader in BufferedReader.
+<span class="nc" id="L158">            BufferedReader bufferedReader =</span>
+                    new BufferedReader(fileReader);
+
+            //Leo linea con el encabezado:
+            //PROD	POT	ID	SUP_HA	USO
+<span class="nc" id="L163">            line = bufferedReader.readLine();</span>
+
+            //Leo el resto de las lineas
+<span class="nc bnc" id="L166" title="All 2 branches missed.">            while((line = bufferedReader.readLine()) != null) {</span>
+<span class="nc" id="L167">                cantLineas++;</span>
+            }
+
+            // Always close files.
+<span class="nc" id="L171">            bufferedReader.close();</span>
+        }
+<span class="nc" id="L173">        catch(FileNotFoundException ex) {</span>
+<span class="nc" id="L174">            System.out.println(</span>
+                    &quot;Unable to open file '&quot; +
+                            fileName + &quot;'&quot;);
+        }
+<span class="nc" id="L178">        catch(IOException ex) {</span>
+<span class="nc" id="L179">            System.out.println(</span>
+                    &quot;Error reading file '&quot;
+                            + fileName + &quot;'&quot;);
+            // Or we could just do this:
+            // ex.printStackTrace();
+<span class="nc" id="L184">        }</span>
+<span class="nc" id="L185">        return cantLineas;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

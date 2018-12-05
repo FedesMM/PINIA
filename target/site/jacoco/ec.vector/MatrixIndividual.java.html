@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MatrixIndividual.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ecj</a> &gt; <a href="index.source.html" class="el_package">ec.vector</a> &gt; <span class="el_source">MatrixIndividual.java</span></div><h1>MatrixIndividual.java</h1><pre class="source lang-java linenums">package ec.vector;
+
+import ec.*;
+
+<span class="nc" id="L5">public abstract class MatrixIndividual extends Individual {</span>
+
+    /** Destructively crosses over the individual with another in some default manner.  In most
+     implementations provided in ECJ, one-, two-, and any-point crossover is done with a
+     for loop, rather than a possibly more efficient approach like arrayCopy().  The disadvantage
+     is that arrayCopy() takes advantage of a CPU's bulk copying.  The advantage is that arrayCopy()
+     would require a scratch array, so you'd be allocing and GCing an array for every crossover.
+     Dunno which is more efficient.  */
+<span class="nc" id="L13">    public void defaultCrossover(EvolutionState state, int thread, MatrixIndividual ind) { }</span>
+
+    /** Destructively mutates the individual in some default manner.  The default version calls reset()*/
+    public void defaultMutate(EvolutionState state, int thread) {
+<span class="nc" id="L17">        reset(state,thread);</span>
+<span class="nc" id="L18">    }</span>
+
+    /** Initializes the individual. */
+    public abstract void reset(EvolutionState state, int thread);
+
+    /** Returns the gene array.  If you know the type of the array, you can cast it and work on
+     it directly.  Otherwise, you can still manipulate it in general, because arrays (like
+     all objects) respond to clone() and can be manipulated with arrayCopy without bothering
+     with their type.  This might be useful in creating special generalized crossover operators
+     -- we apologize in advance for the fact that Java doesn't have a template system.  :-(
+     The default version returns null. */
+    public Object getGenome() {
+<span class="nc" id="L30">        return null;</span>
+    }
+
+    /** Sets the gene array.  See getGenome().  The default version does nothing.
+     */
+<span class="nc" id="L35">    public void setGenome(Object gen) { }</span>
+
+    /** Returns the length of the gene array.  By default, this method returns 0. */
+    public int genomeLength() {
+<span class="nc" id="L39">        return 0;</span>
+    }
+
+    /** Initializes the individual to a new size.  Only use this if you need to initialize variable-length individuals. */
+    public void reset(EvolutionState state, int thread, int newSize) {
+<span class="nc" id="L44">        setGenomeLength(newSize);</span>
+<span class="nc" id="L45">        reset(state, thread);</span>
+<span class="nc" id="L46">    }</span>
+
+    /** Sets the genome length.  If the length is longer, then it is filled with a default value (likely 0 or false).
+     This may or may not be a valid value -- you will need to set appropriate values here.
+     The default implementation does nothing; but all subclasses in ECJ implement a subset of this. */
+<span class="nc" id="L51">    public void setGenomeLength(int len) { }</span>
+
+    /** Splits the genome into n pieces, according to points, which *must* be sorted.
+     pieces.length must be 1 + points.length.  The default form does nothing -- be careful
+     not to use this method if it's not implemented!  It should be trivial to implement it
+     for your genome -- just like at the other implementations.  */
+<span class="nc" id="L57">    public void split(int[] points, Object[] pieces) { }</span>
+
+    /** Joins the n pieces and sets the genome to their concatenation.  The default form does nothing.
+     It should be trivial to implement it
+     for your genome -- just like at the other implementations.  */
+<span class="nc" id="L62">    public void join(Object[] pieces) { }</span>
+
+    /** Clones the genes in pieces, and replaces the genes with their copies.  Does NOT copy the array, but modifies it in place.
+     If the MatrixIndividual holds numbers or booleans etc. instead of genes, nothing is cloned
+     (why bother?). */
+<span class="nc" id="L67">    public void cloneGenes(Object piece) { }  // default does nothing.</span>
+
+    public long size() {
+<span class="nc" id="L70">        return genomeLength();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

@@ -1,0 +1,1377 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Solucion.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ecj</a> &gt; <a href="index.source.html" class="el_package">ec.app.proyectoFinal</a> &gt; <span class="el_source">Solucion.java</span></div><h1>Solucion.java</h1><pre class="source lang-java linenums">package ec.app.proyectoFinal;
+
+
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Array;
+import java.util.*;
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+
+class RestriccionProductividadProductores implements Cloneable{
+    boolean cumpleRestriccion;
+    float mediaDesviacion;
+    float maximoDesviacion;
+    int cantIncumplimientos;
+
+<span class="nc" id="L19">    public RestriccionProductividadProductores() {</span>
+<span class="nc" id="L20">        this.cumpleRestriccion = false;</span>
+<span class="nc" id="L21">        this.cantIncumplimientos=0;</span>
+<span class="nc" id="L22">        this.mediaDesviacion = 0;</span>
+<span class="nc" id="L23">        this.maximoDesviacion = 0;</span>
+
+<span class="nc" id="L25">    }</span>
+
+    public RestriccionProductividadProductores clone(){
+<span class="nc" id="L28">        RestriccionProductividadProductores clon = new RestriccionProductividadProductores ();</span>
+<span class="nc" id="L29">        clon.cumpleRestriccion =this.cumpleRestriccion;</span>
+<span class="nc" id="L30">        clon.cantIncumplimientos=this.cantIncumplimientos;</span>
+<span class="nc" id="L31">        clon.mediaDesviacion=this.mediaDesviacion;</span>
+<span class="nc" id="L32">        clon.maximoDesviacion=this.maximoDesviacion;</span>
+<span class="nc" id="L33">        return clon;</span>
+    }
+}
+class RestriccionUsosDistintos{
+    boolean cumpleRestriccion;
+    int cantIncumplimientos; //Cantidad de veces que una estacion un productor esta por debajo del minimo o encima del maximo
+    float incumplimientoRelativo; //Cantidad de incumplimientos dividido entre todas posibles parejas productor,estacion
+    int [][][] cantUsosPorEstacionParaCadaProductor;
+
+<span class="nc" id="L42">    public RestriccionUsosDistintos() {</span>
+<span class="nc" id="L43">        this.cumpleRestriccion=false;</span>
+<span class="nc" id="L44">        this.cantIncumplimientos =0;</span>
+<span class="nc" id="L45">        this.incumplimientoRelativo=0;</span>
+<span class="nc" id="L46">        this.cantUsosPorEstacionParaCadaProductor =</span>
+                new int [Constantes.cantUsos][Constantes.cantEstaciones][Constantes.cantProductores];
+
+<span class="nc" id="L49">    }</span>
+
+    public RestriccionUsosDistintos clone(){
+<span class="nc" id="L52">        RestriccionUsosDistintos clon = new RestriccionUsosDistintos ();</span>
+<span class="nc" id="L53">        clon.cumpleRestriccion=this.cumpleRestriccion;</span>
+<span class="nc" id="L54">        clon.cantIncumplimientos=this.cantIncumplimientos;</span>
+<span class="nc" id="L55">        clon.incumplimientoRelativo=this.incumplimientoRelativo;</span>
+<span class="nc" id="L56">        clon.cantUsosPorEstacionParaCadaProductor=this.cantUsosPorEstacionParaCadaProductor.clone();</span>
+<span class="nc" id="L57">        return clon;</span>
+    }
+}
+
+public class Solucion {
+    float fosforo;
+    int[][] matriz; //Uso*100+numero de estacion de ese uso
+    float [][] productivdadProductores;
+    float[][] fosforoProductores;
+    float areaTotal;
+
+    //Resticcion 2 productividad minima por estacion para cada productor
+    RestriccionProductividadProductores restriccionProductividadMinimaEstacion;
+    //Restriccion 3 usos distintos, cuantos productores no la cumplen.
+    RestriccionUsosDistintos restriccionUsosDistintos;
+
+    public static float actualizarPesoFosforo(Solucion solucionOriginal, Solucion solucion, float pesoFosforo) {
+
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        if (solucionOriginal.fosforo&lt;=solucion.fosforo){</span>
+            //No hubo mejora en fosforo actualizo el contador de cantidad de busquedas sin mejoras
+<span class="nc" id="L77">            return (pesoFosforo*1.1F);</span>
+        }else{
+<span class="nc" id="L79">            return (pesoFosforo/1.1F);</span>
+        }
+    }
+    public static float actualizarPesoProduccion(Solucion solucionOriginal, Solucion solucion, float pesoProduccion) {
+
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        if (-solucionOriginal.restriccionProductividadMinimaEstacion.maximoDesviacion&lt;=-solucion.restriccionProductividadMinimaEstacion.maximoDesviacion){</span>
+            //No hubo mejora en fosforo actualizo el contador de cantidad de busquedas sin mejoras
+<span class="nc" id="L86">            return (pesoProduccion*1.1F);</span>
+        }else{
+<span class="nc" id="L88">            return (pesoProduccion/1.1F);</span>
+        }
+    }
+    public static float actualizarPesoCantUsos(Solucion solucionOriginal, Solucion solucion, float pesoCantUsos) {
+
+<span class="nc bnc" id="L93" title="All 2 branches missed.">        if (solucionOriginal.restriccionUsosDistintos.cantIncumplimientos&lt;=solucion.restriccionUsosDistintos.cantIncumplimientos){</span>
+            //No hubo mejora en fosforo actualizo el contador de cantidad de busquedas sin mejoras
+<span class="nc" id="L95">            return (pesoCantUsos*1.1F);</span>
+        }else{
+<span class="nc" id="L97">            return (pesoCantUsos/1.1F);</span>
+        }
+    }
+
+    public static Solucion genomaASolucion(int[] genoma) {
+<span class="nc" id="L102">        Solucion solucion= new Solucion();</span>
+        int indiceGen, usoACalcular,estacionesDeEsteUso;
+        //Calculo valores auxiliares
+<span class="nc bnc" id="L105" title="All 2 branches missed.">        for (int iPixel = 0; iPixel &lt; Constantes.cantPixeles; iPixel++) {</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">            for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+<span class="nc" id="L107">                solucion.matriz[iPixel][iEstacion]=genoma[iPixel*Constantes.cantEstaciones+iEstacion];</span>
+            }
+        }
+<span class="nc" id="L110">        solucion.recalcular();//Incluye chequear restricciones.</span>
+
+<span class="nc" id="L112">        return solucion;</span>
+    }
+
+    public int[] solucionAGenoma() {
+<span class="nc" id="L116">        int[] genoma = new int[Constantes.cantPixeles * Constantes.cantEstaciones];</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">        for (int iPixel = 0; iPixel &lt; Constantes.cantPixeles; iPixel++) {</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">            for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+<span class="nc" id="L119">                genoma[iPixel*Constantes.cantEstaciones+iEstacion] = this.matriz[iPixel][iEstacion] / 100;</span>
+            }
+        }
+
+<span class="nc" id="L123">        return genoma;</span>
+    }
+
+    /*DEPRECATED
+    //Restricciones de fosforo anual
+    boolean cumpleRestriccionFAnual;
+    int  indiceDesviacionMaximaFosforoAnual; //Indicie en que se encuentra la Maxima superacion del tope de fosforo
+    float  desviacionMediaFosforo; //Superacion promedia del tope de fosforo
+    float [] fosforoAnual;
+    float [][] fosforoAnualPorProductor;
+
+
+    //Restricciones Productor
+    boolean cumpleRestriccionProductores;
+    int[]   indiceDesviacionesMaximaProductores; //Indicie en que se encuentra la Maxima superacion del tope de fosforo
+    float[]  desviacionesMediaProductores; //Superacion promedia del tope de fosforo
+
+    //Restriccion cantUsos
+    int [][] cantUsosProductor;
+    int [] cantUsosDistin
+    tosProductor;
+    */
+
+    public Solucion clone(){
+<span class="nc" id="L147">        Solucion clon = new Solucion ();</span>
+<span class="nc" id="L148">        clon.fosforo=this.fosforo;</span>
+<span class="nc" id="L149">        clon.matriz= this.matriz.clone(); //Uso*100+numero de estacion</span>
+<span class="nc" id="L150">        clon.productivdadProductores= this.productivdadProductores.clone();</span>
+<span class="nc" id="L151">        clon.fosforoProductores= this.fosforoProductores.clone();</span>
+<span class="nc" id="L152">        clon.areaTotal=this.areaTotal;</span>
+<span class="nc" id="L153">        clon.restriccionProductividadMinimaEstacion=this.restriccionProductividadMinimaEstacion.clone();</span>
+<span class="nc" id="L154">        clon.restriccionUsosDistintos=this.restriccionUsosDistintos.clone();</span>
+<span class="nc" id="L155">        return clon;</span>
+    }
+    //float produccionAcumulada;
+    public void imprimirFuncionObjetivo(){
+<span class="nc" id="L159">        System.out.println(&quot;Funcion Objetivo: &quot;+this.evaluarFuncionObjetivo());</span>
+<span class="nc" id="L160">        System.out.println(&quot;\tFosforo modulado: &quot;+Constantes.pesoIncumplimientoFosforo * (this.fosforo /(Constantes.maximoIncumplimientoFosforo*this.areaTotal)));</span>
+<span class="nc" id="L161">        System.out.println(&quot;\tUsos Distintos modulado: &quot;+ Constantes.pesoIncumplimientoUsosDistintos * (this.restriccionUsosDistintos.cantIncumplimientos/ Constantes.maximoIncumplimientoUsosDistintos));</span>
+<span class="nc" id="L162">        System.out.println(&quot;\tProductividad Estacion modulado: &quot;+(-1)*Constantes.pesoIncumplimientoProductividadMinimaEstacion * (this.restriccionProductividadMinimaEstacion.maximoDesviacion /Constantes.maximoIncumplimientoProductividadMinimaEstacion));</span>
+<span class="nc" id="L163">    }</span>
+    public void imprimirFuncionObjetivo(float pesoFosforo, float pesoProductividad, float pesoCantUsos){
+<span class="nc" id="L165">        System.out.println(&quot;Peso Fosforo: &quot;+pesoFosforo+&quot; Peso Productividad: &quot;+pesoProductividad+&quot; Peso CantUsos:&quot;+pesoCantUsos);</span>
+<span class="nc" id="L166">        System.out.println(&quot;Funcion Objetivo: &quot;+this.evaluarFuncionObjetivo(pesoFosforo,pesoProductividad,pesoCantUsos));</span>
+<span class="nc" id="L167">        System.out.print(&quot;\t(&quot;+pesoFosforo * (this.fosforo /(Constantes.maximoIncumplimientoFosforo*this.areaTotal))+&quot;,&quot;);</span>
+<span class="nc" id="L168">        System.out.print(&quot;\t&quot;+(-1)*pesoProductividad * (this.restriccionProductividadMinimaEstacion.maximoDesviacion /Constantes.maximoIncumplimientoProductividadMinimaEstacion)+&quot;,&quot;);</span>
+<span class="nc" id="L169">        System.out.println(&quot;\t&quot;+pesoCantUsos * (this.restriccionUsosDistintos.cantIncumplimientos/ Constantes.maximoIncumplimientoUsosDistintos)+&quot;)&quot;);</span>
+
+<span class="nc" id="L171">    }</span>
+
+    public float evaluarFuncionObjetivo(float pesoFosforo, float pesoProductividad, float pesoCantUsos){
+<span class="nc" id="L174">        float valor=0;</span>
+<span class="nc" id="L175">        valor= pesoFosforo * (this.fosforo /(Constantes.maximoIncumplimientoFosforo*this.areaTotal));</span>
+<span class="nc" id="L176">        valor += - pesoProductividad * (this.restriccionProductividadMinimaEstacion.cantIncumplimientos /Constantes.maximoIncumplimientoProductividadMinimaEstacion);</span>
+<span class="nc" id="L177">        valor +=  pesoCantUsos * (this.restriccionUsosDistintos.cantIncumplimientos/ Constantes.maximoIncumplimientoUsosDistintos);</span>
+<span class="nc" id="L178">        return valor;</span>
+    }
+    public float evaluarFuncionObjetivo(){
+<span class="nc" id="L181">        float valor=0;</span>
+<span class="nc" id="L182">        valor= Constantes.pesoIncumplimientoFosforo * (this.fosforo /(Constantes.maximoIncumplimientoFosforo*this.areaTotal));</span>
+<span class="nc" id="L183">        valor += -Constantes.pesoIncumplimientoProductividadMinimaEstacion * (this.restriccionProductividadMinimaEstacion.maximoDesviacion /Constantes.maximoIncumplimientoProductividadMinimaEstacion);</span>
+<span class="nc" id="L184">        valor +=  Constantes.pesoIncumplimientoUsosDistintos * (this.restriccionUsosDistintos.cantIncumplimientos/ Constantes.maximoIncumplimientoUsosDistintos);</span>
+<span class="nc" id="L185">        return valor;</span>
+    }
+
+    public float evaluarFosforoModulado(){
+<span class="nc" id="L189">        return Constantes.pesoIncumplimientoFosforo * (this.fosforo /(Constantes.maximoIncumplimientoFosforo*this.areaTotal));</span>
+    }
+
+    public float evaluarIncumplimientoProductividadModulado(){
+<span class="nc" id="L193">        return -(this.restriccionProductividadMinimaEstacion.mediaDesviacion /Constantes.maximoIncumplimientoProductividadMinimaEstacion);</span>
+    }
+
+    public float evaluarIncumplimientoUsosDistintosModulado(){
+
+<span class="nc" id="L198">        return this.restriccionUsosDistintos.cantIncumplimientos/ Constantes.maximoIncumplimientoUsosDistintos;</span>
+    }
+
+<span class="nc" id="L201">    public Solucion (){</span>
+<span class="nc" id="L202">        this.fosforo=0;</span>
+        //Por la especificacion del lenguaje los array tienen valores 0  al inicializarce
+<span class="nc" id="L204">        this.matriz = new int[Constantes.cantPixeles][Constantes.cantEstaciones]; //Uso*100+numero de estacion</span>
+<span class="nc" id="L205">        this.productivdadProductores = new float [Constantes.cantProductores][Constantes.cantEstaciones];</span>
+<span class="nc" id="L206">        this.fosforoProductores = new float [Constantes.cantProductores][Constantes.cantEstaciones];</span>
+        //Restriccion 2
+<span class="nc" id="L208">        this.restriccionProductividadMinimaEstacion = new RestriccionProductividadProductores();</span>
+        //Restriccion 3
+<span class="nc" id="L210">        this.restriccionUsosDistintos = new RestriccionUsosDistintos();</span>
+<span class="nc" id="L211">        this.areaTotal=0;</span>
+<span class="nc bnc" id="L212" title="All 2 branches missed.">        for (int iProductores = 0; iProductores &lt; Constantes.cantProductores; iProductores++) {</span>
+<span class="nc" id="L213">            this.areaTotal+=Constantes.productores[iProductores].areaTotal;</span>
+        }
+
+<span class="nc" id="L216">    }</span>
+
+
+    public void imprimirSolucion(){
+<span class="nc" id="L220">        System.out.println(&quot;\tSOLUCION:&quot;);</span>
+<span class="nc" id="L221">        System.out.println(&quot;\t\tFosforo Total: &quot;+this.fosforo);</span>
+<span class="nc" id="L222">        this.imprimirMatriz();</span>
+<span class="nc" id="L223">        this.imprimirRestriccionProductividadMinimaEstacion();</span>
+<span class="nc" id="L224">        this.imprimirRestriccionUsosDistintos();</span>
+        /*
+        this.imprimirProductividadSobreSuperficiePorEstacion();
+        this.imprimirFosforoAnual();
+
+        this.imprimirRestriccionFosforoAnual();
+        this.imprimirRestriccionUsosPorProductor();
+
+        --Deprecated--
+        System.out.println(&quot;\t\tRestriccion productores: &quot;+this.cumpleRestriccionProductores);
+        this.imprimirRestriccionProductores();
+        */
+<span class="nc" id="L236">    }</span>
+
+    public void imprimirPixel(int pixel){
+<span class="nc" id="L239">        System.out.printf(&quot;\t\t\tPixel &quot;+pixel+&quot;: {&quot;);</span>
+<span class="nc bnc" id="L240" title="All 2 branches missed.">        for (int estacion =0; estacion &lt; this.matriz[pixel].length; estacion++){</span>
+<span class="nc" id="L241">            System.out.print(this.matriz[pixel][estacion]);</span>
+<span class="nc bnc" id="L242" title="All 2 branches missed.">            if (estacion!=(this.matriz[pixel].length-1)){</span>
+<span class="nc" id="L243">                System.out.printf(&quot;, &quot;);</span>
+            }
+        }
+<span class="nc" id="L246">        System.out.println(&quot;}&quot;);</span>
+<span class="nc" id="L247">    }</span>
+
+    public void imprimirMatriz(){
+<span class="nc" id="L250">        System.out.println(&quot;\t\tMatriz:&quot;);</span>
+<span class="nc bnc" id="L251" title="All 2 branches missed.">        for (int pixel =0; pixel&lt; this.matriz.length;pixel++){</span>
+<span class="nc" id="L252">            System.out.printf(&quot;\t\t\tPixel &quot;+pixel+&quot;: {&quot;);</span>
+<span class="nc bnc" id="L253" title="All 2 branches missed.">            for (int estacion =0; estacion &lt; this.matriz[pixel].length; estacion++){</span>
+<span class="nc" id="L254">                System.out.print(this.matriz[pixel][estacion]);</span>
+<span class="nc bnc" id="L255" title="All 2 branches missed.">                if (estacion!=(this.matriz[pixel].length-1)){</span>
+<span class="nc" id="L256">                    System.out.printf(&quot;, &quot;);</span>
+                }
+            }
+<span class="nc" id="L259">            System.out.println(&quot;}&quot;);</span>
+        }
+<span class="nc" id="L261">    }</span>
+
+
+    public void imprimirUsosPorEstacion(){
+<span class="nc" id="L265">        System.out.println(&quot;\t\tMatriz:&quot;);</span>
+<span class="nc bnc" id="L266" title="All 2 branches missed.">        for (int pixel =0; pixel&lt; this.matriz.length;pixel++){</span>
+<span class="nc" id="L267">            System.out.printf(&quot;\t\t\tPixel &quot;+pixel+&quot;: {&quot;);</span>
+<span class="nc bnc" id="L268" title="All 2 branches missed.">            for (int estacion =0; estacion &lt; this.matriz[pixel].length; estacion++){</span>
+<span class="nc" id="L269">                System.out.print(this.matriz[pixel][estacion]/100);</span>
+<span class="nc bnc" id="L270" title="All 2 branches missed.">                if (estacion!=(this.matriz[pixel].length-1)){</span>
+<span class="nc" id="L271">                    System.out.printf(&quot;, &quot;);</span>
+                }
+            }
+<span class="nc" id="L274">            System.out.println(&quot;}&quot;);</span>
+        }
+<span class="nc" id="L276">    }</span>
+
+    public void imprimirRestriccionProductividadMinimaEstacion(){
+<span class="nc" id="L279">        System.out.println(&quot;\t\tRestriccion Productividad Minima Estacion: &quot;+ this.restriccionProductividadMinimaEstacion.cumpleRestriccion);</span>
+<span class="nc" id="L280">        System.out.println(&quot;\t\t\tMaxima Desviacion: &quot;+ this.restriccionProductividadMinimaEstacion.maximoDesviacion);</span>
+<span class="nc" id="L281">        System.out.println(&quot;\t\t\tMedia Desviacion: &quot;+ this.restriccionProductividadMinimaEstacion.mediaDesviacion);</span>
+<span class="nc" id="L282">    }</span>
+
+    public void imprimirRestriccionUsosDistintos(){
+        int cantIncumplimientos,cantUsos;
+<span class="nc" id="L286">        System.out.println(&quot;\t\tRestriccion Usos Distintos: &quot;+ this.restriccionUsosDistintos.cumpleRestriccion);</span>
+<span class="nc" id="L287">        System.out.println(&quot;\t\t\tCant Incumplimientos: &quot;+ this.restriccionUsosDistintos.cantIncumplimientos);</span>
+<span class="nc" id="L288">        System.out.println(&quot;\t\t\tIncumplimiento relativo: &quot;+ this.restriccionUsosDistintos.incumplimientoRelativo);</span>
+
+
+<span class="nc" id="L291">    }</span>
+    public void imprimirRestriccionUsosDistintosExpandida(){
+
+<span class="nc" id="L294">        System.out.println(&quot;\t\tRestriccion Usos Distintos: &quot;+ this.restriccionUsosDistintos.cumpleRestriccion);</span>
+<span class="nc" id="L295">        System.out.println(&quot;\t\t\tCant Incumplimientos: &quot;+ this.restriccionUsosDistintos.cantIncumplimientos);</span>
+<span class="nc" id="L296">        System.out.println(&quot;\t\t\tIncumplimiento relativo: &quot;+ this.restriccionUsosDistintos.incumplimientoRelativo);</span>
+<span class="nc" id="L297">        imprimirUsosDisitintosPorEstacion();</span>
+
+<span class="nc" id="L299">    }</span>
+
+    public void imprimirUsosDisitintosPorEstacion(){
+        int cantIncumplimientos,cantUsos;
+
+<span class="nc" id="L304">        System.out.println(&quot;\t\tUsos distintos por estacion:&quot;) ;</span>
+<span class="nc bnc" id="L305" title="All 2 branches missed.">        for (int iProductor:Constantes.productoresActivos) {</span>
+            //for (int iProductor = 0; iProductor &lt; Constantes.cantProductores ; iProductor++) {
+<span class="nc" id="L307">            System.out.print(&quot;\t\t\tProductor &quot;+iProductor+&quot;: { &quot;) ;</span>
+<span class="nc bnc" id="L308" title="All 2 branches missed.">            for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+<span class="nc" id="L309">                cantIncumplimientos=0;</span>
+<span class="nc" id="L310">                cantUsos=0;</span>
+<span class="nc bnc" id="L311" title="All 2 branches missed.">                for (int iUso = 0; iUso &lt; Constantes.cantUsos; iUso++) {</span>
+<span class="nc bnc" id="L312" title="All 2 branches missed.">                    if(this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[iUso][iEstacion][iProductor]&gt;0){</span>
+<span class="nc" id="L313">                        cantUsos++;</span>
+                    }
+                }
+<span class="nc bnc" id="L316" title="All 2 branches missed.">                if (iEstacion!=Constantes.cantEstaciones-1){</span>
+<span class="nc" id="L317">                    System.out.print(cantUsos+&quot;, &quot;);</span>
+                }else{
+<span class="nc" id="L319">                    System.out.println(cantUsos+&quot;}&quot;) ;</span>
+                }
+            }
+
+<span class="nc" id="L323">        }</span>
+<span class="nc" id="L324">    }</span>
+
+
+
+    public void imprimirProductividadSobreSuperficiePorEstacion(){
+        //Imprime la productividad (dividida por su area total) de cada productor en cada estacion
+<span class="nc" id="L330">        System.out.println(&quot;\t\tProductividad Productores:&quot;);</span>
+<span class="nc bnc" id="L331" title="All 2 branches missed.">        for (int productor:Constantes.productoresActivos) {</span>
+            //for (int productor =0; productor&lt; this.productivdadProductores.length;productor++){
+<span class="nc" id="L333">            System.out.printf(&quot;\t\t\tProductor &quot;+productor+&quot;: {&quot;);</span>
+<span class="nc bnc" id="L334" title="All 2 branches missed.">            for (int estacion =0; estacion &lt; this.productivdadProductores[productor].length; estacion++){</span>
+<span class="nc" id="L335">                System.out.print(this.productivdadProductores[productor][estacion]/Constantes.productores[productor].areaTotal);</span>
+<span class="nc bnc" id="L336" title="All 2 branches missed.">                if (estacion!=(this.productivdadProductores[productor].length-1)){</span>
+<span class="nc" id="L337">                    System.out.printf(&quot;, &quot;);</span>
+                }
+            }
+<span class="nc" id="L340">            System.out.println(&quot;}&quot;);</span>
+<span class="nc" id="L341">        }</span>
+<span class="nc" id="L342">    }</span>
+
+
+    public static Solucion crearSolucion(){
+<span class="nc" id="L346">        Solucion solucion = new Solucion();</span>
+<span class="nc" id="L347">        int usoACargar, iEstacion=0, estacionActual;</span>
+        //Cargar cada uno de los pixeles
+<span class="nc bnc" id="L349" title="All 2 branches missed.">        for (int iPixel=0; iPixel&lt;Constantes.cantPixeles; iPixel++){</span>
+<span class="nc" id="L350">            solucion.cargarPixel(iPixel);</span>
+        }
+<span class="nc" id="L352">        solucion.chequearRestricciones();</span>
+<span class="nc" id="L353">        return solucion;</span>
+    }
+
+    public static Solucion crearSolucionFactible(){
+<span class="nc" id="L357">        Solucion solucion = new Solucion();</span>
+<span class="nc" id="L358">        int usoACargar, iEstacion=0, estacionActual;</span>
+        //Cargar cada uno de los pixeles
+<span class="nc bnc" id="L360" title="All 2 branches missed.">        for (int iPixel=0; iPixel&lt;Constantes.cantPixeles; iPixel++){</span>
+<span class="nc" id="L361">            solucion.cargarPixelFactible(iPixel);</span>
+        }
+<span class="nc" id="L363">        solucion.chequearRestricciones();</span>
+<span class="nc" id="L364">        return solucion;</span>
+    }
+
+    public static Solucion firstImprove(Solucion solucion, float pesoFosforo, float pesoProductividad, float pesoCantUsos){
+<span class="nc" id="L368">        Solucion respaldoSolucion=solucion.clone();</span>
+<span class="nc" id="L369">        int pixelRandom, fallos=0;</span>
+        RestriccionProductividadProductores respaldoPMAnual, repaldoPME;
+        RestriccionUsosDistintos respaldoUD;
+
+<span class="nc bnc" id="L373" title="All 2 branches missed.">        for (int intentos = 0; intentos &lt; Constantes.cantPixeles ; intentos++) {</span>
+            //Sorteo cual cambiar
+<span class="nc" id="L375">            pixelRandom= Constantes.uniforme.nextInt(Constantes.cantPixeles-1);</span>
+            //Cambio el pixel sorteado
+<span class="nc" id="L377">            solucion.cambiarPixel(pixelRandom);</span>
+<span class="nc" id="L378">            solucion.recalcular();</span>
+            //En caso de que me sirva lo devuelvo
+<span class="nc bnc" id="L380" title="All 2 branches missed.">            if (solucion.evaluarFuncionObjetivo(pesoFosforo,pesoProductividad,pesoCantUsos)&lt; respaldoSolucion.evaluarFuncionObjetivo(pesoFosforo,pesoProductividad,pesoCantUsos)){</span>
+                //System.out.println(&quot;\t\tFI-Exito, con cantidad de fallos: &quot;+fallos);
+<span class="nc" id="L382">                return solucion;</span>
+
+            }else{
+<span class="nc" id="L385">                fallos++;</span>
+<span class="nc" id="L386">                solucion=respaldoSolucion.clone();</span>
+            }
+        }
+        //System.out.println(&quot;\t\tFI-Fracaso con cantidad de fallos: &quot;+fallos);
+<span class="nc" id="L390">        return respaldoSolucion;</span>
+    }
+
+
+    public void chequearRestricciones(){
+<span class="nc" id="L395">        this.cumpleRestriccionesProductividad();</span>
+<span class="nc" id="L396">        this.cumpleRestriccionUsosDistintos();</span>
+<span class="nc" id="L397">    }</span>
+
+    public  void cargarPixel(int iPixel){
+        //Carga un nuevo pixel
+<span class="nc" id="L401">        int iEstacion=0, iEstacionesCargadas=0, usoACargar, estacionActual, estacionesDeEsteUso, usoYDuracion[];</span>
+<span class="nc" id="L402">        usoYDuracion= new int[2];</span>
+        //System.out.println(&quot;Trabajo con el pixel: &quot;+iPixel);
+
+        //Relleno la estacion 0 del pixel
+<span class="nc" id="L406">        String usoOriginal = Constantes.pixeles[iPixel].usoOriginal;</span>
+        //Averiguo que pixel tenia
+<span class="nc" id="L408">        usoYDuracion=Uso.usoYDuracion(usoOriginal);</span>
+        //System.out.println(&quot;\tTengo que cargar por el uso original: &quot;+usoYDuracion[0]);
+        //System.out.println(&quot;\tme faltan : &quot;+usoYDuracion[1]);
+        //Completo las estaciones que me faltan
+<span class="nc bnc" id="L412" title="All 2 branches missed.">        while(usoYDuracion[1]&gt;0){</span>
+
+<span class="nc" id="L414">            usoACargar=usoYDuracion[0];</span>
+            //Calculo la estacion del uso que voy a cargar
+<span class="nc" id="L416">            estacionesDeEsteUso=Constantes.usos[usoACargar].duracionEstaciones-usoYDuracion[1];</span>
+            //Cargo el uso y la estacion
+<span class="nc" id="L418">            this.matriz[iPixel][iEstacion]=100*usoACargar+estacionesDeEsteUso; //Antes usaba estacionActual pero seguro estaba mal</span>
+            //Aumento la cantidad de usos del due;o del pixel
+<span class="nc" id="L420">            this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoACargar][iEstacion][Constantes.pixeles[iPixel].productor]++;</span>
+            //Actualizo valores de la solucion
+            /*
+            System.out.print(&quot;\tIntento actualizar productividad del productor: &quot;+Constantes.pixeles[iPixel].productor+&quot; en la estacion &quot;+iEstacion);
+            System.out.print(&quot; Aumentando su valor actual: &quot;+this.productivdadProductores[Constantes.pixeles[iPixel].productor][iEstacion]);
+            System.out.print(&quot; segun los valores: &quot;+Constantes.pixeles[iPixel].superficie);
+            System.out.print(&quot; usoACargar &quot;+ usoACargar);
+            System.out.print(&quot; estacionesDeEsteUso &quot;+ estacionesDeEsteUso);
+            System.out.print(&quot; y &quot;+ Constantes.usos[usoACargar].productividad[estacionesDeEsteUso]);
+            System.out.println(&quot; Sumando: &quot;+ Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].productividad[estacionesDeEsteUso]);
+            */
+
+            //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L433">            this.productivdadProductores[Constantes.pixeles[iPixel].productor][iEstacion] +=</span>
+                    Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].productividad[estacionesDeEsteUso];
+            //Actualizo el fosforo del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L436">            this.fosforoProductores[Constantes.pixeles[iPixel].productor][iEstacion] +=</span>
+                    Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso];
+            //System.out.println(&quot;Actualizo valor: &quot;+Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso]+
+            //        &quot;\t Acumulado:&quot;+ this.fosforoProductores[Constantes.pixeles[iPixel].productor][iEstacion]+
+            //        &quot;\t Productor:&quot;+ Constantes.pixeles[iPixel].productor+ &quot;\t Estacion:&quot;+iEstacion);
+            //Actualizo lo que aporta el uso al fosforo total en esta estacion
+<span class="nc" id="L442">            this.fosforo+=(Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);</span>
+
+            //Aumento el iterador de iEstacion
+<span class="nc" id="L445">            iEstacion++;</span>
+            //Reduzco la duracion
+<span class="nc" id="L447">            usoYDuracion[1]--;</span>
+<span class="nc" id="L448">            iEstacionesCargadas++;</span>
+        }
+        //Averiguo en que momento del plantio estaba
+        //Si hay que llenar mas estaciones las lleno
+<span class="nc" id="L452">        iEstacion=iEstacionesCargadas;</span>
+
+<span class="nc" id="L454">        usoACargar= Uso.siguienteUsoRuletaProduccion(usoYDuracion[0]);</span>
+        //System.out.println(&quot;Pixel:&quot;+ iPixel+&quot; Estacion:&quot;+ iEstacion+&quot; Uso previo: &quot;+usoYDuracion[0]+&quot; Siguiente uso: &quot;+usoACargar+&quot; Estaciones a cargar: &quot;+Constantes.usos[usoACargar].duracionEstaciones);
+        //Para un pixel recorro todas las estaciones
+<span class="nc bnc" id="L457" title="All 2 branches missed.">        while (iEstacion &lt; Constantes.cantEstaciones){</span>
+<span class="nc" id="L458">            estacionesDeEsteUso=0;</span>
+            //Cargo todas las estaciones del uso, deteniendome si llego a cantEstaciones
+<span class="nc bnc" id="L460" title="All 4 branches missed.">            while((estacionesDeEsteUso&lt;Constantes.usos[usoACargar].duracionEstaciones) &amp;&amp; ((estacionesDeEsteUso+iEstacion)&lt;(Constantes.cantEstaciones))){</span>
+<span class="nc" id="L461">                estacionActual=iEstacion+estacionesDeEsteUso;</span>
+                //Cargo el uso y las estaciones que llevaNo corresponde la duracion.
+<span class="nc" id="L463">                this.matriz[iPixel][estacionActual]=100*usoACargar+estacionesDeEsteUso; //Antes usaba estacionActual pero seguro estaba mal</span>
+                //Aumento la cantidad de usos del due;o del pixel
+<span class="nc" id="L465">                this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoACargar][estacionActual][Constantes.pixeles[iPixel].productor]++;</span>
+
+                //Actualizo valores de la solucion
+                //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L469">                this.productivdadProductores[Constantes.pixeles[iPixel].productor][estacionActual]</span>
+                        += Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].productividad[estacionesDeEsteUso];
+                //Actualizo el fosforo del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L472">                this.fosforoProductores[Constantes.pixeles[iPixel].productor][estacionActual]</span>
+                        += Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso];
+
+                //Actualizo lo que aporta el uso al fosforo total en esta estacion
+<span class="nc" id="L476">                this.fosforo+=(Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);</span>
+
+<span class="nc" id="L478">                estacionesDeEsteUso++;</span>
+            }
+
+
+<span class="nc" id="L482">            iEstacion=iEstacion + estacionesDeEsteUso; //Actualizo la siguiente estacion con la que trabajar</span>
+            //System.out.print(&quot;Pixel:&quot;+ iPixel+&quot; Estacion:&quot;+ iEstacion+&quot; Uso previo: &quot;+usoACargar);
+<span class="nc" id="L484">            usoACargar= Uso.siguienteUsoRuletaProduccion(usoACargar); //Obtengo el siguiente uso a cargar</span>
+            //System.out.println(&quot; Siguiente uso: &quot;+usoACargar+&quot; Estaciones a cargar: &quot;+Constantes.usos[usoACargar].duracionEstaciones);
+        }
+<span class="nc" id="L487">    }</span>
+
+    public  void cargarPixelFactible(int iPixel){
+        //Carga un nuevo pixel
+<span class="nc" id="L491">        int iEstacion=0, iEstacionesCargadas=0, usoACargar, estacionActual, estacionesDeEsteUso, usoYDuracion[], productor=Constantes.pixeles[iPixel].productor;</span>
+        ArrayList&lt;Integer&gt; usosDelProductorEstaEstacion;
+<span class="nc" id="L493">        usoYDuracion= new int[2];</span>
+        //System.out.println(&quot;Trabajo con el pixel: &quot;+iPixel);
+
+        //Relleno la estacion 0 del pixel
+<span class="nc" id="L497">        String usoOriginal = Constantes.pixeles[iPixel].usoOriginal;</span>
+        //Averiguo que pixel tenia
+<span class="nc" id="L499">        usoYDuracion=Uso.usoYDuracion(usoOriginal);</span>
+        //System.out.println(&quot;\tTengo que cargar por el uso original: &quot;+usoYDuracion[0]);
+        //System.out.println(&quot;\tme faltan : &quot;+usoYDuracion[1]);
+        //Completo las estaciones que me faltan
+<span class="nc bnc" id="L503" title="All 2 branches missed.">        while(usoYDuracion[1]&gt;0){</span>
+
+<span class="nc" id="L505">            usoACargar=usoYDuracion[0];</span>
+            //Calculo la estacion del uso que voy a cargar
+<span class="nc" id="L507">            estacionesDeEsteUso=Constantes.usos[usoACargar].duracionEstaciones-usoYDuracion[1];</span>
+            //Cargo el uso y la estacion
+<span class="nc" id="L509">            this.matriz[iPixel][iEstacion]=100*usoACargar+estacionesDeEsteUso; //Antes usaba estacionActual pero seguro estaba mal</span>
+            //Aumento la cantidad de usos del due;o del pixel
+<span class="nc" id="L511">            this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoACargar][iEstacion][productor]++;</span>
+            //Actualizo valores de la solucion
+            /*
+            System.out.print(&quot;\tIntento actualizar productividad del productor: &quot;+productor+&quot; en la estacion &quot;+iEstacion);
+            System.out.print(&quot; Aumentando su valor actual: &quot;+this.productivdadProductores[productor][iEstacion]);
+            System.out.print(&quot; segun los valores: &quot;+Constantes.pixeles[iPixel].superficie);
+            System.out.print(&quot; usoACargar &quot;+ usoACargar);
+            System.out.print(&quot; estacionesDeEsteUso &quot;+ estacionesDeEsteUso);
+            System.out.print(&quot; y &quot;+ Constantes.usos[usoACargar].productividad[estacionesDeEsteUso]);
+            System.out.println(&quot; Sumando: &quot;+ Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].productividad[estacionesDeEsteUso]);
+            */
+
+            //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L524">            this.productivdadProductores[productor][iEstacion] +=</span>
+                    Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].productividad[estacionesDeEsteUso];
+            //Actualizo el fosforo del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L527">            this.fosforoProductores[productor][iEstacion] +=</span>
+                    Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso];
+            //System.out.println(&quot;Actualizo valor: &quot;+Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso]+
+            //        &quot;\t Acumulado:&quot;+ this.fosforoProductores[productor][iEstacion]+
+            //        &quot;\t Productor:&quot;+ productor+ &quot;\t Estacion:&quot;+iEstacion);
+            //Actualizo lo que aporta el uso al fosforo total en esta estacion
+<span class="nc" id="L533">            this.fosforo+=(Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);</span>
+
+            //Aumento el iterador de iEstacion
+<span class="nc" id="L536">            iEstacion++;</span>
+            //Reduzco la duracion
+<span class="nc" id="L538">            usoYDuracion[1]--;</span>
+<span class="nc" id="L539">            iEstacionesCargadas++;</span>
+        }
+        //Averiguo en que momento del plantio estaba
+        //Si hay que llenar mas estaciones las lleno
+<span class="nc" id="L543">        iEstacion=iEstacionesCargadas;</span>
+<span class="nc" id="L544">        usosDelProductorEstaEstacion= this.usosDelProductorPorEstacion(productor, iEstacion);</span>
+<span class="nc" id="L545">        usoACargar= Uso.siguienteUsoRuletaProduccionCumpleCantUsos(usoYDuracion[0],usosDelProductorEstaEstacion,productor);</span>
+        //System.out.println(&quot;Pixel:&quot;+ iPixel+&quot; Estacion:&quot;+ iEstacion+&quot; Uso previo: &quot;+usoYDuracion[0]+&quot; Siguiente uso: &quot;+usoACargar+&quot; Estaciones a cargar: &quot;+Constantes.usos[usoACargar].duracionEstaciones);
+        //Para un pixel recorro todas las estaciones
+<span class="nc bnc" id="L548" title="All 2 branches missed.">        while (iEstacion &lt; Constantes.cantEstaciones){</span>
+<span class="nc" id="L549">            estacionesDeEsteUso=0;</span>
+            //Cargo todas las estaciones del uso, deteniendome si llego a cantEstaciones
+<span class="nc bnc" id="L551" title="All 4 branches missed.">            while((estacionesDeEsteUso&lt;Constantes.usos[usoACargar].duracionEstaciones) &amp;&amp; ((estacionesDeEsteUso+iEstacion)&lt;(Constantes.cantEstaciones))){</span>
+<span class="nc" id="L552">                estacionActual=iEstacion+estacionesDeEsteUso;</span>
+                //Cargo el uso y las estaciones que llevaNo corresponde la duracion.
+<span class="nc" id="L554">                this.matriz[iPixel][estacionActual]=100*usoACargar+estacionesDeEsteUso; //Antes usaba estacionActual pero seguro estaba mal</span>
+                //Aumento la cantidad de usos del due;o del pixel
+<span class="nc" id="L556">                this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoACargar][estacionActual][Constantes.pixeles[iPixel].productor]++;</span>
+
+                //Actualizo valores de la solucion
+                //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L560">                this.productivdadProductores[Constantes.pixeles[iPixel].productor][estacionActual]</span>
+                        += Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].productividad[estacionesDeEsteUso];
+                //Actualizo el fosforo del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L563">                this.fosforoProductores[Constantes.pixeles[iPixel].productor][estacionActual]</span>
+                        += Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso];
+
+                //Actualizo lo que aporta el uso al fosforo total en esta estacion
+<span class="nc" id="L567">                this.fosforo+=(Constantes.usos[usoACargar].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);</span>
+
+<span class="nc" id="L569">                estacionesDeEsteUso++;</span>
+            }
+
+
+<span class="nc" id="L573">            iEstacion=iEstacion + estacionesDeEsteUso; //Actualizo la siguiente estacion con la que trabajar</span>
+            //System.out.print(&quot;Pixel:&quot;+ iPixel+&quot; Estacion:&quot;+ iEstacion+&quot; Uso previo: &quot;+usoACargar);
+<span class="nc bnc" id="L575" title="All 2 branches missed.">            if (iEstacion&lt;Constantes.cantEstaciones) {</span>
+<span class="nc" id="L576">                usosDelProductorEstaEstacion = this.usosDelProductorPorEstacion(productor, iEstacion);</span>
+<span class="nc" id="L577">                usoACargar = Uso.siguienteUsoRuletaProduccionCumpleCantUsos(usoYDuracion[0], usosDelProductorEstaEstacion, productor);</span>
+                //System.out.println(&quot; Siguiente uso: &quot;+usoACargar+&quot; Estaciones a cargar: &quot;+Constantes.usos[usoACargar].duracionEstaciones);
+            }
+        }
+<span class="nc" id="L581">    }</span>
+
+    public void limpiarPixel(int iPixel){
+        //Libera un pixel actualizando las variables de restricciones
+        //System.out.println(&quot;Limpiar pixel: &quot;+iPixel);
+        int usoABorrar, estacionesDeEsteUso;
+
+<span class="nc bnc" id="L588" title="All 2 branches missed.">        for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+            //100*usoACargar+estacionDelUso
+<span class="nc" id="L590">            usoABorrar=this.matriz[iPixel][iEstacion]/100;</span>
+<span class="nc" id="L591">            estacionesDeEsteUso=this.matriz[iPixel][iEstacion]%100;</span>
+
+            //Libero el uso y las estaciones que lleva
+<span class="nc" id="L594">            this.matriz[iPixel][iEstacion]=0; //Antes usaba estacionActual pero seguro estaba mal</span>
+
+            //Actualizo la cantidad de usos
+<span class="nc" id="L597">            this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoABorrar][iEstacion][Constantes.pixeles[iPixel].productor]--;</span>
+            //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L599">            this.productivdadProductores[Constantes.pixeles[iPixel].productor][iEstacion] -=</span>
+                    Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].productividad[estacionesDeEsteUso];
+            //Actualizo el fosforo del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L602">            this.fosforoProductores[Constantes.pixeles[iPixel].productor][iEstacion] -=</span>
+                    Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeEsteUso];
+            //Actualizo lo que aporta el uso al fosforo total en esta estacion
+<span class="nc" id="L605">            this.fosforo-=(Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);</span>
+
+        }
+<span class="nc" id="L608">    }</span>
+
+    public void recalcular(){
+        int usoACalcular, estacionesDeEsteUso;
+        //Limpio valores
+<span class="nc" id="L613">        this.fosforo=0;</span>
+<span class="nc" id="L614">        this.productivdadProductores= new float[Constantes.cantProductores][Constantes.cantEstaciones];</span>
+<span class="nc" id="L615">        this.fosforoProductores= new float[Constantes.cantProductores][Constantes.cantEstaciones];</span>
+<span class="nc" id="L616">        this.restriccionProductividadMinimaEstacion= new RestriccionProductividadProductores();</span>
+<span class="nc" id="L617">        this.restriccionUsosDistintos = new RestriccionUsosDistintos();</span>
+
+<span class="nc bnc" id="L619" title="All 2 branches missed.">        for (int iPixel = 0; iPixel &lt; Constantes.cantPixeles; iPixel++) {</span>
+<span class="nc bnc" id="L620" title="All 2 branches missed.">            for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+                //100*usoACargar+estacionDelUso
+<span class="nc" id="L622">                usoACalcular = this.matriz[iPixel][iEstacion] / 100;</span>
+<span class="nc" id="L623">                estacionesDeEsteUso = this.matriz[iPixel][iEstacion] % 100;</span>
+
+                //Actualizo lo que aporta el uso al fosforo total en esta estacion
+<span class="nc" id="L626">                this.fosforo += (Constantes.usos[usoACalcular].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);</span>
+                //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L628">                this.productivdadProductores[Constantes.pixeles[iPixel].productor][iEstacion] +=</span>
+                        Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACalcular].productividad[estacionesDeEsteUso];
+                //Actualizo el fosforo del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L631">                this.fosforoProductores[Constantes.pixeles[iPixel].productor][iEstacion] +=</span>
+                        Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACalcular].fosforoEstacion[estacionesDeEsteUso];
+                //Actualizo la cantidad de usos
+<span class="nc" id="L634">                this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoACalcular][iEstacion][Constantes.pixeles[iPixel].productor]++;</span>
+                //Actualizo fosforoAnual segun la estacion actual y el fosforo del Uso
+            }
+        }
+<span class="nc" id="L638">        this.chequearRestricciones();</span>
+<span class="nc" id="L639">    }</span>
+
+    public  void cambiarPixel(int iPixel){
+        //Toma un pixel ya cargado y lo cambia limpiando y actualizando variables en una sola recorrida
+<span class="nc" id="L643">        int iEstacion=0, iEstacionesCargadas=0, usoACargar, usoABorrar, estacionActual, estacionesDeUsoACargar, estacionesDeUsoABorrar, usoYDuracion[];</span>
+<span class="nc" id="L644">        usoYDuracion= new int[2];</span>
+
+
+        //NO debo modificar la continuacion del uso original ni variar lo que aporta a las restricciones
+
+
+        //Relleno la estacion 0 del pixel
+<span class="nc" id="L651">        String usoOriginal = Constantes.pixeles[iPixel].usoOriginal;</span>
+        //Averiguo que pixel tenia
+<span class="nc" id="L653">        usoYDuracion=Uso.usoYDuracion(usoOriginal);</span>
+        //Calculo la primera estacion posterior al uso original
+<span class="nc" id="L655">        iEstacion=usoYDuracion[1];</span>
+        //Calculo el siguiente uso a cargar
+<span class="nc" id="L657">        usoACargar= Uso.siguienteUsoRuletaProduccion(usoYDuracion[0]);</span>
+        //Para un pixel recorro todas las estaciones
+<span class="nc bnc" id="L659" title="All 2 branches missed.">        while (iEstacion &lt; Constantes.cantEstaciones){</span>
+<span class="nc" id="L660">            estacionesDeUsoACargar=0;</span>
+            //Cargo todas las estaciones del uso, deteniendome si llego a cantEstaciones
+<span class="nc bnc" id="L662" title="All 4 branches missed.">            while((estacionesDeUsoACargar&lt;Constantes.usos[usoACargar].duracionEstaciones) &amp;&amp; ((estacionesDeUsoACargar+iEstacion)&lt;(Constantes.cantEstaciones))){</span>
+                //Calculo la estacion
+<span class="nc" id="L664">                estacionActual=iEstacion+estacionesDeUsoACargar;</span>
+                //Obtengo el pixel a borrar
+<span class="nc" id="L666">                usoABorrar=this.matriz[iPixel][estacionActual]/100;</span>
+                //Y la estacion de el uso
+<span class="nc" id="L668">                estacionesDeUsoABorrar=this.matriz[iPixel][estacionActual]%100;</span>
+
+                //Cargo el uso y las estaciones que llevaNo corresponde la duracion.
+<span class="nc" id="L671">                this.matriz[iPixel][estacionActual]=100*usoACargar+estacionesDeUsoACargar; //Antes usaba estacionActual pero seguro estaba mal</span>
+
+                //Actualizo valores de la solucion
+                //En caso de ser necesario actualizo la cantidad de usos en en estaestacion en este pixel
+<span class="nc bnc" id="L675" title="All 2 branches missed.">                if (usoABorrar != usoACargar) {</span>
+                    //Actualizo la cantidad de usos
+<span class="nc" id="L677">                    this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoABorrar][estacionActual][Constantes.pixeles[iPixel].productor]--;</span>
+<span class="nc" id="L678">                    this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoACargar][estacionActual][Constantes.pixeles[iPixel].productor]++;</span>
+                    //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L680">                    this.productivdadProductores[Constantes.pixeles[iPixel].productor][estacionActual] =</span>
+                            this.productivdadProductores[Constantes.pixeles[iPixel].productor][estacionActual]
+                                    - Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].productividad[estacionesDeUsoABorrar]
+                                    + Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].productividad[estacionesDeUsoACargar];
+                    //Actualizo el fosforo del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L685">                    this.fosforoProductores[Constantes.pixeles[iPixel].productor][estacionActual] =</span>
+                            this.fosforoProductores[Constantes.pixeles[iPixel].productor][estacionActual]
+                                    - Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeUsoABorrar]
+                                    + Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforoEstacion[estacionesDeUsoACargar];
+                    //Actualizo lo que aporta el uso al fosforo total en esta estacion
+<span class="nc" id="L690">                    this.fosforo= this.fosforo</span>
+                            - (Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeUsoABorrar]*Constantes.pixeles[iPixel].superficie)
+                            + (Constantes.usos[usoACargar].fosforoEstacion[estacionesDeUsoACargar]*Constantes.pixeles[iPixel].superficie);
+                }
+<span class="nc" id="L694">                estacionesDeUsoACargar++;</span>
+            }
+<span class="nc" id="L696">            iEstacion=iEstacion + estacionesDeUsoACargar; //Actualizo la siguiente estacion con la que trabajar</span>
+            //System.out.print(&quot;Pixel:&quot;+ iPixel+&quot; Estacion:&quot;+ iEstacion+&quot; Uso previo: &quot;+usoACargar);
+<span class="nc" id="L698">            usoACargar= Uso.siguienteUsoRuletaProduccion(usoACargar); //Obtengo el siguiente uso a cargar</span>
+            //System.out.println(&quot; Siguiente uso: &quot;+usoACargar+&quot; Estaciones a cargar: &quot;+Constantes.usos[usoACargar].duracionEstaciones);
+        }
+<span class="nc" id="L701">    }</span>
+
+
+    public void  cumpleRestriccionesProductividad(){
+<span class="nc" id="L705">        float maximaDesviacionEstacion=0,mediaDesviacionEstacion=0, desviacion, productividadSobreSuperficie=0;</span>
+<span class="nc" id="L706">        int incumplimientoEstacion=0;</span>
+<span class="nc" id="L707">        this.restriccionProductividadMinimaEstacion.cumpleRestriccion =true;</span>
+<span class="nc" id="L708">        this.restriccionProductividadMinimaEstacion.mediaDesviacion=0;</span>
+<span class="nc" id="L709">        this.restriccionProductividadMinimaEstacion.maximoDesviacion=0;</span>
+
+<span class="nc bnc" id="L711" title="All 2 branches missed.">        for (int iProductor:Constantes.productoresActivos) {</span>
+            //for (int iProductores = 0; iProductores &lt; Constantes.cantProductores; iProductores++) {
+<span class="nc bnc" id="L713" title="All 2 branches missed.">            for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+                //RESTRICCION ESTACIONARIA
+<span class="nc" id="L715">                productividadSobreSuperficie=this.productivdadProductores[iProductor][iEstacion]/Constantes.productores[iProductor].areaTotal;</span>
+<span class="nc" id="L716">                desviacion=min((productividadSobreSuperficie-Constantes.productores[iProductor].restriccionProduccionEstacion[iEstacion]),0);</span>
+<span class="nc bnc" id="L717" title="All 2 branches missed.">                if (desviacion&lt;0){</span>
+<span class="nc" id="L718">                    this.restriccionProductividadMinimaEstacion.cumpleRestriccion =false;</span>
+<span class="nc" id="L719">                    incumplimientoEstacion++;</span>
+<span class="nc" id="L720">                    mediaDesviacionEstacion+=desviacion;</span>
+<span class="nc" id="L721">                    maximaDesviacionEstacion=min(desviacion,maximaDesviacionEstacion);</span>
+                    //System.out.print(&quot;Desviacion estacion &quot;+incumplimientoEstacion+&quot;: &quot;+desviacion+&quot; MediaAcumulada: &quot;+mediaDesviacionEstacion+&quot; maximaDesviacionEstacion: &quot;+maximaDesviacionEstacion);
+                    //System.out.println(&quot; Productividad&quot;+this.productivdadProductores[iProductores][iEstacion]+&quot; Restriccion &quot;+Constantes.productores[iProductores].restriccionProduccionEstacion[iEstacion]);
+                }
+            }
+<span class="nc" id="L726">        }</span>
+<span class="nc bnc" id="L727" title="All 2 branches missed.">        if (incumplimientoEstacion &gt; 0){</span>
+            //Calculo la media de este productor
+<span class="nc" id="L729">            mediaDesviacionEstacion=mediaDesviacionEstacion/incumplimientoEstacion;</span>
+            //Me quedo con la mejor de las dos
+<span class="nc" id="L731">            this.restriccionProductividadMinimaEstacion.mediaDesviacion=mediaDesviacionEstacion;</span>
+<span class="nc" id="L732">            this.restriccionProductividadMinimaEstacion.maximoDesviacion=maximaDesviacionEstacion;</span>
+        }
+<span class="nc" id="L734">        this.restriccionProductividadMinimaEstacion.cantIncumplimientos=incumplimientoEstacion;</span>
+
+<span class="nc" id="L736">    }</span>
+
+    public  void cumpleRestriccionUsosDistintos(){
+        int cantUsosDistintos;
+<span class="nc" id="L740">        this.restriccionUsosDistintos.cumpleRestriccion=true;</span>
+<span class="nc" id="L741">        this.restriccionUsosDistintos.cantIncumplimientos=0;</span>
+        //Recorro Cada estacion
+<span class="nc bnc" id="L743" title="All 2 branches missed.">        for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+            //Recorro Cada Productor
+<span class="nc bnc" id="L745" title="All 2 branches missed.">            for (int iProductor:Constantes.productoresActivos) {</span>
+                //for (int iProductor = 0; iProductor &lt; Constantes.cantProductores ; iProductor++) {
+<span class="nc" id="L747">                cantUsosDistintos=0;</span>
+                //Calculo cuantos usos distintos tuvo
+<span class="nc bnc" id="L749" title="All 2 branches missed.">                for (int iUso = 0;  iUso&lt; Constantes.cantUsos; iUso++) {</span>
+<span class="nc bnc" id="L750" title="All 2 branches missed.">                    if (this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[iUso][iEstacion][iProductor] &gt; 0){</span>
+<span class="nc" id="L751">                        cantUsosDistintos++;</span>
+                    }
+                }
+<span class="nc bnc" id="L754" title="All 4 branches missed.">                if ((cantUsosDistintos &lt; Constantes.productores[iProductor].getMinCantUsos()) ||</span>
+                        (cantUsosDistintos &gt; Constantes.maximaCantidadUsos)){
+<span class="nc" id="L756">                    this.restriccionUsosDistintos.cumpleRestriccion=false;</span>
+<span class="nc" id="L757">                    this.restriccionUsosDistintos.cantIncumplimientos++;</span>
+                }
+<span class="nc" id="L759">            }</span>
+        }
+
+<span class="nc" id="L762">        this.restriccionUsosDistintos.incumplimientoRelativo=(float) this.restriccionUsosDistintos.cantIncumplimientos/(float)(Constantes.cantEstaciones*Constantes.productoresActivos.size());</span>
+        /*System.out.println(&quot;this.restriccionUsosDistintos.cantIncumplimientos: &quot;+this.restriccionUsosDistintos.cantIncumplimientos );
+        System.out.println(&quot;Constantes.cantEstaciones: &quot;+Constantes.cantEstaciones );
+        System.out.println(&quot;Constantes.cantProductores: &quot;+Constantes.cantProductores );
+        System.out.println(&quot;this.restriccionUsosDistintos.incumplimientoRelativo: &quot;+this.restriccionUsosDistintos.incumplimientoRelativo );
+*/
+<span class="nc" id="L768">    }</span>
+
+    public void crearArchivoMatriz(){
+<span class="nc" id="L771">        int uso=0;</span>
+        String[][] matriz;
+        //Creo la matriz de potreros con valores en cero
+<span class="nc" id="L774">        matriz = new String [Constantes.cantPotreros][Constantes.cantEstaciones];</span>
+<span class="nc bnc" id="L775" title="All 2 branches missed.">        for (int iPotrero = 0; iPotrero &lt; Constantes.cantPotreros; iPotrero++) {</span>
+<span class="nc bnc" id="L776" title="All 2 branches missed.">            for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++){</span>
+                //Paso a la siguiente estacionstacion++) {
+<span class="nc" id="L778">                matriz[iPotrero][iEstacion]=&quot;Reservado&quot;;</span>
+            }
+        }
+
+
+        //Agrego los pixeles calculados
+<span class="nc bnc" id="L784" title="All 2 branches missed.">        for (int iPixel = 0; iPixel&lt; Constantes.pixeles.length; iPixel++) {</span>
+<span class="nc bnc" id="L785" title="All 2 branches missed.">            for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+<span class="nc" id="L786">                uso = this.matriz[iPixel][iEstacion] / 100;</span>
+<span class="nc" id="L787">                matriz[Constantes.pixeles[iPixel].id-1][iEstacion]=Constantes.usos[uso].nombre;</span>
+            }
+        }
+        //Creo el archivo
+        try {
+<span class="nc" id="L792">            PrintWriter writer = new PrintWriter(&quot;Matriz de Planificacion.out&quot;, &quot;UTF-8&quot;);</span>
+
+            //Imprimo la primera fila que marca las estaciones
+<span class="nc" id="L795">            writer.println(&quot;ID,N,10,0\tEst1\tEst2\tEst3\tEst4\tEst5\tEst6\tEst7\tEst8\tEst9\tEst10\tEst11\tEst12\tEst13\tEst14\tEst15\tEst16&quot;);</span>
+            //Para cada potrero
+<span class="nc bnc" id="L797" title="All 2 branches missed.">            for (int iPotrero = 0; iPotrero &lt; Constantes.cantPotreros; iPotrero++) {</span>
+                //Imprimo los usos que se seleccionaron.
+<span class="nc" id="L799">                writer.print((iPotrero+1));</span>
+<span class="nc bnc" id="L800" title="All 2 branches missed.">                for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+                    //Imprimo el uso de cada estacion
+<span class="nc" id="L802">                    writer.print(&quot;\t&quot; + matriz[iPotrero][iEstacion]);</span>
+                }
+<span class="nc" id="L804">                writer.println();</span>
+
+            }
+<span class="nc" id="L807">            writer.close();</span>
+<span class="nc" id="L808">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L809">            e.printStackTrace();</span>
+<span class="nc" id="L810">        } catch (UnsupportedEncodingException e) {</span>
+<span class="nc" id="L811">            e.printStackTrace();</span>
+<span class="nc" id="L812">        }</span>
+
+<span class="nc" id="L814">    }</span>
+
+    public void crearArchivoMatrizNombreUsoExtendido(){
+<span class="nc" id="L817">        int uso=0;</span>
+        String[][] matriz;
+        //Creo la matriz de potreros con valores en cero
+<span class="nc" id="L820">        matriz = new String [Constantes.cantPotreros][Constantes.cantEstaciones];</span>
+<span class="nc bnc" id="L821" title="All 2 branches missed.">        for (int iPotrero = 0; iPotrero &lt; Constantes.cantPotreros; iPotrero++) {</span>
+<span class="nc bnc" id="L822" title="All 2 branches missed.">            for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+<span class="nc" id="L823">                matriz[iPotrero][iEstacion]=&quot;Reservado&quot;;</span>
+            }
+        }
+
+
+        //Agrego los pixeles calculados
+<span class="nc bnc" id="L829" title="All 2 branches missed.">        for (int iPixel = 0; iPixel&lt; Constantes.pixeles.length; iPixel++) {</span>
+<span class="nc bnc" id="L830" title="All 2 branches missed.">            for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+<span class="nc" id="L831">                uso = this.matriz[iPixel][iEstacion] / 100;</span>
+<span class="nc" id="L832">                matriz[Constantes.pixeles[iPixel].id-1][iEstacion]=Constantes.usos[uso].nombre;</span>
+<span class="nc bnc" id="L833" title="All 2 branches missed.">                if (uso&lt;8){</span>
+<span class="nc" id="L834">                    matriz[Constantes.pixeles[iPixel].id-1][iEstacion]+=Uso.getEstacionUso(this.matriz[iPixel][iEstacion]%100);</span>
+                }
+            }
+        }
+        //Creo el archivo
+        try {
+<span class="nc" id="L840">            PrintWriter writer = new PrintWriter(&quot;Matriz de Planificacion Nombre Extendido.out&quot;, &quot;UTF-8&quot;);</span>
+
+            //Imprimo la primera fila que marca las estaciones
+<span class="nc" id="L843">            writer.println(&quot;ID,N,10,0\tEst1\tEst2\tEst3\tEst4\tEst5\tEst6\tEst7\tEst8\tEst9\tEst10\tEst11\tEst12\tEst13\tEst14\tEst15\tEst16&quot;);</span>
+            //Para cada potrero
+<span class="nc bnc" id="L845" title="All 2 branches missed.">            for (int iPotrero = 0; iPotrero &lt; Constantes.cantPotreros; iPotrero++) {</span>
+                //Imprimo los usos que se seleccionaron.
+<span class="nc" id="L847">                writer.print((iPotrero+1));</span>
+<span class="nc bnc" id="L848" title="All 2 branches missed.">                for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+                    //Imprimo el uso de cada estacion
+<span class="nc" id="L850">                    writer.print(&quot;\t&quot; + matriz[iPotrero][iEstacion]);</span>
+                }
+<span class="nc" id="L852">                writer.println();</span>
+
+            }
+<span class="nc" id="L855">            writer.close();</span>
+<span class="nc" id="L856">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L857">            e.printStackTrace();</span>
+<span class="nc" id="L858">        } catch (UnsupportedEncodingException e) {</span>
+<span class="nc" id="L859">            e.printStackTrace();</span>
+<span class="nc" id="L860">        }</span>
+
+<span class="nc" id="L862">    }</span>
+
+    public void crearArchivoCantidadUsos(){
+        int cantIncumplimientos,cantUsos;
+        try {
+            //Creo y abro el archivo
+<span class="nc" id="L868">            PrintWriter writer = new PrintWriter(&quot;Cantidad de Usos Distintos por Estacion.out&quot;, &quot;UTF-8&quot;);</span>
+
+            //Imprimo la primera fila que marca las estaciones
+<span class="nc" id="L871">            writer.println(&quot;Productor.C.254\tEst1\tEst2\tEst3\tEst4\tEst5\tEst6\tEst7\tEst8\tEst9\tEst10\tEst11\tEst12\tEst13\tEst14\tEst15\tEst16&quot;);</span>
+            //Para cada productor
+<span class="nc bnc" id="L873" title="All 2 branches missed.">            for (int iProductor:Constantes.productoresActivos) {</span>
+                //for (int iProductor = 0; iProductor &lt; Constantes.cantProductores ; iProductor++) {
+<span class="nc" id="L875">                writer.print(iProductor+&quot;\t&quot;);</span>
+                //Recorro cada estacio
+<span class="nc bnc" id="L877" title="All 2 branches missed.">                for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+<span class="nc" id="L878">                    cantIncumplimientos=0;</span>
+<span class="nc" id="L879">                    cantUsos=0;</span>
+                    //Recorro cada Uso, sumando todos los usos distintos que usoque uso
+<span class="nc bnc" id="L881" title="All 2 branches missed.">                    for (int iUso = 0; iUso &lt; Constantes.cantUsos; iUso++) {</span>
+<span class="nc bnc" id="L882" title="All 2 branches missed.">                        if(this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[iUso][iEstacion][iProductor]&gt;0){</span>
+<span class="nc" id="L883">                            cantUsos++;</span>
+                        }
+                    }
+                    //Imprimo la cantidad de usos distintos para ese productor en esa estacion
+<span class="nc" id="L887">                    writer.print(cantUsos+&quot;\t&quot;);</span>
+                }
+                //Salto de linea entre productores
+<span class="nc" id="L890">                writer.println();</span>
+<span class="nc" id="L891">            }</span>
+            //Cierro el archivo
+<span class="nc" id="L893">            writer.close();</span>
+<span class="nc" id="L894">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L895">            e.printStackTrace();</span>
+<span class="nc" id="L896">        } catch (UnsupportedEncodingException e) {</span>
+<span class="nc" id="L897">            e.printStackTrace();</span>
+<span class="nc" id="L898">        }</span>
+<span class="nc" id="L899">    }</span>
+
+    public void crearArchivoProductividadSobreAreaTotal(){
+        int cantIncumplimientos,cantUsos;
+<span class="nc" id="L903">        float total=0, totalConSuperficie=0;</span>
+        try {
+            //Creo y abro el archivo
+<span class="nc" id="L906">            PrintWriter writer = new PrintWriter(&quot;Productividad sobre Area Total por Estacion.out&quot;, &quot;UTF-8&quot;);</span>
+            //Imprimo la primera fila que marca las estaciones
+<span class="nc" id="L908">            writer.println(&quot;Productor.C.254\tEst1\tEst2\tEst3\tEst4\tEst5\tEst6\tEst7\tEst8\tEst9\tEst10\tEst11\tEst12\tEst13\tEst14\tEst15\tEst16\tTotal sin Superficie\tTotal con Superficie&quot;);</span>
+            //Para cada productor
+<span class="nc bnc" id="L910" title="All 2 branches missed.">            for (int iProductor:Constantes.productoresActivos) {</span>
+                //for (int iProductor =0; iProductor&lt; this.productivdadProductores.length;iProductor++){
+<span class="nc" id="L912">                total=0;</span>
+<span class="nc" id="L913">                writer.print(iProductor+&quot;\t&quot;);</span>
+                //Recorro cada estacion imprimo la productividad sobre el Area total
+<span class="nc bnc" id="L915" title="All 2 branches missed.">                for (int estacion =0; estacion &lt; this.productivdadProductores[iProductor].length; estacion++){</span>
+<span class="nc" id="L916">                    total+=this.productivdadProductores[iProductor][estacion]/Constantes.productores[iProductor].areaTotal;</span>
+<span class="nc" id="L917">                    totalConSuperficie+=this.productivdadProductores[iProductor][estacion];</span>
+<span class="nc" id="L918">                    writer.print(this.productivdadProductores[iProductor][estacion]/Constantes.productores[iProductor].areaTotal+&quot;\t&quot;);</span>
+                }
+<span class="nc" id="L920">                writer.println(total+&quot;\t&quot;+totalConSuperficie);</span>
+<span class="nc" id="L921">            }</span>
+            //Cierro el archivo
+<span class="nc" id="L923">            writer.close();</span>
+<span class="nc" id="L924">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L925">            e.printStackTrace();</span>
+<span class="nc" id="L926">        } catch (UnsupportedEncodingException e) {</span>
+<span class="nc" id="L927">            e.printStackTrace();</span>
+<span class="nc" id="L928">        }</span>
+<span class="nc" id="L929">    }</span>
+    public void crearArchivoFosforoSobreAreaTotal(){
+        int cantIncumplimientos,cantUsos;
+<span class="nc" id="L932">        float total=0, totalConSuperficie=0;</span>
+        try {
+            //Creo y abro el archivo
+<span class="nc" id="L935">            PrintWriter writer = new PrintWriter(&quot;Fosforo sobre Area Total por Estacion.out&quot;, &quot;UTF-8&quot;);</span>
+            //Imprimo la primera fila que marca las estaciones
+<span class="nc" id="L937">            writer.println(&quot;Productor.C.254\tEst1\tEst2\tEst3\tEst4\tEst5\tEst6\tEst7\tEst8\tEst9\tEst10\tEst11\tEst12\tEst13\tEst14\tEst15\tEst16\tTotal sin Superficie\tTotal con Superficie&quot;);</span>
+            //Para cada productor
+<span class="nc bnc" id="L939" title="All 2 branches missed.">            for (int iProductor:Constantes.productoresActivos) {</span>
+                //for (int iProductor =0; iProductor&lt; this.fosforoProductores.length;iProductor++){
+<span class="nc" id="L941">                total=0;</span>
+<span class="nc" id="L942">                totalConSuperficie=0;</span>
+<span class="nc" id="L943">                writer.print(iProductor+&quot;\t&quot;);</span>
+                //Recorro cada estacion imprimo la productividad sobre el Area total
+<span class="nc bnc" id="L945" title="All 2 branches missed.">                for (int estacion =0; estacion &lt; this.fosforoProductores[iProductor].length; estacion++){</span>
+<span class="nc" id="L946">                    writer.print(this.fosforoProductores[iProductor][estacion]/Constantes.productores[iProductor].areaTotal+&quot;\t&quot;);</span>
+<span class="nc" id="L947">                    total+=this.fosforoProductores[iProductor][estacion]/Constantes.productores[iProductor].areaTotal;</span>
+<span class="nc" id="L948">                    totalConSuperficie+=this.fosforoProductores[iProductor][estacion];</span>
+                }
+<span class="nc" id="L950">                writer.println(total+&quot;\t&quot;+totalConSuperficie);</span>
+<span class="nc" id="L951">            }</span>
+            //Cierro el archivo
+<span class="nc" id="L953">            writer.close();</span>
+<span class="nc" id="L954">        } catch (FileNotFoundException e) {</span>
+<span class="nc" id="L955">            e.printStackTrace();</span>
+<span class="nc" id="L956">        } catch (UnsupportedEncodingException e) {</span>
+<span class="nc" id="L957">            e.printStackTrace();</span>
+<span class="nc" id="L958">        }</span>
+<span class="nc" id="L959">    }</span>
+    public boolean factibilizarCantUsos(){
+        int estacionOriginal, posibleUso;
+        //for (int iProductor = 0; iProductor&lt; Constantes.cantProductores; iProductor++) {
+<span class="nc bnc" id="L963" title="All 2 branches missed.">        for (int iProductor: Constantes.productoresActivos) {</span>
+<span class="nc bnc" id="L964" title="All 2 branches missed.">            for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+                //Calculo la cantidad de usos distintos para este productor en esta estacion.
+<span class="nc" id="L966">                ArrayList&lt;Integer&gt; usosDelProductorEstaEstacion= this.usosDelProductorPorEstacion(iProductor, iEstacion);</span>
+                //Si me faltan usos:
+<span class="nc bnc" id="L968" title="All 2 branches missed.">                if (usosDelProductorEstaEstacion.size()&lt;Constantes.productores[iProductor].getMinCantUsos()){</span>
+//                    System.out.print(&quot;Productor&quot;+iProductor+&quot; Estacion &quot;+iEstacion+&quot;: &quot;);
+//                    System.out.println(&quot;\tMe faltan usos&quot;);
+                    //Averiguo cuantos cambiar
+<span class="nc" id="L972">                    int cantCambios= Constantes.productores[iProductor].getMinCantUsos()-usosDelProductorEstaEstacion.size();</span>
+                    //Cambio la cantidad necesaria
+<span class="nc bnc" id="L974" title="All 2 branches missed.">                    for (int iCambios = 0; iCambios &lt; cantCambios; iCambios++) {</span>
+
+                        //Sorteo entre los pixeles del productor el pixel con menos EstacioneDeUso de un uso con un Uso usado al menos dos veces.
+<span class="nc" id="L977">                        int pixelACambiar= sortearPixelDeProductorParaFactibilizarPorUsos(iEstacion, iProductor);</span>
+<span class="nc" id="L978">                        int estacionDelUso= matriz[pixelACambiar][iEstacion]%100;</span>
+                        //Cambio en el pixel de esta estacion en adelante por un uso que aun no tenga
+                        //System.out.println(&quot;pixelACambiar: &quot;+pixelACambiar+&quot;\tiEstacion-estacionDelUso: &quot;+(iEstacion-estacionDelUso));
+<span class="nc" id="L981">                        boolean factible = this.corregirPixelSegunCantUsos(pixelACambiar, iEstacion-estacionDelUso, usosDelProductorEstaEstacion);</span>
+<span class="nc bnc" id="L982" title="All 4 branches missed.">                        for (int cantIter = 0; cantIter &lt; 1000 &amp;&amp; !factible; cantIter++) {</span>
+<span class="nc" id="L983">                            factible = this.corregirPixelSegunCantUsos(pixelACambiar, iEstacion-estacionDelUso, usosDelProductorEstaEstacion);</span>
+                        }
+                    }
+<span class="nc" id="L986">                }</span>
+                //Si me sobran sorteo un tipo de uso ruleta invertida segun cuantos pixeles tenga
+<span class="nc bnc" id="L988" title="All 2 branches missed.">                else if(usosDelProductorEstaEstacion.size()&gt;Constantes.maximaCantidadUsos){</span>
+//                    System.out.print(&quot;Productor&quot;+iProductor+&quot; Estacion &quot;+iEstacion+&quot;: &quot;);
+//                    System.out.println(&quot;\tMe sobran usos&quot;);
+                    //System.out.println(&quot;Estacion &quot;+iEstacion+&quot;: &quot;);
+                    //Averiguo cuantos cambiar
+<span class="nc" id="L993">                    int cantCambios = usosDelProductorEstaEstacion.size() -Constantes.maximaCantidadUsos;</span>
+                    //Armo una lista de los usos que me voy a quedar,
+//                    System.out.println(&quot;\tArmo lista de usos a concervar: &quot;);
+                    // Primero me quedo con los que son previos a la estacon cero
+<span class="nc" id="L997">                    ArrayList&lt;Integer&gt; usosAConservar= new ArrayList&lt;&gt;();</span>
+                    //int i=0;
+//                    System.out.print(&quot;\t\tAgrego usos heredados: &quot;);
+<span class="nc bnc" id="L1000" title="All 2 branches missed.">                   for (int iPixel: Constantes.productores[iProductor].pixelesDelProductor) {</span>
+<span class="nc" id="L1001">                        estacionOriginal= iEstacion-(matriz[iPixel][iEstacion]%100);</span>
+<span class="nc" id="L1002">                        posibleUso =matriz[iPixel][iEstacion]/100;</span>
+<span class="nc bnc" id="L1003" title="All 4 branches missed.">                        if (estacionOriginal&lt;0 &amp;&amp; !usosAConservar.contains(posibleUso)) {</span>
+<span class="nc" id="L1004">                            usosAConservar.add(posibleUso);</span>
+//                            System.out.print(&quot; &quot;+posibleUso);
+                        }
+<span class="nc" id="L1007">                    }</span>
+//                    System.out.println();
+                    //Alerto si la instancia es no factible, si tengo mas usos distintos previos a la estacion cero
+<span class="nc bnc" id="L1010" title="All 2 branches missed.">                    if (usosAConservar.size()&gt;Constantes.maximaCantidadUsos){</span>
+                        //System.out.println(&quot;INSTANCIA NO VALIDA!!!  Tengo mas usos distintos previos a la estacion cero&quot;);
+<span class="nc" id="L1012">                        return false; //TODO evaluar esto de mejor forma</span>
+                    }
+                    //System.out.print(&quot;\t\tAgrego uso no heredados: &quot;);
+<span class="nc bnc" id="L1015" title="All 2 branches missed.">                    for (int iUso: usosDelProductorEstaEstacion) {</span>
+<span class="nc bnc" id="L1016" title="All 4 branches missed.">                        if (!usosAConservar.contains(iUso) &amp;&amp; usosAConservar.size()&lt;Constantes.maximaCantidadUsos){</span>
+//                            System.out.print(&quot; &quot;+iUso);
+<span class="nc" id="L1018">                            usosAConservar.add(iUso);</span>
+                        }
+
+<span class="nc" id="L1021">                    }</span>
+//                    System.out.println();
+
+                    //Recorro todos los pixeles del productor, cambiando los que no tengan usos de la lista a conservar
+<span class="nc bnc" id="L1025" title="All 2 branches missed.">                    for (Integer iPixel: Constantes.productores[iProductor].pixelesDelProductor) {</span>
+<span class="nc" id="L1026">                        int estacionDelUso= matriz[iPixel][iEstacion]%100;</span>
+<span class="nc bnc" id="L1027" title="All 2 branches missed.">                        if ( !usosAConservar.contains(matriz[iPixel][iEstacion]/100)){</span>
+                            //System.out.println(&quot;pixelACambiar: &quot;+iPixel+&quot;\tiEstacion-estacionDelUso: &quot;+(iEstacion-estacionDelUso));
+<span class="nc" id="L1029">                            boolean factible = this.corregirPixelSegunCantUsos(iPixel, iEstacion-estacionDelUso, usosAConservar);</span>
+<span class="nc bnc" id="L1030" title="All 4 branches missed.">                            for (int cantIter = 0; cantIter &lt; 1000 &amp;&amp; !factible; cantIter++) {</span>
+<span class="nc" id="L1031">                                factible = this.corregirPixelSegunCantUsos(iPixel, iEstacion-estacionDelUso, usosAConservar);</span>
+                            }
+                        }
+<span class="nc" id="L1034">                    }</span>
+                }else{
+                    //System.out.println(&quot;System.out.print(\&quot;Productor \&quot;+iProductor+\&quot; Estacion \&quot;+iEstacion+\&quot;:\&quot;);Me faltan usos&quot;);
+                    //System.out.println(&quot;\tCorrecto&quot;);
+                }
+            }
+<span class="nc" id="L1040">        }</span>
+<span class="nc" id="L1041">        return true;</span>
+    }
+
+    private ArrayList&lt;Integer&gt; usosDelProductorPorEstacion(int iProductor, int iEstacion) {
+<span class="nc" id="L1045">        ArrayList&lt;Integer&gt; usosDelProductorEstaEstacion= new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L1046" title="All 2 branches missed.">        for (int iUso = 0; iUso &lt; Constantes.cantUsos; iUso++) {</span>
+            //System.out.println(&quot;[iEstacion] &quot;+iEstacion+&quot; [iProductor] &quot;+iProductor+&quot; [iUso] &quot;+iUso);
+<span class="nc bnc" id="L1048" title="All 2 branches missed.">            if (this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[iUso][iEstacion][iProductor]&gt;0){</span>
+<span class="nc bnc" id="L1049" title="All 2 branches missed.">                if(!usosDelProductorEstaEstacion.contains(iUso)){</span>
+<span class="nc" id="L1050">                    usosDelProductorEstaEstacion.add(iUso);</span>
+                }
+            }
+        }
+<span class="nc" id="L1054">        Collections.shuffle(usosDelProductorEstaEstacion);</span>
+<span class="nc" id="L1055">        return usosDelProductorEstaEstacion;</span>
+    }
+
+    private boolean corregirPixelSegunCantUsos(int iPixel, int estacionOriginal, ArrayList&lt;Integer&gt; usosDelProductorEstaEstacion) {
+        //Toma un pixel ya cargado y lo cambia limpiando y actualizando variables en una sola recorrida
+<span class="nc" id="L1060">        int iEstacion=estacionOriginal, usoACargar=0, usoABorrar, estacionActual, estacionesDeUsoACargar, estacionesDeUsoABorrar, usoYDuracion[];</span>
+<span class="nc" id="L1061">        int productor= Constantes.pixeles[iPixel].productor;</span>
+<span class="nc" id="L1062">        usoYDuracion= new int[2];</span>
+
+<span class="nc bnc" id="L1064" title="All 2 branches missed.">        if (estacionOriginal &lt;0 ) {</span>
+            //System.out.println(&quot;INSTANCIA NO VALIDA!!! En corregirPixelSegunCantUsos&quot;);
+            //TODO EVALUAR ESTO MEJOR
+            //System.exit(1);
+<span class="nc" id="L1068">            return false;</span>
+<span class="nc bnc" id="L1069" title="All 2 branches missed.">        }else if(estacionOriginal==0) {</span>
+            //Obtengo el valor de Uso original
+<span class="nc" id="L1071">            String usoOriginal = Constantes.pixeles[iPixel].usoOriginal;</span>
+            //Averiguo que uso y duracion teniatenia
+<span class="nc" id="L1073">            usoYDuracion = Uso.usoYDuracion(Constantes.pixeles[iPixel].usoOriginal);</span>
+            //Calculo la primera estacion posterior al uso original
+<span class="nc" id="L1075">            iEstacion = usoYDuracion[1];</span>
+            //Si tengo al menos un uso siguiente que corrija el Pixel
+<span class="nc bnc" id="L1077" title="All 2 branches missed.">            if(Constantes.usos[usoYDuracion[0]].tengoSiguiente(usosDelProductorEstaEstacion)){</span>
+                //Sorteo un uso que lo corrija
+<span class="nc" id="L1079">                usoACargar=Uso.siguienteUsoRuletaFosforoCumpleCantUsos(usoYDuracion[0], usosDelProductorEstaEstacion, productor);</span>
+            }else{
+                //Devuelvo que no lo pude corregir
+<span class="nc" id="L1082">                System.out.println(&quot;No pude corregir. iPixel: &quot;+iPixel+&quot; iEstacion: &quot;+iEstacion);</span>
+<span class="nc" id="L1083">                return false;</span>
+            }
+<span class="nc" id="L1085">        }else{//estacionOriginal&gt;0</span>
+            //System.out.println(&quot;Entro a siguienteUsoRuletaFosforoCumpleCantUsos.&quot;);
+<span class="nc" id="L1087">            usoACargar = Uso.siguienteUsoRuletaFosforoCumpleCantUsos(this.matriz[iPixel][estacionOriginal-1]/100, usosDelProductorEstaEstacion, productor);</span>
+            //System.out.println(&quot;Salgo de siguienteUsoRuletaFosforoCumpleCantUsos.&quot;);
+        }
+        //Para un pixel recorro todas las estaciones
+<span class="nc bnc" id="L1091" title="All 2 branches missed.">        while (iEstacion &lt; Constantes.cantEstaciones){</span>
+            //System.out.println(&quot;Comienzo a modificar el iPixel &quot;+iPixel+&quot; en la iEstacion &quot;+iEstacion+&quot; un usoACargar &quot;+usoACargar);
+<span class="nc" id="L1093">            estacionesDeUsoACargar=0;</span>
+            //Cargo todas las estaciones del uso, deteniendome si llego a cantEstaciones
+<span class="nc bnc" id="L1095" title="All 4 branches missed.">            while((estacionesDeUsoACargar&lt;Constantes.usos[usoACargar].duracionEstaciones) &amp;&amp; ((estacionesDeUsoACargar+iEstacion)&lt;(Constantes.cantEstaciones))){</span>
+                //Calculo la estacion
+<span class="nc" id="L1097">                estacionActual=iEstacion+estacionesDeUsoACargar;</span>
+                //En caso de ser necesario actualizo la cantidad de usos en en estaestacion en este pixel
+<span class="nc bnc" id="L1099" title="All 2 branches missed.">                if (this.matriz[iPixel][estacionActual] != (100*usoACargar+estacionesDeUsoACargar)) {</span>
+                    //Obtengo el pixel a borrar
+<span class="nc" id="L1101">                    usoABorrar=this.matriz[iPixel][estacionActual]/100;</span>
+                    //Y la estacion de el uso
+<span class="nc" id="L1103">                    estacionesDeUsoABorrar=this.matriz[iPixel][estacionActual]%100;</span>
+                    //Cargo el uso y las estaciones que llevaNo corresponde la duracion.
+<span class="nc" id="L1105">                    this.matriz[iPixel][estacionActual]=100*usoACargar+estacionesDeUsoACargar; //Antes usaba estacionActual pero seguro estaba mal</span>
+                    //Actualizo la cantidad de usos
+<span class="nc" id="L1107">                    this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoABorrar][estacionActual][productor]--;</span>
+<span class="nc" id="L1108">                    this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoACargar][estacionActual][productor]++;</span>
+                    //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L1110">                    this.productivdadProductores[productor][estacionActual] -=</span>
+                            Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].productividad[estacionesDeUsoABorrar]
+                                    + Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].productividad[estacionesDeUsoACargar];
+                    //Actualizo el fosforo del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L1114">                    this.fosforoProductores[productor][estacionActual] -=</span>
+                            Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeUsoABorrar]
+                                    + Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforoEstacion[estacionesDeUsoACargar];
+                    //Actualizo lo que aporta el uso al fosforo total en esta estacion
+<span class="nc" id="L1118">                    this.fosforo= this.fosforo</span>
+                            - (Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeUsoABorrar]*Constantes.pixeles[iPixel].superficie)
+                            + (Constantes.usos[usoACargar].fosforoEstacion[estacionesDeUsoACargar]*Constantes.pixeles[iPixel].superficie);
+                }
+<span class="nc" id="L1122">                estacionesDeUsoACargar++;</span>
+            }
+<span class="nc" id="L1124">            iEstacion=iEstacion + estacionesDeUsoACargar; //Actualizo la siguiente estacion con la que trabajar</span>
+<span class="nc bnc" id="L1125" title="All 2 branches missed.">            if (iEstacion&lt;16) {</span>
+<span class="nc" id="L1126">                usoACargar = Uso.siguienteUsoRuletaFosforoCumpleCantUsos(usoACargar, usosDelProductorPorEstacion(productor, iEstacion), productor);</span>
+            }
+            //Uso.siguienteUsoRuletaProduccion(usoACargar); //Obtengo el siguiente uso a cargar
+            //System.out.println(&quot; Siguiente uso: &quot;+usoACargar+&quot; Estaciones a cargar: &quot;+Constantes.usos[usoACargar].duracionEstaciones);
+        }
+<span class="nc" id="L1131">        return true;</span>
+    }
+
+    public int sortearPixelDeProductorParaFactibilizarPorUsos(int iEstacion, int iProductor) {
+<span class="nc" id="L1135">        List&lt;Integer&gt; pixelACambiar= new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L1136">        int minEstacion = Constantes.cantEstaciones;</span>
+//        System.out.println(&quot;iEstacion &quot;+iEstacion+&quot; iProductor: &quot;+iProductor);
+//        System.out.print(&quot;\tCant de usos por estacion para este productor:&quot;);
+//        for (int iUso = 0; iUso &lt; Constantes.cantUsos; iUso++) {
+//            System.out.print(&quot; &quot;+this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[iUso][iEstacion][iProductor]);
+//
+//        }
+//        System.out.println();
+
+        //Busco entre los pixeles del producto el pixel con menos EstacioneDeUso de un uso con un Uso usado al menos dos veces.
+//        System.out.println(&quot;Sorteo para iEstacion: &quot;+iEstacion+&quot;\tiProductor: &quot;+iProductor);
+<span class="nc bnc" id="L1147" title="All 2 branches missed.">        for (Integer iPixel: Constantes.productores[iProductor].pixelesDelProductor) {</span>
+//            System.out.print(&quot;\tiPixel: &quot;+iPixel);
+            //Consigo el uso y la estacion del actual
+<span class="nc" id="L1150">            int usoDelPixel=this.matriz[iPixel][iEstacion]/100;</span>
+<span class="nc" id="L1151">            int estacionesDelUso= this.matriz[iPixel][iEstacion]%100;</span>
+//            System.out.print(&quot;\tusoDelPixel: &quot;+usoDelPixel+&quot;\testacionDelUso: &quot;+estacionesDelUso);
+//            System.out.println(&quot;\tCantidad Veces Usados: &quot;+this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoDelPixel][iEstacion][iProductor]);
+            //Si es un uso, usado al menos 2 veces en esta estacion por este productor
+<span class="nc bnc" id="L1155" title="All 2 branches missed.">            if (this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoDelPixel][iEstacion][iProductor]&gt;1){</span>
+                //Si su estacion del uso es menor que el pixel a cambiar actual
+<span class="nc bnc" id="L1157" title="All 2 branches missed.">                if (estacionesDelUso&lt; minEstacion){</span>
+<span class="nc" id="L1158">                    minEstacion = estacionesDelUso;</span>
+<span class="nc" id="L1159">                    pixelACambiar= new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L1160">                    pixelACambiar.add(iPixel);</span>
+<span class="nc bnc" id="L1161" title="All 2 branches missed.">                } else if (estacionesDelUso == minEstacion) {</span>
+<span class="nc" id="L1162">                    pixelACambiar.add(iPixel);</span>
+                }
+            }
+<span class="nc" id="L1165">        }</span>
+<span class="nc bnc" id="L1166" title="All 2 branches missed.">        if (pixelACambiar.size()&gt;1){</span>
+<span class="nc" id="L1167">            return pixelACambiar.get(Constantes.uniforme.nextInt(pixelACambiar.size() - 1)); // TODO: puede explotar si la lista es vacia</span>
+        } else{
+            //No tengo pixeles en la lista le doy uno cualquiera
+<span class="nc" id="L1170">            return Constantes.productores[iProductor].pixelesDelProductor.get(Constantes.uniforme.nextInt(Constantes.productores[iProductor].pixelesDelProductor.size()));</span>
+        }
+
+
+
+    }
+
+
+    public void factibilizarProductividad() {
+        int pixelACambiar, estacionDelUso;
+//        System.out.println(&quot;factibilizarProductividad: &quot;);
+        //for (int iProductor = 0; iProductor&lt; Constantes.cantProductores; iProductor++) {
+<span class="nc bnc" id="L1182" title="All 2 branches missed.">        for (int iProductor: Constantes.productoresActivos) {</span>
+<span class="nc bnc" id="L1183" title="All 2 branches missed.">            for (int iEstacion = 0; iEstacion &lt; Constantes.cantEstaciones; iEstacion++) {</span>
+                //Calculo la cantidad de usos distintos para este productor en esta estacion.
+<span class="nc" id="L1185">                ArrayList&lt;Integer&gt; usosDelProductorEstaEstacion= this.usosDelProductorPorEstacion(iProductor, iEstacion);</span>
+                //Si me faltan falta productividad:
+<span class="nc bnc" id="L1187" title="All 2 branches missed.">                if (this.productivdadProductores[iProductor][iEstacion]/Constantes.productores[iProductor].areaTotal</span>
+                        &lt;Constantes.productores[iProductor].restriccionProduccionEstacion[iEstacion]){
+//                    System.out.println(&quot;\tIncumplimiento para el produtor &quot;+iProductor+&quot; en la estacion &quot;+ iEstacion
+//                            + &quot;: &quot;+this.productivdadProductores[iProductor][iEstacion]+&quot;/&quot;+Constantes.productores[iProductor].restriccionProduccionEstacion[iEstacion]);
+<span class="nc" id="L1191">                    int maxCambios=Constantes.productores[iProductor].pixelesDelProductor.size();</span>
+<span class="nc bnc" id="L1192" title="All 4 branches missed.">                    for (int iCambios = 0; ((iCambios &lt; maxCambios)&amp;&amp;</span>
+                    (this.productivdadProductores[iProductor][iEstacion]/Constantes.productores[iProductor].areaTotal
+<span class="nc" id="L1194">                    &lt;Constantes.productores[iProductor].restriccionProduccionEstacion[iEstacion])); iCambios++) {</span>
+                        //Sorteo un pixel del productor ponderando la productividad de esta estacion
+<span class="nc" id="L1196">                        pixelACambiar= this.sortearPixelDeProductorParaFactibilizarProductividad(iEstacion, iProductor);</span>
+<span class="nc" id="L1197">                        estacionDelUso=this.matriz[pixelACambiar][iEstacion]%100;</span>
+                        //Corrijo el pixel sorteado
+<span class="nc" id="L1199">                        this.corregirPixelSegunProductividad(pixelACambiar, iEstacion-estacionDelUso, usosDelProductorEstaEstacion);</span>
+                    }
+                } else{
+//                    System.out.println(&quot;\tCumplimiento para el produtor &quot;+iProductor+&quot; en la estacion &quot;+ iEstacion
+//                            + &quot;: &quot;+this.productivdadProductores[iProductor][iEstacion]+&quot;/&quot;+Constantes.productores[iProductor].restriccionProduccionEstacion[iEstacion]);
+                }
+
+            }
+<span class="nc" id="L1207">        }</span>
+<span class="nc" id="L1208">    }</span>
+
+
+    private int sortearPixelDeProductorParaFactibilizarProductividad(int iEstacion, int iProductor) {
+        //Obtengo la produccion total del productor en esta estacion
+<span class="nc" id="L1213">        float produccionTotal= 0, produccionInvertidaTotal=0, sorteo=0, acumulado=0;</span>
+<span class="nc" id="L1214">        int cantPixeles=Constantes.productores[iProductor].pixelesDelProductor.size(), pixelAcambiar=0,uso,estacionUso;</span>
+<span class="nc" id="L1215">        List&lt;Integer&gt; posiblesPixeles= new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L1216">        HashMap&lt;Integer, Float&gt; produccionInvertida=new HashMap();</span>
+//        System.out.println(&quot;Entro a Sortear. Productividad total: &quot;+produccionTotal);
+
+//        System.out.print(&quot;\tArmo lista de pixeles: &quot;);
+
+        //Calculo la productividad total de esta estacion
+<span class="nc bnc" id="L1222" title="All 2 branches missed.">        for (int iPixel:Constantes.productores[iProductor].pixelesDelProductor) {</span>
+<span class="nc" id="L1223">            uso=this.matriz[iPixel][iEstacion]/100;</span>
+<span class="nc" id="L1224">            estacionUso=this.matriz[iPixel][iEstacion]%100;</span>
+<span class="nc" id="L1225">            produccionTotal+=Constantes.usos[uso].productividad[estacionUso];</span>
+<span class="nc" id="L1226">        }</span>
+        //Cargo los pixeles no heredados
+<span class="nc bnc" id="L1228" title="All 2 branches missed.">        for (int iPixel:Constantes.productores[iProductor].pixelesDelProductor) {</span>
+<span class="nc" id="L1229">            uso=this.matriz[iPixel][iEstacion]/100;</span>
+<span class="nc" id="L1230">            estacionUso=this.matriz[iPixel][iEstacion]%100;</span>
+<span class="nc bnc" id="L1231" title="All 2 branches missed.">            if(iEstacion-estacionUso&gt;=0){</span>
+<span class="nc" id="L1232">                posiblesPixeles.add(iPixel);</span>
+                //Calculo la produccion invertida para cada pixel y la total
+<span class="nc" id="L1234">                produccionInvertida.put(iPixel,(produccionTotal-Constantes.usos[uso].productividad[estacionUso]));</span>
+                //Aumento la Productividad invertida total
+<span class="nc" id="L1236">                produccionInvertidaTotal+=produccionInvertida.get(iPixel);</span>
+//                System.out.print(iPixel+&quot; &quot;);
+            }
+<span class="nc" id="L1239">        }</span>
+
+//        System.out.println();
+<span class="nc bnc" id="L1242" title="All 2 branches missed.">        if (posiblesPixeles.size()&gt;0){</span>
+<span class="nc bnc" id="L1243" title="All 2 branches missed.">            if(produccionTotal&gt;0){</span>
+                //Sorteo un numero entre cero y la productividad invertida total
+<span class="nc" id="L1245">                sorteo= Constantes.uniforme.nextFloat()*produccionInvertidaTotal;</span>
+//            System.out.println(&quot;\tSortie: &quot;+sorteo);
+                //Averiguo a que pixel corresponde el sorteo
+//            System.out.print(&quot;\tBusco el pixel correspondiente: &quot;
+<span class="nc bnc" id="L1249" title="All 2 branches missed.">                for (Integer iPixel:produccionInvertida.keySet()) {</span>
+//                System.out.print(iPixel+&quot; &quot;);
+<span class="nc" id="L1251">                    acumulado+=produccionInvertida.get(iPixel);</span>
+<span class="nc bnc" id="L1252" title="All 2 branches missed.">                    if (sorteo&lt;acumulado){</span>
+//                    System.out.println(&quot;\n\tSortie el pixel: &quot;+iPixel);
+<span class="nc" id="L1254">                        return iPixel;</span>
+                    }
+<span class="nc" id="L1256">                }</span>
+            }else {
+                //System.out.println(&quot;Pixel sin productividad&quot;);
+<span class="nc" id="L1259">                return Constantes.uniforme.nextInt(posiblesPixeles.size());</span>
+            }
+
+<span class="nc" id="L1262">            System.out.print(&quot;NO ENCONTRE EL PIXEL SORTEADO EN: estacion &quot;+iEstacion+&quot; productor&quot; + iProductor);</span>
+<span class="nc" id="L1263">            System.out.print(&quot;\tPosibles Pixeles:&quot; +posiblesPixeles.toString()+ &quot; ProduccionInvertida &quot;+produccionInvertida.values().toString());</span>
+<span class="nc" id="L1264">            System.out.println(&quot;\tSorteado:&quot;+sorteo+&quot; ProductividadInvertidaTotal: &quot;+produccionInvertidaTotal+&quot; Acumulado&quot;+acumulado+&quot; ProductividadTotal&quot;+produccionTotal);</span>
+<span class="nc" id="L1265">            this.imprimirMatriz();</span>
+
+        }else {
+<span class="nc" id="L1268">            System.out.println(&quot;No hay pixel que sortear en estacion &quot;+iEstacion+&quot; para el &quot;+ iProductor);</span>
+        }
+<span class="nc" id="L1270">        return 0;</span>
+    }
+
+    private boolean corregirPixelSegunProductividad(int iPixel, int estacionOriginal, ArrayList&lt;Integer&gt; usosDelProductorEstaEstacion) {
+        //Toma un pixel ya cargado y lo cambia limpiando y actualizando variables en una sola recorrida
+<span class="nc" id="L1275">        int iEstacion=estacionOriginal, usoACargar=0, usoABorrar, estacionActual, estacionesDeUsoACargar, estacionesDeUsoABorrar, usoYDuracion[];</span>
+<span class="nc" id="L1276">        int productor= Constantes.pixeles[iPixel].productor;</span>
+
+<span class="nc bnc" id="L1278" title="All 2 branches missed.">        if (estacionOriginal &lt;0 ) {</span>
+//            System.out.print(&quot;INSTANCIA NO VALIDA!!! En: corregirPixelSegunProductividad&quot;);
+<span class="nc" id="L1280">            return false;</span>
+<span class="nc bnc" id="L1281" title="All 2 branches missed.">        }else if(estacionOriginal==0) {</span>
+            //Obtengo el valor de usoOriginal del pixel
+<span class="nc" id="L1283">            String usoOriginal = Constantes.pixeles[iPixel].usoOriginal;</span>
+            //Averiguo que uso tenia
+<span class="nc" id="L1285">            usoYDuracion = Uso.usoYDuracion(usoOriginal);</span>
+            //Calculo la primera estacion posterior al uso original
+<span class="nc" id="L1287">            iEstacion = usoYDuracion[1];</span>
+            //Si tengo al menos un uso siguiente que corrija el Pixel
+<span class="nc bnc" id="L1289" title="All 2 branches missed.">            if(Constantes.usos[usoYDuracion[0]].tengoSiguiente(usosDelProductorEstaEstacion)){</span>
+                //Sorteo un uso que lo corrija
+<span class="nc" id="L1291">                usoACargar=Uso.siguienteUsoRuletaProduccionCumpleCantUsos(usoYDuracion[0], usosDelProductorEstaEstacion, productor);</span>
+            }else{
+                //Devuelvo que no lo pude corregir
+<span class="nc" id="L1294">                System.out.println(&quot;No pude corregir. iPixel: &quot;+iPixel+&quot; iEstacion: &quot;+iEstacion);</span>
+<span class="nc" id="L1295">                return false;</span>
+            }
+<span class="nc" id="L1297">        }else{//estacionOriginal&gt;0</span>
+            //System.out.println(&quot;Entro a siguienteUsoRuletaFosforoCumpleCantUsos.&quot;);
+<span class="nc" id="L1299">            usoACargar = Uso.siguienteUsoRuletaProduccionCumpleCantUsos(this.matriz[iPixel][estacionOriginal-1]/100, usosDelProductorEstaEstacion, productor);</span>
+            //System.out.println(&quot;Salgo de siguienteUsoRuletaFosforoCumpleCantUsos.&quot;);
+        }
+        //Para un pixel recorro todas las estaciones
+<span class="nc bnc" id="L1303" title="All 2 branches missed.">        while (iEstacion &lt; Constantes.cantEstaciones){</span>
+            //System.out.println(&quot;Comienzo a modificar el iPixel &quot;+iPixel+&quot; en la iEstacion &quot;+iEstacion+&quot; un usoACargar &quot;+usoACargar);
+<span class="nc" id="L1305">            estacionesDeUsoACargar=0;</span>
+            //Cargo todas las estaciones del uso, deteniendome si llego a cantEstaciones
+<span class="nc bnc" id="L1307" title="All 4 branches missed.">            while((estacionesDeUsoACargar&lt;Constantes.usos[usoACargar].duracionEstaciones) &amp;&amp; ((estacionesDeUsoACargar+iEstacion)&lt;(Constantes.cantEstaciones))){</span>
+                //Calculo la estacion
+<span class="nc" id="L1309">                estacionActual=iEstacion+estacionesDeUsoACargar;</span>
+                //En caso de ser necesario actualizo la cantidad de usos en en estaestacion en este pixel
+<span class="nc bnc" id="L1311" title="All 2 branches missed.">                if (this.matriz[iPixel][estacionActual] != (100*usoACargar+estacionesDeUsoACargar)) {</span>
+                    //Obtengo el pixel a borrar
+<span class="nc" id="L1313">                    usoABorrar=this.matriz[iPixel][estacionActual]/100;</span>
+                    //Y la estacion de el uso
+<span class="nc" id="L1315">                    estacionesDeUsoABorrar=this.matriz[iPixel][estacionActual]%100;</span>
+                    //Cargo el uso y las estaciones que llevaNo corresponde la duracion.
+<span class="nc" id="L1317">                    this.matriz[iPixel][estacionActual]=100*usoACargar+estacionesDeUsoACargar; //Antes usaba estacionActual pero seguro estaba mal</span>
+                    //Actualizo la cantidad de usos
+<span class="nc" id="L1319">                    this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoABorrar][estacionActual][productor]--;</span>
+<span class="nc" id="L1320">                    this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoACargar][estacionActual][productor]++;</span>
+                    //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L1322">                    this.productivdadProductores[productor][estacionActual] -=</span>
+                            Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].productividad[estacionesDeUsoABorrar]
+                                    + Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].productividad[estacionesDeUsoACargar];
+                    //Actualizo el fosforo del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+<span class="nc" id="L1326">                    this.fosforoProductores[productor][estacionActual] -=</span>
+                            Constantes.pixeles[iPixel].superficie * Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeUsoABorrar]
+                                    + Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACargar].fosforoEstacion[estacionesDeUsoACargar];
+                    //Actualizo lo que aporta el uso al fosforo total en esta estacion
+<span class="nc" id="L1330">                    this.fosforo= this.fosforo</span>
+                            - (Constantes.usos[usoABorrar].fosforoEstacion[estacionesDeUsoABorrar]*Constantes.pixeles[iPixel].superficie)
+                            + (Constantes.usos[usoACargar].fosforoEstacion[estacionesDeUsoACargar]*Constantes.pixeles[iPixel].superficie);
+
+                }
+<span class="nc" id="L1335">                estacionesDeUsoACargar++;</span>
+            }
+<span class="nc" id="L1337">            iEstacion=iEstacion + estacionesDeUsoACargar; //Actualizo la siguiente estacion con la que trabajar</span>
+<span class="nc bnc" id="L1338" title="All 2 branches missed.">            if (iEstacion&lt;16) {</span>
+<span class="nc" id="L1339">                usoACargar = Uso.siguienteUsoRuletaProduccionCumpleCantUsos(usoACargar, usosDelProductorPorEstacion(productor, iEstacion), productor);</span>
+            }
+            //Uso.siguienteUsoRuletaProduccion(usoACargar); //Obtengo el siguiente uso a cargar
+            //System.out.println(&quot; Siguiente uso: &quot;+usoACargar+&quot; Estaciones a cargar: &quot;+Constantes.usos[usoACargar].duracionEstaciones);
+        }
+<span class="nc" id="L1344">        return true;</span>
+    }
+
+    public boolean esFactible() {
+<span class="nc bnc" id="L1348" title="All 4 branches missed.">        return (this.restriccionUsosDistintos.cumpleRestriccion &amp;&amp; this.restriccionProductividadMinimaEstacion.cumpleRestriccion);</span>
+    }
+
+    public Solucion factibilizar(int repeticiones, int profundidad) {
+<span class="nc" id="L1352">        Solucion copia=this.clone();</span>
+<span class="nc bnc" id="L1353" title="All 4 branches missed.">        for (int iRepeticion = 0; iRepeticion &lt; repeticiones &amp;&amp; !this.esFactible(); iRepeticion++) {</span>
+<span class="nc bnc" id="L1354" title="All 4 branches missed.">            for (int iProfundidad = 0; iProfundidad &lt; profundidad &amp;&amp; !this.esFactible(); iProfundidad++) {</span>
+<span class="nc bnc" id="L1355" title="All 2 branches missed.">                if (!copia.restriccionUsosDistintos.cumpleRestriccion) {</span>
+<span class="nc" id="L1356">                    copia.factibilizarCantUsos();</span>
+                }
+<span class="nc bnc" id="L1358" title="All 2 branches missed.">                if (!copia.restriccionProductividadMinimaEstacion.cumpleRestriccion) {</span>
+<span class="nc" id="L1359">                    copia.factibilizarProductividad();</span>
+                }
+<span class="nc" id="L1361">                copia.recalcular();</span>
+<span class="nc bnc" id="L1362" title="All 2 branches missed.">                if (copia.esFactible()){</span>
+<span class="nc" id="L1363">                    return copia;</span>
+                }
+            }
+<span class="nc" id="L1366">            copia=this.clone();</span>
+        }
+<span class="nc" id="L1368">        return this;</span>
+    }
+
+    public float evaluarFitness() {
+<span class="nc" id="L1372">        return this.fosforo + this.restriccionProductividadMinimaEstacion.cantIncumplimientos * Constantes.maximoIncumplimientoFosforo</span>
+                + this.restriccionUsosDistintos.cantIncumplimientos * Constantes.maximoIncumplimientoFosforo;
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

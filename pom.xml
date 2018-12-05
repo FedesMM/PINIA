@@ -54,7 +54,7 @@
 <build>
 
 <plugins>
-  <plugin>
+    <plugin>
     <!-- Set main class in the Jar. -->
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-jar-plugin</artifactId>

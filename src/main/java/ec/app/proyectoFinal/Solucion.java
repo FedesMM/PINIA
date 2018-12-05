@@ -1,7 +1,5 @@
 package ec.app.proyectoFinal;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
-import ec.vector.IntegerMatrixIndividual;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

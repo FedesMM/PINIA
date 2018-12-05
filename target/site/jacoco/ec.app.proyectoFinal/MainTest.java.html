@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MainTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ecj</a> &gt; <a href="index.source.html" class="el_package">ec.app.proyectoFinal</a> &gt; <span class="el_source">MainTest.java</span></div><h1>MainTest.java</h1><pre class="source lang-java linenums">package ec.app.proyectoFinal;
+
+
+
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
+<span class="nc" id="L11">public class MainTest {</span>
+
+    public static void main(final String[] args) {
+<span class="nc" id="L14">        boolean imprimirConstantesTodoJunto = false, imprimirConstantesUnoAUno = false, imprimirSolucion = false;</span>
+        Solucion solucion, solucionOriginal;
+<span class="nc" id="L16">        int cantidadSoluciones = 0, cantidadFI = 0;</span>
+<span class="nc" id="L17">        Constantes.usos = Uso.cargarUsos();</span>
+        //Uso.imprimirUsos();
+        //Se cargan primero los productores para que al agregar los pixeles se incerten cuales pertenecen a cada productor
+<span class="nc" id="L20">        Constantes.productores = Productor.cargarProductores();</span>
+        //Productor.imprimirProductores();
+        //String fileName = &quot;potreros.in&quot;;
+        //Constantes.cantPixeles = 792;
+        //Constantes.cantPotreros = 1602;
+        //String fileName = &quot;pixeles.in&quot;;
+        //Constantes.cantPixeles = 18475;
+        //Constantes.cantPotreros = 26168;
+        //Constantes.pixeles = Pixel.cargarPixeles(fileName);
+        //MainTest.generarMejorSolucion();
+
+        //MainTest.testInstancias();
+        //MainTest.testFactibilizarProductividad();
+<span class="nc" id="L33">        MainTest.testCrearSolucionFactible();</span>
+
+<span class="nc" id="L35">    }</span>
+
+    private static void testCrearSolucionFactible() {
+        Solucion solucion, solucionCantUsos, solucionProductividad, solucionFactible;
+        String nombreInstancia;
+<span class="nc" id="L40">        int cantPixeles, repeticiones=100, profundidad=100;</span>
+<span class="nc" id="L41">        int factible=0, cumpleRCantUsos=0, cumpleRProductividad=0;</span>
+<span class="nc" id="L42">        int factible2=0, cumpleRCantUsos2=0, cumpleRProductividad2=0;</span>
+<span class="nc" id="L43">        int factible3=0, cumpleRCantUsos3=0, cumpleRProductividad3=0;</span>
+<span class="nc" id="L44">        int factible4=0, cumpleRCantUsos4=0, cumpleRProductividad4=0;</span>
+
+
+<span class="nc" id="L47">        int instancia=29;</span>
+<span class="nc" id="L48">        System.out.println(&quot;testFactibilizarCantUsos&quot;);</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        for (int iInstancia =0; iInstancia &lt;= instancia; iInstancia++) {</span>
+<span class="nc" id="L50">            int maxSoluciones=1000;</span>
+<span class="nc" id="L51">            factible=0; cumpleRCantUsos=0; cumpleRProductividad=0;</span>
+<span class="nc" id="L52">            factible2=0; cumpleRCantUsos2=0; cumpleRProductividad2=0;</span>
+<span class="nc" id="L53">            factible3=0; cumpleRCantUsos3=0; cumpleRProductividad3=0;</span>
+<span class="nc" id="L54">            factible4=0; cumpleRCantUsos4=0; cumpleRProductividad4=0;</span>
+
+<span class="nc" id="L56">            nombreInstancia = &quot;./Instancias/Intancia &quot; + (iInstancia + 1) + &quot;.in&quot;;</span>
+<span class="nc" id="L57">            cantPixeles=Pixel.contarLineas(nombreInstancia);</span>
+<span class="nc" id="L58">            System.out.println(nombreInstancia+&quot;\tCantPixeles :&quot;+cantPixeles+ &quot;\t CantSoluciones: &quot;+maxSoluciones);</span>
+            //System.out.print(&quot;\tSolucion:                    &quot;);
+<span class="nc bnc" id="L60" title="All 2 branches missed.">            for (int iSoluciones = 0; iSoluciones&lt; maxSoluciones; iSoluciones++) {</span>
+<span class="nc" id="L61">                System.out.print(&quot;\rSolucion: &quot;+iSoluciones);</span>
+<span class="nc" id="L62">                Constantes.productores = Productor.cargarProductores();</span>
+<span class="nc" id="L63">                Constantes.cantPixeles=cantPixeles;</span>
+<span class="nc" id="L64">                Constantes.cantPotreros=cantPixeles;</span>
+<span class="nc" id="L65">                Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);</span>
+<span class="nc" id="L66">                Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();</span>
+
+                //System.out.println(&quot;Solucion: &quot;+iSoluciones);
+<span class="nc" id="L69">                solucion=Solucion.crearSolucionFactible();</span>
+<span class="nc" id="L70">                solucion.recalcular();</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">                if(solucion.esFactible()) { factible++; }</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">                if(solucion.restriccionUsosDistintos.cumpleRestriccion) { cumpleRCantUsos++; }</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">                if(solucion.restriccionProductividadMinimaEstacion.cumpleRestriccion) { cumpleRProductividad++; }</span>
+
+<span class="nc" id="L75">                solucionCantUsos=solucion.clone();</span>
+<span class="nc" id="L76">                solucionCantUsos.factibilizarCantUsos();</span>
+<span class="nc" id="L77">                solucionCantUsos.recalcular();</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">                if(solucionCantUsos.esFactible()) { factible2++; }</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">                if(solucionCantUsos.restriccionUsosDistintos.cumpleRestriccion) { cumpleRCantUsos2++; }</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">                if(solucionCantUsos.restriccionProductividadMinimaEstacion.cumpleRestriccion) { cumpleRProductividad2++; }</span>
+
+<span class="nc" id="L82">                solucionProductividad=solucion.clone();</span>
+<span class="nc" id="L83">                solucionProductividad.factibilizarProductividad();</span>
+<span class="nc" id="L84">                solucionProductividad.recalcular();</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">                if(solucionProductividad.esFactible()) { factible3++; }</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">                if(solucionProductividad.restriccionUsosDistintos.cumpleRestriccion) { cumpleRCantUsos3++; }</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">                if(solucionProductividad.restriccionProductividadMinimaEstacion.cumpleRestriccion) { cumpleRProductividad3++; }</span>
+
+<span class="nc" id="L89">                solucionFactible=solucion.clone();</span>
+<span class="nc" id="L90">                solucionFactible.recalcular();</span>
+<span class="nc" id="L91">                solucionFactible.factibilizar(repeticiones, profundidad);</span>
+<span class="nc" id="L92">                solucionFactible.recalcular();</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">                if(solucionFactible.esFactible()) { factible4++; }</span>
+<span class="nc bnc" id="L94" title="All 2 branches missed.">                if(solucionFactible.restriccionUsosDistintos.cumpleRestriccion) { cumpleRCantUsos4++; }</span>
+<span class="nc bnc" id="L95" title="All 2 branches missed.">                if(solucionFactible.restriccionProductividadMinimaEstacion.cumpleRestriccion) { cumpleRProductividad4++; }</span>
+
+            }
+<span class="nc" id="L98">            System.out.print(&quot;\n\tGENERADA: &quot;);</span>
+<span class="nc" id="L99">            System.out.print(&quot;\t\t\tFACTIBLE: &quot;+factible);</span>
+<span class="nc" id="L100">            System.out.print(&quot;\tRest Cant Usos: &quot;+cumpleRCantUsos);</span>
+<span class="nc" id="L101">            System.out.println(&quot;\t\tRest Productividad: &quot;+cumpleRProductividad);</span>
+<span class="nc" id="L102">            System.out.print(&quot;\tFacCantUsos: &quot;);</span>
+<span class="nc" id="L103">            System.out.print(&quot;\t\tFACTIBLE: &quot;+factible2);</span>
+<span class="nc" id="L104">            System.out.print(&quot;\tRest Cant Usos: &quot;+cumpleRCantUsos2);</span>
+<span class="nc" id="L105">            System.out.println(&quot;\t\tRest Productividad: &quot;+cumpleRProductividad2);</span>
+<span class="nc" id="L106">            System.out.print(&quot;\tFacProduccion: &quot;);</span>
+<span class="nc" id="L107">            System.out.print(&quot;\t\tFACTIBLE: &quot;+factible3);</span>
+<span class="nc" id="L108">            System.out.print(&quot;\tRest Cant Usos: &quot;+cumpleRCantUsos3);</span>
+<span class="nc" id="L109">            System.out.println(&quot;\t\tRest Productividad: &quot;+cumpleRProductividad3);</span>
+<span class="nc" id="L110">            System.out.print(&quot;\tFactibilizar: &quot;);</span>
+<span class="nc" id="L111">            System.out.print(&quot;\t\tFACTIBLE: &quot;+factible4);</span>
+<span class="nc" id="L112">            System.out.print(&quot;\tRest Cant Usos: &quot;+cumpleRCantUsos4);</span>
+<span class="nc" id="L113">            System.out.println(&quot;\t\tRest Productividad: &quot;+cumpleRProductividad4);</span>
+
+
+            //solucion.imprimirMatriz();
+<span class="nc" id="L117">            System.out.println(&quot;\n---------------------------------------------------------------------------------\n&quot;);</span>
+        }
+<span class="nc" id="L119">    }</span>
+
+    private static void testFactibilizarCantUsos() {
+        Solucion solucion, nuevaSolucion;
+        String nombreInstancia;
+        int cantPixeles;
+<span class="nc" id="L125">        int instancia=0;</span>
+<span class="nc" id="L126">        System.out.println(&quot;testFactibilizarCantUsos&quot;);</span>
+<span class="nc bnc" id="L127" title="All 2 branches missed.">        for (int iInstancia =instancia; iInstancia &lt;= instancia; iInstancia++) {</span>
+<span class="nc" id="L128">           int maxSoluciones=1000;</span>
+<span class="nc bnc" id="L129" title="All 2 branches missed.">            for (int iSoluciones = 0; iSoluciones&lt; maxSoluciones; iSoluciones++) {</span>
+<span class="nc" id="L130">                Constantes.productores = Productor.cargarProductores();</span>
+<span class="nc" id="L131">                nombreInstancia = &quot;./Instancias/Intancia &quot; + (iInstancia + 1) + &quot;.in&quot;;</span>
+<span class="nc" id="L132">                cantPixeles=Pixel.contarLineas(nombreInstancia);</span>
+<span class="nc" id="L133">                System.out.println(nombreInstancia+&quot;\tCantPixeles:&quot;+cantPixeles);</span>
+<span class="nc" id="L134">                Constantes.cantPixeles=cantPixeles;</span>
+<span class="nc" id="L135">                Constantes.cantPotreros=cantPixeles;</span>
+<span class="nc" id="L136">                Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);</span>
+<span class="nc" id="L137">                Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();</span>
+
+<span class="nc" id="L139">                System.out.println(&quot;Solucion: &quot;+iSoluciones);</span>
+<span class="nc" id="L140">                solucion=Solucion.crearSolucion();</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">                for (;solucion.restriccionUsosDistintos.cumpleRestriccion;) {</span>
+<span class="nc" id="L142">                    solucion=Solucion.crearSolucion();</span>
+<span class="nc" id="L143">                    solucion.recalcular();</span>
+<span class="nc" id="L144">                    solucion.imprimirFuncionObjetivo();</span>
+
+                }
+<span class="nc" id="L147">                nuevaSolucion= solucion.clone();</span>
+<span class="nc" id="L148">                int maxIter=1000;</span>
+<span class="nc bnc" id="L149" title="All 4 branches missed.">                for (int i = 0; (i &lt;maxIter&amp;&amp; !nuevaSolucion.restriccionUsosDistintos.cumpleRestriccion); i++) {</span>
+<span class="nc" id="L150">                    nuevaSolucion= solucion.clone();</span>
+<span class="nc" id="L151">                    System.out.println(&quot;Factibilizacion  :&quot;+i);</span>
+<span class="nc" id="L152">                    nuevaSolucion.factibilizarCantUsos();</span>
+<span class="nc" id="L153">                    nuevaSolucion.recalcular();</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">                    if (nuevaSolucion.restriccionUsosDistintos.cumpleRestriccion){</span>
+<span class="nc" id="L155">                        System.out.println(&quot;FACTIBILIZADO EN LA ITERACION  &quot;+i);</span>
+<span class="nc" id="L156">                        nuevaSolucion.imprimirUsosDisitintosPorEstacion();</span>
+<span class="nc" id="L157">                        nuevaSolucion.evaluarFuncionObjetivo();</span>
+<span class="nc bnc" id="L158" title="All 2 branches missed.">                    }else if (i==maxIter-1) {</span>
+<span class="nc" id="L159">                        System.out.println(&quot;NO FACTIBILZADO &quot;+i);</span>
+<span class="nc" id="L160">                        nuevaSolucion.imprimirUsosDisitintosPorEstacion();</span>
+                    }else{
+//                    System.out.println(&quot;NO FACTIBILZADO &quot;+i);
+//                    nuevaSolucion.imprimirUsosDisitintosPorEstacion();
+                    }
+                }
+<span class="nc" id="L166">                System.out.println(&quot;\n&quot;);</span>
+            }
+
+            //solucion.imprimirMatriz();
+<span class="nc" id="L170">            System.out.println(&quot;\n\n&quot;);</span>
+        }
+
+<span class="nc" id="L173">    }</span>
+
+    private static void testFactibilizarProductividad() {
+        Solucion solucion, nuevaSolucion;
+        String nombreInstancia;
+        int cantPixeles;
+<span class="nc" id="L179">        int instancia=14;</span>
+<span class="nc" id="L180">        System.out.println(&quot;testFactibilizarProductividad&quot;);</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">        for (int iInstancia =instancia; iInstancia &lt;= instancia; iInstancia++) {</span>
+<span class="nc" id="L182">            int maxSoluciones=1000;</span>
+<span class="nc" id="L183">            nombreInstancia = &quot;./Instancias/Intancia &quot; + (iInstancia + 1) + &quot;.in&quot;;</span>
+<span class="nc" id="L184">            cantPixeles=Pixel.contarLineas(nombreInstancia);</span>
+<span class="nc" id="L185">            System.out.println(nombreInstancia+&quot;\tCantPixeles:&quot;+cantPixeles);</span>
+<span class="nc" id="L186">            Constantes.cantPixeles=cantPixeles;</span>
+<span class="nc" id="L187">            Constantes.cantPotreros=cantPixeles;</span>
+<span class="nc bnc" id="L188" title="All 2 branches missed.">            for (int iSoluciones = 0; iSoluciones&lt; maxSoluciones; iSoluciones++) {</span>
+<span class="nc" id="L189">                Constantes.productores = Productor.cargarProductores();</span>
+<span class="nc" id="L190">                Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);</span>
+<span class="nc" id="L191">                Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();</span>
+                //Pixel.imprimirPixeles();
+<span class="nc" id="L193">                System.out.println(&quot;SOLUCION: &quot;+iSoluciones+&quot;\nORIGINAL:&quot;);</span>
+<span class="nc" id="L194">                solucion=Solucion.crearSolucion();</span>
+<span class="nc bnc" id="L195" title="All 4 branches missed.">                for (;solucion.restriccionProductividadMinimaEstacion.cumpleRestriccion || solucion.restriccionUsosDistintos.cumpleRestriccion;) {</span>
+<span class="nc" id="L196">                    solucion=Solucion.crearSolucion();</span>
+<span class="nc" id="L197">                    solucion.recalcular();</span>
+                }
+<span class="nc" id="L199">                solucion.imprimirFuncionObjetivo();</span>
+
+<span class="nc" id="L201">                nuevaSolucion= solucion.clone();</span>
+<span class="nc" id="L202">                int maxBusquedas=100, maxMejoras=100;</span>
+<span class="nc bnc" id="L203" title="All 4 branches missed.">                for (int i = 0; (i &lt;maxBusquedas &amp;&amp; !nuevaSolucion.esFactible()); i++) {</span>
+<span class="nc" id="L204">                    nuevaSolucion= solucion.clone();</span>
+                    //System.out.println(&quot;Factibilizacion  :&quot;+i);
+<span class="nc bnc" id="L206" title="All 4 branches missed.">                    for (int j = 0; (j &lt; maxMejoras &amp;&amp;  !nuevaSolucion.esFactible()) ; j++) {</span>
+<span class="nc" id="L207">                        nuevaSolucion.factibilizarProductividad();</span>
+<span class="nc" id="L208">                        nuevaSolucion.recalcular();</span>
+                    }
+<span class="nc bnc" id="L210" title="All 2 branches missed.">                    if (nuevaSolucion.esFactible()){</span>
+<span class="nc" id="L211">                        System.out.println(&quot;FACTIBILIZADO EN LA ITERACION  &quot;+i);</span>
+                        //nuevaSolucion.imprimirProductividadSobreSuperficiePorEstacion();
+<span class="nc" id="L213">                        nuevaSolucion.imprimirFuncionObjetivo();</span>
+<span class="nc bnc" id="L214" title="All 2 branches missed.">                        if(!nuevaSolucion.restriccionUsosDistintos.cumpleRestriccion){</span>
+<span class="nc" id="L215">                            nuevaSolucion.imprimirRestriccionUsosDistintosExpandida();</span>
+<span class="nc" id="L216">                            nuevaSolucion.imprimirMatriz();</span>
+                        }
+<span class="nc bnc" id="L218" title="All 2 branches missed.">                    }else if (i==maxBusquedas-1) {</span>
+<span class="nc" id="L219">                        System.out.println(&quot;NO FACTIBILIZADO &quot;+i);</span>
+                        //nuevaSolucion.imprimirProductividadSobreSuperficiePorEstacion();
+<span class="nc" id="L221">                        nuevaSolucion.imprimirFuncionObjetivo();</span>
+                    }else{
+//                    System.out.println(&quot;NO FACTIBILIZADO &quot;+i);
+//                    nuevaSolucion.imprimirUsosDisitintosPorEstacion();
+                    }
+                }
+<span class="nc" id="L227">                System.out.println(&quot;\n&quot;);</span>
+            }
+
+            //solucion.imprimirMatriz();
+<span class="nc" id="L231">            System.out.println(&quot;\n-------------------------------------------------------------------------------------------\n&quot;);</span>
+        }
+
+<span class="nc" id="L234">    }</span>
+
+    private static void testInstancias() {
+        Solucion solucion;
+        String nombreInstancia;
+<span class="nc" id="L239">        int cantPixeles=0;</span>
+<span class="nc" id="L240">        float fosforosRepeticion[]=new float[30], usosRepeticion[]=new float[30],productividadRepeticion[]=new float[30];</span>
+<span class="nc" id="L241">        float fosforoEsperanza[]=new float[30], usosEsperanza[]=new float[30], productividadEsperanza[]=new float[30];</span>
+<span class="nc" id="L242">        float cantIncumplimientosProductividadRepeticion[]=new float [30], cantIncumplimientosProductividadEsperanza[]=new float[30];</span>
+<span class="nc" id="L243">        float cantIncumplimientosUsosRepeticion[]=new float [30], cantIncumplimientosUsosEsperanza[]=new float[30];;</span>
+<span class="nc" id="L244">        DecimalFormat df = new DecimalFormat();</span>
+<span class="nc" id="L245">        df.setMaximumFractionDigits(6);</span>
+<span class="nc" id="L246">        df.setMinimumFractionDigits(6);</span>
+        //Para cada instancia
+<span class="nc bnc" id="L248" title="All 2 branches missed.">        for (int iInstancia = 0; iInstancia &lt; 30; iInstancia++) {</span>
+<span class="nc" id="L249">            nombreInstancia=&quot;./Instancias/Intancia &quot;+(iInstancia+1)+&quot;.in&quot;;</span>
+<span class="nc" id="L250">            cantPixeles=Pixel.contarLineas(nombreInstancia);</span>
+<span class="nc" id="L251">            Constantes.cantPixeles=cantPixeles;</span>
+<span class="nc" id="L252">            Constantes.cantPotreros=cantPixeles;</span>
+<span class="nc" id="L253">            Constantes.pixeles = Pixel.cargarPixeles(nombreInstancia);</span>
+<span class="nc" id="L254">            Constantes.maximoIncumplimientoUsosDistintos=Constantes.cantEstaciones*Constantes.productoresActivos.size();</span>
+<span class="nc" id="L255">            System.out.println(nombreInstancia+&quot;\tCantPixeles:&quot;+cantPixeles);</span>
+            //Ejecuto el grasp 30 veces para cada instancia
+<span class="nc bnc" id="L257" title="All 2 branches missed.">            for (int iRepeticion = 0; iRepeticion &lt; 10; iRepeticion++) {</span>
+<span class="nc" id="L258">                System.out.print(&quot;\t\tRepeticion &quot;+iRepeticion);</span>
+                //Pixel.imprimirPixeles();
+                //Productor.imprimirProductores();
+<span class="nc" id="L261">                solucion=MainTest.grasp(1000, false);</span>
+                //Cuento las lineas
+                //Corro el grasp
+                //System.out.println(&quot;\tCantPixeles: &quot;+ Constantes.cantPixeles+&quot;\tCantEstaciones: &quot;+Constantes.cantEstaciones);
+
+                //Guardo datos
+<span class="nc" id="L267">                solucion.recalcular();</span>
+<span class="nc" id="L268">                fosforosRepeticion[iRepeticion]=solucion.evaluarFosforoModulado();</span>
+<span class="nc" id="L269">                productividadRepeticion[iRepeticion]=solucion.evaluarIncumplimientoProductividadModulado();</span>
+<span class="nc" id="L270">                usosRepeticion[iRepeticion]=solucion.evaluarIncumplimientoUsosDistintosModulado();</span>
+<span class="nc" id="L271">                cantIncumplimientosUsosRepeticion[iRepeticion]=solucion.restriccionUsosDistintos.cantIncumplimientos;</span>
+<span class="nc" id="L272">                cantIncumplimientosProductividadRepeticion[iRepeticion]=solucion.restriccionProductividadMinimaEstacion.cantIncumplimientos;</span>
+
+
+<span class="nc" id="L275">                fosforoEsperanza[iInstancia]+=solucion.evaluarFosforoModulado();</span>
+<span class="nc" id="L276">                productividadEsperanza[iInstancia]+=solucion.evaluarIncumplimientoProductividadModulado();</span>
+<span class="nc" id="L277">                usosEsperanza[iInstancia]+=solucion.evaluarIncumplimientoUsosDistintosModulado();</span>
+<span class="nc" id="L278">                cantIncumplimientosUsosRepeticion[iRepeticion]+=solucion.restriccionUsosDistintos.cantIncumplimientos;</span>
+<span class="nc" id="L279">                cantIncumplimientosProductividadEsperanza[iInstancia]+=solucion.restriccionProductividadMinimaEstacion.cantIncumplimientos;</span>
+
+                //solucion.imprimirFuncionObjetivo();
+<span class="nc" id="L282">                System.out.print(&quot;\tFosforo Modulado: &quot;+df.format(fosforosRepeticion[iRepeticion]));</span>
+<span class="nc" id="L283">                System.out.print(&quot;\tProductividad Modulada: &quot;+ df.format(productividadRepeticion[iRepeticion]));</span>
+<span class="nc" id="L284">                System.out.print(&quot;\tProductividad CantIncumplimientos: &quot;+cantIncumplimientosProductividadRepeticion[iRepeticion]);</span>
+<span class="nc" id="L285">                System.out.print(&quot;/&quot;+ Constantes.productoresActivos.size()*Constantes.cantEstaciones);</span>
+<span class="nc" id="L286">                System.out.print(&quot;\tUsos Distintos Modulado: &quot;+ df.format(usosRepeticion[iRepeticion]));</span>
+<span class="nc" id="L287">                System.out.print(&quot;\tUsos Distintos CantIncumplimientos: &quot;+cantIncumplimientosUsosRepeticion[iRepeticion]);</span>
+<span class="nc" id="L288">                System.out.println(&quot;/&quot;+ Constantes.productoresActivos.size()*Constantes.cantEstaciones);</span>
+            }
+            //Tomo la media
+<span class="nc" id="L291">            fosforoEsperanza[iInstancia]=fosforoEsperanza[iInstancia]/30;</span>
+<span class="nc" id="L292">            productividadEsperanza[iInstancia]=productividadEsperanza[iInstancia]/30;</span>
+<span class="nc" id="L293">            usosEsperanza[iInstancia]=usosEsperanza[iInstancia]/30;</span>
+<span class="nc" id="L294">            cantIncumplimientosProductividadEsperanza[iInstancia]=cantIncumplimientosProductividadEsperanza[iInstancia]/30;</span>
+<span class="nc" id="L295">            cantIncumplimientosUsosEsperanza[iInstancia]=cantIncumplimientosUsosEsperanza[iInstancia]/30;</span>
+
+<span class="nc" id="L297">            System.out.print(&quot;\tMedia de Fosforo Modulado: &quot;+df.format(fosforoEsperanza[iInstancia]));</span>
+<span class="nc" id="L298">            System.out.print(&quot;\tMedia de Productividad Modulada: &quot;+ df.format(productividadEsperanza[iInstancia]));</span>
+<span class="nc" id="L299">            System.out.print(&quot;\tMedia Productividad CantIncumplimientos: &quot;+cantIncumplimientosProductividadEsperanza[iInstancia]);</span>
+<span class="nc" id="L300">            System.out.print(&quot;/&quot;+ Constantes.productoresActivos.size()*Constantes.cantEstaciones);</span>
+<span class="nc" id="L301">            System.out.print(&quot;\tMedia de Usos Distintos Modulado: &quot;+ df.format(usosEsperanza[iInstancia])+&quot;\n\n&quot;);</span>
+<span class="nc" id="L302">            System.out.print(&quot;\tMedia Usos Distintos CantIncumplimientos: &quot;+cantIncumplimientosUsosEsperanza[iInstancia]);</span>
+<span class="nc" id="L303">            System.out.println(&quot;/&quot;+ Constantes.productoresActivos.size()*Constantes.cantEstaciones);</span>
+
+        }
+
+        //Muestro datos
+
+<span class="nc" id="L309">    }</span>
+
+    private static Solucion grasp(int maxCantidad, boolean verbose) {
+        Solucion nuevaSolucion, mejorSolucion;
+        //System.out.println(&quot;GRASP-Cantidad maxima de Soluciones:&quot;);
+        //int maxCantidad = 0;
+        //Scanner reader = new Scanner(System.in);
+        //maxCantidad = reader.nextInt();
+
+<span class="nc" id="L318">        mejorSolucion = MainTest.LocalSearch(Solucion.crearSolucion());</span>
+<span class="nc bnc" id="L319" title="All 2 branches missed.">        if (verbose) System.out.println(&quot;GRASP-Solucion Original: &quot;);</span>
+<span class="nc" id="L320">        mejorSolucion.evaluarFuncionObjetivo();</span>
+
+<span class="nc bnc" id="L322" title="All 2 branches missed.">        for (int iSoluciones = 0; iSoluciones &lt; maxCantidad; iSoluciones++) {</span>
+<span class="nc bnc" id="L323" title="All 2 branches missed.">            if (verbose)System.out.println(&quot;GRASP-Iteracion: &quot; + iSoluciones);</span>
+<span class="nc" id="L324">            nuevaSolucion=Solucion.crearSolucion();</span>
+<span class="nc" id="L325">            nuevaSolucion=MainTest.LocalSearch(nuevaSolucion);</span>
+
+<span class="nc bnc" id="L327" title="All 2 branches missed.">            if (nuevaSolucion.evaluarFuncionObjetivo() &lt; mejorSolucion.evaluarFuncionObjetivo()) {</span>
+<span class="nc bnc" id="L328" title="All 2 branches missed.">                if (verbose)System.out.println(&quot;GRASP-Actualizo el mejor.&quot;);</span>
+<span class="nc bnc" id="L329" title="All 2 branches missed.">                if (verbose)System.out.println(&quot;GRASP-Mejor Solucion previa: &quot;+ mejorSolucion.evaluarFuncionObjetivo());</span>
+
+<span class="nc" id="L331">                mejorSolucion = nuevaSolucion.clone();</span>
+<span class="nc bnc" id="L332" title="All 2 branches missed.">                if (verbose)System.out.println(&quot;GRASP-Mejor Solucion actual: &quot;+mejorSolucion.evaluarFuncionObjetivo());</span>
+            }else{
+<span class="nc bnc" id="L334" title="All 2 branches missed.">                if (verbose)System.out.println(&quot;GRASP-Conservo el mejor anterior &quot;);</span>
+<span class="nc bnc" id="L335" title="All 2 branches missed.">                if (verbose)System.out.println(&quot;GRASP-Mejor Solucion previa: &quot;+ mejorSolucion.evaluarFuncionObjetivo());</span>
+            }
+<span class="nc bnc" id="L337" title="All 2 branches missed.">            if (verbose)System.out.println();</span>
+<span class="nc bnc" id="L338" title="All 2 branches missed.">            if (verbose)System.out.println();</span>
+        }
+
+<span class="nc bnc" id="L341" title="All 2 branches missed.">        if (verbose)System.out.println(&quot;GRASP-Solucion Final: &quot;);</span>
+<span class="nc" id="L342">        return mejorSolucion;</span>
+
+    }
+
+
+    private static Solucion LocalSearch(Solucion solucion) {
+<span class="nc" id="L348">        boolean huboMejora = true;</span>
+<span class="nc" id="L349">        int maxCantidadFI = Constantes.cantPixeles, UDprevia = 0;</span>
+<span class="nc" id="L350">        float pesoFosforo = 1, pesoProductividad = 1, pesoCantUsos = 1;</span>
+<span class="nc" id="L351">        Solucion solucionOriginal = solucion.clone();</span>
+        //System.out.println(&quot;\tLS-Solucion Original:&quot;);
+        //solucion.imprimirFuncionObjetivo();
+
+        //Hasta llegar a la cantidad maxima de iteraciones o no tener mejora
+<span class="nc bnc" id="L356" title="All 4 branches missed.">        for (int iSoluciones = 0; (iSoluciones &lt; maxCantidadFI) &amp;&amp; huboMejora; iSoluciones++) {</span>
+            //System.out.println(&quot;\tLS-Iteracion: &quot; + (iSoluciones + 1));
+            //Busco una mejora
+<span class="nc" id="L359">            solucion = Solucion.firstImprove(solucion, pesoFosforo, pesoProductividad, pesoCantUsos);</span>
+            //Comparo valores de la mejora
+<span class="nc" id="L361">            if (solucionOriginal.evaluarFuncionObjetivo(pesoFosforo, pesoProductividad, pesoCantUsos)</span>
+<span class="nc bnc" id="L362" title="All 2 branches missed.">                    &gt; solucion.evaluarFuncionObjetivo(pesoFosforo, pesoProductividad, pesoCantUsos)) {</span>
+                //Obtube mejora
+                //Muestro la mejora y los pesos
+                //solucionOriginal.imprimirFuncionObjetivo(pesoFosforo, pesoProductividad, pesoCantUsos);
+                //solucion.imprimirFuncionObjetivo(pesoFosforo, pesoProductividad, pesoCantUsos);
+                //System.out.println();
+                //Actualizo mi solucion original a la acutal
+<span class="nc" id="L369">                solucionOriginal=solucion.clone();</span>
+                //Actualizo pesos
+<span class="nc" id="L371">                pesoFosforo = Solucion.actualizarPesoFosforo(solucionOriginal, solucion, pesoFosforo);</span>
+<span class="nc" id="L372">                pesoProductividad = Solucion.actualizarPesoProduccion(solucionOriginal, solucion, pesoProductividad);</span>
+<span class="nc" id="L373">                pesoCantUsos = Solucion.actualizarPesoCantUsos(solucionOriginal, solucion, pesoCantUsos);</span>
+
+
+            } else {
+                //No obtuve FirstImprovement
+<span class="nc" id="L378">                huboMejora = false;</span>
+            }
+        }
+
+        /*
+        System.out.println();
+        System.out.println();
+        System.out.println(&quot;Solucion antes de los LS:&quot;);
+        System.out.println(&quot;\tSolucion original (con pesos): &quot; + solucionOriginal.evaluarFuncionObjetivo(pesoFosforo, pesoProductividad, pesoCantUsos));
+        System.out.println(&quot;\tSolucion original (sin pesos): &quot; + solucionOriginal.evaluarFuncionObjetivo());
+        System.out.println(&quot;\tSolucion final (con pesos): &quot; + solucion.evaluarFuncionObjetivo(pesoFosforo, pesoProductividad, pesoCantUsos));
+        System.out.println(&quot;\tSolucion final (sin pesos): &quot; + solucion.evaluarFuncionObjetivo());
+        solucion.chequearRestricciones();
+        solucion.imprimirFuncionObjetivo();
+        */
+
+<span class="nc" id="L394">        return solucion;</span>
+
+
+    }
+
+    private static void generarMejorSolucion() {
+<span class="nc" id="L400">        int cantidadSoluciones = 0, datos;</span>
+        String fileName;
+        Solucion solucion, mejorSolucion;
+<span class="nc" id="L403">        Scanner reader = new Scanner(System.in);</span>
+<span class="nc" id="L404">        System.out.println(&quot;Definir semilla: &quot;);</span>
+<span class="nc" id="L405">        Constantes.uniforme=  new Random(reader.nextInt());</span>
+
+<span class="nc" id="L407">        System.out.println(&quot;Cantidad de soluciones a generar : &quot;);</span>
+<span class="nc" id="L408">        cantidadSoluciones = reader.nextInt();</span>
+
+<span class="nc" id="L410">        System.out.println(&quot;1 para potreros, 2 para pixeles: &quot;);</span>
+<span class="nc" id="L411">        datos = reader.nextInt();</span>
+
+<span class="nc bnc" id="L413" title="All 2 branches missed.">        if (datos%2==0) {</span>
+<span class="nc" id="L414">            fileName = &quot;pixeles.in&quot;;</span>
+<span class="nc" id="L415">            Constantes.cantPixeles = 18475;</span>
+<span class="nc" id="L416">            Constantes.cantPotreros = 26168;</span>
+        }else{
+<span class="nc" id="L418">            fileName = &quot;potreros.in&quot;;</span>
+<span class="nc" id="L419">            Constantes.cantPixeles = 792;</span>
+<span class="nc" id="L420">            Constantes.cantPotreros = 1602;</span>
+        }
+<span class="nc" id="L422">        Constantes.pixeles = Pixel.cargarPixeles(fileName);</span>
+
+<span class="nc" id="L424">        solucion=MainTest.grasp(cantidadSoluciones, true);</span>
+<span class="nc" id="L425">        solucion.crearArchivoMatriz();</span>
+<span class="nc" id="L426">        solucion.crearArchivoMatrizNombreUsoExtendido();</span>
+<span class="nc" id="L427">        solucion.crearArchivoCantidadUsos();</span>
+<span class="nc" id="L428">        solucion.crearArchivoProductividadSobreAreaTotal();</span>
+<span class="nc" id="L429">        solucion.crearArchivoFosforoSobreAreaTotal();</span>
+<span class="nc" id="L430">        System.out.println(&quot;Mejor solucion:&quot;);</span>
+<span class="nc" id="L431">        System.out.println(&quot;\tFosforo: &quot; + solucion.fosforo);</span>
+<span class="nc" id="L432">        solucion.imprimirRestriccionProductividadMinimaEstacion();</span>
+<span class="nc" id="L433">        solucion.imprimirRestriccionUsosDistintos();</span>
+<span class="nc" id="L434">    }</span>
+
+    private static void testFirstImprovement() {
+        Solucion solucionOriginal, solucionNueva;
+<span class="nc" id="L438">        solucionOriginal = Solucion.crearSolucion();</span>
+<span class="nc" id="L439">        System.out.println(&quot;TEST FI\nORIGINAL:&quot;);</span>
+<span class="nc" id="L440">        solucionOriginal.imprimirFuncionObjetivo();</span>
+<span class="nc" id="L441">        System.out.println();</span>
+
+<span class="nc bnc" id="L443" title="All 2 branches missed.">        for (int i = 0; i &lt; 10000; i++) {</span>
+<span class="nc" id="L444">            System.out.println(&quot;Intento FI: &quot; + i);</span>
+<span class="nc" id="L445">            solucionNueva = Solucion.firstImprove(solucionOriginal, 1, 1, 1);</span>
+<span class="nc bnc" id="L446" title="All 2 branches missed.">            if (solucionOriginal.evaluarFuncionObjetivo() &lt; solucionNueva.evaluarFuncionObjetivo()) {</span>
+<span class="nc" id="L447">                System.out.println(&quot;\tFallo FI\tFOOriginal=&quot; + solucionOriginal.evaluarFuncionObjetivo() + &quot;\t FONueva=&quot; + solucionNueva.evaluarFuncionObjetivo());</span>
+            } else {
+<span class="nc" id="L449">                System.out.println(&quot;\tExito FI\tFOOriginal=&quot; + solucionOriginal.evaluarFuncionObjetivo() + &quot;\t FONueva=&quot; + solucionNueva.evaluarFuncionObjetivo());</span>
+            }
+        }
+<span class="nc" id="L452">    }</span>
+
+    private static void testLocalSearch() {
+        Solucion solucionOriginal, solucionNueva;
+<span class="nc" id="L456">        solucionOriginal = Solucion.crearSolucion();</span>
+<span class="nc" id="L457">        System.out.println(&quot;TEST LS\nORIGINAL:&quot;);</span>
+<span class="nc" id="L458">        solucionOriginal.imprimirFuncionObjetivo();</span>
+<span class="nc" id="L459">        System.out.println();</span>
+
+<span class="nc bnc" id="L461" title="All 2 branches missed.">        for (int i = 0; i &lt; 10; i++) {</span>
+<span class="nc" id="L462">            System.out.println(&quot;Intento LS: &quot; + i);</span>
+<span class="nc" id="L463">            solucionNueva = MainTest.LocalSearch(solucionOriginal);</span>
+<span class="nc bnc" id="L464" title="All 2 branches missed.">            if (solucionOriginal.evaluarFuncionObjetivo() &lt; solucionNueva.evaluarFuncionObjetivo()) {</span>
+<span class="nc" id="L465">                System.out.println(&quot;\tFallo LS\tFOOriginal=&quot; + solucionOriginal.evaluarFuncionObjetivo() + &quot;\t FONueva=&quot; + solucionNueva.evaluarFuncionObjetivo());</span>
+            } else {
+<span class="nc" id="L467">                System.out.println(&quot;\tExito LS\tFOOriginal=&quot; + solucionOriginal.evaluarFuncionObjetivo() + &quot;\t FONueva=&quot; + solucionNueva.evaluarFuncionObjetivo());</span>
+            }
+        }
+
+
+<span class="nc" id="L472">    }</span>
+
+    private static void testGRASP() {
+        Solucion solucionOriginal, solucionNueva;
+<span class="nc" id="L476">        solucionOriginal = Solucion.crearSolucion();</span>
+<span class="nc" id="L477">        System.out.println(&quot;TEST GRASP\nORIGINAL:&quot;);</span>
+<span class="nc" id="L478">        solucionOriginal.imprimirFuncionObjetivo();</span>
+<span class="nc" id="L479">        System.out.println();</span>
+
+<span class="nc bnc" id="L481" title="All 2 branches missed.">        for (int i = 0; i &lt; 10; i++) {</span>
+<span class="nc" id="L482">            System.out.println(&quot;Intento GRASP: &quot; + i);</span>
+<span class="nc" id="L483">            solucionNueva = MainTest.grasp(10, true);</span>
+<span class="nc bnc" id="L484" title="All 2 branches missed.">            if (solucionOriginal.evaluarFuncionObjetivo() &lt; solucionNueva.evaluarFuncionObjetivo()) {</span>
+<span class="nc" id="L485">                System.out.println(&quot;\tFallo GRASP\tFOOriginal=&quot; + solucionOriginal.evaluarFuncionObjetivo() + &quot;\t FONueva=&quot; + solucionNueva.evaluarFuncionObjetivo());</span>
+            } else {
+<span class="nc" id="L487">                System.out.println(&quot;\tExito GRASP\tFOOriginal=&quot; + solucionOriginal.evaluarFuncionObjetivo() + &quot;\t FONueva=&quot; + solucionNueva.evaluarFuncionObjetivo());</span>
+            }
+        }
+<span class="nc" id="L490">    }</span>
+
+
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

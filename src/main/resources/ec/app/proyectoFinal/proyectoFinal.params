@@ -1,29 +1,30 @@
 parent.0 = ../../simple/simple.params
-eval.problem = ec.app.p1e1.p1e1
-state = ec.simple.SimpleEvolutionStateP1E1
+eval.problem = ec.app.proyectoFinal.proyectoFinal
+state = ec.simple.SimpleEvolutionState
 
-stat.do-message = false
+stat.do-message = true
 quit-on-run-complete = true
 
 pop.subpop.0.size = 100
-generations = 10000
+generations = 10
 breed.elite.0 = 1
 
-pop.subpop.0.species = ec.vector.IntegerVectorSpeciesP1E1
+pop.subpop.0.species = ec.vector.IntegerMatrixSpecies
 
-pop.subpop.0.species.ind = ec.vector.IntegerVectorIndividualP1E1
-# valores min y max de los elementos del vector
+pop.subpop.0.species.ind = ec.vector.IntegerMatrixIndividual
+
+# valores min y max de los elementos del vector, no es coherente con este problema
 pop.subpop.0.species.min-gene = 0
-pop.subpop.0.species.max-gene = 4
+pop.subpop.0.species.max-gene = 1416
 
 pop.subpop.0.species.fitness = ec.simple.SimpleFitness
 
-pop.subpop.0.species.genome-size = 8
+#pop.subpop.0.species.genome-size = 8
 
 pop.subpop.0.species.crossover-type = any
 pop.subpop.0.species.crossover-prob = 0.5
 
-# agregar otra mutacion??
+# Mutacion
 pop.subpop.0.species.mutation-bounded =true
 
 #pop.subpop.0.species.mutation-type = reset
@@ -52,8 +53,3 @@ pop.subpop.0.species.pipe.source.0.source.0.source.1 = same
 pop.subpop.0.species.pipe.source.0.source.0.source.0.size = 2
 
 
-
-pop.subpop.0.species.ruta-empleados=practico_empleados
-pop.subpop.0.species.ruta-tareas=practico_tareas
-pop.subpop.0.species.ruta-cantidad-empleados = practico_cantidad_empleados
-pop.subpop.0.species.ruta-cantidad-tareas = practico_cantidad_tareas
