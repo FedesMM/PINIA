@@ -304,6 +304,7 @@ public class Uso {
         }
     }
     public static int[]  usoYDuracion(String usoOriginal){
+        ///Devuelve la cantidad de estaciones de que le faltan al uso original
         int[] usoYDuracion= new int [2];
 
         String[] campos = usoOriginal.split("\\(");

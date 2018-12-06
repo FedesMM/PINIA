@@ -304,163 +304,164 @@ public class Uso {
         }
     }
     public static int[]  usoYDuracion(String usoOriginal){
-<span class="nc" id="L307">        int[] usoYDuracion= new int [2];</span>
+        ///Devuelve la cantidad de estaciones de que le faltan al uso original
+<span class="nc" id="L308">        int[] usoYDuracion= new int [2];</span>
 
-<span class="nc" id="L309">        String[] campos = usoOriginal.split(&quot;\\(&quot;);</span>
+<span class="nc" id="L310">        String[] campos = usoOriginal.split(&quot;\\(&quot;);</span>
         /*for (int iCampos = 0; iCampos &lt; campos.length; iCampos++) {
             System.out.print(&quot;UsoOriginal[&quot;+iCampos+&quot;]: &quot;+campos[iCampos]);
         }
         System.out.print(&quot;\n&quot;);
         */
-<span class="nc bnc" id="L315" title="All 58 branches missed.">        switch(campos[0]) {</span>
+<span class="nc bnc" id="L316" title="All 58 branches missed.">        switch(campos[0]) {</span>
 
             case &quot;Alfalfa &quot;:
-<span class="nc" id="L318">                usoYDuracion[0]=1;</span>
-<span class="nc" id="L319">                break;</span>
+<span class="nc" id="L319">                usoYDuracion[0]=1;</span>
+<span class="nc" id="L320">                break;</span>
             case &quot;FE+TB+L &quot;:
-<span class="nc" id="L321">                usoYDuracion[0]= 2;</span>
-<span class="nc" id="L322">                break;</span>
+<span class="nc" id="L322">                usoYDuracion[0]= 2;</span>
+<span class="nc" id="L323">                break;</span>
             case &quot;TR+Cebadilla &quot;:
-<span class="nc" id="L324">                usoYDuracion[0]= 3;</span>
-<span class="nc" id="L325">                break;</span>
+<span class="nc" id="L325">                usoYDuracion[0]= 3;</span>
+<span class="nc" id="L326">                break;</span>
             case &quot;TR+TB+Raigrás &quot;:
-<span class="nc" id="L327">                usoYDuracion[0]= 4;</span>
-<span class="nc" id="L328">                break;</span>
+<span class="nc" id="L328">                usoYDuracion[0]= 4;</span>
+<span class="nc" id="L329">                break;</span>
             case &quot;Lotus Puro &quot;:
-<span class="nc" id="L330">                usoYDuracion[0]= 5;</span>
-<span class="nc" id="L331">                break;</span>
+<span class="nc" id="L331">                usoYDuracion[0]= 5;</span>
+<span class="nc" id="L332">                break;</span>
             case &quot;Raigrás+TB+L &quot;:
-<span class="nc" id="L333">                usoYDuracion[0]= 6;</span>
-<span class="nc" id="L334">                break;</span>
+<span class="nc" id="L334">                usoYDuracion[0]= 6;</span>
+<span class="nc" id="L335">                break;</span>
             case &quot;Achicoria &quot;:
-<span class="nc" id="L336">                usoYDuracion[0]= 7;</span>
-<span class="nc" id="L337">                break;</span>
+<span class="nc" id="L337">                usoYDuracion[0]= 7;</span>
+<span class="nc" id="L338">                break;</span>
             case &quot;Moha &quot;:
-<span class="nc" id="L339">                usoYDuracion[0]= 8;</span>
-<span class="nc" id="L340">                break;</span>
+<span class="nc" id="L340">                usoYDuracion[0]= 8;</span>
+<span class="nc" id="L341">                break;</span>
             case &quot;Sorgo Forrajero &quot;:
-<span class="nc" id="L342">                usoYDuracion[0]= 9;</span>
-<span class="nc" id="L343">                break;</span>
+<span class="nc" id="L343">                usoYDuracion[0]= 9;</span>
+<span class="nc" id="L344">                break;</span>
             case &quot;Avena Pastoreo &quot;:
-<span class="nc" id="L345">                usoYDuracion[0]= 10;</span>
-<span class="nc" id="L346">                break;</span>
+<span class="nc" id="L346">                usoYDuracion[0]= 10;</span>
+<span class="nc" id="L347">                break;</span>
             case &quot;Avena+Raigrás Temp &quot;:
-<span class="nc" id="L348">                usoYDuracion[0]= 11;</span>
-<span class="nc" id="L349">                break;</span>
+<span class="nc" id="L349">                usoYDuracion[0]= 11;</span>
+<span class="nc" id="L350">                break;</span>
             case &quot;Maiz &quot;:
-<span class="nc" id="L351">                usoYDuracion[0]= 12;</span>
-<span class="nc" id="L352">                break;</span>
+<span class="nc" id="L352">                usoYDuracion[0]= 12;</span>
+<span class="nc" id="L353">                break;</span>
             case &quot;Campo Natural&quot;:
-<span class="nc" id="L354">                usoYDuracion[0]= 13;</span>
-<span class="nc" id="L355">                break;</span>
+<span class="nc" id="L355">                usoYDuracion[0]= 13;</span>
+<span class="nc" id="L356">                break;</span>
             case &quot;Rastrojo &quot;:
-<span class="nc" id="L357">                usoYDuracion[0]= 14;</span>
-<span class="nc" id="L358">                break;</span>
+<span class="nc" id="L358">                usoYDuracion[0]= 14;</span>
+<span class="nc" id="L359">                break;</span>
             default:
-<span class="nc" id="L360">                System.out.println(&quot;no match&quot;);</span>
+<span class="nc" id="L361">                System.out.println(&quot;no match&quot;);</span>
                 break;
         }
-<span class="nc bnc" id="L363" title="All 4 branches missed.">        if((usoYDuracion[0]==1)||(usoYDuracion[0]==2)){</span>
-<span class="nc bnc" id="L364" title="All 36 branches missed.">             switch (campos[1]){</span>
+<span class="nc bnc" id="L364" title="All 4 branches missed.">        if((usoYDuracion[0]==1)||(usoYDuracion[0]==2)){</span>
+<span class="nc bnc" id="L365" title="All 36 branches missed.">             switch (campos[1]){</span>
                  case &quot;1° año)&quot;:
                  case &quot;1Â° aÃ±o)&quot;:
-<span class="nc" id="L367">                     usoYDuracion[1]=12;</span>
-<span class="nc" id="L368">                     break;</span>
+<span class="nc" id="L368">                     usoYDuracion[1]=12;</span>
+<span class="nc" id="L369">                     break;</span>
                  case &quot;2° año)&quot;:
                  case &quot;2°año)&quot;:
                  case &quot;2Â° aÃ±o)&quot;:
                  case &quot;2Â°aÃ±o)&quot;:
-<span class="nc" id="L373">                     usoYDuracion[1]=8;</span>
-<span class="nc" id="L374">                     break;</span>
+<span class="nc" id="L374">                     usoYDuracion[1]=8;</span>
+<span class="nc" id="L375">                     break;</span>
                  case &quot;3° año)&quot;:
                  case &quot;3Â° aÃ±o)&quot;:
-<span class="nc" id="L377">                     usoYDuracion[1]=4;</span>
-<span class="nc" id="L378">                     break;</span>
+<span class="nc" id="L378">                     usoYDuracion[1]=4;</span>
+<span class="nc" id="L379">                     break;</span>
                  case &quot;4° año)&quot;:
                  case &quot;4Â° aÃ±o)&quot;:
-<span class="nc" id="L381">                     usoYDuracion[1]=0;</span>
-<span class="nc" id="L382">                     break;</span>
+<span class="nc" id="L382">                     usoYDuracion[1]=0;</span>
+<span class="nc" id="L383">                     break;</span>
                  default:
-<span class="nc" id="L384">                     System.out.println(&quot;No corresponde la duracion. Para Uso: &quot;+usoYDuracion[0]+&quot; y duracion: &quot; +usoYDuracion[1]);</span>
-<span class="nc" id="L385">                     break;</span>
+<span class="nc" id="L385">                     System.out.println(&quot;No corresponde la duracion. Para Uso: &quot;+usoYDuracion[0]+&quot; y duracion: &quot; +usoYDuracion[1]);</span>
+<span class="nc" id="L386">                     break;</span>
              }
-<span class="nc bnc" id="L387" title="All 4 branches missed.">         } else if ((usoYDuracion[0]==3)||(usoYDuracion[0]==4)){</span>
-<span class="nc bnc" id="L388" title="All 22 branches missed.">            switch (campos[1]){</span>
+<span class="nc bnc" id="L388" title="All 4 branches missed.">         } else if ((usoYDuracion[0]==3)||(usoYDuracion[0]==4)){</span>
+<span class="nc bnc" id="L389" title="All 22 branches missed.">            switch (campos[1]){</span>
                 case &quot;1° año)&quot;:
                 case &quot;1Â° aÃ±o)&quot;:
-<span class="nc" id="L391">                    usoYDuracion[1]=4;</span>
-<span class="nc" id="L392">                    break;</span>
+<span class="nc" id="L392">                    usoYDuracion[1]=4;</span>
+<span class="nc" id="L393">                    break;</span>
                 case &quot;2° año)&quot;:
                 case &quot;2°año)&quot;:
                 case &quot;2Â° aÃ±o)&quot;:
                 case &quot;2Â°aÃ±o)&quot;:
-<span class="nc" id="L397">                    usoYDuracion[1]=0;</span>
-<span class="nc" id="L398">                    break;</span>
+<span class="nc" id="L398">                    usoYDuracion[1]=0;</span>
+<span class="nc" id="L399">                    break;</span>
                 default:
-<span class="nc" id="L400">                    System.out.println(&quot;No corresponde la duracion. Para Uso: &quot;+usoYDuracion[0]+&quot; y duracion: &quot; +usoYDuracion[1]);</span>
-<span class="nc" id="L401">                    System.out.println(&quot;Con el texto: &quot;+usoOriginal);</span>
-<span class="nc" id="L402">                    System.out.println(&quot;Parseado: &quot;+campos[0]+&quot; || &quot;+ campos[1]);</span>
+<span class="nc" id="L401">                    System.out.println(&quot;No corresponde la duracion. Para Uso: &quot;+usoYDuracion[0]+&quot; y duracion: &quot; +usoYDuracion[1]);</span>
+<span class="nc" id="L402">                    System.out.println(&quot;Con el texto: &quot;+usoOriginal);</span>
+<span class="nc" id="L403">                    System.out.println(&quot;Parseado: &quot;+campos[0]+&quot; || &quot;+ campos[1]);</span>
 
 
-<span class="nc" id="L405">                    break;</span>
+<span class="nc" id="L406">                    break;</span>
             }
-<span class="nc bnc" id="L407" title="All 4 branches missed.">        } else if ((usoYDuracion[0]==5)||(usoYDuracion[0]==6)){</span>
-<span class="nc bnc" id="L408" title="All 29 branches missed.">            switch (campos[1]){</span>
+<span class="nc bnc" id="L408" title="All 4 branches missed.">        } else if ((usoYDuracion[0]==5)||(usoYDuracion[0]==6)){</span>
+<span class="nc bnc" id="L409" title="All 29 branches missed.">            switch (campos[1]){</span>
                 case &quot;1° año)&quot;:
                 case &quot;1Â° aÃ±o)&quot;:
-<span class="nc" id="L411">                    usoYDuracion[1]=8;</span>
-<span class="nc" id="L412">                    break;</span>
+<span class="nc" id="L412">                    usoYDuracion[1]=8;</span>
+<span class="nc" id="L413">                    break;</span>
                 case &quot;2° año)&quot;:
                 case &quot;2°año)&quot;:
                 case &quot;2Â° aÃ±o)&quot;:
                 case &quot;2Â°aÃ±o)&quot;:
-<span class="nc" id="L417">                    usoYDuracion[1]=4;</span>
-<span class="nc" id="L418">                    break;</span>
+<span class="nc" id="L418">                    usoYDuracion[1]=4;</span>
+<span class="nc" id="L419">                    break;</span>
                 case &quot;3° año)&quot;:
                 case &quot;3Â° aÃ±o)&quot;:
-<span class="nc" id="L421">                    usoYDuracion[1]=0;</span>
-<span class="nc" id="L422">                    break;</span>
+<span class="nc" id="L422">                    usoYDuracion[1]=0;</span>
+<span class="nc" id="L423">                    break;</span>
                 default:
-<span class="nc" id="L424">                    System.out.println(&quot;No corresponde la duracion. Para Uso: &quot;+usoYDuracion[0]+&quot; y duracion: &quot; +usoYDuracion[1]);</span>
-<span class="nc" id="L425">                    break;</span>
+<span class="nc" id="L425">                    System.out.println(&quot;No corresponde la duracion. Para Uso: &quot;+usoYDuracion[0]+&quot; y duracion: &quot; +usoYDuracion[1]);</span>
+<span class="nc" id="L426">                    break;</span>
             }
-<span class="nc bnc" id="L427" title="All 2 branches missed.">        } else if (usoYDuracion[0]==7){</span>
-<span class="nc bnc" id="L428" title="All 22 branches missed.">            switch (campos[1]){</span>
+<span class="nc bnc" id="L428" title="All 2 branches missed.">        } else if (usoYDuracion[0]==7){</span>
+<span class="nc bnc" id="L429" title="All 22 branches missed.">            switch (campos[1]){</span>
                 case &quot;1° año)&quot;:
                 case &quot;1Â° aÃ±o)&quot;:
-<span class="nc" id="L431">                    usoYDuracion[1]=7;</span>
-<span class="nc" id="L432">                    break;</span>
+<span class="nc" id="L432">                    usoYDuracion[1]=7;</span>
+<span class="nc" id="L433">                    break;</span>
                 case &quot;2° año)&quot;:
                 case &quot;2°año)&quot;:
                 case &quot;2Â° aÃ±o)&quot;:
                 case &quot;2Â°aÃ±o)&quot;:
-<span class="nc" id="L437">                    usoYDuracion[1]=0;</span>
-<span class="nc" id="L438">                    break;</span>
+<span class="nc" id="L438">                    usoYDuracion[1]=0;</span>
+<span class="nc" id="L439">                    break;</span>
                 default:
-<span class="nc" id="L440">                    System.out.println(&quot;No corresponde la duracion. Para Uso: &quot;+usoYDuracion[0]+&quot; y duracion: &quot; +usoYDuracion[1]);</span>
-<span class="nc" id="L441">                    break;</span>
+<span class="nc" id="L441">                    System.out.println(&quot;No corresponde la duracion. Para Uso: &quot;+usoYDuracion[0]+&quot; y duracion: &quot; +usoYDuracion[1]);</span>
+<span class="nc" id="L442">                    break;</span>
             }
-<span class="nc bnc" id="L443" title="All 2 branches missed.">        } else if (usoYDuracion[0]==8){</span>
-<span class="nc bnc" id="L444" title="All 6 branches missed.">            switch (campos[1]){</span>
+<span class="nc bnc" id="L444" title="All 2 branches missed.">        } else if (usoYDuracion[0]==8){</span>
+<span class="nc bnc" id="L445" title="All 6 branches missed.">            switch (campos[1]){</span>
                 case &quot;anual)&quot;:
-<span class="nc" id="L446">                    usoYDuracion[1]=0;</span>
-<span class="nc" id="L447">                    break;</span>
+<span class="nc" id="L447">                    usoYDuracion[1]=0;</span>
+<span class="nc" id="L448">                    break;</span>
                 default:
-<span class="nc" id="L449">                    System.out.println(&quot;No corresponde la duracion. Para Uso: &quot;+usoYDuracion[0]+&quot; y duracion: &quot; +usoYDuracion[1]);</span>
-<span class="nc" id="L450">                    break;</span>
+<span class="nc" id="L450">                    System.out.println(&quot;No corresponde la duracion. Para Uso: &quot;+usoYDuracion[0]+&quot; y duracion: &quot; +usoYDuracion[1]);</span>
+<span class="nc" id="L451">                    break;</span>
             }
-<span class="nc bnc" id="L452" title="All 2 branches missed.">        } else if (usoYDuracion[0]==9){</span>
-<span class="nc bnc" id="L453" title="All 6 branches missed.">            switch (campos[1]){</span>
+<span class="nc bnc" id="L453" title="All 2 branches missed.">        } else if (usoYDuracion[0]==9){</span>
+<span class="nc bnc" id="L454" title="All 6 branches missed.">            switch (campos[1]){</span>
                 case &quot;anual)&quot;:
-<span class="nc" id="L455">                    usoYDuracion[1]=1;</span>
-<span class="nc" id="L456">                    break;</span>
+<span class="nc" id="L456">                    usoYDuracion[1]=1;</span>
+<span class="nc" id="L457">                    break;</span>
                 default:
-<span class="nc" id="L458">                    System.out.println(&quot;No corresponde la duracion. Para Uso: &quot;+usoYDuracion[0]+&quot; y duracion: &quot; +usoYDuracion[1]);</span>
-<span class="nc" id="L459">                    break;</span>
+<span class="nc" id="L459">                    System.out.println(&quot;No corresponde la duracion. Para Uso: &quot;+usoYDuracion[0]+&quot; y duracion: &quot; +usoYDuracion[1]);</span>
+<span class="nc" id="L460">                    break;</span>
             }
         }
-<span class="nc bnc" id="L462" title="All 2 branches missed.">        else if ((usoYDuracion[0]&gt;10)){</span>
-<span class="nc" id="L463">            usoYDuracion[1]=0;</span>
+<span class="nc bnc" id="L463" title="All 2 branches missed.">        else if ((usoYDuracion[0]&gt;10)){</span>
+<span class="nc" id="L464">            usoYDuracion[1]=0;</span>
             /*switch (campos[1]){
                 case &quot;anual)&quot;:
                     usoyDuracion[1]=0;
@@ -471,110 +472,110 @@ public class Uso {
             }*/
         }
         //System.out.println(&quot;\tPara el usoOriginal:&quot;+usoOriginal+&quot; Devuelvo uso: &quot;+usoyDuracion[0]+&quot; y duracion: &quot;+usoyDuracion[1]);
-<span class="nc" id="L474">        return usoYDuracion;</span>
+<span class="nc" id="L475">        return usoYDuracion;</span>
     }
 
 
 
     public static Uso[] cargarUsos(){
-<span class="nc" id="L480">        Uso [] listaUsos= new Uso[Constantes.cantUsos];</span>
+<span class="nc" id="L481">        Uso [] listaUsos= new Uso[Constantes.cantUsos];</span>
         float[] productividadUso, fosforoEstacion;
         List&lt;Integer&gt; siguientesUsos;
         //Siguientes usos 0 reservado para el inicio random
-<span class="nc" id="L484">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12,14));</span>
-<span class="nc" id="L485">        fosforoEstacion = new float[] {0};</span>
-<span class="nc" id="L486">        productividadUso= new float[] {0};</span>
-<span class="nc" id="L487">        listaUsos[0]= new Uso(0, 0,0, 0, productividadUso,fosforoEstacion, &quot;Reservado&quot;,siguientesUsos);</span>
+<span class="nc" id="L485">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12,14));</span>
+<span class="nc" id="L486">        fosforoEstacion = new float[] {0};</span>
+<span class="nc" id="L487">        productividadUso= new float[] {0};</span>
+<span class="nc" id="L488">        listaUsos[0]= new Uso(0, 0,0, 0, productividadUso,fosforoEstacion, &quot;Reservado&quot;,siguientesUsos);</span>
 
         //Cargo los usos reales
 
         //Pastura Perenne 1 ---- Alfalfa
-<span class="nc" id="L492">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(2,3,4,5,6,7,8,9,10,11,14));</span>
-<span class="nc" id="L493">        fosforoEstacion = new float[] {0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f};</span>
-<span class="nc" id="L494">        productividadUso= new float[] {0, 0, 3025, 2475, 3000, 1200, 4200, 3600, 1600, 800, 3200, 2400, 700, 350, 3500,2450};</span>
+<span class="nc" id="L493">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(2,3,4,5,6,7,8,9,10,11,14));</span>
+<span class="nc" id="L494">        fosforoEstacion = new float[] {0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f,0.513f};</span>
+<span class="nc" id="L495">        productividadUso= new float[] {0, 0, 3025, 2475, 3000, 1200, 4200, 3600, 1600, 800, 3200, 2400, 700, 350, 3500,2450};</span>
 
-<span class="nc" id="L496">        listaUsos[1]= new Uso(1, 16,0, 4.64f, productividadUso,fosforoEstacion, &quot;Alfalfa&quot;,siguientesUsos);</span>
+<span class="nc" id="L497">        listaUsos[1]= new Uso(1, 16,0, 4.64f, productividadUso,fosforoEstacion, &quot;Alfalfa&quot;,siguientesUsos);</span>
 
         //Pastura Perenne 2 ---- FE+TB+L
-<span class="nc" id="L499">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,3,4,5,6,7,8,9,10,11,14));</span>
-<span class="nc" id="L500">        fosforoEstacion = new float[] {0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f};</span>
-<span class="nc" id="L501">        productividadUso= new float[] {0, 450, 3150, 900, 2500, 1500, 4000, 2000, 1400, 1120, 3500, 980, 700, 650, 3000,650};</span>
-<span class="nc" id="L502">        listaUsos[2]= new Uso(2, 16, 0,4.64f, productividadUso,fosforoEstacion, &quot;FE+TB+L&quot;,siguientesUsos);</span>
+<span class="nc" id="L500">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,3,4,5,6,7,8,9,10,11,14));</span>
+<span class="nc" id="L501">        fosforoEstacion = new float[] {0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f};</span>
+<span class="nc" id="L502">        productividadUso= new float[] {0, 450, 3150, 900, 2500, 1500, 4000, 2000, 1400, 1120, 3500, 980, 700, 650, 3000,650};</span>
+<span class="nc" id="L503">        listaUsos[2]= new Uso(2, 16, 0,4.64f, productividadUso,fosforoEstacion, &quot;FE+TB+L&quot;,siguientesUsos);</span>
 
         //Pastura Perenne 3 ---- TR+Cebadilla
-<span class="nc" id="L505">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,4,5,6,7,8,9,10,11,14));</span>
-<span class="nc" id="L506">        productividadUso= new float[] {0, 2000, 4400, 1600, 2800, 2000, 4200, 1000};</span>
-<span class="nc" id="L507">        fosforoEstacion = new float[] {0.43f,0.43f,0.43f,0.43f,0.43f,0.43f,0.43f,0.43f};</span>
-<span class="nc" id="L508">        listaUsos[3]= new Uso(3, 8,0, 2.32f, productividadUso,fosforoEstacion, &quot;TR+Cebadilla&quot;, siguientesUsos);</span>
+<span class="nc" id="L506">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,4,5,6,7,8,9,10,11,14));</span>
+<span class="nc" id="L507">        productividadUso= new float[] {0, 2000, 4400, 1600, 2800, 2000, 4200, 1000};</span>
+<span class="nc" id="L508">        fosforoEstacion = new float[] {0.43f,0.43f,0.43f,0.43f,0.43f,0.43f,0.43f,0.43f};</span>
+<span class="nc" id="L509">        listaUsos[3]= new Uso(3, 8,0, 2.32f, productividadUso,fosforoEstacion, &quot;TR+Cebadilla&quot;, siguientesUsos);</span>
 
         //Pastura Perenne 4 ---- TR+TB+Raigras
-<span class="nc" id="L511">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,5,6,7,8,9,10,11,14));</span>
-<span class="nc" id="L512">        productividadUso= new float[] {1161, 2212, 3768, 1483, 2176, 1780, 3495, 1483};</span>
-<span class="nc" id="L513">        fosforoEstacion = new float[] {0.43f,0.43f,0.43f,0.43f,0.43f,0.43f,0.43f,0.43f};</span>
-<span class="nc" id="L514">        listaUsos[4]= new Uso(4, 8, 0,2.32f, productividadUso,fosforoEstacion, &quot;TR+TB+Raigrás&quot;,siguientesUsos);</span>
+<span class="nc" id="L512">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,5,6,7,8,9,10,11,14));</span>
+<span class="nc" id="L513">        productividadUso= new float[] {1161, 2212, 3768, 1483, 2176, 1780, 3495, 1483};</span>
+<span class="nc" id="L514">        fosforoEstacion = new float[] {0.43f,0.43f,0.43f,0.43f,0.43f,0.43f,0.43f,0.43f};</span>
+<span class="nc" id="L515">        listaUsos[4]= new Uso(4, 8, 0,2.32f, productividadUso,fosforoEstacion, &quot;TR+TB+Raigrás&quot;,siguientesUsos);</span>
 
         //Pastura Perenne 5 ---- Lotus Puro
-<span class="nc" id="L517">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,6,7,8,9,10,11,14));</span>
-<span class="nc" id="L518">        productividadUso= new float[] {558, 1075, 2127, 962, 1318, 1107, 2826, 1387, 1134, 828, 2340, 971};</span>
-<span class="nc" id="L519">        fosforoEstacion = new float[] {0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f};</span>
-<span class="nc" id="L520">        listaUsos[5]= new Uso(5, 12, 0,3.48f, productividadUso,fosforoEstacion, &quot;Lotus Puro&quot;, siguientesUsos);</span>
+<span class="nc" id="L518">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,6,7,8,9,10,11,14));</span>
+<span class="nc" id="L519">        productividadUso= new float[] {558, 1075, 2127, 962, 1318, 1107, 2826, 1387, 1134, 828, 2340, 971};</span>
+<span class="nc" id="L520">        fosforoEstacion = new float[] {0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f,0.473f};</span>
+<span class="nc" id="L521">        listaUsos[5]= new Uso(5, 12, 0,3.48f, productividadUso,fosforoEstacion, &quot;Lotus Puro&quot;, siguientesUsos);</span>
 
         //Pastura Perenne 6 ---- Raigras+TB+L
-<span class="nc" id="L523">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,5,7,8,9,10,11,14));</span>
-<span class="nc" id="L524">        productividadUso= new float[] {775, 1811, 3159, 816, 1840, 1749, 3342, 1365, 1318, 1287, 2523, 999};</span>
-<span class="nc" id="L525">        fosforoEstacion = new float[] {0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f};</span>
-<span class="nc" id="L526">        listaUsos[6]= new Uso(6, 12, 0,3.48f, productividadUso,fosforoEstacion, &quot;Raigrás+TB+L&quot;,siguientesUsos);</span>
+<span class="nc" id="L524">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,5,7,8,9,10,11,14));</span>
+<span class="nc" id="L525">        productividadUso= new float[] {775, 1811, 3159, 816, 1840, 1749, 3342, 1365, 1318, 1287, 2523, 999};</span>
+<span class="nc" id="L526">        fosforoEstacion = new float[] {0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f,0.345f};</span>
+<span class="nc" id="L527">        listaUsos[6]= new Uso(6, 12, 0,3.48f, productividadUso,fosforoEstacion, &quot;Raigrás+TB+L&quot;,siguientesUsos);</span>
 
         //Pastura Perenne 7 ---- Achicoria
-<span class="nc" id="L529">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,5,6,8,9,10,11,14));</span>
-<span class="nc" id="L530">        productividadUso= new float[] {65, 232, 2653, 2849, 1572, 2342, 3193};</span>
-<span class="nc" id="L531">        fosforoEstacion = new float[] {0.3f,0.3f,0.3f,0.3f,0.3f,0.3f,0.3f};</span>
-<span class="nc" id="L532">        listaUsos[7]= new Uso(7, 7, 0, 2.03f,productividadUso, fosforoEstacion,&quot;Achicoria&quot; ,siguientesUsos);</span>
+<span class="nc" id="L530">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,5,6,8,9,10,11,14));</span>
+<span class="nc" id="L531">        productividadUso= new float[] {65, 232, 2653, 2849, 1572, 2342, 3193};</span>
+<span class="nc" id="L532">        fosforoEstacion = new float[] {0.3f,0.3f,0.3f,0.3f,0.3f,0.3f,0.3f};</span>
+<span class="nc" id="L533">        listaUsos[7]= new Uso(7, 7, 0, 2.03f,productividadUso, fosforoEstacion,&quot;Achicoria&quot; ,siguientesUsos);</span>
 
         //Verdeo Verano 8 ---- Moha
-<span class="nc" id="L535">        siguientesUsos = new  ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,5,6,7,10,11,14));</span>
-<span class="nc" id="L536">        productividadUso= new float[] {0, 5000};</span>
-<span class="nc" id="L537">        fosforoEstacion = new float[] {0.393f,0.393f};</span>
-<span class="nc" id="L538">        listaUsos[8]= new Uso(8, 2, 1, 1.16f,productividadUso,fosforoEstacion,&quot;Moha&quot;, siguientesUsos);</span>
+<span class="nc" id="L536">        siguientesUsos = new  ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,5,6,7,10,11,14));</span>
+<span class="nc" id="L537">        productividadUso= new float[] {0, 5000};</span>
+<span class="nc" id="L538">        fosforoEstacion = new float[] {0.393f,0.393f};</span>
+<span class="nc" id="L539">        listaUsos[8]= new Uso(8, 2, 1, 1.16f,productividadUso,fosforoEstacion,&quot;Moha&quot;, siguientesUsos);</span>
 
         //Verdeo Verano 9 ---- Sorgo Forrajero
-<span class="nc" id="L541">        siguientesUsos = new  ArrayList&lt;Integer&gt; (Arrays.asList(1,2,5,7,8,9,12,14));</span>
-<span class="nc" id="L542">        productividadUso= new float[] {0, 9687, 3568};</span>
-<span class="nc" id="L543">        fosforoEstacion = new float[] {0.548f,0.548f,0.548f};</span>
-<span class="nc" id="L544">        listaUsos[9]= new Uso(9, 3, 1, 1.16f,productividadUso, fosforoEstacion, &quot;Sorgo Forrajero&quot;,siguientesUsos);</span>
+<span class="nc" id="L542">        siguientesUsos = new  ArrayList&lt;Integer&gt; (Arrays.asList(1,2,5,7,8,9,12,14));</span>
+<span class="nc" id="L543">        productividadUso= new float[] {0, 9687, 3568};</span>
+<span class="nc" id="L544">        fosforoEstacion = new float[] {0.548f,0.548f,0.548f};</span>
+<span class="nc" id="L545">        listaUsos[9]= new Uso(9, 3, 1, 1.16f,productividadUso, fosforoEstacion, &quot;Sorgo Forrajero&quot;,siguientesUsos);</span>
 
         //Verdeo Verano 10 ---- Avena Pastoreo
-<span class="nc" id="L547">        siguientesUsos = new  ArrayList&lt;Integer&gt; (Arrays.asList(1,2,5,7,8,9,12,14));</span>
-<span class="nc" id="L548">        productividadUso= new float[] {1625, 3250, 1625};</span>
-<span class="nc" id="L549">        fosforoEstacion = new float[] {0.520f, 0.520f,0.520f};</span>
-<span class="nc" id="L550">        listaUsos[10]= new Uso(10, 3, 0, 1.16f,productividadUso, fosforoEstacion, &quot;Avena Pastoreo&quot;,siguientesUsos);</span>
+<span class="nc" id="L548">        siguientesUsos = new  ArrayList&lt;Integer&gt; (Arrays.asList(1,2,5,7,8,9,12,14));</span>
+<span class="nc" id="L549">        productividadUso= new float[] {1625, 3250, 1625};</span>
+<span class="nc" id="L550">        fosforoEstacion = new float[] {0.520f, 0.520f,0.520f};</span>
+<span class="nc" id="L551">        listaUsos[10]= new Uso(10, 3, 0, 1.16f,productividadUso, fosforoEstacion, &quot;Avena Pastoreo&quot;,siguientesUsos);</span>
 
         //Verdeo Verano 11 ---- Avena+Raigras Temp.
-<span class="nc" id="L553">        siguientesUsos = new  ArrayList&lt;Integer&gt; (Arrays.asList(8,9,12,14));</span>
-<span class="nc" id="L554">        productividadUso= new float[] {2083, 2211, 2735};</span>
-<span class="nc" id="L555">        fosforoEstacion = new float[] {0.520f, 0.520f,0.520f};</span>
-<span class="nc" id="L556">        listaUsos[11]= new Uso(11, 3, 0, 1.16f,productividadUso,fosforoEstacion,&quot;Avena+Raigrás Temp&quot;, siguientesUsos);</span>
+<span class="nc" id="L554">        siguientesUsos = new  ArrayList&lt;Integer&gt; (Arrays.asList(8,9,12,14));</span>
+<span class="nc" id="L555">        productividadUso= new float[] {2083, 2211, 2735};</span>
+<span class="nc" id="L556">        fosforoEstacion = new float[] {0.520f, 0.520f,0.520f};</span>
+<span class="nc" id="L557">        listaUsos[11]= new Uso(11, 3, 0, 1.16f,productividadUso,fosforoEstacion,&quot;Avena+Raigrás Temp&quot;, siguientesUsos);</span>
 
         //Cultivo Verano 12 ---- Maiz
-<span class="nc" id="L559">        siguientesUsos = new  ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,5,6,7,10,11,14));</span>
-<span class="nc" id="L560">        productividadUso= new float[] {0, 12882};</span>
-<span class="nc" id="L561">        fosforoEstacion = new float[] {0.560f,0.560f};</span>
-<span class="nc" id="L562">        listaUsos[12]= new Uso(12, 2, 1, 2.230f,productividadUso,fosforoEstacion, &quot;Maiz&quot;, siguientesUsos);</span>
+<span class="nc" id="L560">        siguientesUsos = new  ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,5,6,7,10,11,14));</span>
+<span class="nc" id="L561">        productividadUso= new float[] {0, 12882};</span>
+<span class="nc" id="L562">        fosforoEstacion = new float[] {0.560f,0.560f};</span>
+<span class="nc" id="L563">        listaUsos[12]= new Uso(12, 2, 1, 2.230f,productividadUso,fosforoEstacion, &quot;Maiz&quot;, siguientesUsos);</span>
 
         //Campo Natural 13 ---- Campo Natural
-<span class="nc" id="L565">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12,13, 14));</span>
-<span class="nc" id="L566">        productividadUso= new float[] {675,425,1039,932};</span>
-<span class="nc" id="L567">        fosforoEstacion = new float[] {0.168f,0.168f,0.168f,0.168f};</span>
-<span class="nc" id="L568">        listaUsos[13]= new Uso(13, 4, 2, 0.24f,productividadUso, fosforoEstacion,&quot;Campo Natural&quot;, siguientesUsos);</span>
+<span class="nc" id="L566">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12,13, 14));</span>
+<span class="nc" id="L567">        productividadUso= new float[] {675,425,1039,932};</span>
+<span class="nc" id="L568">        fosforoEstacion = new float[] {0.168f,0.168f,0.168f,0.168f};</span>
+<span class="nc" id="L569">        listaUsos[13]= new Uso(13, 4, 2, 0.24f,productividadUso, fosforoEstacion,&quot;Campo Natural&quot;, siguientesUsos);</span>
 
         //Rastrojo 14 ---- Rastrojo
         //Usa el mismo uso que el anterior
-<span class="nc" id="L572">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12, 14));</span>
-<span class="nc" id="L573">        productividadUso= new float[] {0,0,0,0};//</span>
-<span class="nc" id="L574">        fosforoEstacion = new float[] {0.244f,0.244f, 0.244f,0.244f};</span>
-<span class="nc" id="L575">        listaUsos[14]= new Uso(14, 1, 2, 0.975f,productividadUso,fosforoEstacion, &quot;Rastrojo&quot;, siguientesUsos);</span>
+<span class="nc" id="L573">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12, 14));</span>
+<span class="nc" id="L574">        productividadUso= new float[] {0,0,0,0};//</span>
+<span class="nc" id="L575">        fosforoEstacion = new float[] {0.244f,0.244f, 0.244f,0.244f};</span>
+<span class="nc" id="L576">        listaUsos[14]= new Uso(14, 1, 2, 0.975f,productividadUso,fosforoEstacion, &quot;Rastrojo&quot;, siguientesUsos);</span>
 
-<span class="nc" id="L577">        return listaUsos;</span>
+<span class="nc" id="L578">        return listaUsos;</span>
     }
 
     public static Uso[] cargarUsosTest() {
@@ -586,51 +587,51 @@ public class Uso {
         cantProductoresTest= 2;
         topeFosforoAnualTest= new float[cantAniosTest];*/
 
-<span class="nc" id="L589">        Uso[] listaUsos = new Uso[Constantes.cantUsos]; //4 en el test 1</span>
+<span class="nc" id="L590">        Uso[] listaUsos = new Uso[Constantes.cantUsos]; //4 en el test 1</span>
         float[] productividadUso, fosforoEstacion;
         List&lt;Integer&gt; siguientesUsos;
 
         //Siguientes usos 0 reservado para el inicio random
-<span class="nc" id="L594">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4));</span>
-<span class="nc" id="L595">        productividadUso= new float[] {0};</span>
-<span class="nc" id="L596">        fosforoEstacion = new float[] {0f};</span>
-<span class="nc" id="L597">        listaUsos[0]= new Uso(0, 0,0, 0, productividadUso, fosforoEstacion, &quot;Cero&quot;,siguientesUsos);</span>
+<span class="nc" id="L595">        siguientesUsos = new ArrayList&lt;Integer&gt; (Arrays.asList(1,2,3,4));</span>
+<span class="nc" id="L596">        productividadUso= new float[] {0};</span>
+<span class="nc" id="L597">        fosforoEstacion = new float[] {0f};</span>
+<span class="nc" id="L598">        listaUsos[0]= new Uso(0, 0,0, 0, productividadUso, fosforoEstacion, &quot;Cero&quot;,siguientesUsos);</span>
 
         //Cargo los usos del test
 
         //Siguientes usos  y productividad para las UsoTest1
-<span class="nc" id="L602">        siguientesUsos = new ArrayList&lt;Integer&gt;(Arrays.asList(3));</span>
-<span class="nc" id="L603">        productividadUso = new float[]{10};</span>
-<span class="nc" id="L604">        fosforoEstacion = new float[] {10f};</span>
-<span class="nc" id="L605">        listaUsos[1] = new Uso(1, 1, 2, 10f, productividadUso,fosforoEstacion, &quot;Uno&quot;,siguientesUsos);</span>
+<span class="nc" id="L603">        siguientesUsos = new ArrayList&lt;Integer&gt;(Arrays.asList(3));</span>
+<span class="nc" id="L604">        productividadUso = new float[]{10};</span>
+<span class="nc" id="L605">        fosforoEstacion = new float[] {10f};</span>
+<span class="nc" id="L606">        listaUsos[1] = new Uso(1, 1, 2, 10f, productividadUso,fosforoEstacion, &quot;Uno&quot;,siguientesUsos);</span>
 
         //Siguientes usos  y productividad para las UsoTest2
-<span class="nc" id="L608">        siguientesUsos = new ArrayList&lt;Integer&gt;(Arrays.asList(3,4));</span>
-<span class="nc" id="L609">        productividadUso = new float[]{20, 20};</span>
-<span class="nc" id="L610">        fosforoEstacion = new float[] {10f, 10f};</span>
-<span class="nc" id="L611">        listaUsos[2] = new Uso(2, 2, 2, 20, productividadUso, fosforoEstacion,&quot;Dos&quot;,siguientesUsos);</span>
+<span class="nc" id="L609">        siguientesUsos = new ArrayList&lt;Integer&gt;(Arrays.asList(3,4));</span>
+<span class="nc" id="L610">        productividadUso = new float[]{20, 20};</span>
+<span class="nc" id="L611">        fosforoEstacion = new float[] {10f, 10f};</span>
+<span class="nc" id="L612">        listaUsos[2] = new Uso(2, 2, 2, 20, productividadUso, fosforoEstacion,&quot;Dos&quot;,siguientesUsos);</span>
 
         //Siguientes usos  y productividad para las UsoTest3
-<span class="nc" id="L614">        siguientesUsos = new ArrayList&lt;Integer&gt;(Arrays.asList(1));</span>
-<span class="nc" id="L615">        productividadUso = new float[]{30, 30, 30};</span>
-<span class="nc" id="L616">        fosforoEstacion = new float[] {10f,10f, 10f};</span>
-<span class="nc" id="L617">        listaUsos[3] = new Uso(3, 3, 2, 30, productividadUso, fosforoEstacion,&quot;Tres&quot;,siguientesUsos);</span>
+<span class="nc" id="L615">        siguientesUsos = new ArrayList&lt;Integer&gt;(Arrays.asList(1));</span>
+<span class="nc" id="L616">        productividadUso = new float[]{30, 30, 30};</span>
+<span class="nc" id="L617">        fosforoEstacion = new float[] {10f,10f, 10f};</span>
+<span class="nc" id="L618">        listaUsos[3] = new Uso(3, 3, 2, 30, productividadUso, fosforoEstacion,&quot;Tres&quot;,siguientesUsos);</span>
 
         //Siguientes usos  y productividad para las UsoTest4
-<span class="nc" id="L620">        siguientesUsos = new ArrayList&lt;Integer&gt;(Arrays.asList(4));</span>
-<span class="nc" id="L621">        productividadUso = new float[]{40, 40, 40, 40};</span>
-<span class="nc" id="L622">        fosforoEstacion = new float[] {10f,10f, 10f,10f};</span>
-<span class="nc" id="L623">        listaUsos[4] = new Uso(4, 4, 2, 40, productividadUso,fosforoEstacion,&quot;Cuatro&quot;, siguientesUsos);</span>
-<span class="nc" id="L624">    return listaUsos;</span>
+<span class="nc" id="L621">        siguientesUsos = new ArrayList&lt;Integer&gt;(Arrays.asList(4));</span>
+<span class="nc" id="L622">        productividadUso = new float[]{40, 40, 40, 40};</span>
+<span class="nc" id="L623">        fosforoEstacion = new float[] {10f,10f, 10f,10f};</span>
+<span class="nc" id="L624">        listaUsos[4] = new Uso(4, 4, 2, 40, productividadUso,fosforoEstacion,&quot;Cuatro&quot;, siguientesUsos);</span>
+<span class="nc" id="L625">    return listaUsos;</span>
     }
 
     public boolean tengoSiguiente(ArrayList&lt;Integer&gt; usosDelProductorEstaEstacion) {
-<span class="nc bnc" id="L628" title="All 2 branches missed.">        for (Integer siguienteUso: this.siguientesUsos) {</span>
-<span class="nc bnc" id="L629" title="All 2 branches missed.">            if (usosDelProductorEstaEstacion.contains(siguienteUso)){</span>
-<span class="nc" id="L630">                return true;</span>
+<span class="nc bnc" id="L629" title="All 2 branches missed.">        for (Integer siguienteUso: this.siguientesUsos) {</span>
+<span class="nc bnc" id="L630" title="All 2 branches missed.">            if (usosDelProductorEstaEstacion.contains(siguienteUso)){</span>
+<span class="nc" id="L631">                return true;</span>
             }
-<span class="nc" id="L632">        }</span>
-<span class="nc" id="L633">        return false;</span>
+<span class="nc" id="L633">        }</span>
+<span class="nc" id="L634">        return false;</span>
     }
 
 }

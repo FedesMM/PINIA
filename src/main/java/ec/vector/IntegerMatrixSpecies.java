@@ -10,10 +10,10 @@ public class IntegerMatrixSpecies extends MatrixSpecies {
     public final static String P_MINGENE = "min-gene";
     public final static String P_MAXGENE = "max-gene";
 
-    public static final double PROB_MUTACION_PONDERADA_FOSFORO = 0.3;
-    public static final double PROB_MUTACION_PONDERADA_PRODUCTIVIDAD = 0.3;
-    public static final double PROB_MUTACION_PONDERADA_FACTIBLE_PROD = 0.2;
-    public static final double PROB_MUTACION_PONDERADA_FACTIBLE_USOS = 0.2;
+    public static final double PROB_MUTACION_PONDERADA_FOSFORO = 0.5;
+    public static final double PROB_MUTACION_PONDERADA_PRODUCTIVIDAD = 0.5;
+    public static final double PROB_MUTACION_PONDERADA_FACTIBLE_PROD = 0;
+    public static final double PROB_MUTACION_PONDERADA_FACTIBLE_USOS = 0;
 
     public final static String P_NUM_SEGMENTS = "num-segments";
 
@@ -39,7 +39,7 @@ public class IntegerMatrixSpecies extends MatrixSpecies {
 
     public final static int C_RANDOM_WALK_MUTATION = 1;
 
-    // TODO: VER clamp en IntegerMatrixSpecies
+
     /** Min-gene value, per gene.
      This array is one longer than the standard genome length.
      The top element in the array represents the parameters for genes in

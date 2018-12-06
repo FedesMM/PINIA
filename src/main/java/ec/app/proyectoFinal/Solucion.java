@@ -1,6 +1,5 @@
 package ec.app.proyectoFinal;
 
-
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -578,7 +577,148 @@ public class Solucion {
                 //System.out.println(" Siguiente uso: "+usoACargar+" Estaciones a cargar: "+Constantes.usos[usoACargar].duracionEstaciones);
             }
         }
+        int[] nuevoPixel= new int[Constantes.cantEstaciones];
+
     }
+
+    public static int [] crearGenomaPixel (int iPixel, int aleatorio){ //aleatorio=0 sortea por fosforo, aleatorio=1 sortea random, aleatorio>1 sotea productividad
+        //creo el pixel a devolver
+        int [] nuevoPixel=new int [Constantes.cantEstaciones];
+        //Creo un un nuevo plan para el pixel
+        int iEstacion=0, iEstacionesCargadas=0, usoACargar, estacionActual, estacionesDeEsteUso, usoYDuracion[];
+        usoYDuracion= new int[2];
+        //System.out.println("Trabajo con el pixel: "+iPixel);
+
+        //Relleno la estacion 0 del pixel
+        String usoOriginal = Constantes.pixeles[iPixel].usoOriginal;
+        //Averiguo que pixel tenia
+        usoYDuracion=Uso.usoYDuracion(usoOriginal);
+        //System.out.println("\tTengo que cargar por el uso original: "+usoYDuracion[0]);
+        //System.out.println("\tme faltan : "+usoYDuracion[1]);
+
+        //En caso de que falten estaciones del uso heredado las completo
+        while(usoYDuracion[1]>0){
+
+            usoACargar=usoYDuracion[0];
+            //Calculo la estacion del uso que voy a cargar
+            estacionesDeEsteUso=Constantes.usos[usoACargar].duracionEstaciones-usoYDuracion[1];
+            //Cargo el uso y la estacion
+            nuevoPixel [iEstacion]=100*usoACargar+estacionesDeEsteUso;
+            //Aumento el iterador de iEstacion
+            iEstacion++;
+            //Reduzco la duracion
+            usoYDuracion[1]--;
+            iEstacionesCargadas++;
+        }
+        //Averiguo en que momento del plantio estaba
+        //Si hay que llenar mas estaciones las lleno
+        iEstacion=iEstacionesCargadas;
+
+
+        boolean sorteoPorFosforo= aleatorio==0 || Constantes.uniforme.nextFloat()<0.5F ;
+        //usoACargar= Uso.siguienteUsoRuletaFosforo(usoYDuracion[0]);
+        //usoACargar= Uso.siguienteUsoRuletaProduccion(usoYDuracion[0]);
+
+        if (sorteoPorFosforo){
+            usoACargar= Uso.siguienteUsoRuletaFosforo(usoYDuracion[0]);
+        }else{
+            usoACargar= Uso.siguienteUsoRuletaProduccion(usoYDuracion[0]);
+        }
+
+        //System.out.println("Pixel:"+ iPixel+" Estacion:"+ iEstacion+" Uso previo: "+usoYDuracion[0]+" Siguiente uso: "+usoACargar+" Estaciones a cargar: "+Constantes.usos[usoACargar].duracionEstaciones);
+        //Para un pixel recorro todas las estaciones
+        while (iEstacion < Constantes.cantEstaciones){
+            estacionesDeEsteUso=0;
+            //Cargo todas las estaciones del uso, deteniendome si llego a cantEstaciones
+            while((estacionesDeEsteUso<Constantes.usos[usoACargar].duracionEstaciones) && ((estacionesDeEsteUso+iEstacion)<(Constantes.cantEstaciones))){
+                estacionActual=iEstacion+estacionesDeEsteUso;
+                //Cargo el uso y las estaciones que llevaNo corresponde la duracion.
+                nuevoPixel[estacionActual]=100*usoACargar+estacionesDeEsteUso;
+                estacionesDeEsteUso++;
+            }
+            iEstacion=iEstacion + estacionesDeEsteUso; //Actualizo la siguiente estacion con la que trabajar
+            //System.out.print("Pixel:"+ iPixel+" Estacion:"+ iEstacion+" Uso previo: "+usoACargar);
+            if (iEstacion<Constantes.cantEstaciones) {
+                if (sorteoPorFosforo){
+                    usoACargar= Uso.siguienteUsoRuletaFosforo(usoACargar);
+                }else{
+                    usoACargar= Uso.siguienteUsoRuletaProduccion(usoACargar);
+                }
+            }
+        }
+        return nuevoPixel;
+
+    }
+
+    public static int[] modificarGenomaPixel (int iPixel, int[] genomaPixel, int aleatorio){ //aleatorio=0 sortea por fosforo, aleatorio=1 sortea random, aleatorio>1 sotea productividad
+        //Modifica un pixel desde alguna estacion
+
+        int iEstacion=0,  usoACargar, estacionActual, usoPrevio, estacionesDeEsteUso, usoYDuracion[];
+        usoYDuracion= new int[2];
+        //System.out.println("Trabajo con el pixel: "+iPixel);
+
+        //Averiguo que uso y duracion tenia
+        String usoOriginal = Constantes.pixeles[iPixel].usoOriginal;
+        //Averiguo que pixel tenia
+        usoYDuracion=Uso.usoYDuracion(usoOriginal);
+        //Sorteo una estacion a partir de la cual se va a buscar desde donde empezar a modificar, siempre es mayor que las estaciones del usoHeredado
+        int estacionBase=usoYDuracion[1]+Constantes.uniforme.nextInt(Constantes.cantEstaciones-usoYDuracion[1]);
+        //Recorro mi genoma hasta la primera estacion en que tenga un uso con estacionDeUso =1
+        boolean encontre=false;
+        for (int i = estacionBase; i >= usoYDuracion[1] && !encontre; i--) {
+            if(genomaPixel[i]%100==0) {
+                iEstacion = i;
+                encontre=true;
+            }
+        }
+
+        if(genomaPixel[iEstacion]%100!=0 ){
+            System.out.println("No encuentro desde que estacion modificar Solucion.677");
+            System.out.println("En el pixel: "+iPixel+" en la estacion:"+ iEstacion+" con el usoEstacionDeUso: " +genomaPixel[iEstacion]);
+            System.exit(1);
+        }
+        if(iEstacion==0){
+            usoPrevio= usoYDuracion[0];
+        } else{
+            usoPrevio=genomaPixel[iEstacion]/100;
+        }
+
+        boolean sorteoPorFosforo= aleatorio==0 || Constantes.uniforme.nextFloat()<0.5F ;
+        //usoACargar= Uso.siguienteUsoRuletaFosforo(usoYDuracion[0]);
+        //usoACargar= Uso.siguienteUsoRuletaProduccion(usoYDuracion[0]);
+
+        if (sorteoPorFosforo){
+            usoACargar= Uso.siguienteUsoRuletaFosforo(usoPrevio);
+        }else{
+            usoACargar= Uso.siguienteUsoRuletaProduccion(usoPrevio);
+        }
+
+        //System.out.println("Pixel:"+ iPixel+" Estacion:"+ iEstacion+" Uso previo: "+usoYDuracion[0]+" Siguiente uso: "+usoACargar+" Estaciones a cargar: "+Constantes.usos[usoACargar].duracionEstaciones);
+        //Para un pixel recorro todas las estaciones
+        while (iEstacion < Constantes.cantEstaciones){
+            estacionesDeEsteUso=0;
+            //Cargo todas las estaciones del uso, deteniendome si llego a cantEstaciones
+            while((estacionesDeEsteUso<Constantes.usos[usoACargar].duracionEstaciones) && ((estacionesDeEsteUso+iEstacion)<(Constantes.cantEstaciones))){
+                estacionActual=iEstacion+estacionesDeEsteUso;
+                //Cargo el uso y las estaciones que llevaNo corresponde la duracion.
+                genomaPixel[estacionActual]=100*usoACargar+estacionesDeEsteUso;
+                estacionesDeEsteUso++;
+            }
+            iEstacion=iEstacion + estacionesDeEsteUso; //Actualizo la siguiente estacion con la que trabajar
+            //System.out.print("Pixel:"+ iPixel+" Estacion:"+ iEstacion+" Uso previo: "+usoACargar);
+            if (iEstacion<Constantes.cantEstaciones) {
+                if (sorteoPorFosforo){
+                    usoACargar= Uso.siguienteUsoRuletaFosforo(usoACargar);
+                }else{
+                    usoACargar= Uso.siguienteUsoRuletaProduccion(usoACargar);
+                }
+            }
+        }
+        return genomaPixel;
+    }
+
+
+
 
     public void limpiarPixel(int iPixel){
         //Libera un pixel actualizando las variables de restricciones

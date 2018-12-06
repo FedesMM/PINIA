@@ -5,8 +5,8 @@ state = ec.simple.SimpleEvolutionState
 stat.do-message = true
 quit-on-run-complete = true
 
-pop.subpop.0.size = 10
-generations = 10
+pop.subpop.0.size = 100
+generations = 100
 breed.elite.0 = 1
 
 pop.subpop.0.species = ec.vector.IntegerMatrixSpecies
@@ -43,7 +43,7 @@ pop.subpop.0.species.pipe = ec.vector.breed.VectorMutationPipeline
 
 pop.subpop.0.species.pipe.source.0 = ec.vector.breed.VectorMutationPipeline
 pop.subpop.0.species.pipe.source.0.pipe.mutation =reset
-pop.subpop.0.species.pipe.source.0.pipe.mutation-prob = 0.1
+pop.subpop.0.species.pipe.source.0.pipe.mutation-prob = 0.5
 pop.subpop.0.species.pipe.source.0.pipe.mutation-stdev = 0.01
 pop.subpop.0.species.pipe.source.0.pipe.duplicate-retries = 5
 

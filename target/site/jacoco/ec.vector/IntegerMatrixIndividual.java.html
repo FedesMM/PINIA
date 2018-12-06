@@ -4,100 +4,101 @@ import ec.*;
 import ec.app.proyectoFinal.Solucion;
 import ec.util.*;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.*;
 
-<span class="nc" id="L9">public class IntegerMatrixIndividual extends VectorIndividual {</span>
+<span class="nc" id="L10">public class IntegerMatrixIndividual extends VectorIndividual {</span>
 
     public static final String P_IntegerMatrixIndividual = &quot;int-mat-ind&quot;;
     public int[] genome;
 
     public int getCantidadPixeles(){
-<span class="nc bnc" id="L15" title="All 2 branches missed.">        return (genome != null) ? genome.length : 0;</span>
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        return (genome != null) ? genome.length : 0;</span>
     }
 
     public String toString() {
-<span class="nc" id="L19">        String result = &quot;&quot;;</span>
-<span class="nc bnc" id="L20" title="All 2 branches missed.">        for (int i = 0; i &lt; genome.length-1; i++) {</span>
-<span class="nc bnc" id="L21" title="All 2 branches missed.">            if (i% MatrixSpecies.CANT_ESTACIONES == 0) {</span>
-<span class="nc" id="L22">                result += genome[i] + &quot; - &quot;;</span>
+<span class="nc" id="L20">        String result = &quot;&quot;;</span>
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        for (int i = 0; i &lt; genome.length-1; i++) {</span>
+<span class="nc bnc" id="L22" title="All 2 branches missed.">            if (i% MatrixSpecies.CANT_ESTACIONES == 0) {</span>
+<span class="nc" id="L23">                result += genome[i] + &quot; - &quot;;</span>
             } else {
-<span class="nc" id="L24">                result += genome[i] + &quot;,&quot;;</span>
+<span class="nc" id="L25">                result += genome[i] + &quot;,&quot;;</span>
             }
         }
-<span class="nc" id="L27">        result += genome[genome.length-1];</span>
-<span class="nc" id="L28">        return result;</span>
+<span class="nc" id="L28">        result += genome[genome.length-1];</span>
+<span class="nc" id="L29">        return result;</span>
     }
 
     public Parameter defaultBase() {
-<span class="nc" id="L32">        return VectorDefaults.base().push(P_IntegerMatrixIndividual);</span>
+<span class="nc" id="L33">        return VectorDefaults.base().push(P_IntegerMatrixIndividual);</span>
     }
 
     public Object clone() {
-<span class="nc" id="L36">        IntegerMatrixIndividual myObj = (IntegerMatrixIndividual) (super.clone());</span>
-<span class="nc" id="L37">        myObj.genome = (int[])(genome.clone());</span>
-<span class="nc" id="L38">        return myObj;</span>
+<span class="nc" id="L37">        IntegerMatrixIndividual myObj = (IntegerMatrixIndividual) (super.clone());</span>
+<span class="nc" id="L38">        myObj.genome = (int[])(genome.clone());</span>
+<span class="nc" id="L39">        return myObj;</span>
     }
 
     public void setup(final EvolutionState state, final Parameter base) {
-<span class="nc" id="L42">        super.setup(state,base);  // actually unnecessary (Individual.setup() is empty)</span>
+<span class="nc" id="L43">        super.setup(state,base);  // actually unnecessary (Individual.setup() is empty)</span>
 
-<span class="nc" id="L44">        Parameter def = defaultBase();</span>
+<span class="nc" id="L45">        Parameter def = defaultBase();</span>
 
-<span class="nc bnc" id="L46" title="All 2 branches missed.">        if (!(species instanceof IntegerMatrixSpecies))</span>
-<span class="nc" id="L47">            state.output.fatal(&quot;IntegerMatrixIndividual requires an IntegerMatrixSpecies&quot;, base, def);</span>
-<span class="nc" id="L48">        IntegerMatrixSpecies s = (IntegerMatrixSpecies) species;</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (!(species instanceof IntegerMatrixSpecies))</span>
+<span class="nc" id="L48">            state.output.fatal(&quot;IntegerMatrixIndividual requires an IntegerMatrixSpecies&quot;, base, def);</span>
+<span class="nc" id="L49">        IntegerMatrixSpecies s = (IntegerMatrixSpecies) species;</span>
 
-<span class="nc" id="L50">        System.out.print(&quot;cant pixeles: &quot; + getCantidadPixeles() + &quot;, cant estaciones: &quot; + IntegerMatrixSpecies.CANT_ESTACIONES);</span>
+<span class="nc" id="L51">        System.out.print(&quot;cant pixeles: &quot; + getCantidadPixeles() + &quot;, cant estaciones: &quot; + IntegerMatrixSpecies.CANT_ESTACIONES);</span>
 
-<span class="nc" id="L52">        genome = new int[s.genomeSize];</span>
-<span class="nc" id="L53">    }</span>
+<span class="nc" id="L53">        genome = new int[s.genomeSize];</span>
+<span class="nc" id="L54">    }</span>
 
     public void defaultCrossover(EvolutionState state, int thread, VectorIndividual ind) {
-<span class="nc" id="L56">        IntegerMatrixSpecies s = (IntegerMatrixSpecies) species;</span>
-<span class="nc" id="L57">        IntegerMatrixIndividual i = (IntegerMatrixIndividual) ind;</span>
+<span class="nc" id="L57">        IntegerMatrixSpecies s = (IntegerMatrixSpecies) species;</span>
+<span class="nc" id="L58">        IntegerMatrixIndividual i = (IntegerMatrixIndividual) ind;</span>
         int tmp;
         int point;
         int ini;
         int fin;
 
-<span class="nc" id="L63">        int len = Math.min(genome.length, i.genome.length);</span>
-<span class="nc bnc" id="L64" title="All 4 branches missed.">        if (len != genome.length || len != i.genome.length)</span>
-<span class="nc" id="L65">            state.output.warnOnce(&quot;Genome lengths are not the same.  Vector crossover will only be done in overlapping region.&quot;);</span>
+<span class="nc" id="L64">        int len = Math.min(genome.length, i.genome.length);</span>
+<span class="nc bnc" id="L65" title="All 4 branches missed.">        if (len != genome.length || len != i.genome.length)</span>
+<span class="nc" id="L66">            state.output.warnOnce(&quot;Genome lengths are not the same.  Vector crossover will only be done in overlapping region.&quot;);</span>
 
-<span class="nc bnc" id="L67" title="All 4 branches missed.">        switch(s.crossoverType) {</span>
+<span class="nc bnc" id="L68" title="All 4 branches missed.">        switch(s.crossoverType) {</span>
             case MatrixSpecies.C_ONE_POINT:
-<span class="nc" id="L69">                point = state.random[thread].nextInt((len / s.chunksize));</span>
-<span class="nc" id="L70">                fin = MatrixUtils.getClosestIntSeason(point*s.chunksize);</span>
-<span class="nc bnc" id="L71" title="All 2 branches missed.">                for(int x = 0; x &lt; fin; x++) {</span>
-<span class="nc" id="L72">                    tmp = i.genome[x];</span>
-<span class="nc" id="L73">                    i.genome[x] = genome[x];</span>
-<span class="nc" id="L74">                    genome[x] = tmp;</span>
+<span class="nc" id="L70">                point = state.random[thread].nextInt((len / s.chunksize));</span>
+<span class="nc" id="L71">                fin = MatrixUtils.getClosestIntSeason(point*s.chunksize);</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">                for(int x = 0; x &lt; fin; x++) {</span>
+<span class="nc" id="L73">                    tmp = i.genome[x];</span>
+<span class="nc" id="L74">                    i.genome[x] = genome[x];</span>
+<span class="nc" id="L75">                    genome[x] = tmp;</span>
                 }
-<span class="nc" id="L76">                break;</span>
+<span class="nc" id="L77">                break;</span>
             case MatrixSpecies.C_TWO_POINT: {
-<span class="nc" id="L78">                point = state.random[thread].nextInt((len / s.chunksize));</span>
-<span class="nc" id="L79">                int point0 = state.random[thread].nextInt((len / s.chunksize));</span>
-<span class="nc bnc" id="L80" title="All 2 branches missed.">                if (point0 &gt; point) {</span>
-<span class="nc" id="L81">                    int p = point0;</span>
-<span class="nc" id="L82">                    point0 = point;</span>
-<span class="nc" id="L83">                    point = p;</span>
+<span class="nc" id="L79">                point = state.random[thread].nextInt((len / s.chunksize));</span>
+<span class="nc" id="L80">                int point0 = state.random[thread].nextInt((len / s.chunksize));</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">                if (point0 &gt; point) {</span>
+<span class="nc" id="L82">                    int p = point0;</span>
+<span class="nc" id="L83">                    point0 = point;</span>
+<span class="nc" id="L84">                    point = p;</span>
                 }
-<span class="nc" id="L85">                ini = MatrixUtils.getClosestIntSeason(point0*s.chunksize);</span>
-<span class="nc" id="L86">                fin = MatrixUtils.getClosestIntSeason(point*s.chunksize);</span>
-<span class="nc bnc" id="L87" title="All 2 branches missed.">                for(int x = ini; x &lt; fin; x++) {</span>
-<span class="nc" id="L88">                    tmp = i.genome[x];</span>
-<span class="nc" id="L89">                    i.genome[x] = genome[x];</span>
-<span class="nc" id="L90">                    genome[x] = tmp;</span>
+<span class="nc" id="L86">                ini = MatrixUtils.getClosestIntSeason(point0*s.chunksize);</span>
+<span class="nc" id="L87">                fin = MatrixUtils.getClosestIntSeason(point*s.chunksize);</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">                for(int x = ini; x &lt; fin; x++) {</span>
+<span class="nc" id="L89">                    tmp = i.genome[x];</span>
+<span class="nc" id="L90">                    i.genome[x] = genome[x];</span>
+<span class="nc" id="L91">                    genome[x] = tmp;</span>
                 }
             }
-<span class="nc" id="L93">            break;</span>
+<span class="nc" id="L94">            break;</span>
             case MatrixSpecies.C_ANY_POINT:
-<span class="nc bnc" id="L95" title="All 2 branches missed.">                for(int x = 0; x &lt; len/s.chunksize; x += IntegerMatrixSpecies.CANT_ESTACIONES) {</span>
-<span class="nc bnc" id="L96" title="All 2 branches missed.">                    if (state.random[thread].nextBoolean(s.crossoverProbability)) {</span>
-<span class="nc bnc" id="L97" title="All 2 branches missed.">                        for (int y = x * s.chunksize; y &lt; (x + IntegerMatrixSpecies.CANT_ESTACIONES) * s.chunksize; y++) {</span>
-<span class="nc" id="L98">                            tmp = i.genome[y];</span>
-<span class="nc" id="L99">                            i.genome[y] = genome[y];</span>
-<span class="nc" id="L100">                            genome[y] = tmp;</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">                for(int x = 0; x &lt; len/s.chunksize; x += IntegerMatrixSpecies.CANT_ESTACIONES) {</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">                    if (state.random[thread].nextBoolean(s.crossoverProbability)) {</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">                        for (int y = x * s.chunksize; y &lt; (x + IntegerMatrixSpecies.CANT_ESTACIONES) * s.chunksize; y++) {</span>
+<span class="nc" id="L99">                            tmp = i.genome[y];</span>
+<span class="nc" id="L100">                            i.genome[y] = genome[y];</span>
+<span class="nc" id="L101">                            genome[y] = tmp;</span>
                             //System.out.println(&quot;Intercambio &quot;+genome[y]+&quot; con &quot;+i.genome[y]);
                         }
                     }
@@ -106,57 +107,57 @@ import java.util.*;
 
         }
         //System.out.println(genome.toString());
-<span class="nc" id="L109">    }</span>
+<span class="nc" id="L110">    }</span>
 
     /** Splits the genome into n pieces, according to points, which *must* be sorted.
      pieces.length must be 1 + points.length */
     public void split(int[] points, Object[] pieces) {
         int point0, point1;
-<span class="nc" id="L115">        point0 = 0;</span>
-<span class="nc" id="L116">        point1 = points[0];</span>
-<span class="nc bnc" id="L117" title="All 2 branches missed.">        for(int x = 0; x &lt; pieces.length; x++) {</span>
-<span class="nc" id="L118">            Range range = MatrixUtils.pullApartIntsInSeason(point0, point1);</span>
-<span class="nc" id="L119">            point0 = range.ini;</span>
-<span class="nc" id="L120">            point1 = range.fin;</span>
-<span class="nc" id="L121">            pieces[x] = new int[point1-point0];</span>
-<span class="nc" id="L122">            System.arraycopy(genome,point0,pieces[x],0,point1-point0);</span>
-<span class="nc" id="L123">            point0 = point1;</span>
-<span class="nc bnc" id="L124" title="All 2 branches missed.">            if (x &gt;= pieces.length - 2) {</span>
-<span class="nc" id="L125">                point1 = genome.length;</span>
+<span class="nc" id="L116">        point0 = 0;</span>
+<span class="nc" id="L117">        point1 = points[0];</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">        for(int x = 0; x &lt; pieces.length; x++) {</span>
+<span class="nc" id="L119">            Range range = MatrixUtils.pullApartIntsInSeason(point0, point1);</span>
+<span class="nc" id="L120">            point0 = range.ini;</span>
+<span class="nc" id="L121">            point1 = range.fin;</span>
+<span class="nc" id="L122">            pieces[x] = new int[point1-point0];</span>
+<span class="nc" id="L123">            System.arraycopy(genome,point0,pieces[x],0,point1-point0);</span>
+<span class="nc" id="L124">            point0 = point1;</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">            if (x &gt;= pieces.length - 2) {</span>
+<span class="nc" id="L126">                point1 = genome.length;</span>
             } else {
-<span class="nc" id="L127">                point1 = points[x+1];</span>
+<span class="nc" id="L128">                point1 = points[x+1];</span>
             }
         }
-<span class="nc" id="L130">    }</span>
+<span class="nc" id="L131">    }</span>
 
     /** Joins the n pieces and sets the genome to their concatenation.*/
     public void join(Object[] pieces) {
-<span class="nc" id="L134">        int sum=0;</span>
-<span class="nc bnc" id="L135" title="All 2 branches missed.">        for(int x = 0; x &lt; pieces.length; x++) {</span>
-<span class="nc" id="L136">            sum += ((int[]) (pieces[x])).length;</span>
+<span class="nc" id="L135">        int sum=0;</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">        for(int x = 0; x &lt; pieces.length; x++) {</span>
+<span class="nc" id="L137">            sum += ((int[]) (pieces[x])).length;</span>
         }
 
-<span class="nc" id="L139">        int runningSum = 0;</span>
-<span class="nc" id="L140">        int[] newGenome = new int[sum];</span>
-<span class="nc bnc" id="L141" title="All 2 branches missed.">        for(int x = 0; x &lt; pieces.length; x++) {</span>
-<span class="nc" id="L142">            System.arraycopy(pieces[x], 0, newGenome, runningSum, ((int[])(pieces[x])).length);</span>
-<span class="nc" id="L143">            runningSum += ((int[])(pieces[x])).length;</span>
+<span class="nc" id="L140">        int runningSum = 0;</span>
+<span class="nc" id="L141">        int[] newGenome = new int[sum];</span>
+<span class="nc bnc" id="L142" title="All 2 branches missed.">        for(int x = 0; x &lt; pieces.length; x++) {</span>
+<span class="nc" id="L143">            System.arraycopy(pieces[x], 0, newGenome, runningSum, ((int[])(pieces[x])).length);</span>
+<span class="nc" id="L144">            runningSum += ((int[])(pieces[x])).length;</span>
         }
-<span class="nc" id="L145">        genome = newGenome;</span>
-<span class="nc" id="L146">    }</span>
+<span class="nc" id="L146">        genome = newGenome;</span>
+<span class="nc" id="L147">    }</span>
 
 
     /** Returns a random value from between min and max inclusive.  This method handles
      overflows that complicate this computation.  Does NOT check that
      min is less than or equal to max.  You must check this yourself. */
     public int randomValueFromClosedInterval(int min, int max, MersenneTwisterFast random) {
-<span class="nc bnc" id="L153" title="All 2 branches missed.">        if (max - min &lt; 0) { // we had an overflow</span>
-<span class="nc" id="L154">            int l = 0;</span>
-<span class="nc" id="L155">            do l = random.nextInt();</span>
-<span class="nc bnc" id="L156" title="All 4 branches missed.">            while(l &lt; min || l &gt; max);</span>
-<span class="nc" id="L157">            return l;</span>
+<span class="nc bnc" id="L154" title="All 2 branches missed.">        if (max - min &lt; 0) { // we had an overflow</span>
+<span class="nc" id="L155">            int l = 0;</span>
+<span class="nc" id="L156">            do l = random.nextInt();</span>
+<span class="nc bnc" id="L157" title="All 4 branches missed.">            while(l &lt; min || l &gt; max);</span>
+<span class="nc" id="L158">            return l;</span>
         } else {
-<span class="nc" id="L159">            return min + random.nextInt(max - min + 1);</span>
+<span class="nc" id="L160">            return min + random.nextInt(max - min + 1);</span>
         }
     }
 
@@ -166,223 +167,236 @@ import java.util.*;
     public void defaultMutate(EvolutionState state, int thread) {
 
         //System.out.println(&quot;defaultMutate en IntegerMatrixIndividual, cambiar segun nuestro mutate&quot;);
-<span class="nc" id="L169">        IntegerMatrixSpecies s = (IntegerMatrixSpecies) species;</span>
-<span class="nc" id="L170">        int cantEstaciones = IntegerMatrixSpecies.CANT_ESTACIONES;</span>
+<span class="nc" id="L170">        IntegerMatrixSpecies s = (IntegerMatrixSpecies) species;</span>
+<span class="nc" id="L171">        int cantEstaciones = IntegerMatrixSpecies.CANT_ESTACIONES;</span>
 
-<span class="nc bnc" id="L172" title="All 2 branches missed.">        for(int x = 0; x &lt; genome.length; x += cantEstaciones) {</span>
-<span class="nc bnc" id="L173" title="All 2 branches missed.">            if (state.random[thread].nextBoolean(s.mutationProbability(x))) {</span>
-<span class="nc" id="L174">                int old = genome[x];</span>
-<span class="nc bnc" id="L175" title="All 2 branches missed.">                for (int retries = 0; retries &lt; s.duplicateRetries(x) + 1; retries++) {</span>
-<span class="nc bnc" id="L176" title="All 3 branches missed.">                    switch (s.mutationType(x)) {</span>
+<span class="nc bnc" id="L173" title="All 2 branches missed.">        for(int x = 0; x &lt; genome.length; x += cantEstaciones) {</span>
+            //Si hay que mutar
+<span class="nc bnc" id="L175" title="All 2 branches missed.">            if (state.random[thread].nextBoolean(s.mutationProbability(x))) {</span>
+<span class="nc" id="L176">                int old []= new int[cantEstaciones];</span>
+<span class="nc" id="L177">                old=Arrays.copyOfRange(genome, x, x+cantEstaciones);</span>
+<span class="nc bnc" id="L178" title="All 2 branches missed.">                for (int retries = 0; retries &lt; s.duplicateRetries(x) + 1; retries++) {</span>
+<span class="nc bnc" id="L179" title="All 3 branches missed.">                    switch (s.mutationType(x)) {</span>
                         case IntegerMatrixSpecies.C_RESET_MUTATION:
+                            //Crea un nuevo plan para la parte del genoma que representa un pixel en particular
+                            //Calculo que pixel representa
+<span class="nc" id="L183">                            int pixel =x/cantEstaciones;</span>
+<span class="nc" id="L184">                            int [] genomaPixel= new int[cantEstaciones];</span>
                             //genome[x] = randomValueFromClosedInterval((int) s.minGene(x), (int) s.maxGene(x), state.random[thread]);
-<span class="nc" id="L179">                            Random criterio = new Random();</span>
-<span class="nc" id="L180">                            int rand = criterio.nextInt(100); // rand entre [0, 99]</span>
-<span class="nc" id="L181">                            int total = 0;</span>
-<span class="nc" id="L182">                            int probMutacionFosforo = (int) Math.round(IntegerMatrixSpecies.PROB_MUTACION_PONDERADA_FOSFORO * 100);</span>
-<span class="nc" id="L183">                            int probMutacionProductividad = (int) Math.round(IntegerMatrixSpecies.PROB_MUTACION_PONDERADA_PRODUCTIVIDAD * 100);</span>
-<span class="nc" id="L184">                            int probMutacionFactProd = (int) Math.round(IntegerMatrixSpecies.PROB_MUTACION_PONDERADA_FACTIBLE_PROD * 100);</span>
-<span class="nc" id="L185">                            int probMutacionFactUsos = (int) Math.round(IntegerMatrixSpecies.PROB_MUTACION_PONDERADA_FACTIBLE_USOS * 100);</span>
+<span class="nc" id="L186">                            Random criterio = new Random();</span>
+<span class="nc" id="L187">                            int rand = criterio.nextInt(100); // rand entre [0, 99]</span>
+<span class="nc" id="L188">                            int total = 0;</span>
+<span class="nc" id="L189">                            int probMutacionFosforo = (int) Math.round(IntegerMatrixSpecies.PROB_MUTACION_PONDERADA_FOSFORO * 100);</span>
+<span class="nc" id="L190">                            int probMutacionProductividad = (int) Math.round(IntegerMatrixSpecies.PROB_MUTACION_PONDERADA_PRODUCTIVIDAD * 100);</span>
+<span class="nc" id="L191">                            int probMutacionFactProd = (int) Math.round(IntegerMatrixSpecies.PROB_MUTACION_PONDERADA_FACTIBLE_PROD * 100);</span>
+<span class="nc" id="L192">                            int probMutacionFactUsos = (int) Math.round(IntegerMatrixSpecies.PROB_MUTACION_PONDERADA_FACTIBLE_USOS * 100);</span>
 
-<span class="nc bnc" id="L187" title="All 4 branches missed.">                            if (total &lt;= rand &amp;&amp; rand &lt; probMutacionFosforo ) {</span>
-                                // TODO: MEJORAR EL FOSFORO
+<span class="nc bnc" id="L194" title="All 4 branches missed.">                            if (total &lt;= rand &amp;&amp; rand &lt; probMutacionFosforo ) {</span>
+<span class="nc" id="L195">                                genomaPixel=Solucion.crearGenomaPixel(pixel, 0);</span>
+<span class="nc bnc" id="L196" title="All 2 branches missed.">                                for (int iEstacion = 0; iEstacion &lt; cantEstaciones; iEstacion++) {</span>
+<span class="nc" id="L197">                                    genome[x+iEstacion]=genomaPixel[iEstacion];</span>
+                                }
                             }
-<span class="nc" id="L190">                            total += probMutacionFosforo;</span>
-<span class="nc bnc" id="L191" title="All 4 branches missed.">                            if (total &lt;= rand &amp;&amp; rand &lt; probMutacionProductividad ) {</span>
-                                // TODO: MEJORAR LA PRODUCTIVIDAD
+<span class="nc" id="L200">                            total += probMutacionFosforo;</span>
+<span class="nc bnc" id="L201" title="All 4 branches missed.">                            if (total &lt;= rand &amp;&amp; rand &lt; probMutacionProductividad ) {</span>
+<span class="nc" id="L202">                                genomaPixel=Solucion.crearGenomaPixel(pixel, 2);</span>
+<span class="nc bnc" id="L203" title="All 2 branches missed.">                                for (int iEstacion = 0; iEstacion &lt; cantEstaciones; iEstacion++) {</span>
+<span class="nc" id="L204">                                    genome[x+iEstacion]=genomaPixel[iEstacion];</span>
+                                }
                             }
-<span class="nc" id="L194">                            total += probMutacionProductividad;</span>
-<span class="nc bnc" id="L195" title="All 4 branches missed.">                            if (total &lt;= rand &amp;&amp; rand &lt; probMutacionFactProd ) {</span>
+<span class="nc" id="L207">                            total += probMutacionProductividad;</span>
+<span class="nc bnc" id="L208" title="All 4 branches missed.">                            if (total &lt;= rand &amp;&amp; rand &lt; probMutacionFactProd ) {</span>
                                 // TODO: FACTIBILIZAR LA RESTRICCION DE PRODUCTIVIDAD
                             }
-<span class="nc" id="L198">                            total += probMutacionFactProd;</span>
-<span class="nc bnc" id="L199" title="All 4 branches missed.">                            if (total &lt;= rand &amp;&amp; rand &lt; probMutacionFactUsos ) {</span>
+<span class="nc" id="L211">                            total += probMutacionFactProd;</span>
+<span class="nc bnc" id="L212" title="All 4 branches missed.">                            if (total &lt;= rand &amp;&amp; rand &lt; probMutacionFactUsos ) {</span>
                                 // TODO: FACTIBILIZAR LA RESTRICCION DE USOS
                             }
                             break;
                         case IntegerMatrixSpecies.C_RANDOM_WALK_MUTATION:
-<span class="nc" id="L204">                            int min = (int) s.minGene(x);</span>
-<span class="nc" id="L205">                            int max = (int) s.maxGene(x);</span>
-<span class="nc" id="L206">                            Random startPosition = new Random();</span>
-<span class="nc" id="L207">                            int pos = startPosition.nextInt(cantEstaciones);</span>
-<span class="nc" id="L208">                            int i = 0;</span>
-                            do {
-<span class="nc" id="L210">                                Random usoRandom = new Random();</span>
-<span class="nc" id="L211">                                int uso = usoRandom.nextInt(max - min) + min;</span>
-<span class="nc" id="L212">                                genome[x + pos + i] = uso;</span>
-<span class="nc" id="L213">                                i++;</span>
+                            //Crea un nuevo plan para la parte del genoma que representa un pixel en particular
+                            //Calculo que pixel representa
+                            //Crea un nuevo plan para la parte del genoma que representa un pixel en particular
+                            //Calculo que pixel representa
+<span class="nc" id="L221">                            pixel =x/cantEstaciones;</span>
+<span class="nc" id="L222">                            genomaPixel= new int[cantEstaciones];</span>
+<span class="nc" id="L223">                            genomaPixel=Arrays.copyOfRange(genome,x,x+cantEstaciones);</span>
+<span class="nc" id="L224">                            genomaPixel=Solucion.modificarGenomaPixel(pixel, genomaPixel,1);</span>
+<span class="nc bnc" id="L225" title="All 2 branches missed.">                            for (int iEstacion = 0; iEstacion &lt; cantEstaciones; iEstacion++) {</span>
+<span class="nc" id="L226">                                genome[x+iEstacion]=genomaPixel[iEstacion];</span>
                             }
-<span class="nc bnc" id="L215" title="All 4 branches missed.">                            while (state.random[thread].nextBoolean(s.randomWalkProbability(x)) &amp;&amp; (i + pos) &lt; cantEstaciones);</span>
-                            // TODO: factibilizar gen.
-<span class="nc" id="L217">                            break;</span>
+<span class="nc" id="L228">                            break;</span>
                         default:
-<span class="nc" id="L219">                            state.output.fatal(&quot;In IntegerMatrixIndividual.defaultMutate, default case occurred when it shouldn't have&quot;);</span>
+<span class="nc" id="L230">                            state.output.fatal(&quot;In IntegerMatrixIndividual.defaultMutate, default case occurred when it shouldn't have&quot;);</span>
                             break;
                     }
-<span class="nc bnc" id="L222" title="All 2 branches missed.">                    if (genome[x] != old) break;</span>
+                    //Chequo si ya logre una mutacion exitosa
+<span class="nc" id="L234">                    int nuevo []= new int[cantEstaciones];</span>
+<span class="nc" id="L235">                    nuevo=Arrays.copyOfRange(genome, x, x+cantEstaciones);</span>
+<span class="nc bnc" id="L236" title="All 2 branches missed.">                    if (!Arrays.equals(nuevo,old)) break;</span>
                     // else genome[x] = old;  // try again
                 }
             }
         }
-<span class="nc" id="L227">    }</span>
+<span class="nc" id="L241">    }</span>
 
 
     /** Initializes the individual by randomly choosing Integers uniformly from mingene to maxgene. */
     // notice that we bump to longs to avoid overflow errors
     public void reset(EvolutionState state, int thread) {
-<span class="nc" id="L233">        System.out.println(&quot;Genera un nuevo genoma con las funciones CrearSolucionFactible() y solucionAGenoma()&quot;);</span>
+        //System.out.println(&quot;Genera un nuevo genoma con las funciones CrearSolucionFactible() y solucionAGenoma()&quot;);
 //        IntegerMatrixSpecies s = (IntegerMatrixSpecies) species;
 //        for(int x = 0; x &lt; genome.length; x++)
 //            genome[x] = randomValueFromClosedInterval((int)s.minGene(x), (int)s.maxGene(x), state.random[thread]);
-<span class="nc" id="L237">        Solucion sol=Solucion.crearSolucionFactible();</span>
-<span class="nc" id="L238">        genome=sol.solucionAGenoma();</span>
-<span class="nc" id="L239">    }</span>
+<span class="nc" id="L251">        Solucion sol=Solucion.crearSolucionFactible();</span>
+<span class="nc" id="L252">        genome=sol.solucionAGenoma();</span>
+<span class="nc" id="L253">    }</span>
 
     public int hashCode() { // TODO: dafac is this?
         // stolen from GPIndividual.  It's a decent algorithm.
-<span class="nc" id="L243">        int hash = this.getClass().hashCode();</span>
+<span class="nc" id="L257">        int hash = this.getClass().hashCode();</span>
 
-<span class="nc" id="L245">        hash = ( hash &lt;&lt; 1 | hash &gt;&gt;&gt; 31 );</span>
-<span class="nc bnc" id="L246" title="All 2 branches missed.">        for(int x=0;x&lt;genome.length;x++)</span>
-<span class="nc" id="L247">            hash = ( hash &lt;&lt; 1 | hash &gt;&gt;&gt; 31 ) ^ genome[x];</span>
+<span class="nc" id="L259">        hash = ( hash &lt;&lt; 1 | hash &gt;&gt;&gt; 31 );</span>
+<span class="nc bnc" id="L260" title="All 2 branches missed.">        for(int x=0;x&lt;genome.length;x++)</span>
+<span class="nc" id="L261">            hash = ( hash &lt;&lt; 1 | hash &gt;&gt;&gt; 31 ) ^ genome[x];</span>
 
-<span class="nc" id="L249">        return hash;</span>
+<span class="nc" id="L263">        return hash;</span>
     }
 
     public String genotypeToStringForHumans() {
-<span class="nc" id="L253">        StringBuilder s = new StringBuilder();</span>
-<span class="nc bnc" id="L254" title="All 2 branches missed.">        for( int i = 0 ; i &lt; genome.length ; i++ ) {</span>
-<span class="nc bnc" id="L255" title="All 2 branches missed.">            if (i &gt; 0) {</span>
-<span class="nc" id="L256">                s.append(&quot; &quot;);</span>
-<span class="nc bnc" id="L257" title="All 2 branches missed.">                if (i % IntegerMatrixSpecies.CANT_ESTACIONES == 0) {</span>
-<span class="nc" id="L258">                    s.append('\n');</span>
+<span class="nc" id="L267">        StringBuilder s = new StringBuilder();</span>
+<span class="nc bnc" id="L268" title="All 2 branches missed.">        for( int i = 0 ; i &lt; genome.length ; i++ ) {</span>
+<span class="nc bnc" id="L269" title="All 2 branches missed.">            if (i &gt; 0) {</span>
+<span class="nc" id="L270">                s.append(&quot; &quot;);</span>
+<span class="nc bnc" id="L271" title="All 2 branches missed.">                if (i % IntegerMatrixSpecies.CANT_ESTACIONES == 0) {</span>
+<span class="nc" id="L272">                    s.append('\n');</span>
                 }
             }
-<span class="nc" id="L261">            s.append(genome[i]);</span>
+<span class="nc" id="L275">            s.append(genome[i]);</span>
         }
-<span class="nc" id="L263">        return s.toString();</span>
+<span class="nc" id="L277">        return s.toString();</span>
     }
 
     public String genotypeToString() {
-<span class="nc" id="L267">        StringBuilder s = new StringBuilder();</span>
-<span class="nc" id="L268">        s.append( Code.encode( genome.length ) );</span>
-<span class="nc bnc" id="L269" title="All 2 branches missed.">        for( int i = 0 ; i &lt; genome.length ; i++ ) {</span>
-<span class="nc bnc" id="L270" title="All 2 branches missed.">            if (i % IntegerMatrixSpecies.CANT_ESTACIONES == 0) {</span>
-<span class="nc" id="L271">                s.append('\n');</span>
+<span class="nc" id="L281">        StringBuilder s = new StringBuilder();</span>
+<span class="nc" id="L282">        s.append( Code.encode( genome.length ) );</span>
+<span class="nc bnc" id="L283" title="All 2 branches missed.">        for( int i = 0 ; i &lt; genome.length ; i++ ) {</span>
+<span class="nc bnc" id="L284" title="All 2 branches missed.">            if (i % IntegerMatrixSpecies.CANT_ESTACIONES == 0) {</span>
+<span class="nc" id="L285">                s.append('\n');</span>
             }
-<span class="nc" id="L273">            s.append(Code.encode(genome[i]));</span>
+<span class="nc" id="L287">            s.append(Code.encode(genome[i]));</span>
         }
-<span class="nc" id="L275">        return s.toString();</span>
+<span class="nc" id="L289">        return s.toString();</span>
     }
 
     protected void parseGenotype(final EvolutionState state, final LineNumberReader reader) throws IOException {
         // read in the next line.  The first item is the number of genes
-<span class="nc" id="L280">        String s = reader.readLine();</span>
-<span class="nc" id="L281">        DecodeReturn d = new DecodeReturn(s);</span>
-<span class="nc" id="L282">        Code.decode( d );</span>
+<span class="nc" id="L294">        String s = reader.readLine();</span>
+<span class="nc" id="L295">        DecodeReturn d = new DecodeReturn(s);</span>
+<span class="nc" id="L296">        Code.decode( d );</span>
 
         // of course, even if it *is* an integer, we can't tell if it's a gene or a genome count, argh...
-<span class="nc bnc" id="L285" title="All 2 branches missed.">        if (d.type != DecodeReturn.T_INTEGER) {  // uh oh</span>
-<span class="nc" id="L286">            state.output.fatal(&quot;Individual with genome:\n&quot; + s + &quot;\n... does not have an integer at the beginning indicating the genome count.&quot;);</span>
+<span class="nc bnc" id="L299" title="All 2 branches missed.">        if (d.type != DecodeReturn.T_INTEGER) {  // uh oh</span>
+<span class="nc" id="L300">            state.output.fatal(&quot;Individual with genome:\n&quot; + s + &quot;\n... does not have an integer at the beginning indicating the genome count.&quot;);</span>
         }
-<span class="nc" id="L288">        int genotypeLength = (int)(d.l);</span>
+<span class="nc" id="L302">        int genotypeLength = (int)(d.l);</span>
 
-<span class="nc" id="L290">        genome = new int[ genotypeLength ];</span>
+<span class="nc" id="L304">        genome = new int[ genotypeLength ];</span>
 
         // read in the genes
-<span class="nc bnc" id="L293" title="All 2 branches missed.">        for( int i = 0 ; i &lt; genome.length ; i++ ) {</span>
-<span class="nc" id="L294">            Code.decode( d );</span>
-<span class="nc" id="L295">            genome[i] = (int)(d.l);</span>
+<span class="nc bnc" id="L307" title="All 2 branches missed.">        for( int i = 0 ; i &lt; genome.length ; i++ ) {</span>
+<span class="nc" id="L308">            Code.decode( d );</span>
+<span class="nc" id="L309">            genome[i] = (int)(d.l);</span>
         }
-<span class="nc" id="L297">    }</span>
+<span class="nc" id="L311">    }</span>
 
     public boolean equals(Object ind) {
-<span class="nc bnc" id="L300" title="All 2 branches missed.">        if (ind == null)</span>
-<span class="nc" id="L301">            return false;</span>
+<span class="nc bnc" id="L314" title="All 2 branches missed.">        if (ind == null)</span>
+<span class="nc" id="L315">            return false;</span>
 
-<span class="nc bnc" id="L303" title="All 2 branches missed.">        if (!(this.getClass().equals(ind.getClass())))</span>
-<span class="nc" id="L304">            return false; // SimpleRuleIndividuals are special.</span>
+<span class="nc bnc" id="L317" title="All 2 branches missed.">        if (!(this.getClass().equals(ind.getClass())))</span>
+<span class="nc" id="L318">            return false; // SimpleRuleIndividuals are special.</span>
 
-<span class="nc" id="L306">        IntegerMatrixIndividual i = (IntegerMatrixIndividual)ind;</span>
+<span class="nc" id="L320">        IntegerMatrixIndividual i = (IntegerMatrixIndividual)ind;</span>
 
-<span class="nc bnc" id="L308" title="All 2 branches missed.">        if( genome.length != i.genome.length )</span>
-<span class="nc" id="L309">            return false;</span>
+<span class="nc bnc" id="L322" title="All 2 branches missed.">        if( genome.length != i.genome.length )</span>
+<span class="nc" id="L323">            return false;</span>
 
-<span class="nc bnc" id="L311" title="All 2 branches missed.">        for( int j = 0 ; j &lt; genome.length ; j++ ) {</span>
-<span class="nc bnc" id="L312" title="All 2 branches missed.">            if (genome[j] != i.genome[j])</span>
-<span class="nc" id="L313">                return false;</span>
+<span class="nc bnc" id="L325" title="All 2 branches missed.">        for( int j = 0 ; j &lt; genome.length ; j++ ) {</span>
+<span class="nc bnc" id="L326" title="All 2 branches missed.">            if (genome[j] != i.genome[j])</span>
+<span class="nc" id="L327">                return false;</span>
         }
-<span class="nc" id="L315">        return true;</span>
+<span class="nc" id="L329">        return true;</span>
     }
 
     public Object getGenome() {
-<span class="nc" id="L319">        return genome;</span>
+<span class="nc" id="L333">        return genome;</span>
     }
 
     public void setGenome(Object gen) {
-<span class="nc" id="L323">        genome = (int[]) gen;</span>
-<span class="nc" id="L324">    }</span>
+<span class="nc" id="L337">        genome = (int[]) gen;</span>
+<span class="nc" id="L338">    }</span>
 
     public int genomeLength() {
-<span class="nc" id="L327">        return genome.length;</span>
+<span class="nc" id="L341">        return genome.length;</span>
     }
 
     public void writeGenotype(final EvolutionState state, final DataOutput dataOutput) throws IOException {
-<span class="nc" id="L331">        dataOutput.writeInt(genome.length);</span>
-<span class="nc bnc" id="L332" title="All 2 branches missed.">        for(int x=0; x &lt; genome.length; x++) {</span>
-<span class="nc" id="L333">            dataOutput.writeInt(genome[x]);</span>
+<span class="nc" id="L345">        dataOutput.writeInt(genome.length);</span>
+<span class="nc bnc" id="L346" title="All 2 branches missed.">        for(int x=0; x &lt; genome.length; x++) {</span>
+<span class="nc" id="L347">            dataOutput.writeInt(genome[x]);</span>
         }
-<span class="nc" id="L335">    }</span>
+<span class="nc" id="L349">    }</span>
 
     public void readGenotype(final EvolutionState state, final DataInput dataInput) throws IOException {
-<span class="nc" id="L338">        int len = dataInput.readInt();</span>
-<span class="nc bnc" id="L339" title="All 4 branches missed.">        if (genome==null || genome.length != len)</span>
-<span class="nc" id="L340">            genome = new int[len];</span>
+<span class="nc" id="L352">        int len = dataInput.readInt();</span>
+<span class="nc bnc" id="L353" title="All 4 branches missed.">        if (genome==null || genome.length != len)</span>
+<span class="nc" id="L354">            genome = new int[len];</span>
 
-<span class="nc bnc" id="L342" title="All 2 branches missed.">        for(int x = 0;x &lt; genome.length; x++) {</span>
-<span class="nc" id="L343">            genome[x] = dataInput.readInt();</span>
+<span class="nc bnc" id="L356" title="All 2 branches missed.">        for(int x = 0;x &lt; genome.length; x++) {</span>
+<span class="nc" id="L357">            genome[x] = dataInput.readInt();</span>
         }
-<span class="nc" id="L345">    }</span>
+<span class="nc" id="L359">    }</span>
 
     /** Clips each gene value to be within its specified [min,max] range. */
     public void clamp() {  // TODO: aca se pueden poner las restricciones de usos que se pueden plantar x estacion, haciendo
     // que min y max Gene dependan de la estación, y en vez de retornar un min y un max, que retorne los ids de usos disponibles.
 
-<span class="nc" id="L351">        IntegerMatrixSpecies _species = (IntegerMatrixSpecies)species;</span>
-<span class="nc bnc" id="L352" title="All 2 branches missed.">        for (int i = 0; i &lt; genomeLength(); i++) {</span>
-<span class="nc" id="L353">            int minGene = (int)_species.minGene(i);</span>
-<span class="nc bnc" id="L354" title="All 2 branches missed.">            if (genome[i] &lt; minGene) {</span>
-<span class="nc" id="L355">                genome[i] = minGene;</span>
+<span class="nc" id="L365">        IntegerMatrixSpecies _species = (IntegerMatrixSpecies)species;</span>
+<span class="nc bnc" id="L366" title="All 2 branches missed.">        for (int i = 0; i &lt; genomeLength(); i++) {</span>
+<span class="nc" id="L367">            int minGene = (int)_species.minGene(i);</span>
+<span class="nc bnc" id="L368" title="All 2 branches missed.">            if (genome[i] &lt; minGene) {</span>
+<span class="nc" id="L369">                genome[i] = minGene;</span>
             } else {
-<span class="nc" id="L357">                int maxGene = (int)_species.maxGene(i);</span>
-<span class="nc bnc" id="L358" title="All 2 branches missed.">                if (genome[i] &gt; maxGene) {</span>
-<span class="nc" id="L359">                    genome[i] = maxGene;</span>
+<span class="nc" id="L371">                int maxGene = (int)_species.maxGene(i);</span>
+<span class="nc bnc" id="L372" title="All 2 branches missed.">                if (genome[i] &gt; maxGene) {</span>
+<span class="nc" id="L373">                    genome[i] = maxGene;</span>
                 }
             }
         }
-<span class="nc" id="L363">    }</span>
+<span class="nc" id="L377">    }</span>
 
     /** Returns true if each gene value is within is specified [min,max] range. */
     public boolean isInRange() {
-<span class="nc" id="L367">        IntegerMatrixSpecies _species = (IntegerMatrixSpecies)species;</span>
-<span class="nc bnc" id="L368" title="All 2 branches missed.">        for (int i = 0; i &lt; genomeLength(); i++)</span>
-<span class="nc bnc" id="L369" title="All 4 branches missed.">            if (genome[i] &lt; _species.minGene(i) || genome[i] &gt; _species.maxGene(i))</span>
-<span class="nc" id="L370">                return false;</span>
-<span class="nc" id="L371">        return true;</span>
+<span class="nc" id="L381">        IntegerMatrixSpecies _species = (IntegerMatrixSpecies)species;</span>
+<span class="nc bnc" id="L382" title="All 2 branches missed.">        for (int i = 0; i &lt; genomeLength(); i++)</span>
+<span class="nc bnc" id="L383" title="All 4 branches missed.">            if (genome[i] &lt; _species.minGene(i) || genome[i] &gt; _species.maxGene(i))</span>
+<span class="nc" id="L384">                return false;</span>
+<span class="nc" id="L385">        return true;</span>
     }
 
     public double distanceTo(Individual otherInd) {
-<span class="nc bnc" id="L375" title="All 2 branches missed.">        if (!(otherInd instanceof IntegerMatrixIndividual))</span>
-<span class="nc" id="L376">            return super.distanceTo(otherInd);  // will return infinity!</span>
+<span class="nc bnc" id="L389" title="All 2 branches missed.">        if (!(otherInd instanceof IntegerMatrixIndividual))</span>
+<span class="nc" id="L390">            return super.distanceTo(otherInd);  // will return infinity!</span>
 
-<span class="nc" id="L378">        IntegerMatrixIndividual other = (IntegerMatrixIndividual) otherInd;</span>
-<span class="nc" id="L379">        int[] otherGenome = other.genome;</span>
-<span class="nc" id="L380">        double sumSquaredDistance = 0.0;</span>
-<span class="nc bnc" id="L381" title="All 2 branches missed.">        for(int i=0; i &lt; other.genomeLength(); i++) {</span>
-<span class="nc" id="L382">            long dist = this.genome[i] - (long)otherGenome[i];</span>
-<span class="nc" id="L383">            sumSquaredDistance += dist * dist;</span>
+<span class="nc" id="L392">        IntegerMatrixIndividual other = (IntegerMatrixIndividual) otherInd;</span>
+<span class="nc" id="L393">        int[] otherGenome = other.genome;</span>
+<span class="nc" id="L394">        double sumSquaredDistance = 0.0;</span>
+<span class="nc bnc" id="L395" title="All 2 branches missed.">        for(int i=0; i &lt; other.genomeLength(); i++) {</span>
+<span class="nc" id="L396">            long dist = this.genome[i] - (long)otherGenome[i];</span>
+<span class="nc" id="L397">            sumSquaredDistance += dist * dist;</span>
         }
-<span class="nc" id="L385">        return StrictMath.sqrt(sumSquaredDistance);</span>
+<span class="nc" id="L399">        return StrictMath.sqrt(sumSquaredDistance);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

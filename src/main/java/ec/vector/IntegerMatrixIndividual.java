@@ -4,6 +4,7 @@ import ec.*;
 import ec.app.proyectoFinal.Solucion;
 import ec.util.*;
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class IntegerMatrixIndividual extends VectorIndividual {
@@ -170,11 +171,17 @@ public class IntegerMatrixIndividual extends VectorIndividual {
         int cantEstaciones = IntegerMatrixSpecies.CANT_ESTACIONES;
 
         for(int x = 0; x < genome.length; x += cantEstaciones) {
+            //Si hay que mutar
             if (state.random[thread].nextBoolean(s.mutationProbability(x))) {
-                int old = genome[x];
+                int old []= new int[cantEstaciones];
+                old=Arrays.copyOfRange(genome, x, x+cantEstaciones);
                 for (int retries = 0; retries < s.duplicateRetries(x) + 1; retries++) {
                     switch (s.mutationType(x)) {
                         case IntegerMatrixSpecies.C_RESET_MUTATION:
+                            //Crea un nuevo plan para la parte del genoma que representa un pixel en particular
+                            //Calculo que pixel representa
+                            int pixel =x/cantEstaciones;
+                            int [] genomaPixel= new int[cantEstaciones];
                             //genome[x] = randomValueFromClosedInterval((int) s.minGene(x), (int) s.maxGene(x), state.random[thread]);
                             Random criterio = new Random();
                             int rand = criterio.nextInt(100); // rand entre [0, 99]
@@ -185,11 +192,17 @@ public class IntegerMatrixIndividual extends VectorIndividual {
                             int probMutacionFactUsos = (int) Math.round(IntegerMatrixSpecies.PROB_MUTACION_PONDERADA_FACTIBLE_USOS * 100);
 
                             if (total <= rand && rand < probMutacionFosforo ) {
-                                // TODO: MEJORAR EL FOSFORO
+                                genomaPixel=Solucion.crearGenomaPixel(pixel, 0);
+                                for (int iEstacion = 0; iEstacion < cantEstaciones; iEstacion++) {
+                                    genome[x+iEstacion]=genomaPixel[iEstacion];
+                                }
                             }
                             total += probMutacionFosforo;
                             if (total <= rand && rand < probMutacionProductividad ) {
-                                // TODO: MEJORAR LA PRODUCTIVIDAD
+                                genomaPixel=Solucion.crearGenomaPixel(pixel, 2);
+                                for (int iEstacion = 0; iEstacion < cantEstaciones; iEstacion++) {
+                                    genome[x+iEstacion]=genomaPixel[iEstacion];
+                                }
                             }
                             total += probMutacionProductividad;
                             if (total <= rand && rand < probMutacionFactProd ) {
@@ -201,25 +214,26 @@ public class IntegerMatrixIndividual extends VectorIndividual {
                             }
                             break;
                         case IntegerMatrixSpecies.C_RANDOM_WALK_MUTATION:
-                            int min = (int) s.minGene(x);
-                            int max = (int) s.maxGene(x);
-                            Random startPosition = new Random();
-                            int pos = startPosition.nextInt(cantEstaciones);
-                            int i = 0;
-                            do {
-                                Random usoRandom = new Random();
-                                int uso = usoRandom.nextInt(max - min) + min;
-                                genome[x + pos + i] = uso;
-                                i++;
+                            //Crea un nuevo plan para la parte del genoma que representa un pixel en particular
+                            //Calculo que pixel representa
+                            //Crea un nuevo plan para la parte del genoma que representa un pixel en particular
+                            //Calculo que pixel representa
+                            pixel =x/cantEstaciones;
+                            genomaPixel= new int[cantEstaciones];
+                            genomaPixel=Arrays.copyOfRange(genome,x,x+cantEstaciones);
+                            genomaPixel=Solucion.modificarGenomaPixel(pixel, genomaPixel,1);
+                            for (int iEstacion = 0; iEstacion < cantEstaciones; iEstacion++) {
+                                genome[x+iEstacion]=genomaPixel[iEstacion];
                             }
-                            while (state.random[thread].nextBoolean(s.randomWalkProbability(x)) && (i + pos) < cantEstaciones);
-                            // TODO: factibilizar gen.
                             break;
                         default:
                             state.output.fatal("In IntegerMatrixIndividual.defaultMutate, default case occurred when it shouldn't have");
                             break;
                     }
-                    if (genome[x] != old) break;
+                    //Chequo si ya logre una mutacion exitosa
+                    int nuevo []= new int[cantEstaciones];
+                    nuevo=Arrays.copyOfRange(genome, x, x+cantEstaciones);
+                    if (!Arrays.equals(nuevo,old)) break;
                     // else genome[x] = old;  // try again
                 }
             }
@@ -230,7 +244,7 @@ public class IntegerMatrixIndividual extends VectorIndividual {
     /** Initializes the individual by randomly choosing Integers uniformly from mingene to maxgene. */
     // notice that we bump to longs to avoid overflow errors
     public void reset(EvolutionState state, int thread) {
-        System.out.println("Genera un nuevo genoma con las funciones CrearSolucionFactible() y solucionAGenoma()");
+        //System.out.println("Genera un nuevo genoma con las funciones CrearSolucionFactible() y solucionAGenoma()");
 //        IntegerMatrixSpecies s = (IntegerMatrixSpecies) species;
 //        for(int x = 0; x < genome.length; x++)
 //            genome[x] = randomValueFromClosedInterval((int)s.minGene(x), (int)s.maxGene(x), state.random[thread]);
