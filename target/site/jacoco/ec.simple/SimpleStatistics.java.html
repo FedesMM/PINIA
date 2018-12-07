@@ -245,10 +245,10 @@ import ec.vector.IntegerMatrixIndividual;
 <span class="nc" id="L245">                IntegerMatrixIndividual ind = (IntegerMatrixIndividual) best_of_run[x];</span>
 
 <span class="nc" id="L247">                Solucion sol = Solucion.genomaASolucion(ind.genome);</span>
-<span class="nc" id="L248">                sol.imprimirFitness();</span>
-<span class="nc" id="L249">                sol.recalcular();</span>
-<span class="nc" id="L250">                sol.imprimirFitness();</span>
-<span class="nc" id="L251">                sol.crearArchivoFitness();</span>
+<span class="nc" id="L248">                sol.recalcular(true);</span>
+<span class="nc" id="L249">                sol.imprimirFitness();</span>
+<span class="nc" id="L250">                sol.crearArchivoFitness();</span>
+
 //                sol.crearArchivoMatriz();
 //                sol.crearArchivoCantidadUsos();
 //                sol.crearArchivoFosforoSobreAreaTotal();

@@ -3,40 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="50f67880-fd28-4fde-b368-6ab48eb12f70" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Instancias/IntanciaPrueba.in" beforeDir="false" afterPath="$PROJECT_DIR$/Instancias/IntanciaPrueba.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fitness.out" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out.stat" beforeDir="false" afterPath="$PROJECT_DIR$/out.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ec/simple/SimpleStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/simple/SimpleStatistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ec/app/proyectoFinal/Solucion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ec/app/proyectoFinal/Solucion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ecj-26.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ecj-26.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/target/jacoco.exec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/Solucion.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/Solucion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/Solucion.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/Solucion.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/index.source.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.EvolutionStateTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.EvolutionStateTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.coevolve.MultiPopCoevolutionaryEvaluatorTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.coevolve.MultiPopCoevolutionaryEvaluatorTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.eda.pbil.PBILSpeciesTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.eda.pbil.PBILSpeciesTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.multiobjective.HypervolumeStatisticsTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.multiobjective.HypervolumeStatisticsTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.multiobjective.nsga2.NSGA2BreederTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.multiobjective.nsga2.NSGA2BreederTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.multiobjective.spea2.SPEA2BreederTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.multiobjective.spea2.SPEA2BreederTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.simple.SimpleBreederTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.simple.SimpleBreederTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.util.MiscTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.util.MiscTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.EvolutionStateTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.EvolutionStateTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.coevolve.MultiPopCoevolutionaryEvaluatorTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.coevolve.MultiPopCoevolutionaryEvaluatorTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.eda.pbil.PBILSpeciesTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.eda.pbil.PBILSpeciesTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.multiobjective.HypervolumeStatisticsTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.multiobjective.HypervolumeStatisticsTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.multiobjective.nsga2.NSGA2BreederTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.multiobjective.nsga2.NSGA2BreederTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.multiobjective.spea2.SPEA2BreederTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.multiobjective.spea2.SPEA2BreederTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.simple.SimpleBreederTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.simple.SimpleBreederTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.util.MiscTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.util.MiscTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire/surefire6882554110164547950tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire/surefire_0742486351065663212tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire/surefirebooter5683735373767160607.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ec/app/proyectoFinal/proyectoFinal.params" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ec/app/proyectoFinal/proyectoFinal.params" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/timing.log" beforeDir="false" afterPath="$PROJECT_DIR$/timing.log" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -106,15 +79,12 @@
       </usages-collector>
     </session>
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="ecj" />
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="proyectoFinal.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/proyectoFinal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
+            <state relative-caret-position="450">
               <caret line="40" column="14" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -126,7 +96,7 @@
       <file leaf-file-name="Pixel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Pixel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2205">
+            <state relative-caret-position="2145">
               <caret line="147" column="22" selection-start-line="147" selection-start-column="22" selection-end-line="147" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -138,7 +108,7 @@
       <file leaf-file-name="Uso.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3319">
+            <state relative-caret-position="4530">
               <caret line="306" column="78" selection-start-line="306" selection-start-column="78" selection-end-line="306" selection-end-column="78" />
             </state>
           </provider>
@@ -147,7 +117,7 @@
       <file leaf-file-name="IntegerMatrixSpecies.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixSpecies.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
+            <state relative-caret-position="1200">
               <caret line="82" column="16" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
             </state>
           </provider>
@@ -156,7 +126,7 @@
       <file leaf-file-name="MatrixSpecies.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/MatrixSpecies.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="1500">
               <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
             </state>
           </provider>
@@ -165,17 +135,17 @@
       <file leaf-file-name="proyectoFinal.params" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/ec/app/proyectoFinal/proyectoFinal.params">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+            <state relative-caret-position="120">
+              <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimpleStatistics.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SimpleStatistics.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ec/simple/SimpleStatistics.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="250" column="42" selection-start-line="250" selection-start-column="42" selection-end-line="250" selection-end-column="42" />
+            <state relative-caret-position="229">
+              <caret line="247" column="35" selection-start-line="247" selection-start-column="35" selection-end-line="247" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -183,7 +153,7 @@
       <file leaf-file-name="IntegerMatrixIndividual.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixIndividual.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
+            <state relative-caret-position="2340">
               <caret line="223" column="51" selection-start-line="223" selection-start-column="51" selection-end-line="223" selection-end-column="51" />
               <folding>
                 <element signature="method#toString#0;class#IntegerMatrixIndividual#0" />
@@ -209,7 +179,7 @@
       <file leaf-file-name="Subpopulation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ec/Subpopulation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
+            <state relative-caret-position="4095">
               <caret line="290" column="42" selection-start-line="290" selection-start-column="42" selection-end-line="290" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -222,11 +192,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Solucion.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Solucion.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="1011" column="65" selection-start-line="1011" selection-start-column="65" selection-end-line="1011" selection-end-column="65" />
+            <state relative-caret-position="-464">
+              <caret line="747" column="16" selection-start-line="747" selection-start-column="16" selection-end-line="747" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -261,7 +231,6 @@
       <find>fitn</find>
       <find>VectorCrossoverPipeline.java</find>
       <find>cros</find>
-      <find />
       <find>Constantes.productoresActivos.add(productor);</find>
       <find>pixelesDelProductor.add(</find>
       <find>14</find>
@@ -269,12 +238,12 @@
       <find>cro</find>
       <find>crearSo</find>
       <find>genomel</find>
-      <find />
       <find>crear</find>
       <find>IntanciaPrueba.in</find>
       <find>recalcu</find>
       <find>System.err</find>
-      <find />
+      <find>recalcular</find>
+      <find>reca</find>
     </findStrings>
     <replaceStrings>
       <replace>IntegerVectorSpeciesP1E1</replace>
@@ -347,8 +316,8 @@
         <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java" />
         <option value="$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixIndividual.java" />
         <option value="$PROJECT_DIR$/src/main/resources/ec/app/proyectoFinal/proyectoFinal.params" />
-        <option value="$PROJECT_DIR$/src/main/java/ec/simple/SimpleStatistics.java" />
         <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ec/simple/SimpleStatistics.java" />
       </list>
     </option>
   </component>
@@ -384,18 +353,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="ecj" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="ecj" type="2674bda8:ScopeViewTreeModel$GroupNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
@@ -471,6 +428,18 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="ecj" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="ecj" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -627,8 +596,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="75" y="24" width="1855" height="1056" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1845" y="24" width="1855" height="1056" extended-state="0" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3288889" />
@@ -642,8 +610,7 @@
       <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4997236" visible="true" weight="0.35444444" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989224" visible="true" weight="0.23327805" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.46888888" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989224" visible="true" weight="0.23604201" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.2498618" />
       <window_info id="UI Designer" order="5" />
@@ -652,24 +619,24 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.3297414" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3297414" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.46888888" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297414" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997236" weight="0.3297414" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989224" visible="true" weight="0.22617246" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.2498618" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3288889" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4997236" weight="0.3297414" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="5" />
@@ -678,9 +645,10 @@
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4997236" weight="0.3297414" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5002764" side_tool="true" weight="0.3297414" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Capture Tool" order="4" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.46888888" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3297414" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3297414" />
       <window_info anchor="right" id="Maven Projects" order="7" weight="0.32946378" />
       <window_info id="Favorites" order="6" sideWeight="0.5010776" side_tool="true" weight="0.11774461" />
@@ -833,57 +801,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
           <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
-          <folding>
-            <element signature="docComment;class#Fitness#0" />
-            <element signature="docComment;field#trials#0;class#Fitness#0" />
-            <element signature="docComment;field#context#0;class#Fitness#0" />
-            <element signature="method#setContext#0;class#Fitness#0" />
-            <element signature="method#setContext#1;class#Fitness#0" />
-            <element signature="docComment;method#getContext#0;class#Fitness#0" />
-            <element signature="docComment;field#P_FITNESS#0;class#Fitness#0" />
-            <element signature="docComment;field#FITNESS_PREAMBLE#0;class#Fitness#0" />
-            <element signature="docComment;method#fitness#0;class#Fitness#0" />
-            <element signature="docComment;method#isIdealFitness#0;class#Fitness#0" />
-            <element signature="docComment;method#equivalentTo#0;class#Fitness#0" />
-            <element signature="docComment;method#betterThan#0;class#Fitness#0" />
-            <element signature="docComment;method#printFitnessForHumans#0;class#Fitness#0" />
-            <element signature="method#printFitnessForHumans#0;class#Fitness#0" />
-            <element signature="docComment;method#printFitnessForHumans#1;class#Fitness#0" />
-            <element signature="method#printFitnessForHumans#1;class#Fitness#0" />
-            <element signature="e#7444#7498#0" />
-            <element signature="docComment;method#printFitness#0;class#Fitness#0" />
-            <element signature="docComment;method#printFitness#1;class#Fitness#0" />
-            <element signature="method#printFitness#1;class#Fitness#0" />
-            <element signature="docComment;method#printFitness#2;class#Fitness#0" />
-            <element signature="method#printFitness#2;class#Fitness#0" />
-            <element signature="docComment;method#readFitness#0;class#Fitness#0" />
-            <element signature="method#readFitness#0;class#Fitness#0" />
-            <element signature="docComment;method#fitnessToStringForHumans#0;class#Fitness#0" />
-            <element signature="docComment;method#fitnessToString#0;class#Fitness#0" />
-            <element signature="docComment;method#writeFitness#0;class#Fitness#0" />
-            <element signature="method#writeFitness#0;class#Fitness#0" />
-            <element signature="docComment;method#writeTrials#0;class#Fitness#0" />
-            <element signature="method#writeTrials#0;class#Fitness#0" />
-            <element signature="docComment;method#readFitness#1;class#Fitness#0" />
-            <element signature="method#readFitness#1;class#Fitness#0" />
-            <element signature="docComment;method#readTrials#0;class#Fitness#0" />
-            <element signature="method#readTrials#0;class#Fitness#0" />
-            <element signature="docComment;method#contextIsBetterThan#0;class#Fitness#0" />
-            <element signature="method#contextIsBetterThan#0;class#Fitness#0" />
-            <element signature="method#bestTrial#0;class#Fitness#0" />
-            <element signature="docComment;method#merge#0;class#Fitness#0" />
-            <element signature="method#merge#0;class#Fitness#0" />
-            <element signature="method#clone#0;class#Fitness#0" />
-            <element signature="method#setup#0;class#Fitness#0" />
-            <element signature="docComment;method#compareTo#0;class#Fitness#0" />
-            <element signature="method#compareTo#0;class#Fitness#0" />
-            <element signature="docComment;method#setToBestOf#0;class#Fitness#0" />
-            <element signature="method#setToBestOf#0;class#Fitness#0" />
-            <element signature="docComment;method#setToMeanOf#0;class#Fitness#0" />
-            <element signature="method#setToMeanOf#0;class#Fitness#0" />
-            <element signature="docComment;method#setToMedianOf#0;class#Fitness#0" />
-            <element signature="method#setToMedianOf#0;class#Fitness#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -927,55 +844,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="363" column="18" selection-start-line="363" selection-start-column="18" selection-end-line="363" selection-end-column="18" />
-          <folding>
-            <element signature="docComment;class#Individual#0" />
-            <element signature="docComment;field#P_INDIVIDUAL#0;class#Individual#0" />
-            <element signature="docComment;field#EVALUATED_PREAMBLE#0;class#Individual#0" />
-            <element signature="docComment;field#fitness#0;class#Individual#0" />
-            <element signature="docComment;field#species#0;class#Individual#0" />
-            <element signature="docComment;field#evaluated#0;class#Individual#0" />
-            <element signature="method#clone#0;class#Individual#0" />
-            <element signature="docComment;method#size#0;class#Individual#0" />
-            <element signature="method#size#0;class#Individual#0" />
-            <element signature="docComment;method#equals#0;class#Individual#0" />
-            <element signature="docComment;method#hashCode#0;class#Individual#0" />
-            <element signature="docComment;method#toString#0;class#Individual#0" />
-            <element signature="method#toString#0;class#Individual#0" />
-            <element signature="docComment;method#genotypeToStringForHumans#0;class#Individual#0" />
-            <element signature="docComment;method#genotypeToString#0;class#Individual#0" />
-            <element signature="docComment;method#setup#0;class#Individual#0" />
-            <element signature="method#setup#0;class#Individual#0" />
-            <element signature="e#7907#7934#0" />
-            <element signature="docComment;method#printIndividualForHumans#0;class#Individual#0" />
-            <element signature="method#printIndividualForHumans#0;class#Individual#0" />
-            <element signature="docComment;method#printIndividualForHumans#1;class#Individual#0" />
-            <element signature="method#printIndividualForHumans#1;class#Individual#0" />
-            <element signature="docComment;method#printIndividual#0;class#Individual#0" />
-            <element signature="method#printIndividual#0;class#Individual#0" />
-            <element signature="docComment;method#printIndividual#1;class#Individual#0" />
-            <element signature="method#printIndividual#1;class#Individual#0" />
-            <element signature="docComment;method#printIndividual#2;class#Individual#0" />
-            <element signature="method#printIndividual#2;class#Individual#0" />
-            <element signature="docComment;method#readIndividual#0;class#Individual#0" />
-            <element signature="method#readIndividual#0;class#Individual#0" />
-            <element signature="docComment;method#parseGenotype#0;class#Individual#0" />
-            <element signature="method#parseGenotype#0;class#Individual#0" />
-            <element signature="docComment;method#writeIndividual#0;class#Individual#0" />
-            <element signature="method#writeIndividual#0;class#Individual#0" />
-            <element signature="docComment;method#writeGenotype#0;class#Individual#0" />
-            <element signature="method#writeGenotype#0;class#Individual#0" />
-            <element signature="docComment;method#readGenotype#0;class#Individual#0" />
-            <element signature="method#readGenotype#0;class#Individual#0" />
-            <element signature="docComment;method#readIndividual#1;class#Individual#0" />
-            <element signature="method#readIndividual#1;class#Individual#0" />
-            <element signature="docComment;method#distanceTo#0;class#Individual#0" />
-            <element signature="e#17968#17969#0" expanded="true" />
-            <element signature="e#18044#18045#0" expanded="true" />
-            <element signature="docComment;method#compareTo#0;class#Individual#0" />
-            <element signature="method#compareTo#0;class#Individual#0" />
-            <element signature="docComment;method#merge#0;class#Individual#0" />
-            <element signature="method#merge#0;class#Individual#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -983,10 +851,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
-          <folding>
-            <element signature="e#1842#1843#0" expanded="true" />
-            <element signature="e#1866#1867#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1016,7 +880,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Pixel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2205">
+        <state relative-caret-position="2145">
           <caret line="147" column="22" selection-start-line="147" selection-start-column="22" selection-end-line="147" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1026,7 +890,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/proyectoFinal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="450">
           <caret line="40" column="14" selection-start-line="40" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1043,28 +907,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixSpecies.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="1200">
           <caret line="82" column="16" selection-start-line="82" selection-start-column="16" selection-end-line="82" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/MatrixSpecies.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="1500">
           <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/ec/app/proyectoFinal/proyectoFinal.params">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/Subpopulation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
+        <state relative-caret-position="4095">
           <caret line="290" column="42" selection-start-line="290" selection-start-column="42" selection-end-line="290" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1078,7 +935,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixIndividual.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="2340">
           <caret line="223" column="51" selection-start-line="223" selection-start-column="51" selection-end-line="223" selection-end-column="51" />
           <folding>
             <element signature="method#toString#0;class#IntegerMatrixIndividual#0" />
@@ -1102,25 +959,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3319">
+        <state relative-caret-position="4530">
           <caret line="306" column="78" selection-start-line="306" selection-start-column="78" selection-end-line="306" selection-end-column="78" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ec/simple/SimpleStatistics.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/ec/app/proyectoFinal/proyectoFinal.params">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="250" column="42" selection-start-line="250" selection-start-column="42" selection-end-line="250" selection-end-column="42" />
+        <state relative-caret-position="120">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="1011" column="65" selection-start-line="1011" selection-start-column="65" selection-end-line="1011" selection-end-column="65" />
+        <state relative-caret-position="-464">
+          <caret line="747" column="16" selection-start-line="747" selection-start-column="16" selection-end-line="747" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/simple/SimpleStatistics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="247" column="35" selection-start-line="247" selection-start-column="35" selection-end-line="247" selection-end-column="35" />
         </state>
       </provider>
     </entry>

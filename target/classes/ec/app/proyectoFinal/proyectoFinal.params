@@ -5,8 +5,8 @@ state = ec.simple.SimpleEvolutionState
 stat.do-message = true
 quit-on-run-complete = true
 
-pop.subpop.0.size = 100
-generations = 100
+pop.subpop.0.size = 10
+generations = 10
 breed.elite.0 = 1
 
 pop.subpop.0.species = ec.vector.IntegerMatrixSpecies

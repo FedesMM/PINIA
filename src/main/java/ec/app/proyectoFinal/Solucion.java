@@ -1006,7 +1006,7 @@ public class Solucion {
 
         try {
             //Abro el archivo en moodo append
-            PrintWriter archivo = new PrintWriter(new FileOutputStream(new File("fitness.out"), true /* append = true */) );
+            PrintWriter archivo = new PrintWriter(new FileOutputStream(new File("Muestras","fitness.out"), true /* append = true */) );
             //Agrego el valor de fitness en una nueva linea
             //archivo.append(String.valueOf(this.evaluarFitness())+"\n");
             archivo.println(String.valueOf(this.evaluarFitness()));
