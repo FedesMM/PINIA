@@ -1,8 +1,6 @@
 package ec.app.proyectoFinal;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -787,6 +785,48 @@ public class Solucion {
         this.chequearRestricciones();
     }
 
+    public void recalcular(boolean imprimir){
+        //this.imprimirMatriz();
+        int usoACalcular, estacionesDeEsteUso;
+        //Limpio valores
+        this.fosforo=0;
+        this.productivdadProductores= new float[Constantes.cantProductores][Constantes.cantEstaciones];
+        this.fosforoProductores= new float[Constantes.cantProductores][Constantes.cantEstaciones];
+        this.restriccionProductividadMinimaEstacion= new RestriccionProductividadProductores();
+        this.restriccionUsosDistintos = new RestriccionUsosDistintos();
+
+        for (int iPixel = 0; iPixel < Constantes.cantPixeles; iPixel++) {
+            for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
+                //100*usoACargar+estacionDelUso
+                usoACalcular = this.matriz[iPixel][iEstacion] / 100;
+                estacionesDeEsteUso = this.matriz[iPixel][iEstacion] % 100;
+                Uso uso=Constantes.usos[usoACalcular];
+                if (estacionesDeEsteUso>uso.fosforoEstacion.length){
+
+                    System.out.println("Falla en el pixel "+iPixel+" en la estacion "+iEstacion+" guardado como:"+ this.matriz[iPixel][iEstacion]);
+                    this.imprimirPixel(iPixel);
+                    uso.imprimirUso();
+                }
+                //Actualizo lo que aporta el uso al fosforo total en esta estacion
+                this.fosforo += (Constantes.usos[usoACalcular].fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie);
+                if(imprimir){
+                    System.out.println("Pixel: "+iPixel+" Estacion: "+iEstacion+" Fosforo: "+uso.fosforoEstacion[estacionesDeEsteUso]+ " Superficie: "+Constantes.pixeles[iPixel].superficie
+                            +" Agrego: "+(uso.fosforoEstacion[estacionesDeEsteUso]*Constantes.pixeles[iPixel].superficie)+" FosforoAcumulado: "+this.fosforo);
+                }
+                //Actualizo la productividad del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+                this.productivdadProductores[Constantes.pixeles[iPixel].productor][iEstacion] +=
+                        Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACalcular].productividad[estacionesDeEsteUso];
+                //Actualizo el fosforo del productor due;o del pixel segun la superficie del pixel y la productividad del uso para la estacion del uso
+                this.fosforoProductores[Constantes.pixeles[iPixel].productor][iEstacion] +=
+                        Constantes.pixeles[iPixel].superficie * Constantes.usos[usoACalcular].fosforoEstacion[estacionesDeEsteUso];
+                //Actualizo la cantidad de usos
+                this.restriccionUsosDistintos.cantUsosPorEstacionParaCadaProductor[usoACalcular][iEstacion][Constantes.pixeles[iPixel].productor]++;
+                //Actualizo fosforoAnual segun la estacion actual y el fosforo del Uso
+            }
+        }
+        this.chequearRestricciones();
+    }
+
     public  void cambiarPixel(int iPixel){
         //Toma un pixel ya cargado y lo cambia limpiando y actualizando variables en una sola recorrida
         int iEstacion=0, iEstacionesCargadas=0, usoACargar, usoABorrar, estacionActual, estacionesDeUsoACargar, estacionesDeUsoABorrar, usoYDuracion[];
@@ -933,7 +973,7 @@ public class Solucion {
         for (int iPixel = 0; iPixel< Constantes.pixeles.length; iPixel++) {
             for (int iEstacion = 0; iEstacion < Constantes.cantEstaciones; iEstacion++) {
                 uso = this.matriz[iPixel][iEstacion] / 100;
-                matriz[Constantes.pixeles[iPixel].id-1][iEstacion]=Constantes.usos[uso].nombre;
+                matriz[iPixel][iEstacion]=Constantes.usos[uso].nombre;
             }
         }
         //Creo el archivo
@@ -957,6 +997,21 @@ public class Solucion {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void crearArchivoFitness(){
+
+        try {
+            //Abro el archivo en moodo append
+            PrintWriter archivo = new PrintWriter(new FileOutputStream(new File("fitness.out"), true /* append = true */) );
+            //Agrego el valor de fitness en una nueva linea
+            //archivo.append(String.valueOf(this.evaluarFitness())+"\n");
+            archivo.println(String.valueOf(this.evaluarFitness()));
+            archivo.close();
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -1524,9 +1579,9 @@ public class Solucion {
     //float produccionAcumulada;
     public void imprimirFitness(){
         System.out.println("Funcion Objetivo: "+this.evaluarFitness());
-        System.out.println("\tFosforo modulado: "+this.fosforo);
-        System.out.println("\tUsos Distintos modulado: "+ this.restriccionProductividadMinimaEstacion.cantIncumplimientos * Constantes.maximoIncumplimientoFosforo);
-        System.out.println("\tProductividad Estacion modulado: "+(-1)*this.restriccionUsosDistintos.cantIncumplimientos * Constantes.maximoIncumplimientoFosforo);
+        System.out.println("\tFosforo: "+this.fosforo);
+        System.out.println("\tIncumplimiento Usos Distintos: "+ this.restriccionProductividadMinimaEstacion.cantIncumplimientos * Constantes.maximoIncumplimientoFosforo);
+        System.out.println("\tIncumplimiento Productividad Estacion: "+(-1)*this.restriccionUsosDistintos.cantIncumplimientos * Constantes.maximoIncumplimientoFosforo);
     }
 }
 

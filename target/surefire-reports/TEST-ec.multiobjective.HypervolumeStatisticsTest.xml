@@ -60,22 +60,22 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testHypervolume1" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.022"/>
-  <testcase name="testHypervolume2" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.004"/>
+  <testcase name="testHypervolume1" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.018"/>
+  <testcase name="testHypervolume2" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.005"/>
   <testcase name="testHypervolume3" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.003"/>
   <testcase name="testHypervolume4" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.003"/>
   <testcase name="testHypervolume5" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.003"/>
   <testcase name="testHypervolume6" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.003"/>
-  <testcase name="testHypervolume7" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.002"/>
-  <testcase name="testHypervolume8" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.002"/>
+  <testcase name="testHypervolume7" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.003"/>
+  <testcase name="testHypervolume8" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.001"/>
   <testcase name="testHypervolume9" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.002"/>
-  <testcase name="testInclusiveHypervolume1" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.002"/>
+  <testcase name="testInclusiveHypervolume1" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.001"/>
   <testcase name="testInclusiveHypervolume2" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.002"/>
-  <testcase name="testInclusiveHypervolume3" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.001"/>
-  <testcase name="testHypervolume10" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.001"/>
-  <testcase name="testHypervolume11" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.003"/>
-  <testcase name="testHypervolume12" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.002"/>
-  <testcase name="testSetup1" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.005"/>
-  <testcase name="testSetup2" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.001"/>
-  <testcase name="testSetup3" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0"/>
+  <testcase name="testInclusiveHypervolume3" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0"/>
+  <testcase name="testHypervolume10" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.003"/>
+  <testcase name="testHypervolume11" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.002"/>
+  <testcase name="testHypervolume12" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0"/>
+  <testcase name="testSetup1" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.002"/>
+  <testcase name="testSetup2" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.002"/>
+  <testcase name="testSetup3" classname="ec.multiobjective.HypervolumeStatisticsTest" time="0.002"/>
 </testsuite>

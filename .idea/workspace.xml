@@ -5,38 +5,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out.stat" beforeDir="false" afterPath="$PROJECT_DIR$/out.stat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/proyectoFinal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/proyectoFinal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ec/simple/SimpleStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/simple/SimpleStatistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixIndividual.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixIndividual.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixSpecies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixSpecies.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ec/app/proyectoFinal/proyectoFinal.params" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ec/app/proyectoFinal/proyectoFinal.params" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ec/app/proyectoFinal/RestriccionProductividadProductores.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ec/app/proyectoFinal/RestriccionProductividadProductores.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ec/app/proyectoFinal/RestriccionUsosDistintos.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ec/app/proyectoFinal/RestriccionUsosDistintos.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/ec/app/proyectoFinal/Solucion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ec/app/proyectoFinal/Solucion.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ec/app/proyectoFinal/Uso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ec/app/proyectoFinal/Uso.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ec/app/proyectoFinal/proyectoFinal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ec/app/proyectoFinal/proyectoFinal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ec/app/proyectoFinal/proyectoFinal.params" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ec/app/proyectoFinal/proyectoFinal.params" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ec/vector/IntegerMatrixIndividual.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ec/vector/IntegerMatrixIndividual.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/ec/vector/IntegerMatrixSpecies.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ec/vector/IntegerMatrixSpecies.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ecj-26.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/ecj-26.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/target/jacoco.exec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/RestriccionProductividadProductores.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/RestriccionProductividadProductores.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/RestriccionUsosDistintos.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/RestriccionUsosDistintos.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/Solucion.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/Solucion.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/Solucion.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/Solucion.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/Uso.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/Uso.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/Uso.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/Uso.java.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/index.source.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/proyectoFinal.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/proyectoFinal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/proyectoFinal.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.app.proyectoFinal/proyectoFinal.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.vector/IntegerMatrixIndividual.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.vector/IntegerMatrixIndividual.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.vector/IntegerMatrixIndividual.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.vector/IntegerMatrixIndividual.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.vector/IntegerMatrixSpecies.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.vector/IntegerMatrixSpecies.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.vector/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.vector/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/ec.vector/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/ec.vector/index.source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/site/jacoco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" afterDir="false" />
@@ -49,7 +26,6 @@
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.multiobjective.spea2.SPEA2BreederTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.multiobjective.spea2.SPEA2BreederTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.simple.SimpleBreederTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.simple.SimpleBreederTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.util.MiscTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.util.MiscTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.util.ParameterDatabaseTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-ec.util.ParameterDatabaseTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.EvolutionStateTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.EvolutionStateTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.coevolve.MultiPopCoevolutionaryEvaluatorTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.coevolve.MultiPopCoevolutionaryEvaluatorTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.eda.pbil.PBILSpeciesTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.eda.pbil.PBILSpeciesTest.txt" afterDir="false" />
@@ -58,10 +34,9 @@
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.multiobjective.spea2.SPEA2BreederTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.multiobjective.spea2.SPEA2BreederTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.simple.SimpleBreederTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.simple.SimpleBreederTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.util.MiscTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.util.MiscTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/ec.util.ParameterDatabaseTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/ec.util.ParameterDatabaseTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire/surefire3487026447973521015tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire/surefire_02803951721343370477tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire/surefirebooter3768701471228090691.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire/surefire6882554110164547950tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire/surefire_0742486351065663212tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire/surefirebooter5683735373767160607.jar" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -163,7 +138,7 @@
       <file leaf-file-name="Uso.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
+            <state relative-caret-position="-3319">
               <caret line="306" column="78" selection-start-line="306" selection-start-column="78" selection-end-line="306" selection-end-column="78" />
             </state>
           </provider>
@@ -191,16 +166,16 @@
         <entry file="file://$PROJECT_DIR$/src/main/resources/ec/app/proyectoFinal/proyectoFinal.params">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SimpleStatistics.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SimpleStatistics.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ec/simple/SimpleStatistics.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="249" column="16" selection-start-line="249" selection-start-column="16" selection-end-line="249" selection-end-column="16" />
+            <state relative-caret-position="289">
+              <caret line="250" column="42" selection-start-line="250" selection-start-column="42" selection-end-line="250" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -247,11 +222,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Solucion.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Solucion.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="935" selection-start-line="935" selection-end-line="935" />
+            <state relative-caret-position="301">
+              <caret line="1011" column="65" selection-start-line="1011" selection-start-column="65" selection-end-line="1011" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -371,9 +346,9 @@
         <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/proyectoFinal.java" />
         <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java" />
         <option value="$PROJECT_DIR$/src/main/java/ec/vector/IntegerMatrixIndividual.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java" />
         <option value="$PROJECT_DIR$/src/main/resources/ec/app/proyectoFinal/proyectoFinal.params" />
         <option value="$PROJECT_DIR$/src/main/java/ec/simple/SimpleStatistics.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java" />
       </list>
     </option>
   </component>
@@ -1059,10 +1034,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/MatrixSpecies.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/Statistics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
+        <state relative-caret-position="184">
+          <caret line="70" column="13" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1073,24 +1048,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/vector/MatrixSpecies.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="306" column="78" selection-start-line="306" selection-start-column="78" selection-end-line="306" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ec/Statistics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="70" column="13" selection-start-line="70" selection-start-column="13" selection-end-line="70" selection-end-column="13" />
+        <state relative-caret-position="15">
+          <caret line="108" column="19" selection-start-line="108" selection-start-column="19" selection-end-line="108" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/ec/app/proyectoFinal/proyectoFinal.params">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="17" lean-forward="true" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1132,20 +1100,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Uso.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="935" selection-start-line="935" selection-end-line="935" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-3319">
+          <caret line="306" column="78" selection-start-line="306" selection-start-column="78" selection-end-line="306" selection-end-column="78" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ec/simple/SimpleStatistics.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="249" column="16" selection-start-line="249" selection-start-column="16" selection-end-line="249" selection-end-column="16" />
+        <state relative-caret-position="289">
+          <caret line="250" column="42" selection-start-line="250" selection-start-column="42" selection-end-line="250" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ec/app/proyectoFinal/Solucion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="1011" column="65" selection-start-line="1011" selection-start-column="65" selection-end-line="1011" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

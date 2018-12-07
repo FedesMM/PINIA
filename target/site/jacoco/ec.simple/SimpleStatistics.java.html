@@ -245,17 +245,19 @@ import ec.vector.IntegerMatrixIndividual;
 <span class="nc" id="L245">                IntegerMatrixIndividual ind = (IntegerMatrixIndividual) best_of_run[x];</span>
 
 <span class="nc" id="L247">                Solucion sol = Solucion.genomaASolucion(ind.genome);</span>
-
-<span class="nc" id="L249">                sol.imprimirFitness();</span>
-<span class="nc" id="L250">                sol.crearArchivoMatriz();</span>
-<span class="nc" id="L251">                sol.crearArchivoCantidadUsos();</span>
-<span class="nc" id="L252">                sol.crearArchivoFosforoSobreAreaTotal();</span>
-<span class="nc" id="L253">                sol.crearArchivoProductividadSobreAreaTotal();</span>
+<span class="nc" id="L248">                sol.imprimirFitness();</span>
+<span class="nc" id="L249">                sol.recalcular();</span>
+<span class="nc" id="L250">                sol.imprimirFitness();</span>
+<span class="nc" id="L251">                sol.crearArchivoFitness();</span>
+//                sol.crearArchivoMatriz();
+//                sol.crearArchivoCantidadUsos();
+//                sol.crearArchivoFosforoSobreAreaTotal();
+//                sol.crearArchivoProductividadSobreAreaTotal();
                 //sol.imprimirMatriz();
 
             }
         }
-<span class="nc" id="L258">    }</span>
+<span class="nc" id="L260">    }</span>
 }
 
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>
