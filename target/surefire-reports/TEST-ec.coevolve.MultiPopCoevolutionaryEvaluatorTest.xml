@@ -60,6 +60,6 @@
     <property name="sun.desktop" value="gnome"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="testAfterCoevolutionaryEvaluation1" classname="ec.coevolve.MultiPopCoevolutionaryEvaluatorTest" time="0.009"/>
-  <testcase name="testAfterCoevolutionaryEvaluation2" classname="ec.coevolve.MultiPopCoevolutionaryEvaluatorTest" time="0.001"/>
+  <testcase name="testAfterCoevolutionaryEvaluation1" classname="ec.coevolve.MultiPopCoevolutionaryEvaluatorTest" time="0.008"/>
+  <testcase name="testAfterCoevolutionaryEvaluation2" classname="ec.coevolve.MultiPopCoevolutionaryEvaluatorTest" time="0.002"/>
 </testsuite>

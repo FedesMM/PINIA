@@ -1,0 +1,144 @@
+./Instancias/IntanciaPrueba.in	CantPixeles:11
+cant pixeles: 0, cant estaciones: 16Evaluated: T
+Fitness: -420.81494140625
+700 701 702 703 704 Evaluated: T
+Fitness: -420.81494140625
+700 701 702 703 704 705 706 700 701 702 703 704 705 706 600 601 
+108 109 110 111 112 113 114 115 700 701 702 703 704 705 706 1400 
+112 113 114 115 700 701 702 703 704 705 706 1400 1400 700 701 702 
+204 205 206 207 208 209 210 211 212 213 214 215 1400 700 701 702 
+700 701 702 703 704 705 706 800 801 1400 1400 1400 700 701 702 703 
+902 700 701 702 703 704 705 706 700 701 702 703 704 705 706 1400 
+902 700 701 702 703 704 705 706 1400 700 701 702 703 704 705 706 
+208 209 210 211 212 213 214 215 1400 1400 1400 1400 1400 700 701 702 
+700 701 702 703 704 705 706 700 701 702 703 704 705 706 1400 1400 
+700 701 702 703 704 705 706 1400 1400 1400 1400 1400 1400 800 801 1400 
+112 113 Pixel: 0 Estacion: 0 Fosforo: 0.3 Superficie: 8.78258 AgregPixel: 0 Estacion: 0 Fosforo: 0.3 Superf
+Pixel: 0 Estacion: 1 Fosforo: 0.3 Superficie: 8.78258 AgregPixel: 0 Estacion: 1 Fosforo: 0.3 Superf
+Pixel: 0 Estacion: 2 Fosforo: 0.3 Superficie: 8.78258 Agre
+Pixel: 0 Estacion: 2 Fosforo: 0.3 Superf
+Pixel: 0 Estacion: 3 Fosforo: 0.3 Superficie: 8.78258 Agre
+Pixel: 0 Estacion: 3 Fosforo: 0.3 Superf
+Pixel: 0 Estacion: 4 Fosforo: 0.3 Superficie: 8.78258 Agre
+Pixel: 0 Estacion: 4 Fosforo: 0.3 Superf
+Pixel: 0 Estacion: 5 Fosforo: 0.3 Superficie: 8.78258 AgregPixel: 0 Estacion: 5 Fosforo: 0.3 Superf
+Pixel: 0 Estacion: 6 Fosforo: 0.3 Superficie: 8.78258 Agre
+Pixel: 0 Estacion: 6 Fosforo: 0.3 Super
+Pixel: 0 Estacion: 7 Fosforo: 0.3 Superficie: 8.78258 AgregPixel: 0 Estacion: 7 Fosforo: 0.3 SuperfiPixel: 0 Estacion: 8 Fosforo: 0.3 Superficie: 8.78258 AgregPixel: 0 Estacion: 8 Fosforo: 0.3 SuperfiPixel: 0 Estacion: 9 Fosforo: 0.3 Superficie: 8.78258 AgregPixel: 0 Estacion: 9 Fosforo: 0.3 SuperfPixel: 0 Estacion: 10 Fosforo: 0.3 Superficie: 8.78258 AgrePixel: 0 Estacion: 10 Fosforo: 0.3 SuperfiPixel: 0 Estacion: 11 Fosforo: 0.3 Superficie: 8.78258 AgrePixel: 0 Estacion: 11 Fosforo: 0.3 SuperfiPixel: 0 Estacion: 12 Fosforo: 0.3 Superficie: 8.78258 AgrePixel: 0 Estacion: 12 Fosforo: 0.3 SuperfPixel: 0 Estacion: 13 Fosforo: 0.3 Superficie: 8.78258 AgrePixel: 0 Estacion: 13 Fosforo: 0.3 Superficie: 8.78258 Agrego: 2.6347742 FosforoAcumulado: 36.886833
+Pixel: 0 Estacion: 14 Fosforo: 0.345 SuperfiPixel: 0 Estacion: 15 Fosforo: 0.345 Superficie: 8.78258 AgPixel: 0 Estacion: 15 Fosforo: 0.345 SuperfiPixel: 1 Estacion: 0 Fosforo: 0.513 Superficie: 14.94914 AgPixel: 1 Estacion: 0 Fosforo: 0.513 SuperficPixel: 1 Estacion: 1 Fosforo: 0.513 Superficie: 14.94914 AgPixel: 1 Estacion: 1 Fosforo: 0.513 SuperfiPixel: 1 Estacion: 2 Fosforo: 0.513 Superficie: 14.94914 AgPixel: 1 Estacion: 2 Fosforo: 0.513 SuperfiPixel: 1 Estacion: 3 Fosforo: 0.513 Superficie: 14.94914 AgPixel: 1 Estacion: 3 Fosforo: 0.513 SuperficPixel: 1 Estacion: 4 Fosforo: 0.513 Superficie: 14.94914 AgPixel: 1 Estacion: 4 Fosforo: 0.513 SuperfiPixel: 1 Estacion: 5 Fosforo: 0.513 Superficie: 14.94914 AgPixel: 1 Estacion: 5 Fosforo: 0.513 SuperfiPixel: 1 Estacion: 6 Fosforo: 0.513 Superficie: 14.94914 AgPixel: 1 Estacion: 6 Fosforo: 0.513 Superfi
+Pixel: 1 Estacion: 7 Fosforo: 0.513 Superficie: 14.94914 A
+Pixel: 1 Estacion: 7 Fosforo: 0.513 Superfi
+Pixel: 1 Estacion: 8 Fosforo: 0.3 Superficie: 14.94914 AgrePixel: 1 Estacion: 8 Fosforo: 0.3 SuperficPixel: 1 Estacion: 9 Fosforo: 0.3 Superficie: 14.94914 AgrePixel: 1 Estacion: 9 Fosforo: 0.3 SuperficPixel: 1 Estacion: 10 Fosforo: 0.3 Superficie: 14.94914 AgrPixel: 1 Estacion: 10 Fosforo: 0.3 SuperfPixel: 1 Estacion: 11 Fosforo: 0.3 Superficie: 14.94914 AgrPixel: 1 Estacion: 11 Fosforo: 0.3 SuperfiPixel: 1 Estacion: 12 Fosforo: 0.3 Superficie: 14.94914 AgrPixel: 1 Estacion: 12 Fosforo: 0.3 Superf
+Pixel: 1 Estacion: 13 Fosforo: 0.3 Superficie: 14.94914 Ag
+Pixel: 1 Estacion: 13 Fosforo: 0.3 Superf
+Pixel: 1 Estacion: 14 Fosforo: 0.3 Superficie: 14.94914 AgrPixel: 1 Estacion: 14 Fosforo: 0.3 SuperfiPixel: 1 Estacion: 15 Fosforo: 0.244 Superficie: 14.94914 APixel: 1 Estacion: 15 Fosforo: 0.244 Superfi
+Pixel: 2 Estacion: 0 Fosforo: 0.513 Superficie: 3.05692 AgrPixel: 2 Estacion: 0 Fosforo: 0.513 Sup
+Pixel: 2 Estacion: 1 Fosforo: 0.513 Superficie: 3.05692 Ag
+Pixel: 2 Estacion: 1 Fosforo: 0.513 Sup
+Pixel: 2 Estacion: 2 Fosforo: 0.513 Superficie: 3.05692 Ag
+Pixel: 2 Estacion: 2 Fosforo: 0.513 Sup
+Pixel: 2 Estacion: 3 Fosforo: 0.513 Superficie: 3.05692 AgrPixel: 2 Estacion: 3 Fosforo: 0.513 SupePixel: 2 Estacion: 4 Fosforo: 0.3 Superficie: 3.05692 AgregPixel: 2 Estacion: 4 Fosforo: 0.3 SuperficPixel: 2 Estacion: 5 Fosforo: 0.3 Superficie: 3.05692 AgregPixel: 2 Estacion: 5 Fosforo: 0.3 SuperficPixel: 2 Estacion: 6 Fosforo: 0.3 Superficie: 3.05692 AgregPixel: 2 Estacion: 6 Fosforo: 0.3 SuperficPixel: 2 Estacion: 7 Fosforo: 0.3 Superficie: 3.05692 AgregPixel: 2 Estacion: 7 Fosforo: 0.3 SuperficPixel: 2 Estacion: 8 Fosforo: 0.3 Superficie: 3.05692 AgregPixel: 2 Estacion: 8 Fosforo: 0.3 Superfi
+Pixel: 2 Estacion: 9 Fosforo: 0.3 Superficie: 3.05692 Agre
+Pixel: 2 Estacion: 9 Fosforo: 0.3 Superfi
+Pixel: 2 Estacion: 10 Fosforo: 0.3 Superficie: 3.05692 Agr
+Pixel: 2 Estacion: 10 Fosforo: 0.3 Superfi
+Pixel: 2 Estacion: 11 Fosforo: 0.244 Superficie: 3.05692 AgPixel: 2 Estacion: 11 Fosforo: 0.244 SuperfiPixel: 2 Estacion: 12 Fosforo: 0.244 Superficie: 3.05692 AgPixel: 2 Estacion: 12 Fosforo: 0.244 SuperfiPixel: 2 Estacion: 13 Fosforo: 0.3 Superficie: 3.05692 AgrePixel: 2 Estacion: 13 Fosforo: 0.3 SuperficPixel: 2 Estacion: 14 Fosforo: 0.3 Superficie: 3.05692 AgrePixel: 2 Estacion: 14 Fosforo: 0.3 SuperficPixel: 2 Estacion: 15 Fosforo: 0.3 Superficie: 3.05692 AgrePixel: 2 Estacion: 15 Fosforo: 0.3 SuperficPixel: 3 Estacion: 0 Fosforo: 0.345 Superficie: 6.25981 AgrPixel: 3 Estacion: 0 Fosforo: 0.345 SuperfiPixel: 3 Estacion: 1 Fosforo: 0.345 Superficie: 6.25981 AgrPixel: 3 Estacion: 1 Fosforo: 0.345 Superf
+Pixel: 3 Estacion: 2 Fosforo: 0.345 Superficie: 6.25981 Ag
+Pixel: 3 Estacion: 2 Fosforo: 0.345 Superf
+Pixel: 3 Estacion: 3 Fosforo: 0.345 Superficie: 6.25981 Ag
+Pixel: 3 Estacion: 3 Fosforo: 0.345 Super
+Pixel: 3 Estacion: 4 Fosforo: 0.345 Superficie: 6.25981 AgrPixel: 3 Estacion: 4 Fosforo: 0.345 Superf
+Pixel: 3 Estacion: 5 Fosforo: 0.345 Superficie: 6.25981 AgrPixel: 3 Estacion: 5 Fosforo: 0.345 SuperfiPixel: 3 Estacion: 6 Fosforo: 0.345 Superficie: 6.25981 AgrPixel: 3 Estacion: 6 Fosforo: 0.345 SuperfiPixel: 3 Estacion: 7 Fosforo: 0.345 Superficie: 6.25981 AgrPixel: 3 Estacion: 7 Fosforo: 0.345 SuperfiPixel: 3 Estacion: 8 Fosforo: 0.345 Superficie: 6.25981 AgrPixel: 3 Estacion: 8 Fosforo: 0.345 SuperfiPixel: 3 Estacion: 9 Fosforo: 0.345 Superficie: 6.25981 AgrPixel: 3 Estacion: 9 Fosforo: 0.345 Superficie: 6.25981 Agrego: 2.1596344 FosforoAcumulado: 177.87053
+Pixel: 3 Estacion: 10 Fosforo: 0.345 Superf
+Pixel: 3 Estacion: 11 Fosforo: 0.345 Superficie: 6.25981 A
+Pixel: 3 Estacion: 11 Fosforo: 0.345 Super
+Pixel: 3 Estacion: 12 Fosforo: 0.244 Superficie: 6.25981 AgPixel: 3 Estacion: 12 Fosforo: 0.244 Super
+Pixel: 3 Estacion: 13 Fosforo: 0.3 Superficie: 6.25981 AgrePixel: 3 Estacion: 13 Fosforo: 0.3 SuperfPixel: 3 Estacion: 14 Fosforo: 0.3 Superficie: 6.25981 AgrePixel: 3 Estacion: 14 Fosforo: 0.3 SuperfPixel: 3 Estacion: 15 Fosforo: 0.3 Superficie: 6.25981 AgrePixel: 3 Estacion: 15 Fosforo: 0.3 Super
+Pixel: 4 Estacion: 0 Fosforo: 0.3 Superficie: 10.19906 Agr
+Pixel: 4 Estacion: 0 Fosforo: 0.3 SuperficPixel: 4 Estacion: 1 Fosforo: 0.3 Superficie: 10.19906 AgrePixel: 4 Estacion: 1 Fosforo: 0.3 SuperficPixel: 4 Estacion: 2 Fosforo: 0.3 Superficie: 10.19906 AgrePixel: 4 Estacion: 2 Fosforo: 0.3 SuperfiPixel: 4 Estacion: 3 Fosforo: 0.3 Superficie: 10.19906 AgrePixel: 4 Estacion: 3 Fosforo: 0.3 SuperficPixel: 4 Estacion: 4 Fosforo: 0.3 Superficie: 10.19906 AgrePixel: 4 Estacion: 4 Fosforo: 0.3 Superfi
+Pixel: 4 Estacion: 5 Fosforo: 0.3 Superficie: 10.19906 Agr
+Pixel: 4 Estacion: 5 Fosforo: 0.3 Superfi
+Pixel: 4 Estacion: 6 Fosforo: 0.3 Superficie: 10.19906 AgrePixel: 4 Estacion: 6 Fosforo: 0.3 SuperficPixel: 4 Estacion: 7 Fosforo: 0.393 Superficie: 10.19906 AgPixel: 4 Estacion: 7 Fosforo: 0.393 SuperficPixel: 4 Estacion: 8 Fosforo: 0.393 Superficie: 10.19906 AgPixel: 4 Estacion: 8 Fosforo: 0.393 Superfi
+Pixel: 4 Estacion: 9 Fosforo: 0.244 Superficie: 10.19906 A
+Pixel: 4 Estacion: 9 Fosforo: 0.244 Superfi
+Pixel: 4 Estacion: 10 Fosforo: 0.244 Superficie: 10.19906 APixel: 4 Estacion: 10 Fosforo: 0.244 SuperficPixel: 4 Estacion: 11 Fosforo: 0.244 Superficie: 10.19906 APixel: 4 Estacion: 11 Fosforo: 0.244 SuperficPixel: 4 Estacion: 12 Fosforo: 0.3 Superficie: 10.19906 AgrPixel: 4 Estacion: 12 Fosforo: 0.3 SuperficPixel: 4 Estacion: 13 Fosforo: 0.3 Superficie: 10.19906 AgrPixel: 4 Estacion: 13 Fosforo: 0.3 Superf
+Pixel: 4 Estacion: 14 Fosforo: 0.3 Superficie: 10.19906 AgrPixel: 4 Estacion: 14 Fosforo: 0.3 SuperficPixel: 4 Estacion: 15 Fosforo: 0.3 Superficie: 10.19906 AgrPixel: 4 Estacion: 15 Fosforo: 0.3 SuperficPixel: 5 Estacion: 0 Fosforo: 0.548 Superficie: 13.40197 AgPixel: 5 Estacion: 0 Fosforo: 0.548 SuperficPixel: 5 Estacion: 1 Fosforo: 0.3 Superficie: 13.40197 AgrePixel: 5 Estacion: 1 Fosforo: 0.3 Superfi
+Pixel: 5 Estacion: 2 Fosforo: 0.3 Superficie: 13.40197 Agr
+Pixel: 5 Estacion: 2 Fosforo: 0.3 Superf
+Pixel: 5 Estacion: 3 Fosforo: 0.3 Superficie: 13.40197 AgrePixel: 5 Estacion: 3 Fosforo: 0.3 SuperficPixel: 5 Estacion: 4 Fosforo: 0.3 Superficie: 13.40197 AgrePixel: 5 Estacion: 4 Fosforo: 0.3 SuperficPixel: 5 Estacion: 5 Fosforo: 0.3 Superficie: 13.40197 AgrePixel: 5 Estacion: 5 Fosforo: 0.3 SuperficPixel: 5 Estacion: 6 Fosforo: 0.3 Superficie: 13.40197 AgrePixel: 5 Estacion: 6 Fosforo: 0.3 Superfi
+Pixel: 5 Estacion: 7 Fosforo: 0.3 Superficie: 13.40197 Agr
+Pixel: 5 Estacion: 7 Fosforo: 0.3 Superfi
+Pixel: 5 Estacion: 8 Fosforo: 0.3 Superficie: 13.40197 AgrePixel: 5 Estacion: 8 Fosforo: 0.3 SuperficPixel: 5 Estacion: 9 Fosforo: 0.3 Superficie: 13.40197 AgrePixel: 5 Estacion: 9 Fosforo: 0.3 SuperficPixel: 5 Estacion: 10 Fosforo: 0.3 Superficie: 13.40197 AgrPixel: 5 Estacion: 10 Fosforo: 0.3 SuperficPixel: 5 Estacion: 11 Fosforo: 0.3 Superficie: 13.40197 AgrPixel: 5 Estacion: 11 Fosforo: 0.3 Superfi
+Pixel: 5 Estacion: 12 Fosforo: 0.3 Superficie: 13.40197 Ag
+Pixel: 5 Estacion: 12 Fosforo: 0.3 Superfi
+Pixel: 5 Estacion: 13 Fosforo: 0.3 Superficie: 13.40197 AgrPixel: 5 Estacion: 13 Fosforo: 0.3 SuperficPixel: 5 Estacion: 14 Fosforo: 0.3 Superficie: 13.40197 AgrPixel: 5 Estacion: 14 Fosforo: 0.3 SuperficPixel: 5 Estacion: 15 Fosforo: 0.244 Superficie: 13.40197 APixel: 5 Estacion: 15 Fosforo: 0.244 SuperficPixel: 6 Estacion: 0 Fosforo: 0.548 Superficie: 10.02201 AgPixel: 6 Estacion: 0 Fosforo: 0.548 SuperfiPixel: 6 Estacion: 1 Fosforo: 0.3 Superficie: 10.02201 AgrePixel: 6 Estacion: 1 Fosforo: 0.3 SuperfPixel: 6 Estacion: 2 Fosforo: 0.3 Superficie: 10.02201 AgrePixel: 6 Estacion: 2 Fosforo: 0.3 Super
+Pixel: 6 Estacion: 3 Fosforo: 0.3 Superficie: 10.02201 Agr
+Pixel: 6 Estacion: 3 Fosforo: 0.3 Super
+Pixel: 6 Estacion: 4 Fosforo: 0.3 Superficie: 10.02201 AgrePixel: 6 Estacion: 4 Fosforo: 0.3 SuperfPixel: 6 Estacion: 5 Fosforo: 0.3 Superficie: 10.02201 AgrePixel: 6 Estacion: 5 Fosforo: 0.3 SuperfiPixel: 6 Estacion: 6 Fosforo: 0.3 Superficie: 10.02201 AgrePixel: 6 Estacion: 6 Fosforo: 0.3 Superf
+Pixel: 6 Estacion: 7 Fosforo: 0.3 Superficie: 10.02201 Agr
+Pixel: 6 Estacion: 7 Fosforo: 0.3 Superf
+Pixel: 6 Estacion: 8 Fosforo: 0.244 Superficie: 10.02201 AgPixel: 6 Estacion: 8 Fosforo: 0.244 SuperficPixel: 6 Estacion: 9 Fosforo: 0.3 Superficie: 10.02201 AgrePixel: 6 Estacion: 9 Fosforo: 0.3 SuperfiPixel: 6 Estacion: 10 Fosforo: 0.3 Superficie: 10.02201 AgrPixel: 6 Estacion: 10 Fosforo: 0.3 SuperfiPixel: 6 Estacion: 11 Fosforo: 0.3 Superficie: 10.02201 AgrPixel: 6 Estacion: 11 Fosforo: 0.3 SuperfPixel: 6 Estacion: 12 Fosforo: 0.3 Superficie: 10.02201 AgrPixel: 6 Estacion: 12 Fosforo: 0.3 Super
+Pixel: 6 Estacion: 13 Fosforo: 0.3 Superficie: 10.02201 Ag
+Pixel: 6 Estacion: 13 Fosforo: 0.3 Super
+Pixel: 6 Estacion: 14 Fosforo: 0.3 Superficie: 10.02201 AgrPixel: 6 Estacion: 14 Fosforo: 0.3 SuperPixel: 6 Estacion: 15 Fosforo: 0.3 Superficie: 10.02201 AgrPixel: 6 Estacion: 15 Fosforo: 0.3 SuperfiPixel: 7 Estacion: 0 Fosforo: 0.345 Superficie: 6.02542 AgrPixel: 7 Estacion: 0 Fosforo: 0.345 SuperPixel: 7 Estacion: 1 Fosforo: 0.345 Superficie: 6.02542 AgrPixel: 7 Estacion: 1 Fosforo: 0.345 SupePixel: 7 Estacion: 2 Fosforo: 0.345 Superficie: 6.02542 AgrPixel: 7 Estacion: 2 Fosforo: 0.345 Supe
+Pixel: 7 Estacion: 3 Fosforo: 0.345 Superficie: 6.02542 Ag
+Pixel: 7 Estacion: 3 Fosforo: 0.345 Supe
+Pixel: 7 Estacion: 4 Fosforo: 0.345 Superficie: 6.02542 AgrPixel: 7 Estacion: 4 Fosforo: 0.345 SupePixel: 7 Estacion: 5 Fosforo: 0.345 Superficie: 6.02542 AgrPixel: 7 Estacion: 5 Fosforo: 0.345 SuperPixel: 7 Estacion: 6 Fosforo: 0.345 Superficie: 6.02542 AgrPixel: 7 Estacion: 6 Fosforo: 0.345 Superficie: 6.02542 Agrego: 2.07877 FosforoAcumulado: 369.97394
+Pixel: 7 Estacion: 7 Fosforo: 0.345 Sup
+Pixel: 7 Estacion: 8 Fosforo: 0.244 Superficie: 6.02542 Ag
+Pixel: 7 Estacion: 8 Fosforo: 0.244 SuperfiPixel: 7 Estacion: 9 Fosforo: 0.244 Superficie: 6.02542 AgrPixel: 7 Estacion: 9 Fosforo: 0.244 SuperfiPixel: 7 Estacion: 10 Fosforo: 0.244 Superficie: 6.02542 AgPixel: 7 Estacion: 10 Fosforo: 0.244 SuperfiPixel: 7 Estacion: 11 Fosforo: 0.244 Superficie: 6.02542 AgPixel: 7 Estacion: 11 Fosforo: 0.244 Superf
+Pixel: 7 Estacion: 12 Fosforo: 0.244 Superficie: 6.02542 A
+Pixel: 7 Estacion: 12 Fosforo: 0.244 Superf
+Pixel: 7 Estacion: 13 Fosforo: 0.3 Superficie: 6.02542 AgrePixel: 7 Estacion: 13 Fosforo: 0.3 SuperfPixel: 7 Estacion: 14 Fosforo: 0.3 Superficie: 6.02542 AgrePixel: 7 Estacion: 14 Fosforo: 0.3 SuperPixel: 7 Estacion: 15 Fosforo: 0.3 Superficie: 6.02542 AgrePixel: 7 Estacion: 15 Fosforo: 0.3 SuperfiPixel: 8 Estacion: 0 Fosforo: 0.3 Superficie: 1.79791 AgregPixel: 8 Estacion: 0 Fosforo: 0.3 Superficie: 1.79791 Agrego: 0.53937304 FosforoAcumulado: 385.366
+Pixel: 8 Estacion: 1 Fosforo: 0.3 Superficie: 1.79791 Agrego: 0.53937304 FosforoAcumulado: 385.90536
+Pixel: 8 Estacion: 2 Fosforo: 0.3 Superficie: 1.79791 Agrego: 0.53937304 FosforoAcumulado: 386.44473
+Pixel: 8 Estacion: 3 Fosforo: 0.3 Superficie: 1.79791 Agrego: 0.53937304 FosforoAcumulado: 386.9841
+Pixel: 8 Estacion: 4 Fosforo: 0.3 Superficie: 1.79791 Agrego: 0.53937304 FosforoAcumulado: 387.52347
+Pixel: 8 Estacion: 5 Fosforo: 0.3 Superficie: 1.79791 Agrego: 0.53937304 FosforoAcumulado: 388.06284
+Pixel: 8 Estacion: 6 Fosforo: 0.3 Superficie: 1.79791 Agrego: 0.53937304 FosforoAcumulado: 388.6022
+Pixel: 8 Estacion: 7 Fosforo: 0.3 Superficie: 1.79791 Agrego: 0.53937304 FosforoAcumulado: 389.14157
+Pixel: 8 Estacion: 8 Fosforo: 0.3 Superficie: 1.79791 Agrego: 0.53937304 FosforoAcumulado: 389.68094
+Pixel: 8 Estacion: 9 Fosforo: 0.3 Superficie: 1.79791 Agrego: 0.53937304 FosforoAcumulado: 390.2203
+Pixel: 8 Estacion: 10 Fosforo: 0.3 Superficie: 1.79791 Agrego: 0.53937304 FosforoAcumulado: 390.75967
+Pixel: 8 Estacion: 11 Fosforo: 0.3 Superficie: 1.79791 Agrego: 0.53937304 FosforoAcumulado: 391.29904
+Pixel: 8 Estacion: 12 Fosforo: 0.3 Superficie: 1.79791 Agrego: 0.53937304 FosforoAcumulado: 391.8384
+Pixel: 8 Estacion: 13 Fosforo: 0.3 Superficie: 1.79791 Agrego: 0.53937304 FosforoAcumulado: 392.37778
+Pixel: 8 Estacion: 14 Fosforo: 0.244 Superficie: 1.79791 Agrego: 0.43869004 FosforoAcumulado: 392.81647
+Pixel: 8 Estacion: 15 Fosforo: 0.244 Superficie: 1.79791 Agrego: 0.43869004 FosforoAcumulado: 393.25516
+Pixel: 9 Estacion: 0 Fosforo: 0.3 Superficie: 1.95832 Agrego: 0.58749604 FosforoAcumulado: 393.84265
+Pixel: 9 Estacion: 1 Fosforo: 0.3 Superficie: 1.95832 Agrego: 0.58749604 FosforoAcumulado: 394.43015
+Pixel: 9 Estacion: 2 Fosforo: 0.3 Superficie: 1.95832 Agrego: 0.58749604 FosforoAcumulado: 395.01764
+Pixel: 9 Estacion: 3 Fosforo: 0.3 Superficie: 1.95832 Agrego: 0.58749604 FosforoAcumulado: 395.60513
+Pixel: 9 Estacion: 4 Fosforo: 0.3 Superficie: 1.95832 Agrego: 0.58749604 FosforoAcumulado: 396.19263
+Pixel: 9 Estacion: 5 Fosforo: 0.3 Superficie: 1.95832 Agrego: 0.58749604 FosforoAcumulado: 396.78012
+Pixel: 9 Estacion: 6 Fosforo: 0.3 Superficie: 1.95832 Agrego: 0.58749604 FosforoAcumulado: 397.3676
+Pixel: 9 Estacion: 7 Fosforo: 0.244 Superficie: 1.95832 Agrego: 0.47783008 FosforoAcumulado: 397.84546
+Pixel: 9 Estacion: 8 Fosforo: 0.244 Superficie: 1.95832 Agrego: 0.47783008 FosforoAcumulado: 398.3233
+Pixel: 9 Estacion: 9 Fosforo: 0.244 Superficie: 1.95832 Agrego: 0.47783008 FosforoAcumulado: 398.80115
+Pixel: 9 Estacion: 10 Fosforo: 0.244 Superficie: 1.95832 Agrego: 0.47783008 FosforoAcumulado: 399.279
+Pixel: 9 Estacion: 11 Fosforo: 0.244 Superficie: 1.95832 Agrego: 0.47783008 FosforoAcumulado: 399.75684
+Pixel: 9 Estacion: 12 Fosforo: 0.244 Superficie: 1.95832 Agrego: 0.47783008 FosforoAcumulado: 400.23468
+Pixel: 9 Estacion: 13 Fosforo: 0.393 Superficie: 1.95832 Agrego: 0.76961976 FosforoAcumulado: 401.0043
+Pixel: 9 Estacion: 14 Fosforo: 0.393 Superficie: 1.95832 Agrego: 0.76961976 FosforoAcumulado: 401.77393
+Pixel: 9 Estacion: 15 Fosforo: 0.244 Superficie: 1.95832 Agrego: 0.47783008 FosforoAcumulado: 402.25177
+Pixel: 10 Estacion: 0 Fosforo: 0.513 Superficie: 3.27393 Agrego: 1.6795262 FosforoAcumulado: 403.9313
+Pixel: 10 Estacion: 1 Fosforo: 0.513 Superficie: 3.27393 Agrego: 1.6795262 FosforoAcumulado: 405.61084
+Pixel: 10 Estacion: 2 Fosforo: 0.513 Superficie: 3.27393 Agrego: 1.6795262 FosforoAcumulado: 407.29037
+Pixel: 10 Estacion: 3 Fosforo: 0.513 Superficie: 3.27393 Agrego: 1.6795262 FosforoAcumulado: 408.9699
+Pixel: 10 Estacion: 4 Fosforo: 0.3 Superficie: 3.27393 Agrego: 0.98217905 FosforoAcumulado: 409.9521
+Pixel: 10 Estacion: 5 Fosforo: 0.3 Superficie: 3.27393 Agrego: 0.98217905 FosforoAcumulado: 410.93427
+Pixel: 10 Estacion: 6 Fosforo: 0.3 Superficie: 3.27393 Agrego: 0.98217905 FosforoAcumulado: 411.91644
+Pixel: 10 Estacion: 7 Fosforo: 0.3 Superficie: 3.27393 Agrego: 0.98217905 FosforoAcumulado: 412.89862
+Pixel: 10 Estacion: 8 Fosforo: 0.3 Superficie: 3.27393 Agrego: 0.98217905 FosforoAcumulado: 413.8808
+Pixel: 10 Estacion: 9 Fosforo: 0.3 Superficie: 3.27393 Agrego: 0.98217905 FosforoAcumulado: 414.86298
+Pixel: 10 Estacion: 10 Fosforo: 0.3 Superficie: 3.27393 Agrego: 0.98217905 FosforoAcumulado: 415.84515
+Pixel: 10 Estacion: 11 Fosforo: 0.393 Superficie: 3.27393 Agrego: 1.2866546 FosforoAcumulado: 417.1318
+Pixel: 10 Estacion: 12 Fosforo: 0.393 Superficie: 3.27393 Agrego: 1.2866546 FosforoAcumulado: 418.41846
+Pixel: 10 Estacion: 13 Fosforo: 0.244 Superficie: 3.27393 Agrego: 0.798839 FosforoAcumulado: 419.2173
+Pixel: 10 Estacion: 14 Fosforo: 0.244 Superficie: 3.27393 Agrego: 0.798839 FosforoAcumulado: 420.0161
+Pixel: 10 Estacion: 15 Fosforo: 0.244 Superficie: 3.27393 Agrego: 0.798839 FosforoAcumulado: 420.81494
+Funcion Objetivo: 420.81494
+	Fosforo: 420.81494
+	Incumplimiento Usos ./Instancias/IntanciaPrueba.in	CantPixeles:11
+cant pixeles: 0, cant estaciones: 16ueba.in	CantPixeles:11
+cant pixeles: 0, cant estaciones: 16

@@ -3,12 +3,12 @@ import scipy.stats as stats
 import numpy as np
 from numpy.core.multiarray import ndarray
 
-cantEjecuciones = 2
+cantInstancias = 3
 # creo el vector conjunto de muestas
 conjuntoMuestras = []
 #print("Conjunto de Muestas: " + conjuntoMuestras)
 # para cada archivo (corresponde a la ejecucion del algoritmo para una semilla CantEjecuciones veces)
-for nombreArchivo in range(1, 4):
+for nombreArchivo in range(1, cantInstancias+1):
 	print("Leo Archivo %d" % nombreArchivo)
 	# creo un vector muestra para guardar los resultados (representa una mudestra)
 	muesta = []

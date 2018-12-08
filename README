@@ -1,0 +1,7 @@
+README
+Dede el directorio del proyecto se debe ejecutar primero: 
+	bash generarConjuntoDeMuestas.sh  ecj-26.jar <Cant Instancias> <Cant muestras para cada instancia>
+	Esto genera en la carpeta Muestras un conjunto de muestas de tama;o <Cant muestras para cada instancia> por cada instancia <Cant Instancias>.
+
+	Luego ejecutar: 
+		python Friedman.py modificando la linea 6 para tener una cantInstancias =<Cant Instancias> (luego esto lo voy a modificar para que sea un parametro)
